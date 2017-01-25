@@ -11,6 +11,12 @@ namespace ServiceApp.ErrorHandling
         public Logging() { }
 
 
+        /*
+        Purpose: This method is used for outputing messages to the console or windows event log
+        Last Date Modified: 1/25
+        Tested: True
+        Explanation: 
+        */
         public void Print(string msg)
         {
             Console.WriteLine(msg);

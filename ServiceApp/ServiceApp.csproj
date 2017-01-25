@@ -49,11 +49,11 @@
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="ErrorHandling\Logging.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="Service1.cs">
+    <Compile Include="ServiceClass.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Service1.Designer.cs">
-      <DependentUpon>Service1.cs</DependentUpon>
+    <Compile Include="ServiceClass.Designer.cs">
+      <DependentUpon>ServiceClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

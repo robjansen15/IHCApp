@@ -46,16 +46,24 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DatabaseConnection.Test.cs" />
+    <Compile Include="ErrorHandling\ErrorHandler.Test.cs" />
+    <Compile Include="ErrorHandling\Logging.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Variables.Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Database\" />
-    <Folder Include="ErrorHandling\" />
+    <ProjectReference Include="..\ServiceApp\ServiceApp.csproj">
+      <Project>{49eb4907-ade7-419d-910f-ec6d22f4b029}</Project>
+      <Name>ServiceApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

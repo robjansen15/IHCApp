@@ -16,6 +16,12 @@ namespace ServiceApp.Database
         }
 
 
+        /*
+        Purpose: Connects the database connection
+        Last Date Modified: 1/25
+        Tested: True
+        Explanation: 
+        */
         public void Connect()
         {
             try
@@ -29,6 +35,12 @@ namespace ServiceApp.Database
         }
 
 
+        /*
+        Purpose: Disconnects the the database connection
+        Last Date Modified: 1/25
+        Tested: True
+        Explanation: 
+        */
         public void Disconnect()
         {
             try

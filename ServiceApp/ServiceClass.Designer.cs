@@ -1,6 +1,6 @@
 ﻿namespace ServiceApp
 {
-    partial class Service1
+    partial class ServiceClass
     {
         /// <summary> 
         /// Required designer variable.
