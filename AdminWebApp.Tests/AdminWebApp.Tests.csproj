@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82271C32-B652-4BA3-A936-C6E26F24D056}</ProjectGuid>
+    <ProjectGuid>{4E11B3DA-D62F-4AB1-8978-040C6ACE1A80}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApp.Tests</RootNamespace>
-    <AssemblyName>WebApp.Tests</AssemblyName>
+    <RootNamespace>AdminWebApp.Tests</RootNamespace>
+    <AssemblyName>AdminWebApp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApp\WebApp.csproj">
-      <Project>{7BDB0B06-2D7C-495A-A3BF-3A2D18B6B69F}</Project>
-      <Name>WebApp</Name>
+    <ProjectReference Include="..\AdminWebApp\AdminWebApp.csproj">
+      <Project>{E1CA8D96-C6CF-412F-ADCF-6CA13AED4672}</Project>
+      <Name>AdminWebApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
