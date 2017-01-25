@@ -12,7 +12,7 @@ namespace ServiceApp.Database
     {
         public DatabaseConnection(string databaseConfigString)
         {
-            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            Connection = new SqlConnection(ConfigurationManager.ConnectionStrings[databaseConfigString].ConnectionString);
         }
 
 

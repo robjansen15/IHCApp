@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseConnection.Test.cs" />
+    <Compile Include="Database\StoredProcedures.Test.cs" />
     <Compile Include="ErrorHandling\ErrorHandler.Test.cs" />
     <Compile Include="ErrorHandling\Logging.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
