@@ -19,7 +19,7 @@ namespace ServiceApp
         */
         public void Run()
         {
-            
+            Console.WriteLine("We have started the service.");
         }
         
 
