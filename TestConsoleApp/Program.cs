@@ -4,19 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceRunner
+namespace TestConsoleApp
 {
     class Program
     {
         static void Main(string[] args)
-        { 
-
-            Runner r = new Runner();
-
-            r.Run();
-
-            //so you can view output
-            Console.Read();
+        {
         }
     }
 }

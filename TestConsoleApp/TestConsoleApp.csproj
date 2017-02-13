@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C71FD1B-D66C-4965-BA2E-1FD634A32960}</ProjectGuid>
+    <ProjectGuid>{E1EB046C-5855-44BB-9631-B116BD9D48FA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ServiceRunner</RootNamespace>
-    <AssemblyName>ServiceRunner</AssemblyName>
+    <RootNamespace>TestConsoleApp</RootNamespace>
+    <AssemblyName>TestConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,16 +44,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Runner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ServiceApp\Samples.csproj">
-      <Project>{49eb4907-ade7-419d-910f-ec6d22f4b029}</Project>
-      <Name>Samples</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

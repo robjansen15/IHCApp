@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AdminWebApp.Tests
+namespace IHCWebApp.Tests
 {
     [TestClass]
     public class UnitTest1
