@@ -44,14 +44,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Runner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServiceApp\ServiceApp.csproj">
+    <ProjectReference Include="..\ServiceApp\Samples.csproj">
       <Project>{49eb4907-ade7-419d-910f-ec6d22f4b029}</Project>
-      <Name>ServiceApp</Name>
+      <Name>Samples</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
