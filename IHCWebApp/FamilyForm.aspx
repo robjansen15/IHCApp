@@ -7,15 +7,26 @@
     <title></title>
 </head>
 <body>
+    <div id ="header">
+           <h1>Home stay family application</h1>
+    </div>
+
     <form id="form1" runat="server">
         <div>
-            
+            <%-- This is temporary until we solve session variables --%>
+            <asp:Label ID="counter" Visible="false" Text="0" runat="server"></asp:Label>
+            <asp:Label ID="familyCount" Visible="false" Text="0" runat="server"></asp:Label>
+
+
+            <%-- Family panel --%>
             <asp:Panel runat="server" id="familyPanel">
                 
                 <%--family name--%>
                 <asp:TextBox runat="server" id="familyName"></asp:TextBox>
-            
                 
+               
+                <asp:Button runat="server" id="removeFamilyMember" OnClick="removeFamilyMember_Click" Text="Remove Family Member"/>
+                <asp:Button runat="server" id="addFamilyMember" OnClick="addFamilyMember_Click" Text="Add Family Member"/>
                 <%-- Family Name
                 
                 Family members
@@ -28,7 +39,7 @@
             </asp:Panel>
             
               
-            
+            <%-- Contact info panel --%>
             <asp:Panel runat="server" id="contactInfoPanel" Enabled="False">
                  <%-- address 
                 
@@ -42,6 +53,7 @@
             </asp:Panel>
             
             
+            <%-- living details panel --%>
             <asp:Panel runat="server" id="livingDetailsPanel" Enabled="False">
                 <%--smoking policy - y / n
                 host smoke - y / n
@@ -58,7 +70,7 @@
             </asp:Panel>
             
             
-            
+            <%-- additional information panel --%>
             <asp:Panel runat="server" ID="moreInfoPanel" Enabled="False">
                 
                 <asp:TextBox runat="server">more info</asp:TextBox>    
@@ -69,6 +81,8 @@
             </asp:Panel>
             
             
+            <br />
+            <br />
             
             <asp:Button runat="server" id="backButon" OnClick="backButon_OnClick" Text="Go Back"/>
             <asp:Button runat="server" id="continueButton" OnClick="continueButton_OnClick" Text="Continue"/>

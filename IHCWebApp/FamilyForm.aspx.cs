@@ -12,83 +12,158 @@ namespace UserWebApp
     public partial class FamilyForm : System.Web.UI.Page
     {
 
-        
+        /// <summary>
+        /// Page loading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (IsPostBack != true)
+            {
+                DisplayPanel(0);
+            }
         }
 
 
+        /// <summary>
+        /// back to previous panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void backButon_OnClick(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(Session["panelCounter"].ToString()) > 0)
+            if (Convert.ToInt32(this.counter.Text) > 0)
             {
-                Session["panelCounter"] = Convert.ToInt32(Session["panelCounter"].ToString()) - 1;
+                this.counter.Text = (Convert.ToInt32(this.counter.Text) - 1).ToString();
             }
 
-            DisplayPanel(Convert.ToInt32(Session["panelCounter"].ToString()));
+            DisplayPanel(Convert.ToInt32(this.counter.Text));
         }
 
 
+        /// <summary>
+        /// continue to next panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void continueButton_OnClick(object sender, EventArgs e)
         {
-            if (Session["panelCounter"] == null)
+            if (Convert.ToInt32(this.counter.Text) < 3)
             {
-                Session["panelCounter"] = 0;
+                this.counter.Text = (Convert.ToInt32(this.counter.Text) + 1).ToString();
             }
 
-            DisplayPanel(Convert.ToInt32(Session["panelCounter"].ToString()));
+            DisplayPanel(Convert.ToInt32(this.counter.Text));
         }
 
+
+        /// <summary>
+        /// display a given panel
+        /// </summary>
+        /// <param name="value"></param>
         public void DisplayPanel(int value)
         {
             if (value == 0)
             {
-                familyPanel.Enabled = true;
-                contactInfoPanel.Enabled = false;
-                livingDetailsPanel.Enabled = false;
-                moreInfoPanel.Enabled = false;
+                familyPanel.Visible = true;
+                contactInfoPanel.Visible = false;
+                livingDetailsPanel.Visible = false;
+                moreInfoPanel.Visible = false;
             }
             else if (value == 1)
             {
-                familyPanel.Enabled = false;
-                contactInfoPanel.Enabled = true;
-                livingDetailsPanel.Enabled = false;
-                moreInfoPanel.Enabled = false;
+                familyPanel.Visible = false;
+                contactInfoPanel.Visible = true;
+                livingDetailsPanel.Visible = false;
+                moreInfoPanel.Visible = false;
             }
             else if (value == 2)
             {
-                familyPanel.Enabled = false;
-                contactInfoPanel.Enabled = false;
-                livingDetailsPanel.Enabled = true;
-                moreInfoPanel.Enabled = false;
+                familyPanel.Visible = false;
+                contactInfoPanel.Visible = false;
+                livingDetailsPanel.Visible = true;
+                moreInfoPanel.Visible = false;
             }
             else if (value == 3)
             {
-                familyPanel.Enabled = false;
-                contactInfoPanel.Enabled = false;
-                livingDetailsPanel.Enabled = false;
-                moreInfoPanel.Enabled = true;
+                familyPanel.Visible = false;
+                contactInfoPanel.Visible = false;
+                livingDetailsPanel.Visible = false;
+                moreInfoPanel.Visible = true;
             }
         }
 
-        //string firstName = "Jeff";
-        //string lastName = "Smith";
-        //string city = "Seattle";
 
-        //// Save to session state in a Web Forms page class.
-        //Session["FirstName"] = firstName;
-        //Session["LastName"] = lastName;
-        //Session["City"] = city;
+        /// <summary>
+        /// add a family memeber
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void addFamilyMember_Click(object sender, EventArgs e)
+        {
+            int familyCnt = Convert.ToInt32(this.familyCount.Text) + 1;
+            this.familyCount.Text = (familyCnt).ToString();
 
-        //// Read from session state in a Web Forms page class.
-        //firstName = (string) (Session["FirstName"]);
-        //lastName = (string) (Session["LastName"]);
-        //city = (string) (Session["City"]);
+            //create a new family member
+            Panel panel = new Panel();
+            panel.ID = "familyMember" + familyCnt;
 
-        //// Outside of Web Forms page class, use HttpContext.Current.
-        //HttpContext context = HttpContext.Current;
-        //        context.Session["FirstName"] = firstName;
-        //firstName = (string) (context.Session["FirstName"]);
+            //first name
+            TextBox fName = new TextBox();
+            fName.ID = "fName";
+
+            //last name
+            TextBox lName = new TextBox();
+            lName.ID = "lName";
+
+            //DOB
+            TextBox dob = new TextBox();
+            dob.ID = "dob";
+
+            //gender
+            TextBox gender = new TextBox();
+            gender.ID = "gender";
+
+            //is host
+            CheckBox isHost = new CheckBox();
+            isHost.ID = "host";
+
+            //occupation
+            TextBox occupation = new TextBox();
+            occupation.ID = "occupation";
+
+
+            //add the controls to the new panel
+            panel.Controls.Add(fName);
+            panel.Controls.Add(lName);
+            panel.Controls.Add(dob);
+            panel.Controls.Add(gender);
+            panel.Controls.Add(isHost);
+            panel.Controls.Add(occupation);
+            panel.Controls.Add(new LiteralControl("<br />"));
+
+
+            //add the family memeber to the family panel
+            familyPanel.Controls.Add(panel);
+
+        }
+
+
+        //remove a family member from the panel
+        protected void removeFamilyMember_Click(object sender, EventArgs e)
+        {
+            int familyCnt = Convert.ToInt32(this.familyCount.Text);
+            this.familyCount.Text = (familyCnt - 1).ToString();
+
+            //removes a list of items based on a filter
+            var removeItems = familyPanel.Controls.Cast<Control>().Where(x => x.ID.Contains(("familyMember" + familyCnt).ToString())).ToList();
+
+            foreach(var item in removeItems)
+            {
+                familyPanel.Controls.Remove(item);
+            }
+            
+        }
     }
 }
