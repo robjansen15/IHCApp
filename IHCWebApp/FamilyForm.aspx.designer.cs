@@ -31,15 +31,6 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.Label counter;
         
         /// <summary>
-        /// familyCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label familyCount;
-        
-        /// <summary>
         /// familyPanel control.
         /// </summary>
         /// <remarks>
@@ -58,22 +49,22 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.TextBox familyName;
         
         /// <summary>
-        /// removeFamilyMember control.
+        /// familyCnt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button removeFamilyMember;
+        protected global::System.Web.UI.WebControls.DropDownList familyCnt;
         
         /// <summary>
-        /// addFamilyMember control.
+        /// familyListPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addFamilyMember;
+        protected global::System.Web.UI.WebControls.Panel familyListPanel;
         
         /// <summary>
         /// contactInfoPanel control.
@@ -85,6 +76,42 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.Panel contactInfoPanel;
         
         /// <summary>
+        /// address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox address;
+        
+        /// <summary>
+        /// phone1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox phone1;
+        
+        /// <summary>
+        /// phone2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox phone2;
+        
+        /// <summary>
+        /// email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox email;
+        
+        /// <summary>
         /// livingDetailsPanel control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,87 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.Panel livingDetailsPanel;
         
         /// <summary>
+        /// allowSmoking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox allowSmoking;
+        
+        /// <summary>
+        /// familySmoke control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox familySmoke;
+        
+        /// <summary>
+        /// allowDrinking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox allowDrinking;
+        
+        /// <summary>
+        /// familyDrinking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox familyDrinking;
+        
+        /// <summary>
+        /// dogs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dogs;
+        
+        /// <summary>
+        /// cats control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cats;
+        
+        /// <summary>
+        /// bathrooms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList bathrooms;
+        
+        /// <summary>
+        /// shareBathroom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox shareBathroom;
+        
+        /// <summary>
+        /// transportation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox transportation;
+        
+        /// <summary>
         /// moreInfoPanel control.
         /// </summary>
         /// <remarks>
@@ -101,6 +209,24 @@ namespace UserWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel moreInfoPanel;
+        
+        /// <summary>
+        /// hobbies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hobbies;
+        
+        /// <summary>
+        /// about control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox about;
         
         /// <summary>
         /// backButon control.
