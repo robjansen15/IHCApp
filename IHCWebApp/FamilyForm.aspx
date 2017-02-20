@@ -40,16 +40,7 @@
                 </asp:DropDownList>
                 
                <asp:Panel runat="server" ID="familyListPanel"></asp:Panel>
-
-
-                <%-- Family Name
-                
-                Family members
-                    -fname
-                    -lname
-                    -dob
-                    -gender
-                    -is host?--%>
+         
                 
             </asp:Panel>
             
