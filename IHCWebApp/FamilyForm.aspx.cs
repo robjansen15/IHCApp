@@ -170,7 +170,8 @@ namespace UserWebApp
             }
 
             //repopulate the number of family members
-            updateFamilyMembers(Convert.ToInt32(this.familyCnt.SelectedValue));                               
+            //updateFamilyMembers(Convert.ToInt32(this.familyCnt.SelectedValue));                               
+
         }
 
     }

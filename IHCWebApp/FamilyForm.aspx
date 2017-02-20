@@ -42,8 +42,54 @@
                 </asp:DropDownList>
                 
                 <br />
-               <asp:Label runat="server" AssociatedControlID="familyListPanel" Text="First Name, Last Name, DOB, Gender, Is a host?, Occupation"></asp:Label>
-               <asp:Panel runat="server" ID="familyListPanel"></asp:Panel>
+                <br />
+
+               <asp:Label runat="server" AssociatedControlID="familyListPanel" Text="Please enter all of your family members."></asp:Label>
+               <asp:Panel runat="server" ID="familyListPanel">
+
+                   <br />
+        
+                    <asp:Panel runat="server" ID="familyMember0">          
+                        <asp:Label runat="server" AssociatedControlID="firstName0" Text="First Name"></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="lastName0" Text="Last Name"></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="dob0" Text="Date of Birth"></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="gender0" Text="Gender"></asp:Label>
+                        <asp:Label runat="server" AssociatedControlID="isHost0" Text="isHost"></asp:Label>                 
+                        <asp:Label runat="server" AssociatedControlID="occupation0" Text="Occupation"></asp:Label>
+
+                        <br />
+
+                        <asp:TextBox runat="server" id="firstName0"></asp:TextBox>    
+                        <asp:TextBox runat="server" id="lastName0"></asp:TextBox>
+                        <asp:TextBox runat="server" id="dob0"></asp:TextBox>
+                        <asp:TextBox runat="server" id="gender0"></asp:TextBox>
+                        <asp:TextBox runat="server" id="isHost0"></asp:TextBox>
+                        <asp:TextBox runat="server" id="occupation0"></asp:TextBox>
+                   </asp:Panel>
+
+                   <br />
+
+                   <asp:Panel runat="server" ID="familyMember1"> 
+                       <asp:TextBox runat="server" id="firstName1"></asp:TextBox>
+                       <asp:TextBox runat="server" id="lastName1"></asp:TextBox>
+                       <asp:TextBox runat="server" id="dob1"></asp:TextBox>
+                       <asp:TextBox runat="server" id="gender1"></asp:TextBox>
+                       <asp:TextBox runat="server" id="isHost1"></asp:TextBox>
+                       <asp:TextBox runat="server" id="occupation1"></asp:TextBox>
+                   </asp:Panel>
+
+                   <br />
+
+                   <asp:Panel runat="server" ID="familyMember2"> 
+                       <asp:TextBox runat="server" id="firstName2"></asp:TextBox>
+                       <asp:TextBox runat="server" id="lastName2"></asp:TextBox>
+                       <asp:TextBox runat="server" id="dob2"></asp:TextBox>
+                       <asp:TextBox runat="server" id="gender2"></asp:TextBox>
+                       <asp:TextBox runat="server" id="isHost2"></asp:TextBox>
+                       <asp:TextBox runat="server" id="occupation2"></asp:TextBox>
+                   </asp:Panel>
+
+               </asp:Panel>
          
                 
             </asp:Panel>
