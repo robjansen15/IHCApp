@@ -15,19 +15,16 @@
 
     <form id="form1" runat="server">
         <div style="text-align:center">
-            <%-- This is temporary until we solve session variables --%>
-            <asp:Label ID="counter" Visible="false" Text="0" runat="server"></asp:Label>
-
             <%-- Family panel --%>
             <asp:Panel runat="server" id="familyPanel">
                 
                 <%--family name--%>
-                <asp:Label AssociatedControlID="familyName" Text="Family Last Name" runat="server"></asp:Label>
+                <asp:Label AssociatedControlID="familyName" Text="Family Name? " runat="server"></asp:Label>
                 <asp:TextBox runat="server" id="familyName"></asp:TextBox>
 
                 <br />
                 <br />
-                <asp:Label AssociatedControlID="familyCnt" Text="How many family members" runat="server"></asp:Label>
+                <asp:Label AssociatedControlID="familyCnt" Text="How many family members? " runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="familyCnt" OnSelectedIndexChanged="familyCnt_SelectedIndexChanged" AutoPostBack="true">
                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -42,81 +39,36 @@
                 </asp:DropDownList>
                 
                 <br />
+
+                <asp:Panel runat="server" ID="familyListPanel"></asp:Panel>
+
                 <br />
-
-               <asp:Label runat="server" AssociatedControlID="familyListPanel" Text="Please enter all of your family members."></asp:Label>
-               <asp:Panel runat="server" ID="familyListPanel">
-
-                   <br />
-        
-                    <asp:Panel runat="server" ID="familyMember0">          
-                        <asp:Label runat="server" AssociatedControlID="firstName0" Text="First Name"></asp:Label>
-                        <asp:Label runat="server" AssociatedControlID="lastName0" Text="Last Name"></asp:Label>
-                        <asp:Label runat="server" AssociatedControlID="dob0" Text="Date of Birth"></asp:Label>
-                        <asp:Label runat="server" AssociatedControlID="gender0" Text="Gender"></asp:Label>
-                        <asp:Label runat="server" AssociatedControlID="isHost0" Text="isHost"></asp:Label>                 
-                        <asp:Label runat="server" AssociatedControlID="occupation0" Text="Occupation"></asp:Label>
-
-                        <br />
-
-                        <asp:TextBox runat="server" id="firstName0"></asp:TextBox>    
-                        <asp:TextBox runat="server" id="lastName0"></asp:TextBox>
-                        <asp:TextBox runat="server" id="dob0"></asp:TextBox>
-                        <asp:TextBox runat="server" id="gender0"></asp:TextBox>
-                        <asp:TextBox runat="server" id="isHost0"></asp:TextBox>
-                        <asp:TextBox runat="server" id="occupation0"></asp:TextBox>
-                   </asp:Panel>
-
-                   <br />
-
-                   <asp:Panel runat="server" ID="familyMember1"> 
-                       <asp:TextBox runat="server" id="firstName1"></asp:TextBox>
-                       <asp:TextBox runat="server" id="lastName1"></asp:TextBox>
-                       <asp:TextBox runat="server" id="dob1"></asp:TextBox>
-                       <asp:TextBox runat="server" id="gender1"></asp:TextBox>
-                       <asp:TextBox runat="server" id="isHost1"></asp:TextBox>
-                       <asp:TextBox runat="server" id="occupation1"></asp:TextBox>
-                   </asp:Panel>
-
-                   <br />
-
-                   <asp:Panel runat="server" ID="familyMember2"> 
-                       <asp:TextBox runat="server" id="firstName2"></asp:TextBox>
-                       <asp:TextBox runat="server" id="lastName2"></asp:TextBox>
-                       <asp:TextBox runat="server" id="dob2"></asp:TextBox>
-                       <asp:TextBox runat="server" id="gender2"></asp:TextBox>
-                       <asp:TextBox runat="server" id="isHost2"></asp:TextBox>
-                       <asp:TextBox runat="server" id="occupation2"></asp:TextBox>
-                   </asp:Panel>
-
-               </asp:Panel>
-         
-                
+             
             </asp:Panel>
-            
-              
+         
+
             <%-- Contact info panel --%>
             <asp:Panel runat="server" id="contactInfoPanel" Enabled="False">
 
-                <asp:Label runat="server" Text="Address" AssociatedControlID="address"></asp:Label>
+                <asp:Label runat="server" Text="Address? " AssociatedControlID="address"></asp:Label>
                 <asp:TextBox runat="server" id="address" Enabled="True"></asp:TextBox>
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Primary Phone" AssociatedControlID="phone1"></asp:Label>
+                <asp:Label runat="server" Text="Primary Phone? " AssociatedControlID="phone1"></asp:Label>
                 <asp:TextBox runat="server" id="phone1"></asp:TextBox>
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Secondary Phone" AssociatedControlID="phone2"></asp:Label>
+                <asp:Label runat="server" Text="Secondary Phone? " AssociatedControlID="phone2"></asp:Label>
                 <asp:TextBox runat="server" id="phone2"></asp:TextBox>
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Email" AssociatedControlID="email"></asp:Label>
+                <asp:Label runat="server" Text="Email? " AssociatedControlID="email"></asp:Label>
                 <asp:TextBox runat="server" id="email"></asp:TextBox>
                     
             </asp:Panel>
@@ -125,31 +77,31 @@
             <%-- living details panel --%>
             <asp:Panel runat="server" id="livingDetailsPanel" Enabled="False">
 
-                <asp:Label runat="server" Text="Allow Smoking?" AssociatedControlID="allowSmoking"></asp:Label>
+                <asp:Label runat="server" Text="Allow Smoking? " AssociatedControlID="allowSmoking"></asp:Label>
                 <asp:CheckBox runat="server" ID="allowSmoking" />
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Does anyone in your family smoke?" AssociatedControlID="familySmoke"></asp:Label>
+                <asp:Label runat="server" Text="Does anyone in your family smoke? " AssociatedControlID="familySmoke"></asp:Label>
                 <asp:CheckBox runat="server" ID="familySmoke" />
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Does anyone in your family smoke?" AssociatedControlID="allowDrinking"></asp:Label>
+                <asp:Label runat="server" Text="Does anyone in your family smoke? " AssociatedControlID="allowDrinking"></asp:Label>
                 <asp:CheckBox runat="server" ID="allowDrinking" />
 
                 <br />
                 <br />
 
-                <asp:Label runat="server" Text="Does anyone in your family drink?" AssociatedControlID="familyDrinking"></asp:Label>
+                <asp:Label runat="server" Text="Does anyone in your family drink? " AssociatedControlID="familyDrinking"></asp:Label>
                 <asp:CheckBox runat="server" ID="familyDrinking" />
 
                 <br />
                 <br />
 
-                <asp:Label AssociatedControlID="dogs" Text="How many dogs do you own?" runat="server"></asp:Label>
+                <asp:Label AssociatedControlID="dogs" Text="How many dogs do you own? " runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="dogs">
                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -160,7 +112,7 @@
                 <br />
                 <br />
              
-                <asp:Label AssociatedControlID="cats" Text="How many cats do you own?" runat="server"></asp:Label>
+                <asp:Label AssociatedControlID="cats" Text="How many cats do you own? " runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="cats">
                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -170,8 +122,19 @@
 
                 <br />
                 <br />
+             
+                <asp:Label AssociatedControlID="internet" Text="How kind of internet do you have? " runat="server"></asp:Label>
+                <asp:DropDownList runat="server" ID="internet">
+                    <asp:ListItem Value="High Speed Wifi" Text ="High Speed Wifi" Selected="True" Enabled="True"></asp:ListItem>
+                    <asp:ListItem Value="Normal Wifi" Text ="Normal Wifi" Enabled="True"></asp:ListItem>
+                    <asp:ListItem Value="Wired" Text ="Wired" Enabled="True"></asp:ListItem>
+                    <asp:ListItem Value="Other" Text ="Other" Enabled="True"></asp:ListItem>
+                </asp:DropDownList>
 
-                <asp:Label AssociatedControlID="bathrooms" Text="How many bathrooms will your guest have access to?" runat="server"></asp:Label>
+                <br />
+                <br />
+
+                <asp:Label AssociatedControlID="bathrooms" Text="How many bathrooms will your guest have access to? " runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="bathrooms">
                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -179,7 +142,7 @@
                     <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
                 </asp:DropDownList>
 
-                <asp:Label runat="server" Text="Is the primary bathroom shared?" AssociatedControlID="shareBathroom"></asp:Label>
+                <asp:Label runat="server" Text="Is the primary bathroom shared? " AssociatedControlID="shareBathroom"></asp:Label>
                 <asp:CheckBox runat="server" ID="shareBathroom" />
 
                 <br />

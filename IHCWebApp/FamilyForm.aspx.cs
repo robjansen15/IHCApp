@@ -19,6 +19,18 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //re-add the family controls everytime!
+            updateFamilyMembers(Convert.ToInt32(this.familyCnt.SelectedValue));
+
+            if (ViewState["savedFamilyMembers"] != null)
+            {
+                this.familyListPanel = (Panel)ViewState["NameOfUser"];
+            }
+            else
+            {              
+                ViewState.Add("savedFamilyMembers", this.familyListPanel.ToString());
+            }
+
             //checks for postback
             if (IsPostBack != true)
             {
@@ -77,7 +89,7 @@ namespace UserWebApp
         {         
             //change the view
             if (value == 0)
-            {
+            {              
                 familyPanel.Visible = true;
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
@@ -112,44 +124,79 @@ namespace UserWebApp
         /// </summary>
         /// <param name="count"></param>
         public void updateFamilyMembers(int count)
-        {
-            this.familyListPanel.Controls.Clear();
-
-            for(int id = 0; id < count; id++)
+        {       
+            for (int id = 0; id < count; id++)
             {
                 Panel panel = new Panel();
                 panel.ID = "familyMember" + id;
-                panel.Controls.Add(new LiteralControl(""));
+                panel.Controls.Add(new LiteralControl("<h3>Family Member " + (id + 1)+ "</h3>"));
 
-                //first name
+                //first name              
                 TextBox fName = new TextBox();
                 fName.ID = "fName" + id;
+                Label fNameLbl = new Label();
+                fNameLbl.Text = "First Name? ";
+                fNameLbl.AssociatedControlID = "fName" + id;
 
                 //last name
                 TextBox lName = new TextBox();
                 lName.ID = "lName" + id;
+                Label lNameLbl = new Label();
+                lNameLbl.Text = "Last Name? ";
+                lNameLbl.AssociatedControlID = "lName" + id;
 
                 //DOB
                 TextBox dob = new TextBox();
-                dob.ID = "dob" + id;
+                Label dobLbl = new Label();
+                dobLbl.Text = "Date of Birth? ";
+                dobLbl.AssociatedControlID = "lName" + id;
 
                 //gender
                 TextBox gender = new TextBox();
                 gender.ID = "gender" + id;
+                Label genderLbl = new Label();
+                genderLbl.Text = "Gender? ";
+                genderLbl.AssociatedControlID = "lName" + id;
 
                 //is host
                 CheckBox isHost = new CheckBox();
                 isHost.ID = "host" + id;
+                Label isHostLbl = new Label();
+                isHostLbl.Text = "Is this person a primary host? ";
+                isHostLbl.AssociatedControlID = "lName" + id;
 
                 //occupation
                 TextBox occupation = new TextBox();
+                occupation.ID = "occupation" + id;
+                Label occupationLbl = new Label();
+                occupation.Text = "Occupation? ";
+                occupationLbl.AssociatedControlID = "lName" + id;
 
+                //add controls
+                panel.Controls.Add(fNameLbl);
                 panel.Controls.Add(fName);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+
+                panel.Controls.Add(lNameLbl);
                 panel.Controls.Add(lName);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+
+                panel.Controls.Add(dobLbl);
                 panel.Controls.Add(dob);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+
+                panel.Controls.Add(genderLbl);
                 panel.Controls.Add(gender);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+
+                panel.Controls.Add(isHostLbl);
                 panel.Controls.Add(isHost);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+
+                panel.Controls.Add(occupationLbl);
                 panel.Controls.Add(occupation);
+                panel.Controls.Add(new LiteralControl("<br/>"));
+                panel.Controls.Add(new LiteralControl("<br/>"));
 
                 this.familyListPanel.Controls.Add(panel);
             }
@@ -163,15 +210,7 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void familyCnt_SelectedIndexChanged(object sender, EventArgs e)
         {          
-            //clear the controls before adding items with the same name!
-            if(familyListPanel != null)
-            {
-                familyListPanel.Controls.Clear();
-            }
-
-            //repopulate the number of family members
-            //updateFamilyMembers(Convert.ToInt32(this.familyCnt.SelectedValue));                               
-
+            /*EMPTY METHOD TO ENSURE POSTBACK*/                            
         }
 
     }
