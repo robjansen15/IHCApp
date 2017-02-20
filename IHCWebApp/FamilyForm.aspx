@@ -81,6 +81,7 @@
                 <asp:CheckBox runat="server" ID="allowSmoking" />
 
                 <br />
+
                 <br />
 
                 <asp:Label runat="server" Text="Does anyone in your family smoke? " AssociatedControlID="familySmoke"></asp:Label>
