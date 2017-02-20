@@ -165,7 +165,50 @@ namespace UserWebApp
         }
 
 
+        /// <summary>
+        /// updates all of the family member after a post back
+        /// </summary>
+        /// <param name="count"></param>
+        public void updateFamilyMembers(int count)
+        {
+            //counter of the members added
+            int c = 0;
 
+            foreach(var member in (List<FamilyMember>)Session["familyMembers"])
+            {
+                //if there are less rows selected than people
+                if (c > count)
+                {
+                    for (int i = c; i < count; i++)
+                    {
+                        addMember(i, new FamilyMember());
+                    }
+
+
+                    c = count;
+                    break;
+                }
+
+
+                addMember(c, member);
+
+                c++;
+            }
+
+            //add more rows if they need more
+            for(int i = c; i < count; i++)
+            {
+                addMember(i, new FamilyMember());
+            }
+
+        }
+
+
+        /// <summary>
+        /// when the user changes the number of family memebers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void familyCnt_SelectedIndexChanged(object sender, EventArgs e)
         {          
             //clear the controls before adding items with the same name!
@@ -175,15 +218,14 @@ namespace UserWebApp
             }
 
             //repopulate the number of family members
-            for (int i = 0; i < Convert.ToInt32(this.familyCnt.SelectedValue); i++)
-            {
-                addMember(i,new FamilyMember());
-            }        
-
-            
+            updateFamilyMembers(Convert.ToInt32(this.familyCnt.SelectedValue));
+                                  
         }
 
 
+        /// <summary>
+        /// class that holds the family members
+        /// </summary>
         public class FamilyMember
         {
             public FamilyMember()
