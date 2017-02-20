@@ -8,11 +8,13 @@
 </head>
 <body>
     <div id ="header">
-           <h1>Home stay family application</h1>
+        <h1 style="text-align:center">Home stay family application</h1>
+        <br />
+        <br />
     </div>
 
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align:center">
             <%-- This is temporary until we solve session variables --%>
             <asp:Label ID="counter" Visible="false" Text="0" runat="server"></asp:Label>
 
@@ -39,6 +41,8 @@
                     <asp:ListItem Value="10" Text ="10" Enabled="True"></asp:ListItem>
                 </asp:DropDownList>
                 
+                <br />
+               <asp:Label runat="server" AssociatedControlID="familyListPanel" Text="First Name, Last Name, DOB, Gender, Is a host?, Occupation"></asp:Label>
                <asp:Panel runat="server" ID="familyListPanel"></asp:Panel>
          
                 
@@ -52,15 +56,18 @@
                 <asp:TextBox runat="server" id="address" Enabled="True"></asp:TextBox>
 
                 <br />
+                <br />
 
                 <asp:Label runat="server" Text="Primary Phone" AssociatedControlID="phone1"></asp:Label>
                 <asp:TextBox runat="server" id="phone1"></asp:TextBox>
 
                 <br />
+                <br />
 
                 <asp:Label runat="server" Text="Secondary Phone" AssociatedControlID="phone2"></asp:Label>
                 <asp:TextBox runat="server" id="phone2"></asp:TextBox>
 
+                <br />
                 <br />
 
                 <asp:Label runat="server" Text="Email" AssociatedControlID="email"></asp:Label>
@@ -76,20 +83,24 @@
                 <asp:CheckBox runat="server" ID="allowSmoking" />
 
                 <br />
+                <br />
 
                 <asp:Label runat="server" Text="Does anyone in your family smoke?" AssociatedControlID="familySmoke"></asp:Label>
                 <asp:CheckBox runat="server" ID="familySmoke" />
 
+                <br />
                 <br />
 
                 <asp:Label runat="server" Text="Does anyone in your family smoke?" AssociatedControlID="allowDrinking"></asp:Label>
                 <asp:CheckBox runat="server" ID="allowDrinking" />
 
                 <br />
+                <br />
 
                 <asp:Label runat="server" Text="Does anyone in your family drink?" AssociatedControlID="familyDrinking"></asp:Label>
                 <asp:CheckBox runat="server" ID="familyDrinking" />
 
+                <br />
                 <br />
 
                 <asp:Label AssociatedControlID="dogs" Text="How many dogs do you own?" runat="server"></asp:Label>
@@ -101,8 +112,8 @@
                 </asp:DropDownList>
 
                 <br />
+                <br />
              
-
                 <asp:Label AssociatedControlID="cats" Text="How many cats do you own?" runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="cats">
                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
@@ -112,7 +123,7 @@
                 </asp:DropDownList>
 
                 <br />
-               
+                <br />
 
                 <asp:Label AssociatedControlID="bathrooms" Text="How many bathrooms will your guest have access to?" runat="server"></asp:Label>
                 <asp:DropDownList runat="server" ID="bathrooms">
@@ -126,14 +137,11 @@
                 <asp:CheckBox runat="server" ID="shareBathroom" />
 
                 <br />
-
+                <br />
 
                 <asp:Label runat="server" Text="How can your guest trasport downtown? How long does it take approximately? What bus number? Additional details?" AssociatedControlID="transportation"></asp:Label>
                 <asp:TextBox runat="server" id="transportation"></asp:TextBox>
-                
-
-                
-               
+                          
             </asp:Panel>
             
             
@@ -144,12 +152,14 @@
                 <asp:TextBox runat="server" id="hobbies"></asp:TextBox>
 
                 <br />
+                <br />
 
                 <asp:Label runat="server" Text="Please supply some additonal information so we can match you with the best candidate." AssociatedControlID="about"></asp:Label>
                 <asp:TextBox runat="server" id="about"></asp:TextBox>
 
             </asp:Panel>            
             
+            <br />
             <br />
             <br />
             
