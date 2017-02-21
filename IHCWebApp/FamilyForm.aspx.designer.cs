@@ -235,7 +235,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button backButon;
+        protected global::System.Web.UI.WebControls.ImageButton backButon;
         
         /// <summary>
         /// continueButton control.
@@ -244,6 +244,6 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button continueButton;
+        protected global::System.Web.UI.WebControls.ImageButton continueButton;
     }
 }
