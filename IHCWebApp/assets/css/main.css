@@ -2677,4 +2677,11 @@
 				padding: 2em 0em 2em 0em;
 			}
 
+
+        /* Student Form CSS */
+
+        .rdoBtnItemSpacing label{
+
+            margin-right:30px; 
+        }
 	}

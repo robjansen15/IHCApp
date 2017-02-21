@@ -26,9 +26,9 @@
                     <!-- Nav -->
                     <nav id="nav">
                         <ul>
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="services.html">Host a Family</a></li>
-                            <li><a href="apage.html">Visit</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="services.html">Host a Student</a></li>
+                            <li><a href="StudentForm.aspx">Student Application</a></li>
                             <li><a href="contact.php">Contact</a></li>
                         </ul>
                     </nav>
