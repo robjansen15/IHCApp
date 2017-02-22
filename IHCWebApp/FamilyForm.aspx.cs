@@ -170,7 +170,7 @@ namespace UserWebApp
                 occupation.ID = "occupation" + id;
                 Label occupationLbl = new Label();
                 occupation.Text = "Occupation? ";
-                occupationLbl.AssociatedControlID = "lName" + id;
+                occupationLbl.AssociatedControlID = "occupation" + id;
 
                 //add controls
                 panel.Controls.Add(fNameLbl);
@@ -204,7 +204,7 @@ namespace UserWebApp
 
 
         /// <summary>
-        /// when the user changes the number of family memebers
+        /// when the user changes the number of family members
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
