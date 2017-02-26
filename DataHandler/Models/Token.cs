@@ -42,7 +42,7 @@ namespace DataHandler.Models
         public string tokenExists()
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
-            return databaseConnection._LoginValidationAdapter.GetExistingToken(_Username);         
+            return databaseConnection._TokenAdapter.GetExistingToken(_Username);         
         }
 
 
@@ -54,7 +54,7 @@ namespace DataHandler.Models
         private void tokenSave()
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
-            databaseConnection._LoginValidationAdapter.SaveToken(this);
+            databaseConnection._TokenAdapter.SaveToken(this);
         }
 
 

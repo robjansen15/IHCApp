@@ -14,7 +14,7 @@ namespace DataHandler.Database
         {
             _Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HomestayDatabase"].ConnectionString);
             _StoredProcedureAdapter = new StoredProcedureAdapter(this);
-            _LoginValidationAdapter = new LoginValidationAdapter(this);
+            _TokenAdapter = new TokenAdapter(this);
         }
 
 
@@ -44,7 +44,7 @@ namespace DataHandler.Database
         }
 
 
-        public LoginValidationAdapter _LoginValidationAdapter { get; set; }
+        public TokenAdapter _TokenAdapter { get; set; }
         public StoredProcedureAdapter _StoredProcedureAdapter { get; set; }
         public SqlConnection _Connection { get; set; }
     }

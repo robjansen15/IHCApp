@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DataHandler.Models;
 using System.Web.Script.Serialization;
+using DataHandler.Database;
 
 
 namespace DataHandler.Controllers
@@ -14,8 +15,16 @@ namespace DataHandler.Controllers
         /*Serialization example*/
 
         // GET: Search/applicantBySchool
-        public string applicantBySchool()
+        public string applicantBySchool(string token)
         {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            if (databaseConnection._TokenAdapter.Validate(token) != true)
+            {
+                return new HttpException(500, "invalid token").ToString();
+            }
+
+            
             string obj = "";
 
             List<Applicant> applicants = new List<Applicant>();

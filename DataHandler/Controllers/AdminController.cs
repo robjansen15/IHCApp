@@ -28,7 +28,7 @@ namespace DataHandler.Controllers
             }
 
             //lets see if they are who they say they are...
-            if(databaseConnection._LoginValidationAdapter.Validate(username, password))
+            if(databaseConnection._TokenAdapter.Validate(username, password))
             {
                 string obj = "";
                 Token token = new Token().GenerateToken(username);

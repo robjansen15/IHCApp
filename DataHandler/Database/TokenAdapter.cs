@@ -6,11 +6,39 @@ using DataHandler.Models;
 
 namespace DataHandler.Database
 {
-    public class LoginValidationAdapter
+    public class TokenAdapter
     {
-        public LoginValidationAdapter(DatabaseConnection databaseConnection)
+        public TokenAdapter(DatabaseConnection databaseConnection)
         {
             _DatabaseConnection = databaseConnection;
+        }
+
+
+        public bool Validate(string token)
+        {
+            bool validated = false;
+
+            //temporary
+            validated = true;
+
+            /*
+             Uncomment and use this framework. You need to connect and disconnect OUTSIDE of the try catch.
+
+            _DatabaseConnection.Connect();
+
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+
+            _DatabaseConnection.Disconnect();
+            */
+
+            return validated;
         }
 
         /// <summary>
