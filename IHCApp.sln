@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26020.0
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9894307-52F1-41B6-838E-A2769852D387}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +15,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHCWebApp.Tests", "IHCWebApp.Tests\IHCWebApp.Tests.csproj", "{50187837-1E5E-4242-B610-A78A7DEDD968}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{E1EB046C-5855-44BB-9631-B116BD9D48FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandler", "DataHandler\DataHandler.csproj", "{9232B76A-8418-420E-BF59-A56122B4EF3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataHandler.Tests", "DataHandler.Tests\DataHandler.Tests.csproj", "{D442FC1E-BE1C-46E3-BB9B-A11374ED77F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +42,14 @@ Global
 		{E1EB046C-5855-44BB-9631-B116BD9D48FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1EB046C-5855-44BB-9631-B116BD9D48FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1EB046C-5855-44BB-9631-B116BD9D48FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9232B76A-8418-420E-BF59-A56122B4EF3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9232B76A-8418-420E-BF59-A56122B4EF3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9232B76A-8418-420E-BF59-A56122B4EF3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9232B76A-8418-420E-BF59-A56122B4EF3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D442FC1E-BE1C-46E3-BB9B-A11374ED77F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D442FC1E-BE1C-46E3-BB9B-A11374ED77F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D442FC1E-BE1C-46E3-BB9B-A11374ED77F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D442FC1E-BE1C-46E3-BB9B-A11374ED77F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
