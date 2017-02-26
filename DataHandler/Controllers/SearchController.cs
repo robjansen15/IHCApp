@@ -26,8 +26,9 @@ namespace DataHandler.Controllers
 
             try
             {
-                applicants.Add(databaseConnection._StoredProcedureAdapter.getApplicant());
-                applicants.Add(databaseConnection._StoredProcedureAdapter.getApplicant());
+                Applicant a = databaseConnection._StoredProcedureAdapter.getApplicant();
+                applicants.Add(a);
+                applicants.Add(a);
 
                 obj = new JavaScriptSerializer().Serialize(applicants);            
             }
