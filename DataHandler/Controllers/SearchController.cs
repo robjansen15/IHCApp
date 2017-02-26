@@ -19,12 +19,6 @@ namespace DataHandler.Controllers
         public string applicantBySchool(string token)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
-
-            if (databaseConnection._TokenAdapter.Validate(token) != true)
-            {
-                return new HttpException(500, "invalid token").ToString();
-            }
-
             
             string obj = "";
 
@@ -32,8 +26,8 @@ namespace DataHandler.Controllers
 
             try
             {
-                applicants.Add(new Applicant("rob", "jansen"));
-                applicants.Add(new Applicant("jim", "godfrey"));
+                applicants.Add(databaseConnection._StoredProcedureAdapter.getApplicant());
+                applicants.Add(databaseConnection._StoredProcedureAdapter.getApplicant());
 
                 obj = new JavaScriptSerializer().Serialize(applicants);            
             }
