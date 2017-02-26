@@ -15,6 +15,7 @@ namespace DataHandler.Controllers
         /*Serialization example*/
 
         // GET: Search/applicantBySchool
+        [AuthorizeToken]
         public string applicantBySchool(string token)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();

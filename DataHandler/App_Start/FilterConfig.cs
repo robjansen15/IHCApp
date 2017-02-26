@@ -10,4 +10,5 @@ namespace DataHandler
             filters.Add(new HandleErrorAttribute());
         }
     }
+
 }
