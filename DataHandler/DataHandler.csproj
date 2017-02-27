@@ -185,6 +185,7 @@
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\TokenStrategy.cs" />
     <Compile Include="Database\SearchStrategy.cs" />
+    <Compile Include="Database\UnauthenticatedStrategy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

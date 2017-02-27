@@ -15,6 +15,7 @@ namespace DataHandler.Database
             _Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HomestayDatabase"].ConnectionString);
             _SearchStrategy = new SearchStrategy(this);
             _TokenStrategy = new TokenStrategy(this);
+            _UnauthenticatedStrategy = new UnauthenticatedStrategy(this);
         }
 
 
@@ -44,6 +45,7 @@ namespace DataHandler.Database
         }
 
 
+        public UnauthenticatedStrategy _UnauthenticatedStrategy { get; set; }
         public TokenStrategy _TokenStrategy { get; set; }
         public SearchStrategy _SearchStrategy { get; set; }
         public SqlConnection _Connection { get; set; }

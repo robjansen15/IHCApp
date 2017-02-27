@@ -16,7 +16,6 @@ namespace DataHandler.Controllers
         /// <summary>
         /// get a list of school names from the database
         /// </summary>
-        /// <param name="token"></param>
         /// <returns></returns>
         [AuthorizeToken]
         public string getSchoolNames(string token)

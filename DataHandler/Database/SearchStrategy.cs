@@ -13,7 +13,10 @@ namespace DataHandler.Database
             _DatabaseConnection = databaseConnection;
         }
 
-
+        /// <summary>
+        /// get school names 
+        /// </summary>
+        /// <returns></returns>
         public List<string> getSchoolNames()
         {
             List<string> schools = new List<string>();
