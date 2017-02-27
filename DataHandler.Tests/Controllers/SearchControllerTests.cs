@@ -14,7 +14,7 @@ namespace DataHandler.Tests.Controllers
         {
             SearchController testController = new SearchController();
 
-            string str = testController.applicantBySchool("token");       
+            string str = testController.getApplicantsBySchool("token");       
         }
     }
 }

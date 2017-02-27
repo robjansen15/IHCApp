@@ -183,8 +183,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
-    <Compile Include="Database\TokenAdapter.cs" />
-    <Compile Include="Database\StoredProcedureAdapter.cs" />
+    <Compile Include="Database\TokenStrategy.cs" />
+    <Compile Include="Database\SearchStrategy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
