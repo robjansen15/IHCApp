@@ -6,20 +6,25 @@ using DataHandler.Models;
 
 namespace DataHandler.Database
 {
-    public class StoredProcedureAdapter
+    public class UnauthenticatedStrategy
     {
-        public StoredProcedureAdapter(DatabaseConnection databaseConnection)
+        public UnauthenticatedStrategy(DatabaseConnection databaseConnection)
         {
             _DatabaseConnection = databaseConnection;
         }
 
         /// <summary>
-        /// example stored procedure for testing
+        /// this is an example of an unauthenticated route that could pou
         /// </summary>
-        public Applicant getApplicant()
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public List<string> exampleUnauthenticated()
         {
-            Applicant a = new Applicant("rob", "jansen");
-            
+            List<string> schools = new List<string>();
+
+            schools.Add("IUPUI");
+            schools.Add("BSU");
+
             /*
              Uncomment and use this framework. You need to connect and disconnect OUTSIDE of the try catch.
 
@@ -27,7 +32,7 @@ namespace DataHandler.Database
 
             try
             {
-
+                
             }
             catch
             {
@@ -37,9 +42,8 @@ namespace DataHandler.Database
             _DatabaseConnection.Disconnect();
             */
 
-            return a;
+            return schools;
         }
-
 
         private DatabaseConnection _DatabaseConnection { get; set; }
     }

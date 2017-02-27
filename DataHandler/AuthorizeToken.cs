@@ -25,7 +25,7 @@ namespace DataHandler
             //checks to see if the token is valid
             Database.DatabaseConnection databaseConnection = new DatabaseConnection();
 
-            if(databaseConnection._TokenAdapter.Validate(token) == true)
+            if(databaseConnection._TokenStrategy.Validate(token) == true)
             {
                 authorize = true;
             }

@@ -6,9 +6,9 @@ using DataHandler.Models;
 
 namespace DataHandler.Database
 {
-    public class TokenAdapter
+    public class TokenStrategy
     {
-        public TokenAdapter(DatabaseConnection databaseConnection)
+        public TokenStrategy(DatabaseConnection databaseConnection)
         {
             _DatabaseConnection = databaseConnection;
         }

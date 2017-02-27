@@ -13,8 +13,9 @@ namespace DataHandler.Database
         public DatabaseConnection()
         {
             _Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HomestayDatabase"].ConnectionString);
-            _StoredProcedureAdapter = new StoredProcedureAdapter(this);
-            _TokenAdapter = new TokenAdapter(this);
+            _SearchStrategy = new SearchStrategy(this);
+            _TokenStrategy = new TokenStrategy(this);
+            _UnauthenticatedStrategy = new UnauthenticatedStrategy(this);
         }
 
 
@@ -44,8 +45,9 @@ namespace DataHandler.Database
         }
 
 
-        public TokenAdapter _TokenAdapter { get; set; }
-        public StoredProcedureAdapter _StoredProcedureAdapter { get; set; }
+        public UnauthenticatedStrategy _UnauthenticatedStrategy { get; set; }
+        public TokenStrategy _TokenStrategy { get; set; }
+        public SearchStrategy _SearchStrategy { get; set; }
         public SqlConnection _Connection { get; set; }
     }
 }

@@ -12,11 +12,44 @@ namespace DataHandler.Controllers
 {
     public class SearchController : Controller
     {
-        /*Serialization example*/
 
+        /// <summary>
+        /// get a list of school names from the database
+        /// </summary>
+        /// <returns></returns>
+        [AuthorizeToken]
+        public string getSchoolNames(string token)
+        {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+
+            string obj = "";
+
+            List<string> schools = new List<string>();
+
+            try
+            {
+                schools = databaseConnection._SearchStrategy.getSchoolNames();
+
+                obj = new JavaScriptSerializer().Serialize(schools);
+            }
+            catch
+            {
+
+            }
+
+            return obj;
+        }
+
+
+        /// <summary>
+        /// Gets all applicants by school name
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="schoolName"></param>
+        /// <returns></returns>
         // GET: Search/applicantBySchool
         [AuthorizeToken]
-        public string applicantBySchool(string token)
+        public string getApplicantsBySchool(string token, string schoolName)
         {
             DatabaseConnection databaseConnection = new DatabaseConnection();
             
@@ -26,10 +59,8 @@ namespace DataHandler.Controllers
 
             try
             {
-                Applicant a = databaseConnection._StoredProcedureAdapter.getApplicant();
-                applicants.Add(a);
-                applicants.Add(a);
-
+                applicants = databaseConnection._SearchStrategy.getApplicantBySchool(schoolName);
+            
                 obj = new JavaScriptSerializer().Serialize(applicants);            
             }
             catch
@@ -39,5 +70,8 @@ namespace DataHandler.Controllers
 
             return obj;
         }
+
+
+
     }
 }
