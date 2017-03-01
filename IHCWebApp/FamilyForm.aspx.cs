@@ -135,41 +135,41 @@ namespace UserWebApp
                 TextBox fName = new TextBox();
                 fName.ID = "fName" + id;
                 Label fNameLbl = new Label();
-                fNameLbl.Text = "First Name? ";
+                fNameLbl.Text = "First Name: <br/>";
                 fNameLbl.AssociatedControlID = "fName" + id;
 
                 //last name
                 TextBox lName = new TextBox();
                 lName.ID = "lName" + id;
                 Label lNameLbl = new Label();
-                lNameLbl.Text = "Last Name? ";
+                lNameLbl.Text = "Last Name: <br/>";
                 lNameLbl.AssociatedControlID = "lName" + id;
 
                 //DOB
                 TextBox dob = new TextBox();
                 Label dobLbl = new Label();
-                dobLbl.Text = "Date of Birth? ";
+                dobLbl.Text = "Date of Birth: <br/>";
                 dobLbl.AssociatedControlID = "lName" + id;
 
                 //gender
                 TextBox gender = new TextBox();
                 gender.ID = "gender" + id;
                 Label genderLbl = new Label();
-                genderLbl.Text = "Gender? ";
+                genderLbl.Text = "Gender: <br/>";
                 genderLbl.AssociatedControlID = "lName" + id;
 
                 //is host
                 CheckBox isHost = new CheckBox();
                 isHost.ID = "host" + id;
                 Label isHostLbl = new Label();
-                isHostLbl.Text = "Is this person a primary host? ";
+                isHostLbl.Text = "Is this person a primary host? <br/>";
                 isHostLbl.AssociatedControlID = "lName" + id;
 
                 //occupation
                 TextBox occupation = new TextBox();
                 occupation.ID = "occupation" + id;
                 Label occupationLbl = new Label();
-                occupation.Text = "Occupation? ";
+                occupationLbl.Text = "Occupation: <br/>";
                 occupationLbl.AssociatedControlID = "occupation" + id;
 
                 //add controls
