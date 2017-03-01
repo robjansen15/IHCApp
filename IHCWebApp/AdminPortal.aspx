@@ -387,11 +387,11 @@
 
           //knob
           $(function() {
-            $(".knob").knob({
-              'draw' : function () { 
-                $(this.i).val(this.cv + '%')
-              }
-            })
+              $(".knob").knob({
+                  'draw': function() {
+                      $(this.i).val(this.cv + '%');
+                  }
+              });
           });
 
           //carousel
