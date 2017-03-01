@@ -31,13 +31,13 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.Panel personalInfoPanel;
         
         /// <summary>
-        /// familyName control.
+        /// lastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox familyName;
+        protected global::System.Web.UI.WebControls.TextBox lastName;
         
         /// <summary>
         /// firstName control.
@@ -74,6 +74,15 @@ namespace UserWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDay;
+        
+        /// <summary>
+        /// CompareValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator CompareValidator;
         
         /// <summary>
         /// Country control.
@@ -229,13 +238,31 @@ namespace UserWebApp {
         protected global::System.Web.UI.WebControls.TextBox universityAddress;
         
         /// <summary>
-        /// semesterStartDate control.
+        /// DropDownList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox semesterStartDate;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        
+        /// <summary>
+        /// DropDownList2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        
+        /// <summary>
+        /// DropDownList3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
         
         /// <summary>
         /// major control.
@@ -280,7 +307,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton backButon;
+        protected global::System.Web.UI.WebControls.Button backButon;
         
         /// <summary>
         /// continueButton control.
@@ -289,6 +316,6 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton continueButton;
+        protected global::System.Web.UI.WebControls.Button continueButton;
     }
 }

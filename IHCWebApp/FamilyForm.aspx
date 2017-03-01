@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="homepage">
@@ -41,18 +42,26 @@
             <!-- Main -->
             <div id="main">
                 <section class="container">
-
+                    <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
                     <div id="formDiv" style="text-align:center">
                             <%-- Family panel --%>
                             <asp:Panel runat="server" id="familyPanel">
-                
+
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="familyName" errormessage="You must provide your families last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                               <%-- <asp:RegularExpressionValidator runat="server" display="Dynamic"  ControlToValidate="familyName"  ErrorMessage="Family last name can only contain letters." ValidationExpression="123456789.*[@#$%^&*/].*" ForeColor="#ff3300" >*</asp:RegularExpressionValidator>--%>
+
+                                   
                                 <%--family name--%>
-                                <asp:Label AssociatedControlID="familyName" Text="Family Name? " runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="familyName" Text="Family Last Name: " runat="server" ></asp:Label>
+                                <br />
                                 <asp:TextBox runat="server" id="familyName"></asp:TextBox>
 
                                 <br />
                                 <br />
-                                <asp:Label AssociatedControlID="familyCnt" Text="How many family members? " runat="server"></asp:Label>
+
+
+                                <asp:Label AssociatedControlID="familyCnt" Text="Number of family members:" runat="server"></asp:Label>
+                                <br />
                                 <asp:DropDownList runat="server" ID="familyCnt" OnSelectedIndexChanged="familyCnt_SelectedIndexChanged" AutoPostBack="true">
                                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -68,7 +77,7 @@
                 
                                 <br />
 
-                                <asp:Panel runat="server" ID="familyListPanel"></asp:Panel>
+                                <asp:Panel runat="server" ID="familyListPanel" Width="100%"></asp:Panel>
 
                                 <br />
              
@@ -78,26 +87,34 @@
                             <%-- Contact info panel --%>
                             <asp:Panel runat="server" id="contactInfoPanel" Enabled="False">
 
-                                <asp:Label runat="server" Text="Address? " AssociatedControlID="address"></asp:Label>
-                                <asp:TextBox runat="server" id="address" Enabled="True"></asp:TextBox>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="address" errormessage="Please provide an address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Address: " AssociatedControlID="address"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="address" Enabled="True" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
-                                <asp:Label runat="server" Text="Primary Phone? " AssociatedControlID="phone1"></asp:Label>
-                                <asp:TextBox runat="server" id="phone1"></asp:TextBox>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="phone1" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
-                                <asp:Label runat="server" Text="Secondary Phone? " AssociatedControlID="phone2"></asp:Label>
-                                <asp:TextBox runat="server" id="phone2"></asp:TextBox>
+                                <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="phone2" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
-                                <asp:Label runat="server" Text="Email? " AssociatedControlID="email"></asp:Label>
-                                <asp:TextBox runat="server" id="email"></asp:TextBox>
+
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="email" Width="50%"></asp:TextBox>
                     
                             </asp:Panel>
             
@@ -105,65 +122,74 @@
                             <%-- living details panel --%>
                             <asp:Panel runat="server" id="livingDetailsPanel" Enabled="False">
 
-                                <asp:Label runat="server" Text="Allow Smoking? " AssociatedControlID="allowSmoking"></asp:Label>
-                                <asp:CheckBox runat="server" ID="allowSmoking" />
-
+                                <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowSmoking"></asp:Label>
                                 <br />
+                                <asp:RadioButtonList id="allowSmoking" CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Yes" Value="0"/>
+                                <asp:ListItem Text="No" Value="1" Selected="true" />
+                                </asp:RadioButtonList>
 
+
+                         
+
+                                <asp:Label runat="server" Text="Does anyone in your family smoke: " AssociatedControlID="familySmoke"></asp:Label>
+                                 <br />
+                                 <asp:RadioButtonList id="familySmoke" CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Yes" Value="0"/>
+                                <asp:ListItem Text="No" Value="1" Selected="true" />
+                                </asp:RadioButtonList>
+
+
+
+                                <asp:Label runat="server" Text="Does anyone in your family drink: " AssociatedControlID="familyDrinking"></asp:Label>
                                 <br />
+                                <asp:RadioButtonList id="familyDrinking" CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Yes" Value="0"/>
+                                <asp:ListItem Text="No" Value="1"  Selected="true" />
+                                </asp:RadioButtonList>
 
-                                <asp:Label runat="server" Text="Does anyone in your family smoke? " AssociatedControlID="familySmoke"></asp:Label>
-                                <asp:CheckBox runat="server" ID="familySmoke" />
 
-                                <br />
-                                <br />
-
-                                <asp:Label runat="server" Text="Does anyone in your family smoke? " AssociatedControlID="allowDrinking"></asp:Label>
-                                <asp:CheckBox runat="server" ID="allowDrinking" />
-
-                                <br />
-                                <br />
-
-                                <asp:Label runat="server" Text="Does anyone in your family drink? " AssociatedControlID="familyDrinking"></asp:Label>
-                                <asp:CheckBox runat="server" ID="familyDrinking" />
-
-                                <br />
-                                <br />
-
-                                <asp:Label AssociatedControlID="dogs" Text="How many dogs do you own? " runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="dogs" Text="Number of dogs: " runat="server"></asp:Label>
                                 <asp:DropDownList runat="server" ID="dogs">
-                                    <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="0" Text="None" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text ="1" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
                                 </asp:DropDownList>
 
+        
                                 <br />
-                                <br />
+                                  <br />
              
-                                <asp:Label AssociatedControlID="cats" Text="How many cats do you own? " runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="cats" Text="Number of cats: " runat="server"></asp:Label>
+                        
                                 <asp:DropDownList runat="server" ID="cats">
-                                    <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="0" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="1" Text ="1"  Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
                                 </asp:DropDownList>
 
                                 <br />
-                                <br />
+                                  <br />
              
-                                <asp:Label AssociatedControlID="internet" Text="How kind of internet do you have? " runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="internet" Text= "Internet access details:" runat="server"></asp:Label>
+                    
                                 <asp:DropDownList runat="server" ID="internet">
-                                    <asp:ListItem Value="High Speed Wifi" Text ="High Speed Wifi" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="None" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                    <asp:ListItem Value="High Speed Wifi" Text ="High Speed Wifi" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="Normal Wifi" Text ="Normal Wifi" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="Wired" Text ="Wired" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="Other" Text ="Other" Enabled="True"></asp:ListItem>
                                 </asp:DropDownList>
 
                                 <br />
-                                <br />
+                                  <br />
 
-                                <asp:Label AssociatedControlID="bathrooms" Text="How many bathrooms will your guest have access to? " runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="bathrooms" Text="Number of guest bathrooms: " runat="server"></asp:Label>
+                         
                                 <asp:DropDownList runat="server" ID="bathrooms">
                                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
                                     <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
@@ -171,14 +197,13 @@
                                     <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
                                 </asp:DropDownList>
 
-                                <asp:Label runat="server" Text="Is the primary bathroom shared? " AssociatedControlID="shareBathroom"></asp:Label>
-                                <asp:CheckBox runat="server" ID="shareBathroom" />
-
                                 <br />
-                                <br />
+                                  <br />
 
-                                <asp:Label runat="server" Text="How can your guest trasport downtown? How long does it take approximately? What bus number? Additional details?" AssociatedControlID="transportation"></asp:Label>
-                                <asp:TextBox runat="server" id="transportation"></asp:TextBox>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="transportation" errormessage="Please describe the method of transportation intended for the guest." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Please describe the method of transportation intended for the guest:" AssociatedControlID="transportation"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="transportation" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
                           
                             </asp:Panel>
             
@@ -187,27 +212,25 @@
                             <asp:Panel runat="server" ID="moreInfoPanel" Enabled="False">
                 
                                 <asp:Label runat="server" Text="What are some things your family enjoys doing?" AssociatedControlID="hobbies"></asp:Label>
-                                <asp:TextBox runat="server" id="hobbies"></asp:TextBox>
+                                <br />
+                                <asp:TextBox runat="server" id="hobbies" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
                                 <asp:Label runat="server" Text="Please supply some additonal information so we can match you with the best candidate." AssociatedControlID="about"></asp:Label>
-                                <asp:TextBox runat="server" id="about"></asp:TextBox>
+                                <br />
+                                <asp:TextBox runat="server" id="about" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
 
                             </asp:Panel>            
             
-                            <br />
-                            <br />
             
-                            <div id="btnDiv">                             
-                                <div>
-                                    <asp:ImageButton ImageUrl="images/back.png" runat="server" id="backButon" OnClick="backButon_OnClick"></asp:ImageButton>
-                                </div>
-                                
-                                <div>
-                                <asp:ImageButton  ImageUrl="images/next.png" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:ImageButton>     
-                                </div>
+                            <div id="btnDiv">                         
+                     
+                                   
+                                <asp:Button class="btn btn-border" Text="Back" runat="server" id="backButon" OnClick="backButon_OnClick" CausesValidation="false"></asp:Button>
+                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>     
+                         
                             </div>
                         </div>
   

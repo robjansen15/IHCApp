@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body class="homepage">
@@ -41,19 +42,21 @@
             <!-- Main -->
             <div id="main">
                 <section class="container">
-
+                    <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
                     <div id="formDiv" style="text-align:center">
                             <%-- personal information panel --%>
                             <asp:Panel runat="server" id="personalInfoPanel">
                 
                                 <%--name--%>
-                                <asp:Label AssociatedControlID="familyName" Text="Last Name: " runat="server"></asp:Label>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="lastName" errormessage="You must provide your last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label AssociatedControlID="lastName" Text="Last Name: " runat="server"></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="familyName"></asp:TextBox>
+                                <asp:TextBox runat="server" id="lastName"></asp:TextBox>
 
                                 <br />
                                 <br />
 
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="firstName" errormessage="You must provide your first name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label AssociatedControlID="firstName" Text="First Name: " runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="firstName"></asp:TextBox>
@@ -72,9 +75,11 @@
 
                                
                                 <%-- temporary way to populate countries --%>
-                                <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>
+                              <%--  <asp:CompareValidator ControlToValidate="Country" ID="CompareValidator"  ValidationGroup="g1" ErrorMessage="Please select a country."  runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="0" Type="Integer" Text="*" ForeColor="#ff3300" />
+                                <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>--%>
                                 <br />
                                 <asp:DropDownList id="Country" runat="server">
+                                <asp:ListItem Value="0" Selected="True">Select</asp:ListItem>
                                 <asp:ListItem Value="AF">Afghanistan</asp:ListItem>
                                 <asp:ListItem Value="AL">Albania</asp:ListItem>
                                 <asp:ListItem Value="DZ">Algeria</asp:ListItem>
@@ -227,7 +232,7 @@
                                 <asp:ListItem Value="NL">Netherlands</asp:ListItem>
                                 <asp:ListItem Value="AN">Netherlands Ant Illes</asp:ListItem>
                                 <asp:ListItem Value="NC">New Caledonia</asp:ListItem>
-                                <asp:ListItem Value="NZ" Selected="True">New Zealand</asp:ListItem>
+                                <asp:ListItem Value="NZ">New Zealand</asp:ListItem>
                                 <asp:ListItem Value="NI">Nicaragua</asp:ListItem>
                                 <asp:ListItem Value="NE">Niger</asp:ListItem>
                                 <asp:ListItem Value="NG">Nigeria</asp:ListItem>
@@ -318,7 +323,7 @@
                                 <br />
                                 <br />
                            
-
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="firstLanguage" errormessage="You must provide your first language." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label AssociatedControlID="firstLanguage" Text="First Language: " runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="firstLanguage"></asp:TextBox>
@@ -348,32 +353,36 @@
          
 
                             <%-- Contact info panel --%>
-                            <asp:Panel runat="server" id="contactInfoPanel" Enabled="False">
+                              <asp:Panel runat="server" id="contactInfoPanel" Enabled="False">
 
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="address" errormessage="Please provide an address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Address: " AssociatedControlID="address"></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="address" Enabled="True"></asp:TextBox>
+                                <asp:TextBox runat="server" id="address" Enabled="True" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="phone1"></asp:TextBox>
+                                <asp:TextBox runat="server" id="phone1" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
                                 <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="phone2"></asp:TextBox>
+                                <asp:TextBox runat="server" id="phone2" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
 
+
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="email"></asp:TextBox>
+                                <asp:TextBox runat="server" id="email" Width="50%"></asp:TextBox>
                     
                             </asp:Panel>
             
@@ -391,21 +400,21 @@
 
                                 <asp:Label runat="server" Text="Allergies, Health Problems or Dietary Restrictions:" AssociatedControlID="allergies"></asp:Label>
                                 <br />
-                                <asp:TextBox id="allergies" runat="server" Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox> 
+                                <asp:TextBox id="allergies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
 
                                 <br />
                                 <br />
 
                                 <asp:Label runat="server" Text="Do you have any particular preferences?" AssociatedControlID="hobbies"></asp:Label>
                                 <br />
-                                <asp:TextBox id="hobbies" runat="server" Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox> 
+                                <asp:TextBox id="hobbies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
 
                                 <br />
                                 <br />
 
                                 <asp:Label runat="server" Text="Tell us about yourself: " AssociatedControlID="about"></asp:Label>
                                 <br />
-                                 <asp:TextBox id="about" runat="server" Height="100px" TextMode="MultiLine" Width="500px"></asp:TextBox> 
+                                 <asp:TextBox id="about" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
 
                                 <br />
                                 <br />
@@ -418,36 +427,44 @@
                             <%-- university information panel --%>
                             <asp:Panel runat="server" ID="universityInfoPanel" Enabled="False">
                 
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="university" errormessage="Please enter the name of the university you are attending." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="University Name: " AssociatedControlID="university"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="university"></asp:TextBox>
                                 <br />
                                 <br />
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="universityAddress" errormessage="Please enter the university address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="University Address: " AssociatedControlID="universityAddress"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="universityAddress"></asp:TextBox>
                                 <br />
                                 <br />
-                                <asp:Label runat="server" Text="Semester Start Date: " AssociatedControlID="semesterStartDate"></asp:Label>
+                                <asp:Label runat="server" Text="Semester Start Date: "></asp:Label>
                                 <br />
-                                <asp:TextBox runat="server" id="semesterStartDate"></asp:TextBox>
+                                <asp:DropDownList ID="y" runat="server" onchange ="PopulateDays()" />
+                                <asp:DropDownList ID="m" runat="server" onchange ="PopulateDays()" />
+                                <asp:DropDownList ID="d" runat="server" />
                                 <br />
                                 <br />
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Major (Subject of Study): " AssociatedControlID="major"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="major"></asp:TextBox>
                                 <br />
                                 <br />
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="universityContactInfo" errormessage="Please provide your university contacts information." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="University Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="universityContactInfo"></asp:TextBox>
                                 <br />
                                 <br />
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="homestayDuration" errormessage="Please enter your requested homestay length." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Requested Length of Homestay: " AssociatedControlID="homestayDuration"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="homestayDuration"></asp:TextBox>
                                 <br />
                                 <br />
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="flightInfo" errormessage="Please enter your flight arrival time." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Flight/Arrival Information (time &amp; date): " AssociatedControlID="flightInfo"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="flightInfo"></asp:TextBox>
@@ -464,14 +481,10 @@
                             <br />
                             <br />
             
-                            <div id="btnDiv">                             
-                                <div>
-                                    <asp:ImageButton ImageUrl="images/back.png" runat="server" id="backButon" OnClick="backButon_OnClick"></asp:ImageButton>
-                                </div>
-                                
-                                <div>
-                                <asp:ImageButton  ImageUrl="images/next.png" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:ImageButton>     
-                                </div>
+                        <div id="btnDiv">                         
+                                <asp:Button class="btn btn-border" Text="Back" runat="server" id="backButon" OnClick="backButon_OnClick" CausesValidation="false"></asp:Button>
+                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>     
+                         
                             </div>
                         </div>
   

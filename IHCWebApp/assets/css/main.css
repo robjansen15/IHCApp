@@ -2685,3 +2685,26 @@
             margin-right:30px; 
         }
 	}
+
+    .btn {
+    cursor: pointer;
+    padding: 8px 16px;
+    display: inline-block;
+    margin: 10px 10px 10px 0px;
+    font-size: 14px;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 6px -2px #000;
+    -webkit-box-shadow: 0 1px 6px -2px #000;
+    box-shadow: 0 1px 6px -2px #000
+}
+.btn-border {
+    border: 1px solid #0066DC;
+    color: #fff;
+    background: #0066DC;
+    font-weight: 400
+}
