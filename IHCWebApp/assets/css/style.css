@@ -1,0 +1,283 @@
+﻿/*---------
+    Template Name: akshara - Responsive Template
+    Template URI: http://aspxtemplates.com
+    Description: Bootstrap Template
+    Author: BootExperts
+    Author URI: http://aspxtemplates.com
+    Version: 1.0
+------------*/
+
+body,
+html {
+    font-size: 13px;
+    color: #000;
+    font-family: "Open Sans", sans-serif;
+    background: transparent;
+    padding: 0;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    vertical-align: baseline
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.25
+}
+h1 {
+    font-size: 3.62em;
+    line-height: 1.5em;
+    margin-bottom: 15px
+}
+.h1 {
+    font-size: 32px;
+    font-weight: 700
+}
+.h2 {
+    font-size: 28px;
+    font-weight: lighter;
+    line-height: 1.5em
+}
+.h3 {
+    font-size: 18px
+}
+.h4 {
+    font-size: 16px
+}
+p {
+    line-height: 1.8
+}
+a {
+    color: #4aa3df;
+    transition: all 0.3s
+}
+a:hover {
+    text-decoration: none
+}
+blockquote {
+    border: 0;
+    padding: 0;
+    margin-bottom: 30px
+}
+ul {
+    list-style-type: none;
+    padding: 0
+}
+.column-title {
+    margin-top: 0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+    border-bottom-color: #DBDBDB;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 600
+}
+.column-title:after {
+    content: " ";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 22%;
+    border-bottom: 1px solid #0066DC;
+    border-bottom-color: #0033CC
+}
+.black {
+    background-color: rgba(255, 255, 255, 0.1)
+}
+.red {
+    color: #CE0000
+}
+.blue {
+    color: #0066DC
+}
+.white-bg {
+    background-color: #fff;
+    color: #919191
+}
+.padding-150 {
+    padding-top: 150px;
+    padding-bottom: 150px
+}
+.padding-100 {
+    padding-top: 100px;
+    padding-bottom: 100px
+}
+.padding-50 {
+    padding-top: 50px;
+    padding-bottom: 50px
+}
+.padding-top-40 {
+    padding-top: 40px
+}
+.padding-bottom-40 {
+    padding-bottom: 80px;
+    padding-top: 20px
+}
+.margin-bottom-50 {
+    margin-bottom: 50px
+}
+.btn {
+    cursor: pointer;
+    padding: 8px 16px;
+    display: inline-block;
+    margin: 10px 10px 10px 0px;
+    font-size: 14px;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border-radius: 0px;
+    -moz-box-shadow: 0 1px 6px -2px #000;
+    -webkit-box-shadow: 0 1px 6px -2px #000;
+    box-shadow: 0 1px 6px -2px #000
+}
+.btn-border {
+    border: 1px solid #0066DC;
+    color: #fff;
+    background: #0066DC;
+    font-weight: 400
+}
+.btn-border:hover,
+.btn-border:active {
+    color: #ffffff;
+    background: none
+}
+.btn-borderwhite {
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    overflow: hidden;
+    font-weight: 400
+}
+.btn-borderwhite:hover,
+.btn-borderwhite:active {
+    color: #000000;
+    background: #ffffff
+}
+.btn-black {
+    border: 1px solid #000000;
+    color: #fff;
+    overflow: hidden;
+    font-weight: 400;
+    background: #333333
+}
+.btn-black:hover,
+.btn-black:active {
+    border-color: #333333;
+    color: #000;
+    background: #fff
+}
+.btn-common {
+    background: #0066DC;
+    color: #FFFFFF;
+    border: 1px solid #0066DC
+}
+.btn-common:hover {
+    border: 1px solid #0066DC;
+    color: #0066DC;
+    overflow: hidden;
+    background: none
+}
+.btn-section {
+    padding: 0px;
+    margin: 0px
+}
+.btn i {
+    margin-right: 10px;
+    margin-left: 0px
+}
+
+
+
+@-webkit-keyframes "blink" {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .45;
+    }
+}
+@-moz-keyframes "blink" {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .45;
+    }
+}
+@keyframes "blink" {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .45;
+    }
+}
+@-webkit-keyframes "scroll-down" {
+    0% {
+        top: 35%;
+        opacity: .42;
+    }
+    50% {
+        top: 50%;
+        opacity: .25;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+@-moz-keyframes "scroll-down" {
+    0% {
+        top: 35%;
+        opacity: .42;
+    }
+    50% {
+        top: 50%;
+        opacity: .25;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+@keyframes "scroll-down" {
+    0% {
+        top: 35%;
+        opacity: .42;
+    }
+    50% {
+        top: 50%;
+        opacity: .25;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pricing .price-box {
+        margin-top: 25px
+    }
+}
+@media only screen and (max-width: 767px) {
+    .pricing .price-box::last-child {
+        margin-bottom: 0
+    }
+}

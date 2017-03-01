@@ -118,7 +118,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox allowSmoking;
+        protected global::System.Web.UI.WebControls.RadioButtonList allowSmoking;
         
         /// <summary>
         /// familySmoke control.
@@ -127,16 +127,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox familySmoke;
-        
-        /// <summary>
-        /// allowDrinking control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox allowDrinking;
+        protected global::System.Web.UI.WebControls.RadioButtonList familySmoke;
         
         /// <summary>
         /// familyDrinking control.
@@ -145,7 +136,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox familyDrinking;
+        protected global::System.Web.UI.WebControls.RadioButtonList familyDrinking;
         
         /// <summary>
         /// dogs control.
@@ -182,15 +173,6 @@ namespace UserWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList bathrooms;
-        
-        /// <summary>
-        /// shareBathroom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox shareBathroom;
         
         /// <summary>
         /// transportation control.
@@ -235,7 +217,7 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton backButon;
+        protected global::System.Web.UI.WebControls.Button backButon;
         
         /// <summary>
         /// continueButton control.
@@ -244,6 +226,6 @@ namespace UserWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton continueButton;
+        protected global::System.Web.UI.WebControls.Button continueButton;
     }
 }
