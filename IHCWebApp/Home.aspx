@@ -24,7 +24,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<span class="pennant"><span class="icon fa-home"></span></span>
-								<h1><a href="Home.aspx">Home stay</a></h1>
+								<h1><a href="index.html">Homestay</a></h1>
 							</div>
 
                               <nav id="nav" class="cl-effect-17">
@@ -95,6 +95,7 @@
 
 			<!-- Footer -->
 				<div id="footer">
+					<div class="container">
 						<section>						
 						</section>
 
@@ -111,10 +112,10 @@
 
 						<!-- Copyright -->
 							<div class="copyright">
-								&copy; 2014 - International Homestay Consultants - Indianapolis, Indiana								
+								&copy; 2014 - International Homestay Consultants - Indianapolis, Indiana</a>								
 							</div>
 
-				
+					</div>
 				</div>
 
 		</div>
