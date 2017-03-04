@@ -111,10 +111,14 @@
                         </li>
                         
                         <li>
-                         <%--   <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">   --%>                           
+                            <%--<asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
-                           <%-- </asp:LinkButton>--%>
+                            </asp:LinkButton>--%>
+                            <a class="">                       
+                                <i class="icon_genius"></i>
+                                <span>Search</span>                      
+                            </a>
                         </li>
 
 				        <li class="sub-menu">
