@@ -582,7 +582,6 @@
     <Content Include="assets\js\skel.min.js" />
     <Content Include="assets\js\util.js" />
     <Content Include="FamilyForm.aspx" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="images\back.png" />
     <Content Include="images\next.png" />
     <Content Include="images\banner.jpg" />
