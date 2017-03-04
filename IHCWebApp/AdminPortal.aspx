@@ -7,36 +7,26 @@
     <title>Admin Portal</title>
     
         <!-- Bootstrap CSS -->    
-    <link href="/nice-assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap theme -->
-    <link href="/nice-assets/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/admin-assets/css/bootstrap-theme.css" rel="stylesheet" />
     <!--external css-->
     <!-- font icon -->
-    <link href="/nice-assets/css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="/nice-assets/css/font-awesome.min.css" rel="stylesheet" />    
-    <!-- full calendar css-->
-    <link href="/nice-assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-	<link href="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-    <!-- easy pie chart-->
-    <link href="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="/nice-assets/css/owl.carousel.css" type="text/css" />
-    <link href="/nice-assets/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+    <link href="/admin-assets/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/admin-assets/css/font-awesome.min.css" rel="stylesheet" />    
     <!-- Custom styles -->
-    <link rel="stylesheet" href="/nice-assets/css/fullcalendar.css" />
-    <link href="/nice-assets/css/widgets.css" rel="stylesheet" />
-    <link href="/nice-assets/css/style.css" rel="stylesheet" />
-    <link href="/nice-assets/css/style-responsive.css" rel="stylesheet" />
-    <link href="/nice-assets/css/xcharts.min.css" rel=" stylesheet" />	
-    <link href="/nice-assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/admin-assets/css/fullcalendar.css" />
+    <link href="/admin-assets/css/widgets.css" rel="stylesheet" />
+    <link href="/admin-assets/css/style.css" rel="stylesheet" />
+    <link href="/admin-assets/css/style-responsive.css" rel="stylesheet" />
+    <link href="/admin-assets/css/xcharts.min.css" rel=" stylesheet" />	
+    <link href="/admin-assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet" />
 </head>
 <body>
   <!-- container section start -->
-     <form runat="server" id="mainForm">    
         <section id="container" class="">
      
-        
-
+            
             <header class="header dark-bg">
                 <div class="toggle-nav">
                     <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -83,7 +73,7 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="profile-ava">
-                                    <img alt="" src="/nice-assets/img/avatar1_small.jpg">
+                                    <img alt="" src="/admin-assets/img/avatar1_small.jpg">
                                 </span>
                                 <span class="username">Welcome Admin!</span>
                                 <b class="caret"></b>
@@ -105,6 +95,8 @@
                 </div>
             </header>      
             <!--header end-->
+            
+          
 
             <!--sidebar start-->
             <aside>
@@ -119,14 +111,14 @@
                         </li>
                         
                         <li>
-                            <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                              
+                            <%--<asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
-                            </asp:LinkButton>
-                        <%--    <a class="">                              
+                            </asp:LinkButton>--%>
+                            <a class="">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
-                            </a>--%>
+                            </a>
                         </li>
 
 				        <li class="sub-menu">
@@ -158,12 +150,15 @@
                 </div>
             </aside>
             <!--sidebar end-->
+            
+            
+            <form runat="server" id="mainForm"> 
       
             <!--main content start-->
             
             <section id="main-content">                            
                 <section class="wrapper"> 
-                           
+                              
  
                         <p style="text-align:center">Example Table</p>
                         <br />
@@ -344,55 +339,47 @@
                 </div>
             </div>
             </section>
-
-            
             <!--main content end-->
+            </form>
         </section>
-
-         </form>
         <!-- container section start -->
 
         <!-- javascripts -->
-        <script src="/nice-assets/js/jquery.js"></script>
-	    <script src="/nice-assets/js/jquery-ui-1.10.4.min.js"></script>
-        <script src="/nice-assets/js/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="/nice-assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="/admin-assets/js/jquery.js"></script>
+	    <script src="/admin-assets/js/jquery-ui-1.10.4.min.js"></script>
+        <script src="/admin-assets/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="/admin-assets/js/jquery-ui-1.9.2.custom.min.js"></script>
         <!-- bootstrap -->
-        <script src="/nice-assets/js/bootstrap.min.js"></script>
+        <script src="/admin-assets/js/bootstrap.min.js"></script>
         <!-- nice scroll -->
-        <script src="/nice-assets/js/jquery.scrollTo.min.js"></script>
-        <script src="/nice-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="/nice-assets/assets/jquery-knob/js/jquery.knob.js"></script>
-        <script src="/nice-assets/js/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-        <script src="/nice-assets/js/owl.carousel.js" ></script>
-        <!-- jQuery full calendar -->
-        <<script src="/nice-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-	    <script src="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+        <script src="/admin-assets/js/jquery.scrollTo.min.js"></script>
+        <script src="/admin-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
         <!--script for this page only-->
-        <script src="/nice-assets/js/calendar-custom.js"></script>
-	    <script src="/nice-assets/js/jquery.rateit.min.js"></script>
+        <script src="/admin-assets/js/calendar-custom.js"></script>
+	    <script src="/admin-assets/js/jquery.rateit.min.js"></script>
         <!-- custom select -->
-        <script src="/nice-assets/js/jquery.customSelect.min.js" ></script>
-	    <script src="/nice-assets/assets/chart-master/Chart.js"></script>
+        <script src="/admin-assets/js/jquery.customSelect.min.js" ></script>
+	    <script src="/admin-assets/assets/chart-master/Chart.js"></script>
    
         <!--custome script for all page-->
-        <script src="/nice-assets/js/scripts.js"></script>
+        <script src="/admin-assets/js/scripts.js"></script>
         <!-- custom script for this page-->
-	    <script src="/nice-assets/js/jquery.autosize.min.js"></script>
-	    <script src="/nice-assets/js/jquery.placeholder.min.js"></script>
-	    <script src="/nice-assets/js/jquery.slimscroll.min.js"></script>
+	    <script src="/admin-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+	    <script src="/admin-assets/js/jquery-jvectormap-world-mill-en.js"></script>
+	    <script src="/admin-assets/js/xcharts.min.js"></script>
+	    <script src="/admin-assets/js/jquery.autosize.min.js"></script>
+	    <script src="/admin-assets/js/jquery.placeholder.min.js"></script>
+	    <script src="/admin-assets/js/jquery.slimscroll.min.js"></script>
         
        <script>
 
           //knob
           $(function() {
-              $(".knob").knob({
-                  'draw': function() {
-                      $(this.i).val(this.cv + '%');
-                  }
-              });
+            $(".knob").knob({
+              'draw' : function () { 
+                $(this.i).val(this.cv + '%')
+              }
+            })
           });
 
           //carousel
