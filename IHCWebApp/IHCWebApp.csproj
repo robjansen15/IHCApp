@@ -590,7 +590,6 @@
     <Content Include="assets\linkeffects\js\modernizr.custom.js" />
     <Content Include="FamilyForm.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="images\back.png" />
     <Content Include="images\indy.jpg" />
     <Content Include="images\indy2.jpg" />
