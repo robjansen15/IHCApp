@@ -14,14 +14,6 @@
     <!-- font icon -->
     <link href="/admin-assets/css/elegant-icons-style.css" rel="stylesheet" />
     <link href="/admin-assets/css/font-awesome.min.css" rel="stylesheet" />    
-    <!-- full calendar css-->
-    <link href="/admin-assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-	<link href="/admin-assets/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
-    <!-- easy pie chart-->
-    <link href="/admin-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="/admin-assets/css/owl.carousel.css" type="text/css" />
-    <link href="/admin-assets/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="/admin-assets/css/fullcalendar.css" />
     <link href="/admin-assets/css/widgets.css" rel="stylesheet" />
@@ -34,7 +26,7 @@
   <!-- container section start -->
         <section id="container" class="">
      
-      
+            
             <header class="header dark-bg">
                 <div class="toggle-nav">
                     <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
@@ -103,6 +95,8 @@
                 </div>
             </header>      
             <!--header end-->
+            
+          
 
             <!--sidebar start-->
             <aside>
@@ -117,10 +111,10 @@
                         </li>
                         
                         <li>
-                            <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                              
+                         <%--   <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">   --%>                           
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
-                            </asp:LinkButton>
+                           <%-- </asp:LinkButton>--%>
                         </li>
 
 				        <li class="sub-menu">
@@ -152,12 +146,15 @@
                 </div>
             </aside>
             <!--sidebar end-->
+            
+            
+            <form runat="server" id="mainForm"> 
       
             <!--main content start-->
             
             <section id="main-content">                            
                 <section class="wrapper"> 
-                    <form runat="server" id="mainForm">           
+                              
  
                         <p style="text-align:center">Example Table</p>
                         <br />
@@ -316,7 +313,7 @@
                             </table>
    
                         <!-- project team & activity end -->
-                    </form>
+                    
                 </section>
                 
 
@@ -339,6 +336,7 @@
             </div>
             </section>
             <!--main content end-->
+            </form>
         </section>
         <!-- container section start -->
 
@@ -352,14 +350,6 @@
         <!-- nice scroll -->
         <script src="/admin-assets/js/jquery.scrollTo.min.js"></script>
         <script src="/admin-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <!-- charts scripts -->
-        <script src="/admin-assets/assets/jquery-knob/js/jquery.knob.js"></script>
-        <script src="/admin-assets/js/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="/admin-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-        <script src="/admin-assets/js/owl.carousel.js" ></script>
-        <!-- jQuery full calendar -->
-        <<script src="/admin-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-	    <script src="/admin-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
         <!--script for this page only-->
         <script src="/admin-assets/js/calendar-custom.js"></script>
 	    <script src="/admin-assets/js/jquery.rateit.min.js"></script>
@@ -370,28 +360,22 @@
         <!--custome script for all page-->
         <script src="/admin-assets/js/scripts.js"></script>
         <!-- custom script for this page-->
-        <script src="/admin-assets/js/sparkline-chart.js"></script>
-        <script src="/admin-assets/js/easy-pie-chart.js"></script>
 	    <script src="/admin-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
 	    <script src="/admin-assets/js/jquery-jvectormap-world-mill-en.js"></script>
 	    <script src="/admin-assets/js/xcharts.min.js"></script>
 	    <script src="/admin-assets/js/jquery.autosize.min.js"></script>
 	    <script src="/admin-assets/js/jquery.placeholder.min.js"></script>
-	    <script src="/admin-assets/js/gdp-data.js"></script>	
-	    <script src="/admin-assets/js/morris.min.js"></script>
-	    <script src="/admin-assets/js/sparklines.js"></script>	
-	    <script src="/admin-assets/js/charts.js"></script>
 	    <script src="/admin-assets/js/jquery.slimscroll.min.js"></script>
         
        <script>
 
           //knob
           $(function() {
-              $(".knob").knob({
-                  'draw': function() {
-                      $(this.i).val(this.cv + '%');
-                  }
-              });
+            $(".knob").knob({
+              'draw' : function () { 
+                $(this.i).val(this.cv + '%')
+              }
+            })
           });
 
           //carousel

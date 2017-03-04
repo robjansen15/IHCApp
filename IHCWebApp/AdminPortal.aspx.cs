@@ -16,7 +16,7 @@ namespace UserWebApp
 
         protected void Click_SearchBtn(object sender, EventArgs e)
         {
-            
+            var x = 10;
         }
     }
 }
