@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DataHandler.Models;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DataHandler.Database
 {
@@ -51,26 +53,43 @@ namespace DataHandler.Database
         public List<Applicant> getApplicantBySchool(string schoolName)
         {
             List<Applicant> applicants = new List<Applicant>();
-
-            applicants.Add(new Applicant("rob", "jansen"));
-            applicants.Add(new Applicant("jim", "godfrey"));
             
-            /*
-             Uncomment and use this framework. You need to connect and disconnect OUTSIDE of the try catch.
-
             _DatabaseConnection.Connect();
 
             try
             {
-                
+                SqlCommand command = new SqlCommand("SPReadStudentBySchool", _DatabaseConnection._Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.Add(new SqlParameter("@I_Name", schoolName));
+
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    ///gets the specific columns needed from the table
+                    List<int> enumerations = new List<int>();
+                    List <string> enumString = new Enumerations.EnumerationContainer()._GetStudentsBySchoolEnumeration.Split(';').ToList();
+                    foreach(string str in enumString)
+                    {
+                        enumerations.Add(Convert.ToInt32(str));
+                    }
+
+                    while (rdr.Read())
+                    {
+                        var firstName = rdr.GetString(enumerations.ElementAt(0));
+                        var lastName = rdr.GetString(enumerations.ElementAt(1));
+
+                        applicants.Add(new Applicant(firstName, lastName));
+                    }
+                }
             }
-            catch
+            catch(Exception e)
             {
-
+                var x = e.ToString();
             }
-
-            _DatabaseConnection.Disconnect();
-            */
+            finally
+            {
+                _DatabaseConnection.Disconnect();
+            }
 
             return applicants;
         }

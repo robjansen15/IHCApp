@@ -47,7 +47,7 @@ namespace DataHandler.Controllers
         /// <param name="token"></param>
         /// <param name="schoolName"></param>
         /// <returns></returns>
-        // GET: Search/applicantBySchool
+        // GET: Search/getApplicantsBySchool
         [AuthorizeToken]
         public string getApplicantsBySchool(string token, string schoolName)
         {

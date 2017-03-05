@@ -186,11 +186,14 @@
     <Compile Include="Database\TokenStrategy.cs" />
     <Compile Include="Database\SearchStrategy.cs" />
     <Compile Include="Database\UnauthenticatedStrategy.cs" />
+    <Compile Include="Enumerations\EnumerationContainer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Applicant.cs" />
+    <Compile Include="Models\DynamicSearchObj.cs" />
+    <Compile Include="Models\Example.cs" />
     <Compile Include="Models\Family.cs" />
     <Compile Include="Models\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
