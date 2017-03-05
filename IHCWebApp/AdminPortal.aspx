@@ -32,9 +32,9 @@
 </head>
 <body>
   <!-- container section start -->
-     <form runat="server" id="mainForm">    
+      
         <section id="container" class="">
-     
+            <form runat="server" id="mainForm">   
       
             <header class="header dark-bg">
                 <div class="toggle-nav">
@@ -120,7 +120,7 @@
                         </li>
                         
                         <li>
-                            <%--<asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
+                           <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
                             </asp:LinkButton>
@@ -157,14 +157,13 @@
             <!--sidebar end-->
             
             
-            <form runat="server" id="mainForm"> 
+          
       
             <!--main content start-->
             
             <section id="main-content">                            
                 <section class="wrapper"> 
-                    <form runat="server" id="mainForm">           
- 
+                
                         <p style="text-align:center">Example Table</p>
                         <br />
 
@@ -349,8 +348,7 @@
             <!--main content end-->
             </form>
         </section>
-
-         </form>
+    
         <!-- container section start -->
 
         <!-- javascripts -->
