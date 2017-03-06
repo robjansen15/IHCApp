@@ -8,8 +8,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="nice-assets\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <link rel="stylesheet" type="text/css" href="assets/linkeffects/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="assets/linkeffects/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="assets/linkeffects/css/component.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- temp assets -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+    $( "#accordion" ).accordion();
+    } );
+  </script>
 </head>
 <body class="homepage">
 
@@ -20,14 +35,14 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <span class="pennant"><span class="icon fa-tint"></span></span>
+                        <span class="pennant"><span class="icon fa-home"></span></span>
                         <h1><a href="StudentForm.aspx">Home Stay</a></h1>
                     </div>
 
                     <!-- Nav -->
-                    <nav id="nav">
+                    <nav id="nav" class="cl-effect-17">
                         <ul>
-                            <li><a href="home.html">Home</a></li>
+                            <li><a href="Home.aspx">Home</a></li>
                             <li><a href="FamilyForm.aspx">Host a Student</a></li>
                             <li class="active"><a href="index.html">Student Application</a></li>
                             <li><a href="contact.php">Contact</a></li>
@@ -44,6 +59,59 @@
                 <section class="container">
                     <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
                     <div id="formDiv" style="text-align:center">
+
+
+
+
+                            <%-- Terms of Service Panel --%>
+                            <asp:Panel runat="server" id="termsOfServicePanel">
+                                <div>
+                                   <section class="container">
+						                <h2>Fees</h2>
+						                <p>The current per session homestay fee is $650. Each session is four weeks. All fees are paid directly to International Homestay Consultants. The homestay fees may be paid by check, cash electronic-pay (ex: Chase Quick-pay) or bank transfer*. We do not accept credit cards. If paying by check, please send directly to International Homestay Consultants (7326 Hoover Road, Indianapolis IN 46260). If paying by cash, it is the student's responsibility to schedule an appointment with us, and make the payment in person, by the beginning of each session. A late fee will be assessed any outstanding account that has not been paid by the beginning of each session. (*All wire transfer fees are the responsibility of the student.)</p>
+
+                                        <h3>Vacation Rates</h3>
+                                        <p>Students who plan to return to homestay after a vacation* will be charged the vacation rate of 50% of regular homestay fee, for time absent from homestay. If student remains in homestay during class break, the regular homestay fee will be charged. (*Vacation rate is calculated in whole weeks.)</p>
+
+					               </section>
+                                    <section>
+                                        <h2>Policies</h2>
+                                            <p class="terms-of-service-policies">Homestay accommodations can be pre-arranged for any length of time, with the option of extending the stay if desired. If your arrival date does not correspond with published session dates, the fee is pro-rated accordingly, to the student&#39;s advantage.</span></p>
+
+                                            <ol class ="terms-of-service-policies">
+	                                            <li>A non-refundable reservation fee ($200) and homestay application should be submitted at least four week&#39;s prior to requested move-in date.</li>
+	                                            <li>The first four week&#39;s rent must be paid to International Homestay Consultants prior to move-in.</li>
+	                                            <li>All homestays include a private furnished bedroom, use of public areas of house, laundry facilities, internet access, breakfast and dinner.</li>
+	                                            <li>You should plan to arrive at your homestay no more than two days before IUPUI orientation commences.</li>
+	                                            <li>You should plan to depart the homestay on Saturday before 1:00pm following the end of the semester unless other arrangements with our company have been made.</li>
+	                                            <li>Smoking is not permitted inside homestay houses.</li>
+	                                            <li>If you are not comfortable in a home with indoor pets, we will make every effort to accommodate you. However, because most Americans have indoor pets we cannot guarantee a homestay without indoor pets.</li>
+	                                            <li>Travel time to and from the university will vary. International Homestay Consultants will place you in a home within walking distance of public transportation.</li>
+	                                            <li>The homestay hosts may be families with mother, father, and children; they may be single people or couples without children.</li>
+	                                            <li>International Homestay Consultants is available to discuss student concerns by phone or e-mail during regular business hours, or face to face on Wednesdays, during regular campus visits.</li>
+	                                            <li>Students will not be allowed to stay at the homestay, past or prior to their pre-arranged times, without the agreement of International Homestay Consultants. Privately arranged homestays will make hosts ineligible for hosting for us in the future.</li>
+	                                            <li>Homestay Students pay homestay fees each session (4 weeks) directly to International Homestay Consultants. Hosts will receive payment directly from International Homestay Consultants. Money should never exchange hands between hosts and students.</li>
+	                                            <li>Students are encouraged to bring their own notebook computer if they want to use computers in their homestay.</li>
+	                                            <li>Hosts are not expected to cook differently for students; if students want limited kitchen privileges, they must ask the host first, and must clean up after themselves.</li>
+                                            </ol>
+
+                                            <p><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">To apply, complete the&nbsp;</span><a href="http://internationalhomestay.us/Homestay_Application.pdf" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">Homestay Application</a><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">&nbsp;and submit it with your reservation fee at least four weeks prior to your time of study.</span></p>
+
+                                    </section>
+
+                                    <asp:Label AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
+                                    <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
+                                </div>
+                            </asp:Panel>
+
+
+
+
+
+
+
+
+
                             <%-- personal information panel --%>
                             <asp:Panel runat="server" id="personalInfoPanel">
                 
@@ -75,8 +143,8 @@
 
                                
                                 <%-- temporary way to populate countries --%>
-                              <%--  <asp:CompareValidator ControlToValidate="Country" ID="CompareValidator"  ValidationGroup="g1" ErrorMessage="Please select a country."  runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="0" Type="Integer" Text="*" ForeColor="#ff3300" />
-                                <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>--%>
+                             <%--   <asp:CompareValidator ControlToValidate="Country" ID="CompareValidator"  ValidationGroup="g1" ErrorMessage="Please select a country."  runat="server" Display="Dynamic" Operator="NotEqual" ValueToCompare="0" Type="Integer" Text="*" ForeColor="#ff3300" />--%>
+                                <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>
                                 <br />
                                 <asp:DropDownList id="Country" runat="server">
                                 <asp:ListItem Value="0" Selected="True">Select</asp:ListItem>
@@ -470,12 +538,190 @@
                                 <asp:TextBox runat="server" id="flightInfo"></asp:TextBox>
 
 
-
+                            </asp:Panel> 
 
                                 <br />
                                 <br />
 
+                            <asp:Panel runat="server" ID="confirmationPanel" Enabled="False">
+                                <div id="accordion">
 
+                                  <h3>Personal Information</h3>
+
+                                  <div class="accordion-content">
+                                          <%--name--%>
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="lastName" errormessage="You must provide your last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label AssociatedControlID="lastName" Text="Last Name: " runat="server"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmLastName"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="firstName" errormessage="You must provide your first name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label AssociatedControlID="firstName" Text="First Name: " runat="server"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmFirstName"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:Label Text="Date of Birth: " runat="server"></asp:Label>
+                                    <br />
+                                    <asp:DropDownList ID="confirmDDLYear" runat="server" />
+                                    <asp:DropDownList ID="confirmDDLMonth" runat="server" />
+                                    <asp:DropDownList ID="confirmDDLDay" runat="server" />
+
+                                    <br />
+                                    <br />
+
+                               
+                             
+                                    <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>
+                                    <br />
+                                    <asp:DropDownList id="confirmCountry" runat="server">
+                                    </asp:DropDownList>
+
+                                    <br />
+                                    <br />
+                           
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="firstLanguage" errormessage="You must provide your first language." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label AssociatedControlID="firstLanguage" Text="First Language: " runat="server"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmFirstLanguage"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                               
+                                    <asp:Label AssociatedControlID="gender" Text="Gender: " runat="server"></asp:Label>
+                                    <asp:RadioButtonList id="confirmGender"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
+                                    <asp:ListItem Text="Male" Value="0" Selected="true"/>
+                                    <asp:ListItem Text="Female" Value="1" />
+                                    </asp:RadioButtonList>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:Label AssociatedControlID="martialstatus" Text="Martial Status: " runat="server"></asp:Label>
+                                    <asp:RadioButtonList id="confirmMartialStatus"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
+                                    <asp:ListItem Text="Married" Value="0" Selected="true"/>
+                                    <asp:ListItem Text="Unmarried" Value="1" />
+                                    </asp:RadioButtonList>
+                                  </div>
+
+                                  <h3>Contact Information</h3>
+
+                                  <div class="accordion-content">
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="address" errormessage="Please provide an address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label runat="server" Text="Address: " AssociatedControlID="address"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmAddress" Enabled="True" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmPhone1" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmPhone2" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmEmail" Width="50%"></asp:TextBox>
+                                  </div>
+                                  <h3>Conditions & Preferences</h3>
+                                  <div class="accordion-content">
+
+                                        <asp:Label AssociatedControlID="transportation" Text="Do you have transportation?: " runat="server"></asp:Label>
+                                        <asp:RadioButtonList id="confirmTransportation" CssClass="rdoBtnItemSpacing" runat="server">
+                                        <asp:ListItem Text="Yes" Value="0" Selected="true"/>
+                                        <asp:ListItem Text="No" Value="1" />
+                                        </asp:RadioButtonList>
+
+                                        <br />
+
+                                        <asp:Label runat="server" Text="Allergies, Health Problems or Dietary Restrictions:" AssociatedControlID="allergies"></asp:Label>
+                                        <br />
+                                        <asp:TextBox id="confirmAllergies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                        <br />
+                                        <br />
+
+                                        <asp:Label runat="server" Text="Do you have any particular preferences?" AssociatedControlID="hobbies"></asp:Label>
+                                        <br />
+                                        <asp:TextBox id="confirmHobbies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                        <br />
+                                        <br />
+
+                                        <asp:Label runat="server" Text="Tell us about yourself: " AssociatedControlID="about"></asp:Label>
+                                        <br />
+                                         <asp:TextBox id="confirmAbout" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                        <br />
+                                        <br />
+                         
+                                  </div>
+                                  <h3>University Information</h3>
+                                  <div class="accordion-content">
+
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="university" errormessage="Please enter the name of the university you are attending." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="University Name: " AssociatedControlID="university"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmUniversity"></asp:TextBox>
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="universityAddress" errormessage="Please enter the university address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="University Address: " AssociatedControlID="universityAddress"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmUniversityAddress"></asp:TextBox>
+                                        <br />
+                                        <br />
+                                        <asp:Label runat="server" Text="Semester Start Date: "></asp:Label>
+                                        <br />
+                                        <asp:DropDownList ID="DropDownList1" runat="server" onchange ="PopulateDays()" />
+                                        <asp:DropDownList ID="DropDownList2" runat="server" onchange ="PopulateDays()" />
+                                        <asp:DropDownList ID="DropDownList3" runat="server" />
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="Major (Subject of Study): " AssociatedControlID="major"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmMajor"></asp:TextBox>
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="universityContactInfo" errormessage="Please provide your university contacts information." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="University Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmUniversityContactInfo"></asp:TextBox>
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="homestayDuration" errormessage="Please enter your requested homestay length." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="Requested Length of Homestay: " AssociatedControlID="homestayDuration"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmHomestayDuration"></asp:TextBox>
+                                        <br />
+                                        <br />
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="flightInfo" errormessage="Please enter your flight arrival time." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="Flight/Arrival Information (time &amp; date): " AssociatedControlID="flightInfo"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmFlightInfo"></asp:TextBox>
+
+                                  </div>
+                                </div>
                             </asp:Panel>            
             
                             <br />
@@ -483,7 +729,8 @@
             
                         <div id="btnDiv">                         
                                 <asp:Button class="btn btn-border" Text="Back" runat="server" id="backButon" OnClick="backButon_OnClick" CausesValidation="false"></asp:Button>
-                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>     
+                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>
+                                <asp:Button class="btn btn-border" Text="Submit" runat="server" id="submitButton" OnClick="submitButton_OnClick"></asp:Button>   
                          
                             </div>
                         </div>
@@ -497,7 +744,7 @@
         
         <!-- Footer -->
         <div id="footer">
-            <div class="container">         
+     
                 <!-- Social -->
                 <section>
                     <ul class="icons">
@@ -515,7 +762,7 @@
                 </div>
 
             </div>
-        </div>
+
     </div>
     
     <!-- Scripts -->
@@ -525,5 +772,57 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+
+    <!-- Nice-assets .js -->
+    <script src="/nice-assets/js/jquery.js"></script>
+	<script src="/nice-assets/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/nice-assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/nice-assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/nice-assets/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="/nice-assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/nice-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <script src="/nice-assets/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="/nice-assets/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="/nice-assets/js/owl.carousel.js" ></script>
+    <!-- jQuery full calendar -->
+    <<script src="/nice-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+	<script src="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="/nice-assets/js/calendar-custom.js"></script>
+	<script src="/nice-assets/js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="/nice-assets/js/jquery.customSelect.min.js" ></script>
+	<script src="/nice-assets/assets/chart-master/Chart.js"></script>
+   
+    <!--custome script for all page-->
+    <script src="/nice-assets/js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="/nice-assets/js/sparkline-chart.js"></script>
+    <script src="/nice-assets/js/easy-pie-chart.js"></script>
+	<script src="/nice-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="/nice-assets/js/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/nice-assets/js/xcharts.min.js"></script>
+	<script src="/nice-assets/js/jquery.autosize.min.js"></script>
+	<script src="/nice-assets/js/jquery.placeholder.min.js"></script>
+	<script src="/nice-assets/js/gdp-data.js"></script>	
+	<script src="/nice-assets/js/morris.min.js"></script>
+	<script src="/nice-assets/js/sparklines.js"></script>	
+	<script src="/nice-assets/js/charts.js"></script>
+	<script src="/nice-assets/js/jquery.slimscroll.min.js"></script>
+    <%-- For the editor--%>
+    <script type="text/javascript" src="/nice-assets/assets/ckeditor/ckeditor.js"></script>
+    <!--custom tagsinput-->
+    <script src="/nice-assets/js/jquery.tagsinput.js"></script>
+    <!--custom switch-->
+    <script src="/nice-assets/js/bootstrap-switch.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="/nice-assets/js/jquery.hotkeys.js"></script>
+    <script src="/nice-assets/js/bootstrap-wysiwyg.js"></script>
+    <script src="/nice-assets/js/bootstrap-wysiwyg-custom.js"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
 						<!-- Logo -->
 							<div id="logo">
 								<span class="pennant"><span class="icon fa-home"></span></span>
-								<h1><a href="Home.aspx">Home stay</a></h1>
+								<h1><a href="Home.aspx">Home Stay</a></h1>
 							</div>
 
                               <nav id="nav" class="cl-effect-17">
@@ -44,8 +44,8 @@
 				<div id="banner">
 					<div class="container">						
 						<div class="row">
-							<div class="9u 12u(mobile)">
-                                <img src="images/indy2.jpg" alt="" class="image full"/>
+							<div>
+                                <img src="images/indy2.jpg" alt="" class="image full" style="text-align:center"/>
 							</div>
 							<div class="3u 12u(mobile)">
 							</div>							

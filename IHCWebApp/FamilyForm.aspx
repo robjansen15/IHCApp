@@ -8,8 +8,24 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="nice-assets\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <link rel="stylesheet" type="text/css" href="assets/linkeffects/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="assets/linkeffects/css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="assets/linkeffects/css/component.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- temp assets -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+    $( "#accordion" ).accordion();
+    } );
+  </script>
+
 </head>
 <body class="homepage">
 
@@ -20,14 +36,14 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <span class="pennant"><span class="icon fa-tint"></span></span>
+                        <span class="pennant"><span class="icon fa-home"></span></span>
                         <h1><a href="FamilyForm.aspx">Home Stay</a></h1>
                     </div>
 
                     <!-- Nav -->
-                    <nav id="nav">
+                    <nav id="nav" class="cl-effect-17">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="Home.aspx">Home</a></li>
                             <li class="active"><a href="services.html">Host a Student</a></li>
                             <li><a href="StudentForm.aspx">Student Application</a></li>
                             <li><a href="contact.php">Contact</a></li>
@@ -44,6 +60,9 @@
                 <section class="container">
                     <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
                     <div id="formDiv" style="text-align:center">
+
+
+
                             <%-- Family panel --%>
                             <asp:Panel runat="server" id="familyPanel">
 
@@ -222,14 +241,196 @@
                                 <br />
                                 <asp:TextBox runat="server" id="about" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
 
-                            </asp:Panel>            
+                            </asp:Panel> 
+                        
+                          <asp:Panel runat="server" ID="confirmationPanel" Enabled="False">
+                                <div id="accordion">
+
+                                     <h3>Family Information</h3>
+                                  <div class="accordion-content">
+
+                                        <asp:Label AssociatedControlID="familyName" Text="Family Last Name: " runat="server" ></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmFamilyName"></asp:TextBox>
+
+                                        <br />
+                                        <br />
+
+
+                                        <asp:Label AssociatedControlID="familyCnt" Text="Number of family members:" runat="server"></asp:Label>
+                                        <br />
+                                        <asp:DropDownList runat="server" ID="confirmfamilyCnt" OnSelectedIndexChanged="familyCnt_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="4" Text ="4" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="5" Text ="5" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="6" Text ="6" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="7" Text ="7" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="8" Text ="8" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="9" Text ="9" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="10" Text ="10" Enabled="True"></asp:ListItem>
+                                        </asp:DropDownList>
+                
+                                        <br />
+
+                                        <asp:Panel runat="server" ID="confirmFamilyMembersPanel" Width="100%"></asp:Panel>
+
+                                        <br />
+                                  </div>
+
+                                  <h3>Contact Information</h3>
+
+                                  <div class="accordion-content">
+
+                                            <asp:RequiredFieldValidator runat="server" controltovalidate="address" errormessage="Please provide an address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                            <asp:Label runat="server" Text="Address: " AssociatedControlID="address"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="confirmAddress" Enabled="True" Width="50%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                            <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="confirmPhone1" Width="50%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="confirmPhone2" Width="50%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+
+                                    <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="confirmEmail" Width="50%"></asp:TextBox>
+
+                                  </div>
+
+                                  <h3>Living Details</h3>
+
+                                  <div class="accordion-content">
+                                        <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowSmoking"></asp:Label>
+                                        <br />
+                                        <asp:RadioButtonList id="confirmAllowSmoking" CssClass="rdoBtnItemSpacing" runat="server">
+                                        <asp:ListItem Text="Yes" Value="0"/>
+                                        <asp:ListItem Text="No" Value="1" Selected="true" />
+                                        </asp:RadioButtonList>
+
+
+                         
+
+                                        <asp:Label runat="server" Text="Does anyone in your family smoke: " AssociatedControlID="familySmoke"></asp:Label>
+                                         <br />
+                                         <asp:RadioButtonList id="confirmFamilySmoke" CssClass="rdoBtnItemSpacing" runat="server">
+                                        <asp:ListItem Text="Yes" Value="0"/>
+                                        <asp:ListItem Text="No" Value="1" Selected="true" />
+                                        </asp:RadioButtonList>
+
+
+
+                                        <asp:Label runat="server" Text="Does anyone in your family drink: " AssociatedControlID="familyDrinking"></asp:Label>
+                                        <br />
+                                        <asp:RadioButtonList id="RadioButtonList3" CssClass="rdoBtnItemSpacing" runat="server">
+                                        <asp:ListItem Text="Yes" Value="0"/>
+                                        <asp:ListItem Text="No" Value="1"  Selected="true" />
+                                        </asp:RadioButtonList>
+
+
+                                        <asp:Label AssociatedControlID="dogs" Text="Number of dogs: " runat="server"></asp:Label>
+                                        <asp:DropDownList runat="server" ID="confirmDogs">
+                                            <asp:ListItem Value="0" Text="None" Selected="True" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text ="1" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                        </asp:DropDownList>
+
+        
+                                        <br />
+                                          <br />
+             
+                                        <asp:Label AssociatedControlID="cats" Text="Number of cats: " runat="server"></asp:Label>
+                        
+                                        <asp:DropDownList runat="server" ID="confirmCats">
+                                            <asp:ListItem Value="0" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="1" Text ="1"  Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                        </asp:DropDownList>
+
+                                        <br />
+                                          <br />
+             
+                                        <asp:Label AssociatedControlID="internet" Text= "Internet access details:" runat="server"></asp:Label>
+                    
+                                        <asp:DropDownList runat="server" ID="confirmInternet">
+                                            <asp:ListItem Value="None" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="High Speed Wifi" Text ="High Speed Wifi" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="Normal Wifi" Text ="Normal Wifi" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="Wired" Text ="Wired" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="Other" Text ="Other" Enabled="True"></asp:ListItem>
+                                        </asp:DropDownList>
+
+                                        <br />
+                                          <br />
+
+                                        <asp:Label AssociatedControlID="bathrooms" Text="Number of guest bathrooms: " runat="server"></asp:Label>
+                         
+                                        <asp:DropDownList runat="server" ID="confirmBathrooms">
+                                            <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                            <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                        </asp:DropDownList>
+
+                                        <br />
+                                          <br />
+
+                                        <asp:RequiredFieldValidator runat="server" controltovalidate="transportation" errormessage="Please describe the method of transportation intended for the guest." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                        <asp:Label runat="server" Text="Please describe the method of transportation intended for the guest:" AssociatedControlID="transportation"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmTransportation" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+                          
+                                  
+                         
+                                  </div>
+                                  <h3>Additional Information</h3>
+
+                                  <div class="accordion-content">
+
+                                        <asp:Label runat="server" Text="What are some things your family enjoys doing?" AssociatedControlID="hobbies"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmHobbies" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+
+                                        <br />
+                                        <br />
+
+                                        <asp:Label runat="server" Text="Please supply some additonal information so we can match you with the best candidate." AssociatedControlID="about"></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="confirmAbout" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+
+                             
+
+                                  </div>
+                                </div>
+                            </asp:Panel>                       
             
             
                             <div id="btnDiv">                         
                      
                                    
                                 <asp:Button class="btn btn-border" Text="Back" runat="server" id="backButon" OnClick="backButon_OnClick" CausesValidation="false"></asp:Button>
-                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>     
+                                <asp:Button class="btn btn-border" Text="Continue" runat="server" id="continueButton" OnClick="continueButton_OnClick"></asp:Button>
+                                 <asp:Button class="btn btn-border" Text="Submit" runat="server" id="submitButton" OnClick="submitButton_OnClick"></asp:Button>       
                          
                             </div>
                         </div>
@@ -243,7 +444,7 @@
         
         <!-- Footer -->
         <div id="footer">
-            <div class="container">         
+           
                 <!-- Social -->
                 <section>
                     <ul class="icons">
@@ -261,7 +462,7 @@
                 </div>
 
             </div>
-        </div>
+  
     </div>
     
     <!-- Scripts -->
@@ -271,5 +472,57 @@
     <script src="assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+
+      <!-- Nice-assets .js -->
+    <script src="/nice-assets/js/jquery.js"></script>
+	<script src="/nice-assets/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/nice-assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/nice-assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <!-- bootstrap -->
+    <script src="/nice-assets/js/bootstrap.min.js"></script>
+    <!-- nice scroll -->
+    <script src="/nice-assets/js/jquery.scrollTo.min.js"></script>
+    <script src="/nice-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <script src="/nice-assets/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="/nice-assets/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="/nice-assets/js/owl.carousel.js" ></script>
+    <!-- jQuery full calendar -->
+    <<script src="/nice-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+	<script src="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="/nice-assets/js/calendar-custom.js"></script>
+	<script src="/nice-assets/js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="/nice-assets/js/jquery.customSelect.min.js" ></script>
+	<script src="/nice-assets/assets/chart-master/Chart.js"></script>
+   
+    <!--custome script for all page-->
+    <script src="/nice-assets/js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="/nice-assets/js/sparkline-chart.js"></script>
+    <script src="/nice-assets/js/easy-pie-chart.js"></script>
+	<script src="/nice-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="/nice-assets/js/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="/nice-assets/js/xcharts.min.js"></script>
+	<script src="/nice-assets/js/jquery.autosize.min.js"></script>
+	<script src="/nice-assets/js/jquery.placeholder.min.js"></script>
+	<script src="/nice-assets/js/gdp-data.js"></script>	
+	<script src="/nice-assets/js/morris.min.js"></script>
+	<script src="/nice-assets/js/sparklines.js"></script>	
+	<script src="/nice-assets/js/charts.js"></script>
+	<script src="/nice-assets/js/jquery.slimscroll.min.js"></script>
+    <%-- For the editor--%>
+    <script type="text/javascript" src="/nice-assets/assets/ckeditor/ckeditor.js"></script>
+    <!--custom tagsinput-->
+    <script src="/nice-assets/js/jquery.tagsinput.js"></script>
+    <!--custom switch-->
+    <script src="/nice-assets/js/bootstrap-switch.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="/nice-assets/js/jquery.hotkeys.js"></script>
+    <script src="/nice-assets/js/bootstrap-wysiwyg.js"></script>
+    <script src="/nice-assets/js/bootstrap-wysiwyg-custom.js"></script>
 </body>
 </html>
