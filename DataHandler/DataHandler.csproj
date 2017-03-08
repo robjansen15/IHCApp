@@ -181,6 +181,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizeToken.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\FormStrategy.cs" />
@@ -251,6 +252,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Form\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
