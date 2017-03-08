@@ -16,6 +16,7 @@ namespace DataHandler.Database
             _SearchStrategy = new SearchStrategy(this);
             _TokenStrategy = new TokenStrategy(this);
             _UnauthenticatedStrategy = new UnauthenticatedStrategy(this);
+            _FormStrategy = new FormStrategy(this);
         }
 
 
@@ -45,6 +46,7 @@ namespace DataHandler.Database
         }
 
 
+        public FormStrategy _FormStrategy { get; set; }
         public UnauthenticatedStrategy _UnauthenticatedStrategy { get; set; }
         public TokenStrategy _TokenStrategy { get; set; }
         public SearchStrategy _SearchStrategy { get; set; }

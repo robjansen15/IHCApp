@@ -55,7 +55,7 @@ namespace DataHandler.Controllers
             
             string obj = "";
 
-            List<Applicant> applicants = new List<Applicant>();
+            List<Student> applicants = new List<Student>();
 
             try
             {

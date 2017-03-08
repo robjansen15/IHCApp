@@ -6,9 +6,9 @@ using System.Runtime.Serialization;
 
 namespace DataHandler.Models
 {
-    public class Applicant
+    public class Student
     {
-        public Applicant(string firstName, string lastName)
+        public Student(string firstName, string lastName)
         {
             _FirstName = firstName;
             _LastName = lastName;

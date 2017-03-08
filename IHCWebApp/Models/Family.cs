@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace DataHandler.Models
+namespace UserWebApp.Models
 {
     public class Family
     {
@@ -35,6 +35,7 @@ namespace DataHandler.Models
             _ToAdmin = toadmin;
 
         }
+
 
         public string _TimeToCenter { get; set; }
         public int _NumBathrooms { get; set; }

@@ -50,10 +50,10 @@ namespace DataHandler.Database
         /// <summary>
         /// get applicants who are visiting a specific school
         /// </summary>
-        public List<Applicant> getApplicantBySchool(string schoolName)
+        public List<Student> getApplicantBySchool(string schoolName)
         {
-            List<Applicant> applicants = new List<Applicant>();
-            
+            List<Student> applicants = new List<Student>();
+
             _DatabaseConnection.Connect();
 
             try
@@ -67,8 +67,8 @@ namespace DataHandler.Database
                 {
                     ///gets the specific columns needed from the table
                     List<int> enumerations = new List<int>();
-                    List <string> enumString = new Enumerations.EnumerationContainer()._GetStudentsBySchoolEnumeration.Split(';').ToList();
-                    foreach(string str in enumString)
+                    List<string> enumString = new Enumerations.EnumerationContainer()._GetStudentsBySchoolEnumeration.Split(';').ToList();
+                    foreach (string str in enumString)
                     {
                         enumerations.Add(Convert.ToInt32(str));
                     }
@@ -78,11 +78,11 @@ namespace DataHandler.Database
                         var firstName = rdr.GetString(enumerations.ElementAt(0));
                         var lastName = rdr.GetString(enumerations.ElementAt(1));
 
-                        applicants.Add(new Applicant(firstName, lastName));
+                        applicants.Add(new Student(firstName, lastName));
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 var x = e.ToString();
             }
@@ -93,9 +93,7 @@ namespace DataHandler.Database
 
             return applicants;
         }
-
-
-
+    
 
         private DatabaseConnection _DatabaseConnection { get; set; }
     }
