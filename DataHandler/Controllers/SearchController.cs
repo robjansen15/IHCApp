@@ -71,7 +71,5 @@ namespace DataHandler.Controllers
             return obj;
         }
 
-
-
     }
 }
