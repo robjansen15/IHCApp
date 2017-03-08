@@ -9,12 +9,6 @@ namespace DataHandler
 {
     public class AuthorizeToken : AuthorizeAttribute
     { 
-        private readonly string[] allowedroles;
-        public AuthorizeToken(params string[] roles)
-        {
-            this.allowedroles = roles;
-        }
-
         protected override bool AuthorizeCore(System.Web.HttpContextBase httpContext)
         {
             bool authorize = false;
@@ -32,6 +26,8 @@ namespace DataHandler
 
             return authorize;
         }
+
+
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             filterContext.Result = new HttpUnauthorizedResult();
