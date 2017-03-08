@@ -29,7 +29,6 @@ namespace DataHandler.Controllers
             try
             {
                 schools = databaseConnection._SearchStrategy.getSchoolNames();
-
                 obj = new JavaScriptSerializer().Serialize(schools);
             }
             catch
@@ -48,28 +47,28 @@ namespace DataHandler.Controllers
         /// <param name="schoolName"></param>
         /// <returns></returns>
         // GET: Search/getApplicantsBySchool
-        [AuthorizeToken]
-        public string getApplicantsBySchool(string token, string schoolName)
-        {
-            DatabaseConnection databaseConnection = new DatabaseConnection();
+        //[AuthorizeToken]
+        //public string getApplicantsBySchool(string token, string schoolName)
+        //{
+        //    DatabaseConnection databaseConnection = new DatabaseConnection();
             
-            string obj = "";
+        //    string obj = "";
 
-            List<Student> applicants = new List<Student>();
+        //    List<Student> applicants = new List<Student>();
 
-            try
-            {
-                applicants = databaseConnection._SearchStrategy.getApplicantBySchool(schoolName);
+        //    try
+        //    {
+        //        applicants = databaseConnection._SearchStrategy.getApplicantBySchool(schoolName);
             
-                obj = new JavaScriptSerializer().Serialize(applicants);            
-            }
-            catch
-            {
+        //        obj = new JavaScriptSerializer().Serialize(applicants);            
+        //    }
+        //    catch
+        //    {
 
-            }
+        //    }
 
-            return obj;
-        }
+        //    return obj;
+        //}
 
 
 

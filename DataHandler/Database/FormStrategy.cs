@@ -109,6 +109,61 @@ namespace DataHandler.Database
         }
 
 
+        public void insertStudent(Student studentToInsert)
+        {
+            _DatabaseConnection.Connect();
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SPInsertFamilyAndReturnFamilyId", _DatabaseConnection._Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@A_FirstName", studentToInsert._FirstName));
+                command.Parameters.Add(new SqlParameter("@A_LastName", studentToInsert._LastName));
+                command.Parameters.Add(new SqlParameter("@A_ReqMovInDate", studentToInsert._MoveInDate));
+                command.Parameters.Add(new SqlParameter("@A_DurationOfStay", studentToInsert._DurationOfStay));
+                command.Parameters.Add(new SqlParameter("@A_Language", studentToInsert._Language));
+                command.Parameters.Add(new SqlParameter("@A_Gender", studentToInsert._Gender));
+                command.Parameters.Add(new SqlParameter("@A_Status", studentToInsert._Status));
+                command.Parameters.Add(new SqlParameter("@A_Nationality", studentToInsert._Nationality));
+                command.Parameters.Add(new SqlParameter("@A_Street", studentToInsert._Street));
+                command.Parameters.Add(new SqlParameter("@A_State", studentToInsert._State));
+                command.Parameters.Add(new SqlParameter("@A_City", studentToInsert._City));
+                command.Parameters.Add(new SqlParameter("@A_Country", studentToInsert._Country));
+                command.Parameters.Add(new SqlParameter("@A_FlightId", studentToInsert._FlightID));
+                command.Parameters.Add(new SqlParameter("@A_FlightDate", studentToInsert._FlightDate));
+                command.Parameters.Add(new SqlParameter("@A_FlightName", studentToInsert._FlightName));
+                command.Parameters.Add(new SqlParameter("@A_Dog", studentToInsert._Dog));
+                command.Parameters.Add(new SqlParameter("@A_Cat", studentToInsert._Cat));
+                command.Parameters.Add(new SqlParameter("@A_HealthIssues", studentToInsert._HealthIssues));
+                command.Parameters.Add(new SqlParameter("@A_DOB", studentToInsert._DOB));
+                command.Parameters.Add(new SqlParameter("@A_PrimePh_no", studentToInsert._PrimePhone));
+                command.Parameters.Add(new SqlParameter("@A_SecPh_no", studentToInsert._SecondaryPhone));
+                command.Parameters.Add(new SqlParameter("@A_Hobbies", studentToInsert._Hobbies));
+                command.Parameters.Add(new SqlParameter("@A_About", studentToInsert._About));
+                command.Parameters.Add(new SqlParameter("@A_PayDate", studentToInsert._Paydate));
+                command.Parameters.Add(new SqlParameter("@A_DepositDate", studentToInsert._DepositDate));
+                command.Parameters.Add(new SqlParameter("@A_PaymentAmount", studentToInsert._PaymentAmount));
+                command.Parameters.Add(new SqlParameter("@A_Id", studentToInsert._ID));
+                command.Parameters.Add(new SqlParameter("@A_OtherUniversity", studentToInsert._OtherUniversity));
+                command.Parameters.Add(new SqlParameter("@A_Email", studentToInsert._Email));
+                command.Parameters.Add(new SqlParameter("@A_EmergencyContact", studentToInsert._EmergencyContact));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                var x = e.ToString();
+            }
+            finally
+            {
+                _DatabaseConnection.Disconnect();
+            }
+
+            _DatabaseConnection.Disconnect();
+        }
+
+
         private DatabaseConnection _DatabaseConnection { get; set; }
     }
 

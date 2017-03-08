@@ -50,49 +50,49 @@ namespace DataHandler.Database
         /// <summary>
         /// get applicants who are visiting a specific school
         /// </summary>
-        public List<Student> getApplicantBySchool(string schoolName)
-        {
-            List<Student> applicants = new List<Student>();
+        //public List<Student> getApplicantBySchool(string schoolName)
+        //{
+        //    List<Student> applicants = new List<Student>();
 
-            _DatabaseConnection.Connect();
+        //    _DatabaseConnection.Connect();
 
-            try
-            {
-                SqlCommand command = new SqlCommand("SPReadStudentBySchool", _DatabaseConnection._Connection);
-                command.CommandType = CommandType.StoredProcedure;
+        //    try
+        //    {
+        //        SqlCommand command = new SqlCommand("SPReadStudentBySchool", _DatabaseConnection._Connection);
+        //        command.CommandType = CommandType.StoredProcedure;
 
-                command.Parameters.Add(new SqlParameter("@I_Name", schoolName));
+        //        command.Parameters.Add(new SqlParameter("@I_Name", schoolName));
 
-                using (SqlDataReader rdr = command.ExecuteReader())
-                {
-                    ///gets the specific columns needed from the table
-                    List<int> enumerations = new List<int>();
-                    List<string> enumString = new Enumerations.EnumerationContainer()._GetStudentsBySchoolEnumeration.Split(';').ToList();
-                    foreach (string str in enumString)
-                    {
-                        enumerations.Add(Convert.ToInt32(str));
-                    }
+        //        using (SqlDataReader rdr = command.ExecuteReader())
+        //        {
+        //            ///gets the specific columns needed from the table
+        //            List<int> enumerations = new List<int>();
+        //            List<string> enumString = new Enumerations.EnumerationContainer()._GetStudentsBySchoolEnumeration.Split(';').ToList();
+        //            foreach (string str in enumString)
+        //            {
+        //                enumerations.Add(Convert.ToInt32(str));
+        //            }
 
-                    while (rdr.Read())
-                    {
-                        var firstName = rdr.GetString(enumerations.ElementAt(0));
-                        var lastName = rdr.GetString(enumerations.ElementAt(1));
+        //            while (rdr.Read())
+        //            {
+        //                var firstName = rdr.GetString(enumerations.ElementAt(0));
+        //                var lastName = rdr.GetString(enumerations.ElementAt(1));
 
-                        applicants.Add(new Student(firstName, lastName));
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                var x = e.ToString();
-            }
-            finally
-            {
-                _DatabaseConnection.Disconnect();
-            }
+        //                applicants.Add(new Student(firstName, lastName));
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        var x = e.ToString();
+        //    }
+        //    finally
+        //    {
+        //        _DatabaseConnection.Disconnect();
+        //    }
 
-            return applicants;
-        }
+        //    return applicants;
+        //}
     
 
         private DatabaseConnection _DatabaseConnection { get; set; }
