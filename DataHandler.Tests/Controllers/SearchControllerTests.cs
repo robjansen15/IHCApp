@@ -14,7 +14,12 @@ namespace DataHandler.Tests.Controllers
         {
             SearchController testController = new SearchController();
 
-            string str = testController.getApplicantsBySchool("token","IUPUI");       
+            string str = testController.getApplicantsBySchool("token","IUPUI");    
+            
+            if(str.Length < 1)
+            {
+                throw new Exception("no data returned!!!");
+            }
         }
     }
 }

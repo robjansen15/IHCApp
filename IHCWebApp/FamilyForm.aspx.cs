@@ -72,12 +72,23 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void continueButton_OnClick(object sender, EventArgs e)
         {
-            if ((int)Session["counter"] < 3)
+            if ((int)Session["counter"] < 4)
             {
                 Session["counter"] = ((int)Session["counter"] + 1);
             }
 
             DisplayPanel((int)Session["counter"]);
+        }
+
+
+        /// <summary>
+        /// submits the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void submitButton_OnClick(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -94,6 +105,11 @@ namespace UserWebApp
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
                 moreInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
             else if (value == 1)
             {
@@ -101,6 +117,10 @@ namespace UserWebApp
                 contactInfoPanel.Visible = true;          
                 livingDetailsPanel.Visible = false;
                 moreInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
             else if (value == 2)
             {
@@ -108,6 +128,11 @@ namespace UserWebApp
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = true;
                 moreInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
             else if (value == 3)
             {
@@ -115,8 +140,27 @@ namespace UserWebApp
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
                 moreInfoPanel.Visible = true;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
-        }
+            else if (value == 4)
+            {
+                familyPanel.Visible = false;
+                contactInfoPanel.Visible = false;
+                livingDetailsPanel.Visible = false;
+                moreInfoPanel.Visible = false;
+                confirmationPanel.Visible = true;
+
+
+                continueButton.Visible = false;
+                submitButton.Visible = true;
+
+                populateConfirmationPanel();
+
+            }
+}
 
 
         /// <summary>
@@ -127,6 +171,7 @@ namespace UserWebApp
         {       
             for (int id = 0; id < count; id++)
             {
+
                 Panel panel = new Panel();
                 panel.ID = "familyMember" + id;
                 panel.Controls.Add(new LiteralControl("<h3>Family Member " + (id + 1)+ "</h3>"));
@@ -199,6 +244,7 @@ namespace UserWebApp
                 panel.Controls.Add(new LiteralControl("<br/>"));
 
                 this.familyListPanel.Controls.Add(panel);
+
             }
         }
 
@@ -211,6 +257,61 @@ namespace UserWebApp
         protected void familyCnt_SelectedIndexChanged(object sender, EventArgs e)
         {          
             /*EMPTY METHOD TO ENSURE POSTBACK*/                            
+        }
+
+
+
+        /// <summary>
+        /// Populates the confirmation panel data.
+        /// </summary>
+        /// <param name="count"></param>
+        private void populateConfirmationPanel()
+        {
+
+            //family panel
+            confirmFamilyName.Text = familyName.Text;
+            confirmfamilyCnt.Text = familyCnt.Text;
+            
+            
+
+            //contact panel
+            confirmAddress.Text = address.Text;
+            confirmPhone1.Text = phone1.Text;
+            confirmPhone2.Text = phone2.Text;
+            confirmEmail.Text = email.Text;
+
+            confirmAddress.Enabled = false;
+            confirmPhone1.Enabled = false;
+            confirmPhone2.Enabled = false;
+            confirmEmail.Enabled = false;
+
+            //living details panel
+            confirmAllowSmoking.SelectedValue = allowSmoking.SelectedValue;
+            confirmFamilySmoke.SelectedValue = familySmoke.SelectedValue;
+            confirmDogs.SelectedValue = dogs.SelectedValue;
+            confirmCats.SelectedValue = cats.SelectedValue;
+            confirmInternet.SelectedValue = internet.SelectedValue;
+            confirmBathrooms.SelectedValue = bathrooms.SelectedValue;
+            confirmTransportation.Text = transportation.Text;
+
+            confirmAllowSmoking.Enabled = false;
+            confirmFamilySmoke.Enabled = false;
+            confirmDogs.Enabled = false;
+            confirmCats.Enabled = false;
+            confirmInternet.Enabled = false;
+            confirmBathrooms.Enabled = false;
+            confirmTransportation.Enabled = false;
+
+
+            //additional info panel
+
+            confirmHobbies.Text = hobbies.Text;
+            confirmAbout.Text = about.Text;
+
+            confirmHobbies.Enabled = false;
+            confirmAbout.Enabled = false;
+
+
         }
 
     }

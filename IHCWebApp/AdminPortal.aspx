@@ -1,27 +1,27 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminPortal.aspx.cs" Inherits="UserWebApp.AdminPortal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminPortal.aspx.cs" Inherits="UserWebApp.AdminPortal" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Admin Portal</title>
-    
-        <!-- Bootstrap CSS -->    
+
+    <!-- Bootstrap CSS -->    
     <link href="/nice-assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap theme -->
     <link href="/nice-assets/css/bootstrap-theme.css" rel="stylesheet" />
     <!--external css-->
     <!-- font icon -->
-    <link href="/admin-assets/css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="/admin-assets/css/font-awesome.min.css" rel="stylesheet" />    
+    <link href="/nice-assets/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/nice-assets/css/font-awesome.min.css" rel="stylesheet" />    
     <!-- full calendar css-->
-    <link href="/admin-assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
-	<link href="/admin-assets/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <link href="/nice-assets/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+	<link href="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <!-- easy pie chart-->
-    <link href="/admin-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
     <!-- owl carousel -->
-    <link rel="stylesheet" href="/admin-assets/css/owl.carousel.css" type="text/css" />
-    <link href="/admin-assets/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/nice-assets/css/owl.carousel.css" type="text/css" />
+    <link href="/nice-assets/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="/nice-assets/css/fullcalendar.css" />
     <link href="/nice-assets/css/widgets.css" rel="stylesheet" />
@@ -32,9 +32,9 @@
 </head>
 <body>
   <!-- container section start -->
-     <form runat="server" id="mainForm">    
+      
         <section id="container" class="">
-     
+            <form runat="server" id="mainForm">   
       
             <header class="header dark-bg">
                 <div class="toggle-nav">
@@ -113,14 +113,14 @@
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">                
                         <li class="active">
-                            <a class="" href="index.html">
+                            <asp:LinkButton class="" runat="server" ID="dashboardBtn" OnClick="dashboardBtn_Click">
                                 <i class="icon_house_alt"></i>
                                 <span>Dashboard</span>
-                            </a>
+                            </asp:LinkButton>
                         </li>
                         
                         <li>
-                            <%--<asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
+                           <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
                             </asp:LinkButton>
@@ -133,8 +133,8 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><a class="" href="StudentForm.aspx">Student Form</a></li>                          
-                                <li><a class="" href="FamilyForm.aspx">Family Form</a></li>
+                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Student Form</asp:LinkButton></li>                          
+                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Family Form</asp:LinkButton></li>
                             </ul>
                         </li>       
                         <li class="sub-menu">
@@ -144,9 +144,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><a class="" href="general.html">All Students</a></li>
-                                <li><a class="" href="buttons.html">All Hosts</a></li>
-                                <li><a class="" href="grids.html">All Students by School</a></li>
+                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="tableFormBtn_Click" class="">All Students</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="tableFormBtn_Click" class="">All Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allStudentsBySchool" OnClick="tableFormBtn_Click" class="">All Students by School</asp:LinkButton></li>
                             </ul>
                         </li>
                                     
@@ -157,14 +157,103 @@
             <!--sidebar end-->
             
             
-            <form runat="server" id="mainForm"> 
+          
       
             <!--main content start-->
             
             <section id="main-content">                            
                 <section class="wrapper"> 
-                    <form runat="server" id="mainForm">           
- 
+                
+                <asp:Panel runat="server" ID="exampleDashboard" Visible="false">
+                                
+                      
+                   <div class="row">
+				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					    <div class="info-box blue-bg">
+						    <i class="fa fa-cloud-download"></i>
+						    <div class="count">12</div>
+						    <div class="title">Active Students</div>						
+					    </div><!--/.info-box-->			
+				    </div><!--/.col-->
+				
+				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					    <div class="info-box brown-bg">
+						    <i class="fa fa-shopping-cart"></i>
+						    <div class="count">14</div>
+						    <div class="title">Families Looking</div>						
+					    </div><!--/.info-box-->			
+				    </div><!--/.col-->	
+				
+				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					    <div class="info-box dark-bg">
+						    <i class="fa fa-thumbs-o-up"></i>
+						    <div class="count">9</div>
+						    <div class="title">Pending Payment</div>						
+					    </div><!--/.info-box-->			
+				    </div><!--/.col-->
+				
+				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					    <div class="info-box green-bg">
+						    <i class="fa fa-cubes"></i>
+						    <div class="count">5</div>
+						    <div class="title">New form Submissions</div>						
+					    </div><!--/.info-box-->			
+				    </div><!--/.col-->
+
+                    <!--START TABLE OF EVENTS-->
+                        <table class="table table-striped table-advance table-hover">
+                               <tbody>
+                                  <tr>
+                                    <th><i class="icon_calendar"></i> Date</th>
+                                     <th><i class="icon_profile"></i> Event Type</th>
+                                     <th><i class="icon_mail_alt"></i> Description</th>   
+                                     <th><i class="icon_cogs"></i> Action</th>
+                                  </tr>
+                                  <tr>
+                                     <td>2004-07-06</td>
+                                     <td>New Family Form</td>
+                                     <td>A new family "Jansen" has applied for Homestay</td>
+                                     <td>
+                                      <div class="btn-group">
+                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                      </div>
+                                      </td>
+                                  </tr>
+                                <tr>
+                                     <td>2004-07-06</td>
+                                     <td>New Student Form</td>
+                                     <td>A new student "Jim" has applied for Homestay</td>
+                                     <td>
+                                      <div class="btn-group">
+                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                      </div>
+                                      </td>
+                                  </tr>                                 
+                                  <tr>
+                                     <td>2004-07-06</td>
+                                     <td>Arrival</td>
+                                     <td>"John" will be arriving by plane today at 3:15 PM</td>
+                                     <td>
+                                      <div class="btn-group">
+                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
+                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
+                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
+                                      </div>
+                                      </td>
+                                  </tr>
+                               </tbody>
+                            </table>
+				
+			</div>
+                        
+                    </asp:Panel>
+
+                    <%--TABLE--%>
+                    <asp:Panel runat="server" id="exampleTable" Visible="false">
                         <p style="text-align:center">Example Table</p>
                         <br />
 
@@ -322,13 +411,90 @@
                             </table>
    
                         <!-- project team & activity end -->
-                    
+                    </asp:Panel>    
+
+                    <asp:Panel runat="server" id="exampleUpdateStudents" Visible="false">
+                       <!-- CKEditor -->
+                          <div class="col-lg-12">
+                              <section class="panel">
+                                  <header class="panel-heading">
+                                      Update Student Info
+                                  </header>
+                                  <div class="panel-body">
+                                      <div class="form">
+                                          <form action="#" class="form-horizontal">
+                                              <div class="form-group">
+                                                  <label class="control-label col-sm-2">Update Student Info</label>
+                                                  <div class="col-sm-10">
+                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
+                                                  </div>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </section>
+                          </div>
+                       
+
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" id="exampleUpdateFamily" Visible="false">
+                         <!-- CKEditor -->
+                          <div class="col-lg-12">
+                              <section class="panel">
+                                  <header class="panel-heading">
+                                      Update Family Info
+                                  </header>
+                                  <div class="panel-body">
+                                      <div class="form">
+                                          <form action="#" class="form-horizontal">
+                                              <div class="form-group">
+                                                  <label class="control-label col-sm-2">Update Family Info</label>
+                                                  <div class="col-sm-10">
+                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
+                                                  </div>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </section>
+                          </div>
+
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" ID="exampleSearch" Visible="false">
+                 
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Filters
+                            </header>
+                            <div class="panel-body">                                   
+                                <div class="checkboxes">
+                                    <label class="label_check c_on" for="checkbox-01"><input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="" /> Search Students</label>
+                                    <label class="label_check c_off" for="checkbox-02"><input name="sample-checkbox-02" id="checkbox-02" value="1" type="checkbox" /> Search Families </label>
+                                    <label class="label_check c_off" for="checkbox-03"><input name="sample-checkbox-02" id="checkbox-03" value="1" type="checkbox" /> Search Schools</label>
+                                </div>
+                            </div>
+
+                            <div class="panel-body">                        
+                                <asp:Label runat="server">Item to Search:</asp:Label>
+                                <asp:TextBox runat="server" ID="searchTextBox"></asp:TextBox>
+
+                                <br />
+                                <br />
+
+                                <asp:Button ID="customSearchBtn" runat="server" Text="Search"></asp:Button>
+                            </div>
+
+                        </section>
+                    </asp:Panel>
+
                 </section>
                 
-
                 <div class="text-right">
-                <div class="credits">             
-                    <div style="text-align:center"> 
+                <div class="credits">      
+                    
+                    <div style="text-align:center" hidden="hidden"> 
                         <p>We can do 10 rows per page or something to keep it looking clean</p>
                         <br />                       
                         <ul class="pagination pagination-lg">
@@ -340,7 +506,8 @@
                             <li><a href="#">5</a></li>
                             <li><a href="#">»</a></li>
                         </ul>
-                    </div>          
+                    </div>     
+                    
                 </div>
             </div>
             </section>
@@ -349,8 +516,7 @@
             <!--main content end-->
             </form>
         </section>
-
-         </form>
+    
         <!-- container section start -->
 
         <!-- javascripts -->
@@ -361,16 +527,16 @@
         <!-- bootstrap -->
         <script src="/nice-assets/js/bootstrap.min.js"></script>
         <!-- nice scroll -->
-        <script src="/admin-assets/js/jquery.scrollTo.min.js"></script>
-        <script src="/admin-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="/nice-assets/js/jquery.scrollTo.min.js"></script>
+        <script src="/nice-assets/js/jquery.nicescroll.js" type="text/javascript"></script>
         <!-- charts scripts -->
-        <script src="/admin-assets/assets/jquery-knob/js/jquery.knob.js"></script>
-        <script src="/admin-assets/js/jquery.sparkline.js" type="text/javascript"></script>
-        <script src="/admin-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-        <script src="/admin-assets/js/owl.carousel.js" ></script>
+        <script src="/nice-assets/assets/jquery-knob/js/jquery.knob.js"></script>
+        <script src="/nice-assets/js/jquery.sparkline.js" type="text/javascript"></script>
+        <script src="/nice-assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+        <script src="/nice-assets/js/owl.carousel.js" ></script>
         <!-- jQuery full calendar -->
-        <<script src="/admin-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
-	    <script src="/admin-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+        <<script src="/nice-assets/js/fullcalendar.min.js"></script> <!-- Full Google Calendar - Calendar -->
+	    <script src="/nice-assets/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
         <!--script for this page only-->
         <script src="/nice-assets/js/calendar-custom.js"></script>
 	    <script src="/nice-assets/js/jquery.rateit.min.js"></script>
@@ -381,18 +547,31 @@
         <!--custome script for all page-->
         <script src="/nice-assets/js/scripts.js"></script>
         <!-- custom script for this page-->
-        <script src="/admin-assets/js/sparkline-chart.js"></script>
-        <script src="/admin-assets/js/easy-pie-chart.js"></script>
-	    <script src="/admin-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
-	    <script src="/admin-assets/js/jquery-jvectormap-world-mill-en.js"></script>
-	    <script src="/admin-assets/js/xcharts.min.js"></script>
-	    <script src="/admin-assets/js/jquery.autosize.min.js"></script>
-	    <script src="/admin-assets/js/jquery.placeholder.min.js"></script>
-	    <script src="/admin-assets/js/gdp-data.js"></script>	
-	    <script src="/admin-assets/js/morris.min.js"></script>
-	    <script src="/admin-assets/js/sparklines.js"></script>	
-	    <script src="/admin-assets/js/charts.js"></script>
-	    <script src="/admin-assets/js/jquery.slimscroll.min.js"></script>
+        <script src="/nice-assets/js/sparkline-chart.js"></script>
+        <script src="/nice-assets/js/easy-pie-chart.js"></script>
+	    <script src="/nice-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+	    <script src="/nice-assets/js/jquery-jvectormap-world-mill-en.js"></script>
+	    <script src="/nice-assets/js/xcharts.min.js"></script>
+	    <script src="/nice-assets/js/jquery.autosize.min.js"></script>
+	    <script src="/nice-assets/js/jquery.placeholder.min.js"></script>
+	    <script src="/nice-assets/js/gdp-data.js"></script>	
+	    <script src="/nice-assets/js/morris.min.js"></script>
+	    <script src="/nice-assets/js/sparklines.js"></script>	
+	    <script src="/nice-assets/js/charts.js"></script>
+	    <script src="/nice-assets/js/jquery.slimscroll.min.js"></script>
+       <%-- For the editor--%>
+        <script type="text/javascript" src="/nice-assets/assets/ckeditor/ckeditor.js"></script>
+        <!--custom tagsinput-->
+        <script src="/nice-assets/js/jquery.tagsinput.js"></script>
+        <!--custom switch-->
+        <script src="/nice-assets/js/bootstrap-switch.js"></script>
+        <!-- bootstrap-wysiwyg -->
+        <script src="/nice-assets/js/jquery.hotkeys.js"></script>
+        <script src="/nice-assets/js/bootstrap-wysiwyg.js"></script>
+        <script src="/nice-assets/js/bootstrap-wysiwyg-custom.js"></script>
+
+
+
         
        <script>
 
