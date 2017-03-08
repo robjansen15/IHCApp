@@ -7,16 +7,16 @@
     <title>Admin Login</title>
     
     <!-- Bootstrap CSS -->    
-    <link href="/admin-assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/nice-assets/css/bootstrap.min.css" rel="stylesheet" />
     <!-- bootstrap theme -->
-    <link href="/admin-assets/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/nice-assets/css/bootstrap-theme.css" rel="stylesheet" />
     <!--external css-->
     <!-- font icon -->
-    <link href="/admin-assets/css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="/admin-assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="/nice-assets/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="/nice-assets/css/font-awesome.css" rel="stylesheet" />
     <!-- Custom styles -->
-    <link href="/admin-assets/css/style.css" rel="stylesheet" />
-    <link href="/admin-assets/css/style-responsive.css" rel="stylesheet" />
+    <link href="/nice-assets/css/style.css" rel="stylesheet" />
+    <link href="/nice-assets/css/style-responsive.css" rel="stylesheet" />
 </head>
   <body class="login-img3-body">
 
