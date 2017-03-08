@@ -91,7 +91,7 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void submitButton_OnClick(object sender, EventArgs e)
         {
-
+            new WebRequestHandler().PostRequest("http://localhost:60926/Search/getSchoolNames?token=token");
         }
 
 
