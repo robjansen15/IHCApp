@@ -180,22 +180,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizeToken.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Database\DatabaseConnection.cs" />
-    <Compile Include="Database\TokenStrategy.cs" />
-    <Compile Include="Database\SearchStrategy.cs" />
-    <Compile Include="Database\UnauthenticatedStrategy.cs" />
     <Compile Include="Enumerations\EnumerationContainer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Applicant.cs" />
-    <Compile Include="Models\DynamicSearchObj.cs" />
-    <Compile Include="Models\Example.cs" />
-    <Compile Include="Models\Family.cs" />
-    <Compile Include="Models\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Database\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
