@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UserWebApp.Models;
 
 namespace UserWebApp
 {
@@ -91,6 +92,17 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void submitButton_OnClick(object sender, EventArgs e)
         {
+            Student student = new Student("rob", "jansen", DateTime.Now,4,"english","male","married","american","stret","state","city","usa","flightid",DateTime.Now,DateTime.Now,"flightname","1 dogs","2 cats", "wooping cough",
+                DateTime.Now,"999","911","football","about",DateTime.Now,DateTime.Now,4,6,"univesity","myemail","mycontact");
+
+            try
+            {
+                new WebRequestHandler<Student>().POST(student, "/Form/InsertStudent");
+            }
+            catch(Exception ex)
+            {
+                var temp = ex.ToString();
+            }
 
         }
 

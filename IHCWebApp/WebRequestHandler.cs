@@ -14,18 +14,17 @@ namespace UserWebApp
 
         public void POST(T obj, string path)
         {
-            string URL = "https://localhost:9000/"+path;
-            string urlParameters = "?"+new Serializer<T>().Serialize(obj);
+            string URL = System.Configuration.ConfigurationManager.AppSettings["server"] + path;
+            string urlParameters = "?serializedObject=" + new Serializer<T>().Serialize(obj);
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(URL);
 
             // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // List data response.
-            HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call!
+            HttpResponseMessage response = client.GetAsync(urlParameters).Result;  
             if (response.IsSuccessStatusCode)
             {
             
