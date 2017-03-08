@@ -2708,3 +2708,15 @@
     background: #0066DC;
     font-weight: 400
 }
+
+.accordion-content {
+    overflow : scroll;
+    text-align: left;
+    background-color:#0066DC;
+
+}
+
+.terms-of-service-policies{
+    text-align:left;
+    color:black;
+}

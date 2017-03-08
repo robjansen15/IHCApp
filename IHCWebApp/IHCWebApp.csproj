@@ -65,6 +65,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\linkeffects\index.html" />
+    <Content Include="images\indy2.jpg" />
     <Content Include="nice-assets\assets\chart-master\.gitignore" />
     <Content Include="nice-assets\assets\chart-master\Chart.js" />
     <Content Include="nice-assets\assets\chart-master\Chart.min.js" />
@@ -664,6 +666,8 @@
     <Content Include="nice-assets\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="nice-assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="nice-assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\linkeffects\.DS_Store" />
+    <Content Include="assets\linkeffects\README.md" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -700,6 +704,7 @@
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -714,6 +719,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\linkeffects\css\" />
+    <Folder Include="assets\linkeffects\fonts\" />
+    <Folder Include="assets\linkeffects\js\" />
     <Folder Include="nice-assets\assets\jquery-file-upload\server\php\files\thumbnail\" />
   </ItemGroup>
   <PropertyGroup>

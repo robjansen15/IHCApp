@@ -27,10 +27,12 @@ namespace UserWebApp
                 DisplayPanel(0);
 
                 //enable everything
+                termsOfServicePanel.Enabled = true;
                 personalInfoPanel.Enabled = true;
                 contactInfoPanel.Enabled = true;
                 conditionsPreferencesPanel.Enabled = true;
                 universityInfoPanel.Enabled = true;
+                confirmationPanel.Enabled = true;
 
                 if (this.SelectedDate == DateTime.MinValue)
                 {
@@ -74,12 +76,22 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void continueButton_OnClick(object sender, EventArgs e)
         {
-            if ((int)Session["counter"] < 3)
+            if ((int)Session["counter"] < 5)
             {
                 Session["counter"] = ((int)Session["counter"] + 1);
             }
 
             DisplayPanel((int)Session["counter"]);
+        }
+
+        /// <summary>
+        /// submits the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void submitButton_OnClick(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -92,32 +104,77 @@ namespace UserWebApp
             //change the view
             if (value == 0)
             {
+                termsOfServicePanel.Visible = true;
+                personalInfoPanel.Visible = false;
+                contactInfoPanel.Visible = false;
+                conditionsPreferencesPanel.Visible = false;
+                universityInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
 
+                continueButton.Visible = true;
+                submitButton.Visible = false;
+            }
+            if (value == 1)
+            {
+                termsOfServicePanel.Visible = false;
                 personalInfoPanel.Visible = true;
                 contactInfoPanel.Visible = false;
                 conditionsPreferencesPanel.Visible = false;
                 universityInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
-            else if (value == 1)
+            else if (value == 2)
             {
+                termsOfServicePanel.Visible = false;
                 personalInfoPanel.Visible = false;
                 contactInfoPanel.Visible = true;
                 conditionsPreferencesPanel.Visible = false;
                 universityInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
-            else if (value == 2)
+            else if (value == 3)
             {
+                termsOfServicePanel.Visible = false;
                 personalInfoPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 conditionsPreferencesPanel.Visible = true;
                 universityInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
             }
-            else if (value == 3)
+            else if (value == 4)
             {
+                termsOfServicePanel.Visible = false;
                 personalInfoPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 conditionsPreferencesPanel.Visible = false;
                 universityInfoPanel.Visible = true;
+                confirmationPanel.Visible = false;
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
+            }
+            else if (value == 5)
+            {
+                termsOfServicePanel.Visible = false;
+                personalInfoPanel.Visible = false;
+                contactInfoPanel.Visible = false;
+                conditionsPreferencesPanel.Visible = false;
+                universityInfoPanel.Visible = false;
+                confirmationPanel.Visible = true;
+
+                continueButton.Visible = false;
+                submitButton.Visible = true;
+
+                populateConfirmationPanel();
             }
         }
 
@@ -273,6 +330,76 @@ namespace UserWebApp
                 ddlYear.Items.Add(lt);
             }
             ddlYear.Items.FindByValue(DateTime.Now.Year.ToString()).Selected = true;
+
+        }
+
+
+
+        /// <summary>
+        /// Populates the confirmation panel data.
+        /// </summary>
+        /// <param name="count"></param>
+        private void populateConfirmationPanel()
+        {
+
+            //personal panel
+            confirmLastName.Text = lastName.Text;
+            confirmFirstName.Text = firstName.Text;
+            confirmDDLYear.Text = ddlYear.SelectedValue;
+            confirmDDLMonth.Text = ddlMonth.SelectedValue;
+            confirmDDLDay.Text = confirmDDLDay.SelectedValue;
+            confirmCountry.Text = Country.SelectedValue;
+            confirmFirstLanguage.Text = firstLanguage.Text;
+            confirmGender.SelectedValue = gender.SelectedValue;
+            confirmMartialStatus.SelectedValue = martialstatus.SelectedValue;
+
+            confirmLastName.Enabled = false;
+            confirmFirstName.Enabled = false;
+            confirmDDLYear.Enabled = false;
+            confirmDDLMonth.Enabled = false;
+            confirmDDLDay.Enabled = false;
+            confirmCountry.Enabled = false;
+            confirmFirstLanguage.Enabled = false;
+            confirmGender.Enabled = false;
+            confirmMartialStatus.Enabled = false;
+
+            //contact panel
+            confirmAddress.Text = address.Text;
+            confirmPhone1.Text = phone1.Text;
+            confirmPhone2.Text = phone2.Text;
+            confirmEmail.Text = email.Text;
+
+            confirmAddress.Enabled = false;
+            confirmPhone1.Enabled = false;
+            confirmPhone2.Enabled = false;
+            confirmEmail.Enabled = false;
+
+            //conditions & preferences panel
+            confirmTransportation.Text = transportation.Text;
+            confirmAllergies.Text = allergies.Text;
+            confirmHobbies.Text = hobbies.Text;
+            confirmAbout.Text = about.Text;
+
+            confirmTransportation.Enabled = false;
+            confirmAllergies.Enabled = false;
+            confirmHobbies.Enabled = false;
+            confirmAbout.Enabled = false;
+
+            //university info panel
+            confirmUniversity.Text = university.Text;
+            confirmUniversityAddress.Text = universityAddress.Text;
+            confirmMajor.Text = major.Text;
+            confirmUniversityContactInfo.Text = universityContactInfo.Text;
+            confirmHomestayDuration.Text = homestayDuration.Text;
+            confirmFlightInfo.Text = flightInfo.Text;
+
+            confirmUniversity.Enabled = false;
+            confirmUniversityAddress.Enabled = false;
+            confirmMajor.Enabled = false;
+            confirmUniversityContactInfo.Enabled = false;
+            confirmHomestayDuration.Enabled = false;
+            confirmFlightInfo.Enabled = false;
+
 
         }
 
