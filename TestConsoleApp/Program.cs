@@ -10,6 +10,24 @@ namespace TestConsoleApp
     {
         static void Main(string[] args)
         {
+            Person p = new Person();
+
+            string str = new Serializer<Person>().Serialize(p);
+            Console.WriteLine(str);
+
+            Console.Read();
         }
+    }
+
+    public class Person
+    {
+        public Person()
+        {
+            name = "rob";
+            age = 22;
+        }
+
+        public string name { get; set; }
+        public int age { get; set; }
     }
 }
