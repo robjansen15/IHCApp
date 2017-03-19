@@ -202,3 +202,4 @@ C:\Users\PD-Gaming\Desktop\Development\IHCApp\IHCWebApp\bin\Newtonsoft.Json.dll
 C:\Users\PD-Gaming\Desktop\Development\IHCApp\IHCWebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\PD-Gaming\Desktop\Development\IHCApp\IHCWebApp\obj\Debug\UserWebApp.dll
 C:\Users\PD-Gaming\Desktop\Development\IHCApp\IHCWebApp\obj\Debug\UserWebApp.pdb
+C:\Users\PD-Gaming\Desktop\Development\IHCApp\IHCWebApp\obj\Debug\IHCWebApp.csprojResolveAssemblyReference.cache
