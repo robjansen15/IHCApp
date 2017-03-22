@@ -72,7 +72,18 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void continueButton_OnClick(object sender, EventArgs e)
         {
-            if ((int)Session["counter"] < 4)
+            //this returns if they have not checked the box
+            if((int)Session["counter"] == 0)
+            {
+                if (termsOfServiceCheckbox.Checked == false)
+                {
+                    labelForTOS.BackColor = System.Drawing.Color.Yellow;
+                    return;
+                }
+            }
+
+
+            if ((int)Session["counter"] < 5)
             {
                 Session["counter"] = ((int)Session["counter"] + 1);
             }
@@ -97,11 +108,12 @@ namespace UserWebApp
         /// </summary>
         /// <param name="value"></param>
         public void DisplayPanel(int value)
-        {         
+        {
             //change the view
             if (value == 0)
-            {              
-                familyPanel.Visible = true;
+            {
+                termsOfServicePanel.Visible = true;
+                familyPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
                 moreInfoPanel.Visible = false;
@@ -113,6 +125,20 @@ namespace UserWebApp
             }
             else if (value == 1)
             {
+                termsOfServicePanel.Visible = false;
+                familyPanel.Visible = true;
+                contactInfoPanel.Visible = false;
+                livingDetailsPanel.Visible = false;
+                moreInfoPanel.Visible = false;
+                confirmationPanel.Visible = false;
+
+
+                continueButton.Visible = true;
+                submitButton.Visible = false;
+            }
+            else if (value == 2)
+            {
+                termsOfServicePanel.Visible = false;
                 familyPanel.Visible = false;
                 contactInfoPanel.Visible = true;          
                 livingDetailsPanel.Visible = false;
@@ -122,8 +148,9 @@ namespace UserWebApp
                 continueButton.Visible = true;
                 submitButton.Visible = false;
             }
-            else if (value == 2)
+            else if (value == 3)
             {
+                termsOfServicePanel.Visible = false;
                 familyPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = true;
@@ -134,8 +161,9 @@ namespace UserWebApp
                 continueButton.Visible = true;
                 submitButton.Visible = false;
             }
-            else if (value == 3)
+            else if (value == 4)
             {
+                termsOfServicePanel.Visible = false;
                 familyPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
@@ -145,8 +173,9 @@ namespace UserWebApp
                 continueButton.Visible = true;
                 submitButton.Visible = false;
             }
-            else if (value == 4)
+            else if (value == 5)
             {
+                termsOfServicePanel.Visible = false;
                 familyPanel.Visible = false;
                 contactInfoPanel.Visible = false;
                 livingDetailsPanel.Visible = false;
@@ -160,7 +189,7 @@ namespace UserWebApp
                 populateConfirmationPanel();
 
             }
-}
+        }
 
 
         /// <summary>
