@@ -99,7 +99,7 @@
 
                                     </section>
 
-                                    <asp:Label AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
+                                    <asp:Label ID="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
                                     <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
                                 </div>
                             </asp:Panel>
