@@ -64,7 +64,7 @@
 
                          <%-- Terms of Service Panel --%>
                             <asp:Panel runat="server" id="termsOfServicePanel">
-                                <div>
+                                <div id="formHTML" runat="server">
                                    <section class="container">
 						                <h2>Rules</h2>
 						                <p>The current per session homestay fee is $650. Each session is four weeks. All fees are paid directly to International Homestay Consultants. The homestay fees may be paid by check, cash electronic-pay (ex: Chase Quick-pay) or bank transfer*. We do not accept credit cards. If paying by check, please send directly to International Homestay Consultants (7326 Hoover Road, Indianapolis IN 46260). If paying by cash, it is the student's responsibility to schedule an appointment with us, and make the payment in person, by the beginning of each session. A late fee will be assessed any outstanding account that has not been paid by the beginning of each session. (*All wire transfer fees are the responsibility of the student.)</p>

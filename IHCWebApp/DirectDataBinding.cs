@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,78 @@ namespace UserWebApp
         public DirectDataBinding()
         {
             _Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HomestayDatabase"].ConnectionString);
+        }
+
+
+        public string GetFamilyFormInfo()
+        {
+            string html = "";
+
+            try
+            {
+                Connect();
+
+                SqlCommand command = new SqlCommand("SPGetFormHTML", _Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@ID", "FAMILY"));
+
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {               
+                    while (rdr.Read())
+                    {
+                        html += rdr.GetString(2);
+                        break;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                html += "You must be connected to the database to populate this field";
+            }
+            finally
+            {
+                Disconnect();
+            }
+
+            return html;
+        }
+
+
+        public string GetApplicantFormInfo()
+        {
+            string html = "";
+
+            try
+            {
+                Connect();
+
+                SqlCommand command = new SqlCommand("SPGetFormHTML", _Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@ID", "APPLICANT"));
+
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        html += rdr.GetString(2);
+                        break;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                html += "You must be connected to the database to populate this field";
+            }
+            finally
+            {
+                Disconnect();
+            }
+
+            return html;
         }
 
 
@@ -86,6 +159,19 @@ namespace UserWebApp
             try
             {
                 Connect();
+                SqlCommand command = new SqlCommand("SPGetDisplayData", _Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@Discriminator", "Country"));
+                      
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        countries.Add(rdr.GetString(1));
+                    }
+                }
             }
             catch
             {
