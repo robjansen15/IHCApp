@@ -700,6 +700,7 @@
     <Compile Include="AdminPortal.aspx.designer.cs">
       <DependentUpon>AdminPortal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DirectDataBinding.cs" />
     <Compile Include="FamilyForm.aspx.cs">
       <DependentUpon>FamilyForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
