@@ -77,6 +77,16 @@ namespace UserWebApp
         /// <param name="e"></param>
         protected void continueButton_OnClick(object sender, EventArgs e)
         {
+            //This returns if they have not checked the box
+            if ((int)Session["counter"] == 0)
+            {
+                if (termsOfServiceCheckbox.Checked == false)
+                {
+                    labelForTOS.BackColor = System.Drawing.Color.Yellow;
+                    return;
+                }
+            }
+
             if ((int)Session["counter"] < 5)
             {
                 Session["counter"] = ((int)Session["counter"] + 1);

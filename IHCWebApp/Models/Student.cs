@@ -80,39 +80,6 @@ namespace UserWebApp.Models
         public string _OtherUniversity { get; set; }
         public string _Email { get; set; }
         public string _EmergencyContact { get; set; }
-        /*
-         * @A_FirstName varchar(50),
-        @A_LastName varchar(50),
-        @A_ReqMovInDate date,
-        @A_DurationOfStay int,
-        @A_Language varchar(20),
-        @A_Gender varchar(6),
-        @A_Status varchar(12),
-        @A_Nationality varchar(50),
-        @A_Street nvarchar(50),
-        @A_State varchar(50),
-        @A_City varchar(50),
-        @A_Country varchar(50),
-        @A_FlightId nvarchar(20),
-        @A_FlightTime time(7),
-        @A_FlightDate date,
-        @A_FlightName nvarchar(50),
-        @A_Dog varchar(3),
-        @A_Cat varchar(3),
-        @A_HealthIssues varchar(max),
-        @A_DOB date,
-        @A_PrimePh_no nvarchar(20),
-        @A_SecPh_no nvarchar(20),
-        @A_Hobbies nvarchar(max),
-        @A_About varchar(max),
-        @A_PayDate date,
-        @A_DepositDate date,
-        @A_PaymentAmount int,
-        @A_Id int,
-        @A_OtherUniversity varchar(50),
-        @A_Email nvarchar(320),
-        @A_EmergencyContact nvarchar(20) 
-        */
-    }
 
+    }
 }

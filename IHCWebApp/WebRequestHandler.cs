@@ -9,9 +9,6 @@ namespace UserWebApp
 {
     public class WebRequestHandler<T>
     {
-        public WebRequestHandler() { }
-
-
         public void POST(T obj, string path)
         {
             string URL = System.Configuration.ConfigurationManager.AppSettings["server"] + path;
@@ -24,42 +21,34 @@ namespace UserWebApp
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // List data response.
-            HttpResponseMessage response = client.GetAsync(urlParameters).Result;  
+            HttpResponseMessage response = client.GetAsync(urlParameters).Result;
             if (response.IsSuccessStatusCode)
             {
-            
+
             }
             else
             {
-                
+
             }
         }
 
-        
-        public string GET()
+
+        public string GET(string path, string parameters)
         {
             string responseString = string.Empty;
-            string URL = "https://sub.domain.com/objects.json";
-            string urlParameters = string.Empty;
+            string URL = System.Configuration.ConfigurationManager.AppSettings["server"] + path;
+            string urlParameters = parameters;
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(URL);
 
-            // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            // List data response.
-            HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call!
+            HttpResponseMessage response = client.GetAsync(urlParameters).Result;
             if (response.IsSuccessStatusCode)
             {
-                // Parse the response body. Blocking!
-                //var dataObjects = response.Content.ReadAsAsync<IEnumerable<DataObject>>().Result;
-                //foreach (var d in dataObjects)
-                //{
-                //    Console.WriteLine("{0}", d.Name);
-                //}
-                responseString = "response here";
+                //lets grab the response
+                responseString = response.Content.ReadAsStringAsync().Result;
             }
             else
             {
@@ -68,9 +57,5 @@ namespace UserWebApp
 
             return responseString;
         }
-
-
-
-        
     }
 }

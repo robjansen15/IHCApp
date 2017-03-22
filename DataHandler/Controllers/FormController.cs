@@ -17,11 +17,12 @@ namespace DataHandler.Controllers
          
             try
             {
-                databaseConnection._FormStrategy.insertStudent(new Serializer<Student>().Deserialize(serializedObject, typeof(Student)));         
+                Student std = new Serializer<Student>().Deserialize(serializedObject);
+                databaseConnection._FormStrategy.insertStudent(new Serializer<Student>().Deserialize(serializedObject));         
             }
-            catch
+            catch(Exception e)
             {
-
+                var err = e.ToString();
             }
             finally
             {
