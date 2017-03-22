@@ -126,6 +126,8 @@ namespace UserWebApp
             //change the view
             if (value == 0)
             {
+                formHTML.InnerHtml = new DirectDataBinding().GetApplicantFormInfo();
+
                 termsOfServicePanel.Visible = true;
                 personalInfoPanel.Visible = false;
                 contactInfoPanel.Visible = false;
