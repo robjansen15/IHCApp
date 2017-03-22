@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -86,6 +87,19 @@ namespace UserWebApp
             try
             {
                 Connect();
+                SqlCommand command = new SqlCommand("SPGetDisplayData", _Connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@Discriminator", "Country"));
+                      
+                using (SqlDataReader rdr = command.ExecuteReader())
+                {
+                    while (rdr.Read())
+                    {
+                        countries.Add(rdr.GetString(1));
+                    }
+                }
             }
             catch
             {
