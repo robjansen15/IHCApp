@@ -102,13 +102,13 @@ namespace IHCApp.Database.Public
 
             DataAccess da = new DataAccess(_DatabaseConnection);
             List<SqlParameter> parameters = new List<SqlParameter>();
-            parameters.Add(new SqlParameter("@DISCRIMINATOR", "country"));
+            parameters.Add(new SqlParameter("@Discriminator", "Country"));
 
-            DataTable dt = da.GetData(new StoredProcedureObj("GetAllCountires", parameters));
+            DataTable dt = da.GetData(new StoredProcedureObj("SPGetDisplayData", parameters));
 
             foreach(DataRow row in dt.Rows)
             {
-                countries.Add(row["VALUE"].ToString());
+                countries.Add(row["Text"].ToString());
             }
 
             return countries;
