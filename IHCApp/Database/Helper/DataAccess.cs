@@ -36,9 +36,9 @@ namespace IHCApp.Database.Helper
                 da.SelectCommand = cmd;
                 da.Fill(dt);
             }
-            catch
+            catch(Exception e)
             {
-
+                var x = e.ToString();
             }
             finally
             {
