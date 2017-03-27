@@ -32,8 +32,8 @@
                               <nav id="nav" class="cl-effect-17">
                             <ul>
                                 <li class="active"><a href="Home.aspx">Home</a></li>
-                                <li><a href="FamilyForm.aspx">Host a Student</a></li>
-                                <li><a href="StudentForm.aspx">Student Application</a></li>
+                                <li><a href="HostForm.aspx">Host</a></li>
+                                <li><a href="ApplicantForm.aspx">Stay</a></li>
                                 <li><a href="contact.php">Contact</a></li>
                             </ul>
                               </nav>
@@ -71,19 +71,19 @@
 							<section class="3u 12u(mobile)">
 								<img src="WebAssets/images/pic01.jpg" alt="" class="image full"/>
 								<div class="box">
-									<h3><a href="FamilyForm.aspx" class="text-vertical-spacing" >Family Application</a></h3>
+									<h3><a href="HostForm.aspx" class="text-vertical-spacing" >Host Application</a></h3>
 								</div>
 							</section>
 							<section class="3u 12u(mobile)">
 								<img src="WebAssets/images/pic01.jpg" alt="" class="image full"/>
 								<div class="box">
-									<h3><a href="#" class="text-vertical-spacing">Student Policies</a></h3>
+									<h3><a href="#" class="text-vertical-spacing">Applicant Policies</a></h3>
 								</div>
 							</section>
 							<section class="3u 12u(mobile)">
 								<img src="WebAssets/images/pic01.jpg" alt="" class="image full"/>             
 								<div class="box">
-									<h3><a href="StudentForm.aspx" class="text-vertical-spacing">Student Application</a></h3>
+									<h3><a href="ApplicantForm.aspx" class="text-vertical-spacing">Applicant Application</a></h3>
 								</div>     
 							</section>			
 					    </div>
