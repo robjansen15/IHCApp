@@ -33,7 +33,7 @@ namespace IHCApp.Database.Protected
         public DataTable GetAllHosts()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetAllHosts", new List<SqlParameter>()));
+            return da.GetData(new StoredProcedureObj("SPViewAllFamilies", new List<SqlParameter>()));
         }
 
 
