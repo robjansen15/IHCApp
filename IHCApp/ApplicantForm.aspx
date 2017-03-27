@@ -41,12 +41,12 @@
 
                     <!-- Nav -->
                     <nav id="nav" class="cl-effect-17">
-                        <ul>
-                            <li><a href="Home.aspx">Home</a></li>
-                            <li><a href="FamilyForm.aspx">Host a Student</a></li>
-                            <li class="active"><a href="index.html">Student Application</a></li>
-                            <li><a href="contact.php">Contact</a></li>
-                        </ul>
+                         <ul>
+                                <li class="active"><a href="Home.aspx">Home</a></li>
+                                <li><a href="HostForm.aspx">Host</a></li>
+                                <li><a href="ApplicantForm.aspx">Stay</a></li>
+                                <li><a href="contact.php">Contact</a></li>
+                            </ul>
                     </nav>
 
                 </div>
