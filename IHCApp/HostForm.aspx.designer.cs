@@ -157,6 +157,15 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.RadioButtonList allowSmoking;
         
         /// <summary>
+        /// allowDrinking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList allowDrinking;
+        
+        /// <summary>
         /// familySmoke control.
         /// </summary>
         /// <remarks>
