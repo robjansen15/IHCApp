@@ -18,6 +18,16 @@ namespace IHCApp.Database.Public
 
 
         /// <summary>
+        /// Get the pre-form HOST information
+        /// </summary>
+       
+
+        /// <summary>
+        /// Get the pre-form APPLICANT information
+        /// </summary>
+        
+
+        /// <summary>
         /// Get the Host information page
         /// </summary>
         public string GetHostInformation()

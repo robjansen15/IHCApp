@@ -705,6 +705,7 @@
     <Compile Include="Database\Public\PublicDataStrategy.cs" />
     <Compile Include="Database\Protected\QuickSearchStrategy.cs" />
     <Compile Include="Database\Public\TokenStrategy.cs" />
+    <Compile Include="Helper\TableParse.cs" />
     <Compile Include="HostForm.aspx.cs">
       <DependentUpon>HostForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
