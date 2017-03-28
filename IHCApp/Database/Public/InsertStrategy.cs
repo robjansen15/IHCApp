@@ -25,7 +25,7 @@ namespace IHCApp.Database.Public
 
             try
             {
-                SqlCommand command = new SqlCommand("SPInserthostAndReturnhostId", _DatabaseConnection.GetActiveConnection());
+                SqlCommand command = new SqlCommand("SPInsertAndReturnFamilyId", _DatabaseConnection.GetActiveConnection());
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want

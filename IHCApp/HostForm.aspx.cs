@@ -111,6 +111,8 @@ namespace IHCApp
                 host._Looking = "yes";
                 host._Note = "N/A";
                 host._NumBathrooms = 3;
+                host._CatsYN = "yes";
+                host._DogsYN = "yes";
                 host._NumCats = 2;
                 host._NumDogs = 1;
                 host._NumRooms = 3;
