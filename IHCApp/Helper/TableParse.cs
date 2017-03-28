@@ -118,6 +118,7 @@ namespace IHCApp.Helper
                     _FamilyID = row.Field<int>("Family_Id"),
                     _FirstName = row.Field<string>("Member_FirstName"),
                     _LastName = row.Field<string>("Member_LastName"),
+                    _Occupation = row.Field<string>("Member_Occupation"),
                     _Date = row.Field<DateTime>("Member_D.O.B"),
                     _Gender = row.Field<string>("Member_Gender"),
                     _Language = row.Field<string>("Member_Language"),

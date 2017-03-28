@@ -86,7 +86,7 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@host_Id", _hostID));
                 command.Parameters.Add(new SqlParameter("@Member_FirstName", familyMember._FirstName));
                 command.Parameters.Add(new SqlParameter("@Member_LastName", familyMember._LastName));
-                //command.Parameters.Add(new SqlParameter("@Member_Occupation", familyMember._Occupation));
+                command.Parameters.Add(new SqlParameter("@Member_Occupation", familyMember._Occupation));
                 command.Parameters.Add(new SqlParameter("@member_DOB", familyMember._Date));
                 command.Parameters.Add(new SqlParameter("@Member_Gender", familyMember._Gender));
                 command.Parameters.Add(new SqlParameter("@Member_Language", familyMember._Language));
