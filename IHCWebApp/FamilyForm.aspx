@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Home Stay Family Application</title>
+    <title>Home Stay Host Application</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -112,7 +112,7 @@
 
                                    
                                 <%--family name--%>
-                                <asp:Label AssociatedControlID="familyName" Text="Family Last Name: " runat="server" ></asp:Label>
+                                <asp:Label AssociatedControlID="familyName" Text="Host Last Name: " runat="server" ></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="familyName"></asp:TextBox>
 
@@ -120,7 +120,7 @@
                                 <br />
 
 
-                                <asp:Label AssociatedControlID="familyCnt" Text="Number of family members:" runat="server"></asp:Label>
+                                <asp:Label AssociatedControlID="familyCnt" Text="Number of host members:" runat="server"></asp:Label>
                                 <br />
                                 <asp:DropDownList runat="server" ID="familyCnt" OnSelectedIndexChanged="familyCnt_SelectedIndexChanged" AutoPostBack="true">
                                     <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
@@ -192,7 +192,7 @@
 
                          
 
-                                <asp:Label runat="server" Text="Does anyone in your family smoke: " AssociatedControlID="familySmoke"></asp:Label>
+                                <asp:Label runat="server" Text="Does anyone in the homestay smoke: " AssociatedControlID="familySmoke"></asp:Label>
                                  <br />
                                  <asp:RadioButtonList id="familySmoke" CssClass="rdoBtnItemSpacing" runat="server">
                                 <asp:ListItem Text="Yes" Value="0"/>
@@ -201,7 +201,7 @@
 
 
 
-                                <asp:Label runat="server" Text="Does anyone in your family drink: " AssociatedControlID="familyDrinking"></asp:Label>
+                                <asp:Label runat="server" Text="Does anyone in your homestay drink: " AssociatedControlID="familyDrinking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="familyDrinking" CssClass="rdoBtnItemSpacing" runat="server">
                                 <asp:ListItem Text="Yes" Value="0"/>
@@ -271,7 +271,7 @@
                             <%-- additional information panel --%>
                             <asp:Panel runat="server" ID="moreInfoPanel" Enabled="False">
                 
-                                <asp:Label runat="server" Text="What are some things your family enjoys doing?" AssociatedControlID="hobbies"></asp:Label>
+                                <asp:Label runat="server" Text="What are some things you or others in your home enjoy doing?" AssociatedControlID="hobbies"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="hobbies" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
 
@@ -287,10 +287,10 @@
                           <asp:Panel runat="server" ID="confirmationPanel" Enabled="False">
                                 <div id="accordion">
 
-                                     <h3>Family Information</h3>
+                                     <h3>Host Information</h3>
                                   <div class="accordion-content">
 
-                                        <asp:Label AssociatedControlID="familyName" Text="Family Last Name: " runat="server" ></asp:Label>
+                                        <asp:Label AssociatedControlID="familyName" Text="Host Last Name: " runat="server" ></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmFamilyName"></asp:TextBox>
 
@@ -298,7 +298,7 @@
                                         <br />
 
 
-                                        <asp:Label AssociatedControlID="familyCnt" Text="Number of family members:" runat="server"></asp:Label>
+                                        <asp:Label AssociatedControlID="familyCnt" Text="Number of people in the home:" runat="server"></asp:Label>
                                         <br />
                                         <asp:DropDownList runat="server" ID="confirmfamilyCnt" OnSelectedIndexChanged="familyCnt_SelectedIndexChanged" AutoPostBack="true">
                                             <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
@@ -368,7 +368,7 @@
 
                          
 
-                                        <asp:Label runat="server" Text="Does anyone in your family smoke: " AssociatedControlID="familySmoke"></asp:Label>
+                                        <asp:Label runat="server" Text="Does anyone in your home smoke: " AssociatedControlID="familySmoke"></asp:Label>
                                          <br />
                                          <asp:RadioButtonList id="confirmFamilySmoke" CssClass="rdoBtnItemSpacing" runat="server">
                                         <asp:ListItem Text="Yes" Value="0"/>
@@ -377,7 +377,7 @@
 
 
 
-                                        <asp:Label runat="server" Text="Does anyone in your family drink: " AssociatedControlID="familyDrinking"></asp:Label>
+                                        <asp:Label runat="server" Text="Does anyone in your home drink: " AssociatedControlID="familyDrinking"></asp:Label>
                                         <br />
                                         <asp:RadioButtonList id="RadioButtonList3" CssClass="rdoBtnItemSpacing" runat="server">
                                         <asp:ListItem Text="Yes" Value="0"/>
@@ -448,7 +448,7 @@
 
                                   <div class="accordion-content">
 
-                                        <asp:Label runat="server" Text="What are some things your family enjoys doing?" AssociatedControlID="hobbies"></asp:Label>
+                                        <asp:Label runat="server" Text="What are some things you or others in your home enjoy doing?" AssociatedControlID="hobbies"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmHobbies" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
 

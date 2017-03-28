@@ -7,6 +7,8 @@ namespace IHCApp.Models
 {
     public class Host
     {
+        public Host() { }
+
         public Host(string timeToCenter, int numBathrooms, string dogsYN, string catsYN, int numDogs,
             int numCats, int numRooms, string about, string email, string street, string state, string city,
             string country, string zip, string primePhone, string secPhone, string hobbies, string looking, string occupied,

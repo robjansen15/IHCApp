@@ -36,17 +36,17 @@
                     <!-- Logo -->
                     <div id="logo">
                         <span class="pennant"><span class="icon fa-home"></span></span>
-                        <h1><a href="StudentForm.aspx">Home Stay</a></h1>
+                        <h1><a href="ApplicantForm.aspx">Home Stay</a></h1>
                     </div>
 
                     <!-- Nav -->
                     <nav id="nav" class="cl-effect-17">
-                        <ul>
-                            <li><a href="Home.aspx">Home</a></li>
-                            <li><a href="FamilyForm.aspx">Host a Student</a></li>
-                            <li class="active"><a href="index.html">Student Application</a></li>
-                            <li><a href="contact.php">Contact</a></li>
-                        </ul>
+                         <ul>
+                                <li> <a href="Home.aspx">Home</a></li>
+                                <li><a href="HostForm.aspx">Host</a></li>
+                                <li class="active"><a href="ApplicantForm.aspx">Stay</a></li>
+                                <li><a href="contact.php">Contact</a></li>
+                            </ul>
                     </nav>
 
                 </div>
@@ -456,33 +456,33 @@
                             <%-- university information panel --%>
                             <asp:Panel runat="server" ID="universityInfoPanel" Enabled="False">
                 
-                                <asp:RequiredFieldValidator runat="server" controltovalidate="university" errormessage="Please enter the name of the university you are attending." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                <asp:Label runat="server" Text="University Name: " AssociatedControlID="university"></asp:Label>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="university" errormessage="Please enter the name of your sponser institution." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Sponsor Institution (name of school, company or organization):" AssociatedControlID="university"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="university"></asp:TextBox>
                                 <br />
                                 <br />
-                                <asp:RequiredFieldValidator runat="server" controltovalidate="universityAddress" errormessage="Please enter the university address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                <asp:Label runat="server" Text="University Address: " AssociatedControlID="universityAddress"></asp:Label>
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="universityAddress" errormessage="Please enter the address of your sponsor institution." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label runat="server" Text="Sponsor Institution Address: " AssociatedControlID="universityAddress"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="universityAddress"></asp:TextBox>
                                 <br />
                                 <br />
-                                <asp:Label runat="server" Text="Semester Start Date: "></asp:Label>
+                                <asp:Label runat="server" Text="Program Start Date: "></asp:Label>
                                 <br />
                                 <asp:DropDownList ID="y" runat="server" onchange ="PopulateDays()" />
                                 <asp:DropDownList ID="m" runat="server" onchange ="PopulateDays()" />
                                 <asp:DropDownList ID="d" runat="server" />
                                 <br />
                                 <br />
-                                <asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                <asp:Label runat="server" Text="Major (Subject of Study): " AssociatedControlID="major"></asp:Label>
+                               <%-- <asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFieldValidator>--%>
+                                <asp:Label runat="server" Text="Major (Subject of Study) if applicable: " AssociatedControlID="major"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="major"></asp:TextBox>
                                 <br />
                                 <br />
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="universityContactInfo" errormessage="Please provide your university contacts information." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                <asp:Label runat="server" Text="University Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
+                                <asp:Label runat="server" Text="Sponsor Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="universityContactInfo"></asp:TextBox>
                                 <br />
@@ -495,6 +495,7 @@
                                 <br />
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="flightInfo" errormessage="Please enter your flight arrival time." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                 <asp:Label runat="server" Text="Flight/Arrival Information (time &amp; date): " AssociatedControlID="flightInfo"></asp:Label>
+                                <asp:Label runat="server" Text="***Due to insurance dictates, homestay hosts cannot provide airport pick-up services.***"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="flightInfo"></asp:TextBox>
 
@@ -637,35 +638,35 @@
                          
                                   </div>
                                   <h3>University Information</h3>
-                                  <div class="accordion-content">
+                                    <div class="accordion-content">
 
                                         <asp:RequiredFieldValidator runat="server" controltovalidate="university" errormessage="Please enter the name of the university you are attending." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                        <asp:Label runat="server" Text="University Name: " AssociatedControlID="university"></asp:Label>
+                                        <asp:Label runat="server" Text="Sponsor Institution (name of school, company or organization): " AssociatedControlID="university"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmUniversity"></asp:TextBox>
                                         <br />
                                         <br />
                                         <asp:RequiredFieldValidator runat="server" controltovalidate="universityAddress" errormessage="Please enter the university address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                        <asp:Label runat="server" Text="University Address: " AssociatedControlID="universityAddress"></asp:Label>
+                                        <asp:Label runat="server" Text="Sponsor Institution Address: " AssociatedControlID="universityAddress"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmUniversityAddress"></asp:TextBox>
                                         <br />
                                         <br />
-                                        <asp:Label runat="server" Text="Semester Start Date: "></asp:Label>
+                                        <asp:Label runat="server" Text="Program Start Date: "></asp:Label>
                                         <br />
                                         <asp:DropDownList ID="DropDownList1" runat="server" onchange ="PopulateDays()" />
                                         <asp:DropDownList ID="DropDownList2" runat="server" onchange ="PopulateDays()" />
                                         <asp:DropDownList ID="DropDownList3" runat="server" />
                                         <br />
                                         <br />
-                                        <asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                        <asp:Label runat="server" Text="Major (Subject of Study): " AssociatedControlID="major"></asp:Label>
+                                        <%--<asp:RequiredFieldValidator runat="server" controltovalidate="major" errormessage="Please enter your major." ForeColor="#ff3300">*</asp:RequiredFie--%>ldValidator>
+                                        <asp:Label runat="server" Text="Major (Subject of Study) if applicable: " AssociatedControlID="major"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmMajor"></asp:TextBox>
                                         <br />
                                         <br />
                                         <asp:RequiredFieldValidator runat="server" controltovalidate="universityContactInfo" errormessage="Please provide your university contacts information." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
-                                        <asp:Label runat="server" Text="University Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
+                                        <asp:Label runat="server" Text="Sponsor Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmUniversityContactInfo"></asp:TextBox>
                                         <br />
@@ -676,8 +677,8 @@
                                         <asp:TextBox runat="server" id="confirmHomestayDuration"></asp:TextBox>
                                         <br />
                                         <br />
-                                        <asp:RequiredFieldValidator runat="server" controltovalidate="flightInfo" errormessage="Please enter your flight arrival time." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
                                         <asp:Label runat="server" Text="Flight/Arrival Information (time &amp; date): " AssociatedControlID="flightInfo"></asp:Label>
+                                        <asp:Label runat="server" Text="***Due to insurance dictates, homestay hosts cannot provide airport pick-up services.***"></asp:Label>
                                         <br />
                                         <asp:TextBox runat="server" id="confirmFlightInfo"></asp:TextBox>
 
