@@ -9,11 +9,12 @@ namespace IHCApp.Models
     {
         public Host() { }
 
-        public Host(string timeToCenter, int numBathrooms, string dogsYN, string catsYN, int numDogs,
-            int numCats, int numRooms, string about, string email, string street, string state, string city,
+        public Host(int? familyid,int? timeToCenter, int? numBathrooms, string dogsYN, string catsYN, int? numDogs,
+            int? numCats, int? numRooms, string about, string email, string street, string state, string city,
             string country, string zip, string primePhone, string secPhone, string hobbies, string looking, string occupied,
             string note, string toadmin)
         {
+            _FamilyID = familyid;
             _TimeToCenter = timeToCenter;
             _NumBathrooms = numBathrooms;
             _DogsYN = dogsYN;
@@ -37,14 +38,14 @@ namespace IHCApp.Models
             _ToAdmin = toadmin;
 
         }
-
-        public string _TimeToCenter { get; set; }
-        public int _NumBathrooms { get; set; }
+        public int? _FamilyID { get; set; }
+        public int? _TimeToCenter { get; set; }
+        public int? _NumBathrooms { get; set; }
         public string _DogsYN { get; set; }
         public string _CatsYN { get; set; }
-        public int _NumDogs { get; set; }
-        public int _NumCats { get; set; }
-        public int _NumRooms { get; set; }
+        public int? _NumDogs { get; set; }
+        public int? _NumCats { get; set; }
+        public int? _NumRooms { get; set; }
         public string _About { get; set; }
         public string _Email { get; set; }
         public string _Street { get; set; }

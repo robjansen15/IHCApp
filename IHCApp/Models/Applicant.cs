@@ -7,11 +7,13 @@ namespace IHCApp.Models
 {
     public class Applicant
     {
-        public Applicant(string firstname, string lastname, DateTime moveindate, int durationofstay, string language, string gender, string status,
+        public Applicant() { }
+        public Applicant(int applicantid,string firstname, string lastname, DateTime moveindate, int? durationofstay, string language, string gender, string status,
             string nationality, string street, string state, string city, string country, string flightID, DateTime flighttime, DateTime flightdate,
             string flightname, string dog, string cat, string healthissues, DateTime dob, string primephone, string secondaryphone, string hobbies,
-            string about, DateTime paydate, DateTime depositdate, int paymentamount, int id, string otheruniversity, string email, string emergencycontact)
+            string about, DateTime paydate, DateTime depositdate, int? paymentamount, int? id, string otheruniversity, string email, string emergencycontact)
         {
+            _ApplicantID = applicantid;
             _FirstName = firstname;
             _LastName = lastname;
             _MoveInDate = moveindate;
@@ -43,11 +45,11 @@ namespace IHCApp.Models
             _Email = email;
             _EmergencyContact = emergencycontact;
         }
-
+        public int _ApplicantID { get; set; }
         public string _FirstName { get; set; }
         public string _LastName { get; set; }
         public DateTime _MoveInDate { get; set; }
-        public int _DurationOfStay { get; set; }
+        public int? _DurationOfStay { get; set; }
         public string _Language { get; set; }
         public string _Gender { get; set; }
         public string _Status { get; set; }
@@ -70,8 +72,8 @@ namespace IHCApp.Models
         public string _About { get; set; }
         public DateTime _Paydate { get; set; }
         public DateTime _DepositDate { get; set; }
-        public int _PaymentAmount { get; set; }
-        public int _ID { get; set; }
+        public int? _PaymentAmount { get; set; }
+        public int? _ID { get; set; }
         public string _OtherUniversity { get; set; }
         public string _Email { get; set; }
         public string _EmergencyContact { get; set; }
