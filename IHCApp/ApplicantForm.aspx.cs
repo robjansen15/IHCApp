@@ -141,9 +141,9 @@ namespace IHCApp
 
                 new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertApplicant(applicant);
             }
-            catch
+            catch(Exception ex)
             {
-                var x = "err";
+                var x = ex.ToString();
                 //notify the user
             }
 

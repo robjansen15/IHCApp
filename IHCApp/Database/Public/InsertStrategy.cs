@@ -146,7 +146,6 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@A_PayDate", applicant._Paydate));
                 command.Parameters.Add(new SqlParameter("@A_DepositDate", applicant._DepositDate));
                 command.Parameters.Add(new SqlParameter("@A_PaymentAmount", applicant._PaymentAmount));
-                command.Parameters.Add(new SqlParameter("@A_Id", applicant._ID));
                 command.Parameters.Add(new SqlParameter("@A_OtherUniversity", applicant._OtherUniversity));
                 command.Parameters.Add(new SqlParameter("@A_Email", applicant._Email));
                 command.Parameters.Add(new SqlParameter("@A_EmergencyContact", applicant._EmergencyContact));
@@ -154,7 +153,7 @@ namespace IHCApp.Database.Public
             }
             catch (Exception e)
             {
-                var x = e.ToString();
+                throw e;
             }
             finally
             {
