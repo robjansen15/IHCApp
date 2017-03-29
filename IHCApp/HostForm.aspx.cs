@@ -122,7 +122,7 @@ namespace IHCApp
                 host._State = "Indiana";
                 host._Street = address.Text;
                 host._Zip = "41235";
-                host._TimeToCenter = "";
+                host._TimeToCenter = 10;
                 host._ToAdmin = "";
 
 
