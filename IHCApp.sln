@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9894307-52F1-41B6-838E-A2769852D387}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +15,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{2E45080C-BA98-4151-A215-C32DC0C5B4CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkhilTest", "AkhilTest\AkhilTest.csproj", "{E14367D3-E401-4B95-BA3A-CD031CA6B22B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHCAppTests", "IHCAppTests\IHCAppTests.csproj", "{467B23CC-3FAA-4EB2-B85C-BFFC462060D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{E14367D3-E401-4B95-BA3A-CD031CA6B22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E14367D3-E401-4B95-BA3A-CD031CA6B22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E14367D3-E401-4B95-BA3A-CD031CA6B22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467B23CC-3FAA-4EB2-B85C-BFFC462060D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467B23CC-3FAA-4EB2-B85C-BFFC462060D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467B23CC-3FAA-4EB2-B85C-BFFC462060D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467B23CC-3FAA-4EB2-B85C-BFFC462060D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
