@@ -33,7 +33,7 @@ namespace IHCApp.Models
             _Cat = cat;
             _HealthIssues = healthissues;
             _DOB = dob;
-            _PrimePhone = primephone;
+            _PrimaryPhone = primephone;
             _SecondaryPhone = secondaryphone;
             _Hobbies = hobbies;
             _About = about;
@@ -66,7 +66,7 @@ namespace IHCApp.Models
         public string _Cat { get; set; }
         public string _HealthIssues { get; set; }
         public DateTime _DOB { get; set; }
-        public string _PrimePhone { get; set; }
+        public string _PrimaryPhone { get; set; }
         public string _SecondaryPhone { get; set; }
         public string _Hobbies { get; set; }
         public string _About { get; set; }

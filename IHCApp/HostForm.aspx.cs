@@ -140,6 +140,8 @@ namespace IHCApp
             {
                 //notify the user
             }
+
+            Response.Redirect("Home.aspx");
         }
 
 

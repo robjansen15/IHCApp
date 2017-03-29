@@ -134,7 +134,7 @@ namespace IHCApp.Helper
                     _Cat = row.Field<string>("A_Cat"),
                     _HealthIssues = row.Field<string>("A_HealthIssues"),
                     _DOB = row.Field<DateTime>("A_D.O.B"),
-                    _PrimePhone = row.Field<string>("A_PrimePh_no"),
+                    _PrimaryPhone = row.Field<string>("A_PrimePh_no"),
                     _SecondaryPhone = row.Field<string>("A_SecPh_no"),
                     _Hobbies = row.Field<string>("A_Hobbies"),
                     _About = row.Field<string>("A_About"),
