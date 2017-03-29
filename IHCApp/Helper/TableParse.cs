@@ -122,8 +122,7 @@ namespace IHCApp.Helper
                     _Date = row.Field<DateTime>("Member_D.O.B"),
                     _Gender = row.Field<string>("Member_Gender"),
                     _Language = row.Field<string>("Member_Language"),
-                    _RelationToHost = row.Field<string>("Member_RelationToHost"),
-                    _UUID = row.Field<int>("F_UUID"),
+                    _RelationToHost = row.Field<string>("Member_RelationToHost")
 
                 }).ToList();
             return hostmember;

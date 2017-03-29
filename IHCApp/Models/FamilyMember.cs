@@ -8,7 +8,7 @@ namespace IHCApp.Models
     public class FamilyMember
     {
         public FamilyMember() { }
-        public FamilyMember(int FamilyID, string FirstName, string LastName, string occupation, DateTime Date, string Gender, string Language, string RelationToHost, int uuid)
+        public FamilyMember(int FamilyID, string FirstName, string LastName, string occupation, DateTime Date, string Gender, string Language, string RelationToHost)
         {
             _FamilyID = FamilyID;
             _FirstName = FirstName;
@@ -18,7 +18,6 @@ namespace IHCApp.Models
             _Gender = Gender;
             _Language = Language;
             _RelationToHost = RelationToHost;
-            _UUID = uuid;
         }
 
         public int _FamilyID { get; set; }
@@ -29,6 +28,5 @@ namespace IHCApp.Models
         public string _Gender { get; set; }
         public string _Language { get; set; }
         public string _RelationToHost { get; set; }
-        public int _UUID { get; set; }
     }
 }
