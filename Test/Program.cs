@@ -30,7 +30,7 @@ namespace Test
             List<Host> hosts = new TableParse<Host>().ParseHosts(dt1);
             List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
 
-            DataTable dt2 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllStudents();
+            DataTable dt2 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
             List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt2);
             List<List<string>> table1 = new TableParse<Applicant>().ParseForDisplay(applicant);
 

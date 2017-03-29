@@ -1,5 +1,9 @@
-﻿using System;
+﻿using IHCApp.Database;
+using IHCApp.Helper;
+using IHCApp.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -55,48 +59,13 @@ namespace IHCApp
             this.exampleDashboard.Visible = false;
         }
 
-        protected void tableFormBtn_Click(object sender, EventArgs e)
+        public void ClickQuickSearch()
         {
             this.exampleUpdateStudents.Visible = false;
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = true;
             this.exampleSearch.Visible = false;
-            this.exampleDashboard.Visible = false;
-
-
-            List<List<String>> lists = new List<List<String>>();
-
-            List<String> list = new List<String>();
-
-            //<tr>
-            //             <th><i class="icon_profile"></i> Full Name</th>
-            //             <th><i class="icon_calendar"></i> Date</th>
-            //             <th><i class="icon_mail_alt"></i> Email</th>
-            //             <th><i class="icon_pin_alt"></i> City</th>
-            //             <th><i class="icon_mobile"></i> Mobile</th>
-            //             <th><i class="icon_cogs"></i> Action</th>
-            //          </tr>
-
-
-            List<String> headerList = new List<String>();
-
-            headerList.Add("<th><i class=icon_profile'></i> Full Name</th>");
-            headerList.Add("<th><i class='icon_calendar'></i> Date</th>");
-            headerList.Add("<th><i class='icon_mail_alt'></i> Email</th>");
-            headerList.Add("<th><i class=icon_profile'></i> Full Name</th>");
-            headerList.Add("<th><i class=icon_profile'></i> Full Name</th>");
-            headerList.Add("<th><i class=icon_profile'></i> Full Name</th>");
-
-
-            list.Add("John");
-            list.Add("Rob");
-            list.Add("Jim");
-            list.Add("Ahkil");
-
-            lists.Add(list);
-            lists.Add(list);
-
-            quickSearch(lists);
+            this.exampleDashboard.Visible = false;        
         }
 
         protected void dashboardBtn_Click(object sender, EventArgs e)
@@ -106,61 +75,153 @@ namespace IHCApp
             this.exampleTable.Visible = false;
             this.exampleSearch.Visible = false;
             this.exampleDashboard.Visible = true;
-
-
-
         }
 
-        protected void quickSearch(List<List<String>> rows)
+
+
+        protected void handleQuickSearch(List<List<String>> rows)
         {
-            /* <table class="table table-striped table-advance table-hover">
-                <tbody>
-                    <tr>
-                        <th><i class="icon_profile"></i> Full Name</th>
-                        <th><i class="icon_calendar"></i> Date</th>
-                        <th><i class="icon_mail_alt"></i> Email</th>
-                        <th><i class="icon_pin_alt"></i> City</th>
-                        <th><i class="icon_mobile"></i> Mobile</th>
-                    </tr>
-                    <tr>
-                        <td>Angeline Mcclain</td>
-                        <td>2004-07-06</td>
-                        <td>dale@chief.info</td>
-                        <td>Rosser</td>
-                        <td>176-026-5992</td>
-                    </tr>
-                    <tr>
-            */
+           if(rows != null)
+            {
+                this.exampleTable.ID = "quickSearch";
+                this.exampleTable.Controls.Add(new LiteralControl("<table class='table table -striped table - advance table - hover'>"));
 
-            this.exampleTable.ID = "quickSearch";
-            this.exampleTable.Controls.Add(new LiteralControl("<table class='table table -striped table - advance table - hover'>"));
+                List<String> header = rows.ElementAt(0);
 
-            List<String> header = rows.ElementAt(0);
+                foreach (string column in header)
+                {
 
-            foreach (string column in header) { 
-
-
-            }
-
-            rows.RemoveAt(0);
-
-            int counter = 0;
-
-            foreach(List<String> row in rows) {
-
-                this.exampleTable.Controls.Add(new LiteralControl("<tr Id='rowNum'" + counter + "'>"));
-
-                foreach (string colInRow in row) {
-                    this.exampleTable.Controls.Add(new LiteralControl("<td>" + colInRow + "</td>"));
 
                 }
 
-                this.exampleTable.Controls.Add(new LiteralControl("</tr>"));
-                counter++;
-            }
+                rows.RemoveAt(0);
 
-            this.exampleTable.Controls.Add(new LiteralControl("</table>"));
+                int counter = 0;
+
+                foreach (List<String> row in rows)
+                {
+
+                    this.exampleTable.Controls.Add(new LiteralControl("<tr Id='rowNum'" + counter + "'>"));
+
+                    foreach (string colInRow in row)
+                    {
+                        this.exampleTable.Controls.Add(new LiteralControl("<td>" + colInRow + "</td>"));
+
+                    }
+
+                    this.exampleTable.Controls.Add(new LiteralControl("</tr>"));
+                    counter++;
+                }
+
+                this.exampleTable.Controls.Add(new LiteralControl("</table>"));
+            }
+            else
+            {
+                this.exampleTable.Controls.Add(new LiteralControl("<h1>Error populating table</h1>"));
+            }
         }
+
+
+
+        /// <summary>
+        /// QUICK SEARCH METHODS
+        /// </summary>
+    
+        /*HOSTS*/
+        protected void allHosts_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();        
+            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
+            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+
+        protected void allActiveHosts_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveHosts();
+            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
+            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+        protected void lookingHosts_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingHosts();
+            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
+            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+
+        /*APPLICANTS*/
+        protected void allApplicants_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
+            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
+            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+        protected void allActiveApplicants_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
+            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
+            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+        protected void lookingApplicants_Click(object sender, EventArgs e)
+        {
+            //go to this tab
+            ClickQuickSearch();
+
+            Token t = new Token("token", "email");
+
+            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingApplicants();
+            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
+            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+
+            //this handles the HTML for you :)))
+            handleQuickSearch(table);
+        }
+
+       
     }
 
 }

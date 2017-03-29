@@ -135,9 +135,6 @@ namespace IHCApp
 
                 new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertFamilyMemeber(new FamilyMember(Convert.ToInt32(familyID), "John", "Baker", "Drug Dealer", DateTime.UtcNow, "Female", "Japanese", "Brother"), Convert.ToInt32(familyID));
 
-
-
-
             }
             catch
             {

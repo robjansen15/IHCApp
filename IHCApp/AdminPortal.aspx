@@ -144,9 +144,12 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="tableFormBtn_Click" class="">All Students</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="tableFormBtn_Click" class="">All Hosts</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allStudentsBySchool" OnClick="tableFormBtn_Click" class="">All Students by School</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
+                                <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class="">All Active Applicants</asp:LinkButton></li>                                
+                                <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class="">All Looking Applicants</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class="">All Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allActiveHosts" OnClick="allActiveHosts_Click" class="">All Active Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class="">All Looking Hosts</asp:LinkButton></li>
                             </ul>
                         </li>
                                     
