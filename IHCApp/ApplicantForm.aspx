@@ -62,12 +62,9 @@
 
                             <%-- Terms of Service Panel --%>
                             <asp:Panel runat="server" id="termsOfServicePanel">
-                                <div id="formHTML" runat="server">
-                                   
-
+                                <div id="formHTML" runat="server">                            
                                    
                                 </div>
-
 
                                 <asp:Label ID="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
                                 <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
