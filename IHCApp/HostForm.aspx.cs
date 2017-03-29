@@ -155,7 +155,7 @@ namespace IHCApp
             if (value == 0)
             {
                 //TODO
-                //formHTML.InnerHtml = new DirectDataBinding().GetFamilyFormInfo();
+                formHTML.InnerHtml = new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetHostInformation();
 
                 termsOfServicePanel.Visible = true;
                 familyPanel.Visible = false;

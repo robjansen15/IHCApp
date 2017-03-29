@@ -65,12 +65,16 @@
                                 <div id="formHTML" runat="server">
                                    
 
-                                    <asp:Label ID="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
-                                    <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
+                                   
                                 </div>
+
+
+                                <asp:Label ID="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
+                                <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
+
                             </asp:Panel>
 
-
+                            
 
 
                             <%-- personal information panel --%>

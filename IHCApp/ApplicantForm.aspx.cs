@@ -161,7 +161,7 @@ namespace IHCApp
             if (value == 0)
             {
                 //TODO
-                //formHTML.InnerHtml = new DirectDataBinding().GetApplicantFormInfo();
+                formHTML.InnerHtml = new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetApplicantFormInfo();
 
                 termsOfServicePanel.Visible = true;
                 personalInfoPanel.Visible = false;
