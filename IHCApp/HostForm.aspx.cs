@@ -127,10 +127,13 @@ namespace IHCApp
 
 
 
-                DatabaseConnection db = new DatabaseConnection();
-                InsertStrategy insertStrategy = new InsertStrategy(db);
+                String familyID = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
 
-                insertStrategy.InsertHost(host);
+                //Grab family members
+                
+                //create foreach
+
+                new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertFamilyMemeber(new FamilyMember(Convert.ToInt32(familyID), "John", "Baker", "Drug Dealer", DateTime.UtcNow, "Female", "Japanese", "Brother"), Convert.ToInt32(familyID));
 
 
 

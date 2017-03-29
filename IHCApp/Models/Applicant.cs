@@ -7,6 +7,13 @@ namespace IHCApp.Models
 {
     public class Applicant
     {
+
+        public Applicant()
+        {
+
+        }
+
+
         public Applicant(string firstname, string lastname, DateTime moveindate, int durationofstay, string language, string gender, string status,
             string nationality, string street, string state, string city, string country, string flightID, DateTime flighttime, DateTime flightdate,
             string flightname, string dog, string cat, string healthissues, DateTime dob, string primephone, string secondaryphone, string hobbies,

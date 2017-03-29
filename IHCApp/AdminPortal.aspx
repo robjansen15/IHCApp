@@ -257,7 +257,7 @@
                         <p style="text-align:center">Example Table</p>
                         <br />
 
-                        <table class="table table-striped table-advance table-hover">
+                        <%--<table class="table table-striped table-advance table-hover">
                                <tbody>
                                   <tr>
                                      <th><i class="icon_profile"></i> Full Name</th>
@@ -408,7 +408,7 @@
                                       </td>
                                   </tr>                              
                                </tbody>
-                            </table>
+                            </table>--%>
    
                         <!-- project team & activity end -->
                     </asp:Panel>    

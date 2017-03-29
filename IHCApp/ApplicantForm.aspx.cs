@@ -105,8 +105,10 @@ namespace IHCApp
         {
             try
             {
-                //Applicant applicant = new Applicant();
-                //new DatabaseConnection()._InsertStrategy.InsertApplicant(applicant);
+                Applicant applicant = new Applicant();
+
+
+                new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertApplicant(applicant);
             }
             catch
             {
