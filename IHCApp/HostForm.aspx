@@ -65,44 +65,14 @@
                          <%-- Terms of Service Panel --%>
                             <asp:Panel runat="server" id="termsOfServicePanel">
                                 <div id="formHTML" runat="server">
-                                   <section class="container">
-						                <h2>Rules</h2>
-						                <p>The current per session homestay fee is $650. Each session is four weeks. All fees are paid directly to International Homestay Consultants. The homestay fees may be paid by check, cash electronic-pay (ex: Chase Quick-pay) or bank transfer*. We do not accept credit cards. If paying by check, please send directly to International Homestay Consultants (7326 Hoover Road, Indianapolis IN 46260). If paying by cash, it is the student's responsibility to schedule an appointment with us, and make the payment in person, by the beginning of each session. A late fee will be assessed any outstanding account that has not been paid by the beginning of each session. (*All wire transfer fees are the responsibility of the student.)</p>
-
-                                        <h3>How hosting works</h3>
-                                        <p>Students who plan to return to homestay after a vacation* will be charged the vacation rate of 50% of regular homestay fee, for time absent from homestay. If student remains in homestay during class break, the regular homestay fee will be charged. (*Vacation rate is calculated in whole weeks.)</p>
-
-					               </section>
-                                    <section>
-                                        <h2>Policies students must abide</h2>
-                                            <p class="terms-of-service-policies">Homestay accommodations can be pre-arranged for any length of time, with the option of extending the stay if desired. If your arrival date does not correspond with published session dates, the fee is pro-rated accordingly, to the student&#39;s advantage.</span></p>
-
-                                            <ol class ="terms-of-service-policies">
-	                                            <li>A non-refundable reservation fee ($200) and homestay application should be submitted at least four week&#39;s prior to requested move-in date.</li>
-	                                            <li>The first four week&#39;s rent must be paid to International Homestay Consultants prior to move-in.</li>
-	                                            <li>All homestays include a private furnished bedroom, use of public areas of house, laundry facilities, internet access, breakfast and dinner.</li>
-	                                            <li>You should plan to arrive at your homestay no more than two days before IUPUI orientation commences.</li>
-	                                            <li>You should plan to depart the homestay on Saturday before 1:00pm following the end of the semester unless other arrangements with our company have been made.</li>
-	                                            <li>Smoking is not permitted inside homestay houses.</li>
-	                                            <li>If you are not comfortable in a home with indoor pets, we will make every effort to accommodate you. However, because most Americans have indoor pets we cannot guarantee a homestay without indoor pets.</li>
-	                                            <li>Travel time to and from the university will vary. International Homestay Consultants will place you in a home within walking distance of public transportation.</li>
-	                                            <li>The homestay hosts may be families with mother, father, and children; they may be single people or couples without children.</li>
-	                                            <li>International Homestay Consultants is available to discuss student concerns by phone or e-mail during regular business hours, or face to face on Wednesdays, during regular campus visits.</li>
-	                                            <li>Students will not be allowed to stay at the homestay, past or prior to their pre-arranged times, without the agreement of International Homestay Consultants. Privately arranged homestays will make hosts ineligible for hosting for us in the future.</li>
-	                                            <li>Homestay Students pay homestay fees each session (4 weeks) directly to International Homestay Consultants. Hosts will receive payment directly from International Homestay Consultants. Money should never exchange hands between hosts and students.</li>
-	                                            <li>Students are encouraged to bring their own notebook computer if they want to use computers in their homestay.</li>
-	                                            <li>Hosts are not expected to cook differently for students; if students want limited kitchen privileges, they must ask the host first, and must clean up after themselves.</li>
-                                            </ol>
-
-                                            <p><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">To apply, complete the&nbsp;</span><a href="http://internationalhomestay.us/Homestay_Application.pdf" style="font-family: &quot;Times New Roman&quot;; font-size: medium;">Homestay Application</a><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: medium;">&nbsp;and submit it with your reservation fee at least four weeks prior to your time of study.</span></p>
-
-                                    </section>
-
-                                    <asp:Label id="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
-                                    <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
+                                                               
                                 </div>
+
+                                <asp:Label id="labelForTOS" AssociatedControlID="termsOfServiceCheckbox" Text="I agree to the terms of service: " runat="server"></asp:Label>
+                                <asp:CheckBox id="termsOfServiceCheckbox" runat="server" Text="" TextAlign="Right" />
                             </asp:Panel>
 
+                            
 
                             <%-- Family panel --%>
                             <asp:Panel runat="server" id="familyPanel">

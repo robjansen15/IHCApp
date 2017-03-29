@@ -19,39 +19,47 @@ namespace Test
             Token t = new Token("token", "email");
 
             DataTable dt1 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
-            DataTable dt2 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveStudents();
-            DataTable dt3 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
-            DataTable dt4 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllStudents();
-            DataTable dt5 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingHosts();
-            DataTable dt6 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingStudents();
+            //DataTable dt2 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveStudents();
+            //DataTable dt3 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
+            //DataTable dt4 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllStudents();
+            //DataTable dt5 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingHosts();
+            //DataTable dt6 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingStudents();
 
+            //List<Host> hosts = new List<Host>();
+            //Host h = new Host();
+            List<Host> hosts = new TableParse<Host>().ParseHosts(dt1);
+            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
 
-            List<Host> hosts = new List<Host>();
+            DataTable dt2 = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
+            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt2);
+            List<List<string>> table1 = new TableParse<Applicant>().ParseForDisplay(applicant);
 
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //    Host h = new Host();
-
-            //    h._Email = row["F_Email"].ToString();
-            //    h._About = row["A_About"].ToString();
-
-            //    hosts.Add(h);             
-            //}
-
-            Host h = new Host();
-
-            h._Email = "rob@gmail.com";
-            h._About = "about me";
-
-            hosts.Add(h);
-            hosts.Add(h);
-
-            List<List<string>> table = new TableParse<Host>().Parse(hosts);
-
-
-
+            Console.WriteLine("Done!");
             //Quick Search
-
+            /* FAMILY
+             [Family_Id]       INT            IDENTITY (1, 1) NOT NULL,
+               [Time_toCenter]   INT            NOT NULL,
+               [F_NoOfBathrooms] INT            NOT NULL,
+               [F_Dogs]          VARCHAR (3)    NULL,
+               [F_Cats]          VARCHAR (3)    NULL,
+               [F_noOfDogs]      INT            NULL,
+               [F_noOfCats]      INT            NULL,
+               [F_NoOfRooms]     INT            NULL,
+               [F_about]         VARCHAR (MAX)  NOT NULL,
+               [F_Email]         NVARCHAR (320) NOT NULL,
+               [F_Street]        NVARCHAR (50)  NOT NULL,
+               [F_state]         VARCHAR (50)   NOT NULL,
+               [F_city]          VARCHAR (50)   NOT NULL,
+               [F_Country]       VARCHAR (50)   NOT NULL,
+               [F_Zip]           NVARCHAR (20)  NOT NULL,
+               [F_PrimePh_no]    NVARCHAR (20)  NOT NULL,
+               [F_SecPh_no]      NVARCHAR (20)  NULL,
+               [F_Hobbies]       NVARCHAR (MAX) NOT NULL,
+               [F_looking]       VARCHAR (3)    NOT NULL,
+               [F_occupied]      VARCHAR (3)    NOT NULL,
+               [F_note]          NVARCHAR (MAX) NULL,
+               [F_ToAdmin]       NVARCHAR (MAX) NULL,
+            */
             /*Applicant
                  [A_id]               INT            IDENTITY (1, 1) NOT NULL,
                 [A_FirstName]        VARCHAR (50)   NOT NULL,
@@ -87,30 +95,7 @@ namespace Test
                 [A_EmergencyContact] NVARCHAR (20)  NULL,              
              */
 
-            /* FAMILY
-              [Family_Id]       INT            IDENTITY (1, 1) NOT NULL,
-                [Time_toCenter]   INT            NOT NULL,
-                [F_NoOfBathrooms] INT            NOT NULL,
-                [F_Dogs]          VARCHAR (3)    NULL,
-                [F_Cats]          VARCHAR (3)    NULL,
-                [F_noOfDogs]      INT            NULL,
-                [F_noOfCats]      INT            NULL,
-                [F_NoOfRooms]     INT            NULL,
-                [F_about]         VARCHAR (MAX)  NOT NULL,
-                [F_Email]         NVARCHAR (320) NOT NULL,
-                [F_Street]        NVARCHAR (50)  NOT NULL,
-                [F_state]         VARCHAR (50)   NOT NULL,
-                [F_city]          VARCHAR (50)   NOT NULL,
-                [F_Country]       VARCHAR (50)   NOT NULL,
-                [F_Zip]           NVARCHAR (20)  NOT NULL,
-                [F_PrimePh_no]    NVARCHAR (20)  NOT NULL,
-                [F_SecPh_no]      NVARCHAR (20)  NULL,
-                [F_Hobbies]       NVARCHAR (MAX) NOT NULL,
-                [F_looking]       VARCHAR (3)    NOT NULL,
-                [F_occupied]      VARCHAR (3)    NOT NULL,
-                [F_note]          NVARCHAR (MAX) NULL,
-                [F_ToAdmin]       NVARCHAR (MAX) NULL,
-             */
+
 
             ///Have a HOST and leave properties null if you don't use them
 
@@ -123,6 +108,6 @@ namespace Test
         ///Search through all of the properies and if a property is null skip it...
         ///
 
- 
+
     }
 }

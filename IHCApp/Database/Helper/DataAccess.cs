@@ -27,7 +27,7 @@ namespace IHCApp.Database.Helper
 
             _DatabaseConnection.Connect();
             try
-            {
+             {
                 cmd = new SqlCommand(storedProcedureObj._StoredProcedure, _DatabaseConnection.GetActiveConnection());
 
                 //adds the parameters

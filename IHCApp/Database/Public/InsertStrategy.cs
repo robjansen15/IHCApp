@@ -25,7 +25,7 @@ namespace IHCApp.Database.Public
 
             try
             {
-                SqlCommand command = new SqlCommand("SPInserthostAndReturnhostId", _DatabaseConnection.GetActiveConnection());
+                SqlCommand command = new SqlCommand("SPInsertAndReturnFamilyId", _DatabaseConnection.GetActiveConnection());
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want
@@ -116,7 +116,7 @@ namespace IHCApp.Database.Public
             try
             {
 
-                SqlCommand command = new SqlCommand("SPInserthostAndReturnhostId", _DatabaseConnection.GetActiveConnection());
+                SqlCommand command = new SqlCommand("SPInsertApplicant_Form", _DatabaseConnection.GetActiveConnection());
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want
@@ -139,14 +139,13 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@A_Cat", applicant._Cat));
                 command.Parameters.Add(new SqlParameter("@A_HealthIssues", applicant._HealthIssues));
                 command.Parameters.Add(new SqlParameter("@A_DOB", applicant._DOB));
-                command.Parameters.Add(new SqlParameter("@A_PrimePh_no", applicant._PrimePhone));
+                command.Parameters.Add(new SqlParameter("@A_PrimePh_no", applicant._PrimaryPhone));
                 command.Parameters.Add(new SqlParameter("@A_SecPh_no", applicant._SecondaryPhone));
                 command.Parameters.Add(new SqlParameter("@A_Hobbies", applicant._Hobbies));
                 command.Parameters.Add(new SqlParameter("@A_About", applicant._About));
                 command.Parameters.Add(new SqlParameter("@A_PayDate", applicant._Paydate));
                 command.Parameters.Add(new SqlParameter("@A_DepositDate", applicant._DepositDate));
                 command.Parameters.Add(new SqlParameter("@A_PaymentAmount", applicant._PaymentAmount));
-                command.Parameters.Add(new SqlParameter("@A_Id", applicant._ID));
                 command.Parameters.Add(new SqlParameter("@A_OtherUniversity", applicant._OtherUniversity));
                 command.Parameters.Add(new SqlParameter("@A_Email", applicant._Email));
                 command.Parameters.Add(new SqlParameter("@A_EmergencyContact", applicant._EmergencyContact));
@@ -154,7 +153,7 @@ namespace IHCApp.Database.Public
             }
             catch (Exception e)
             {
-                var x = e.ToString();
+                throw e;
             }
             finally
             {

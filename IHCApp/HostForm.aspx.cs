@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using IHCApp.Models;
 using IHCApp.Database;
+using IHCApp.Database.Public;
 
 namespace IHCApp
 {
@@ -100,13 +101,47 @@ namespace IHCApp
         {
             try
             {
-                //Host host = new Host();
-                //new DatabaseConnection()._InsertStrategy.InsertHost(host);
+                Host host = new Host();
+
+                host._About = about.Text;
+                host._City = "Indianapolis";
+                host._Country = "United States";
+                host._Email = email.Text;
+                host._Hobbies = hobbies.Text;
+                host._Looking = "yes";
+                host._Note = "N/A";
+                host._NumBathrooms = 3;
+                host._CatsYN = "yes";
+                host._DogsYN = "yes";
+                host._NumCats = 2;
+                host._NumDogs = 1;
+                host._NumRooms = 3;
+                host._Occupied = "no";
+                host._PrimePhone = phone1.Text;
+                host._SecPhone = phone2.Text;
+                host._State = "Indiana";
+                host._Street = address.Text;
+                host._Zip = "41235";
+                host._TimeToCenter = 10;
+                host._ToAdmin = "";
+
+
+
+                String familyID = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
+
+                //Grab family members
+                
+                //create foreach
+
+                new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertFamilyMemeber(new FamilyMember(Convert.ToInt32(familyID), "John", "Baker", "Drug Dealer", DateTime.UtcNow, "Female", "Japanese", "Brother"), Convert.ToInt32(familyID));
+
             }
             catch
             {
                 //notify the user
             }
+
+            Response.Redirect("Home.aspx");
         }
 
 
@@ -120,7 +155,7 @@ namespace IHCApp
             if (value == 0)
             {
                 //TODO
-                //formHTML.InnerHtml = new DirectDataBinding().GetFamilyFormInfo();
+                formHTML.InnerHtml = new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetHostInformation();
 
                 termsOfServicePanel.Visible = true;
                 familyPanel.Visible = false;

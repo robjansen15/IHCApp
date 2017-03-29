@@ -105,13 +105,49 @@ namespace IHCApp
         {
             try
             {
-                //Applicant applicant = new Applicant();
-                //new DatabaseConnection()._InsertStrategy.InsertApplicant(applicant);
+                Applicant applicant = new Applicant();
+
+                applicant._FirstName = this.firstName.Text;
+                applicant._LastName = this.lastName.Text;
+                applicant._MoveInDate = DateTime.Now;
+                applicant._DurationOfStay = 4;
+                applicant._Language = this.firstLanguage.Text;
+                applicant._Gender = this.gender.Text;
+                applicant._Status = "status";
+                applicant._Nationality = "nationality";
+                applicant._Street = this.address.Text;
+                applicant._State = "IN";
+                applicant._City = "Indianapolis";
+                applicant._Country = this.Country.Text;
+                applicant._FlightID = "F29";
+                applicant._FlightDate = DateTime.Now;
+                applicant._FlightName = "flight name";
+                applicant._Dog = "yes";
+                applicant._Cat = "no";
+                applicant._HealthIssues = this.allergies.Text;
+                applicant._DOB = DateTime.Now;
+                applicant._PrimaryPhone = this.phone1.Text;
+                applicant._SecondaryPhone = this.phone2.Text;
+                applicant._Hobbies = this.hobbies.Text;
+                applicant._About = this.about.Text;
+                applicant._Paydate = DateTime.Now;
+                applicant._DepositDate = DateTime.Now;
+                applicant._PaymentAmount = 300;
+                applicant._ID = 20;
+                applicant._OtherUniversity = "purdue";
+                applicant._Email = this.email.Text;
+                applicant._EmergencyContact = this.universityContactInfo.Text;
+
+
+                new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertApplicant(applicant);
             }
-            catch
+            catch(Exception ex)
             {
+                var x = ex.ToString();
                 //notify the user
             }
+
+            Response.Redirect("Home.aspx");
         }
 
 
@@ -125,7 +161,7 @@ namespace IHCApp
             if (value == 0)
             {
                 //TODO
-                //formHTML.InnerHtml = new DirectDataBinding().GetApplicantFormInfo();
+                formHTML.InnerHtml = new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetApplicantFormInfo();
 
                 termsOfServicePanel.Visible = true;
                 personalInfoPanel.Visible = false;

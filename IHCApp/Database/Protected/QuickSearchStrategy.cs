@@ -18,12 +18,32 @@ namespace IHCApp.Database.Protected
 
 
         /// <summary>
-        /// Get all students
+        /// Get all applicants
         /// </summary>
-        public DataTable GetAllStudents()
+        public DataTable GetAllApplicants()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetAllStudents", new List<SqlParameter>()));
+            return da.GetData(new StoredProcedureObj("SPReadAllStudents", new List<SqlParameter>()));
+        }
+
+
+        /// <summary>
+        /// Get active applicant
+        /// </summary>
+        public DataTable GetActiveApplicants()
+        {
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            return da.GetData(new StoredProcedureObj("SPReadAllActiveApplicants", new List<SqlParameter>()));
+        }
+
+
+        /// <summary>
+        /// Get "looking" applicants
+        /// </summary>
+        public DataTable GetLookingApplicants()
+        {
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            return da.GetData(new StoredProcedureObj("SPReadAllLookingApplicants", new List<SqlParameter>()));
         }
 
 
@@ -38,32 +58,12 @@ namespace IHCApp.Database.Protected
 
 
         /// <summary>
-        /// Get active students
-        /// </summary>
-        public DataTable GetActiveStudents()
-        {
-            DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetActiveStudents", new List<SqlParameter>()));
-        }
-
-
-        /// <summary>
         /// Get active hosts
         /// </summary>
         public DataTable GetActiveHosts()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetActiveHosts", new List<SqlParameter>()));
-        }
-
-
-        /// <summary>
-        /// Get "looking" students
-        /// </summary>
-        public DataTable GetLookingStudents()
-        {
-            DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetLookingStudents", new List<SqlParameter>()));
+            return da.GetData(new StoredProcedureObj("SPReadAllActiveHosts", new List<SqlParameter>()));
         }
 
 
@@ -73,7 +73,7 @@ namespace IHCApp.Database.Protected
         public DataTable GetLookingHosts()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetLookingHosts", new List<SqlParameter>()));
+            return da.GetData(new StoredProcedureObj("SPReadAllLookingHosts", new List<SqlParameter>()));
         }
 
 
