@@ -23,7 +23,7 @@ namespace IHCApp.Database.Protected
         public DataTable GetAllStudents()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
-            return da.GetData(new StoredProcedureObj("GetAllStudents", new List<SqlParameter>()));
+            return da.GetData(new StoredProcedureObj("SPReadAllStudents", new List<SqlParameter>()));
         }
 
 

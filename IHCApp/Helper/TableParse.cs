@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using IHCApp.Models;
 using System.Data;
 using IHCApp.Helper;
+using System.Reflection;
 
 namespace IHCApp.Helper
 {
@@ -17,27 +18,63 @@ namespace IHCApp.Helper
 
         public List<List<string>> ParseForDisplay(List<T> obj)
         {
+    
             List<List<string>> myList = new List<List<string>>();
 
-            //each ROW
-            foreach (var o in obj)
+            foreach(var o in obj)
             {
-                List<string> row = new List<string>();
-                //each COLUMN
-                foreach (var property in obj.GetType().GetProperties())
-                {
-                    if (property != null)
-                    {
+                var stringProps = o.GetType().GetProperties().Where(p => p.PropertyType == typeof(string));
+                var intProps = o.GetType().GetProperties().Where(p => p.PropertyType == typeof(Nullable<Int32>));
 
-                        row.Add(property.GetValue(obj.GetType()).ToString());
-                    }
+                List<string> list = new List<string>();
+
+                foreach (var prop in stringProps)
+                {
+                    string val = (string)prop.GetValue(o);
+                    list.Add(val);
                 }
 
-                myList.Add(row);
+
+                foreach (var prop in intProps)
+                {
+                    Nullable<Int32> val = (Nullable<Int32>)prop.GetValue(o);
+
+                    if(val != null)
+                    {
+                        list.Add(val.ToString());
+                    }
+                    else
+                    {
+                        list.Add("");
+                    }
+
+                }
+
+                myList.Add(list);
             }
+            
+
+
+            //foreach (var o in obj)
+            //{
+            //    List<string> row = new List<string>();
+            //    //each COLUMN
+            //    foreach (PropertyInfo prop in o.GetType().GetProperties())
+            //    {
+            //        var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+            //        if (type == typeof(DateTime))
+            //        {
+            //            Console.WriteLine(prop.GetValue(car, null).ToString());
+            //        }
+            //    }
+
+            //    myList.Add(row);
+            //}
 
             return myList;
         }
+
+
         public List<Host> ParseHosts(DataTable dt)
         {
             List<Host> hosts = dt.AsEnumerable().Select(row =>
@@ -69,6 +106,8 @@ namespace IHCApp.Helper
                 }).ToList();
             return hosts;
         }
+
+
         public List<Applicant> ParseApplicant(DataTable dt)
         {
             List<Applicant> applicants = dt.AsEnumerable().Select(row =>
@@ -88,19 +127,19 @@ namespace IHCApp.Helper
                     _City = row.Field<string>("A_City"),
                     _Country = row.Field<string>("A_Country"),
                     _FlightID = row.Field<string>("A_FlightId"),
-                    _FlightTime = row.Field<DateTime>("A_FlightTime"),
+                    //_FlightTime = row.Field<string>("A_FlightTime"),
                     _FlightDate = row.Field<DateTime>("A_FlightDate"),
                     _FlightName = row.Field<string>("A_FlightName"),
                     _Dog = row.Field<string>("A_Dog"),
                     _Cat = row.Field<string>("A_Cat"),
                     _HealthIssues = row.Field<string>("A_HealthIssues"),
-                    _DOB = row.Field<DateTime>("A_D.O.B."),
+                    _DOB = row.Field<DateTime>("A_D.O.B"),
                     _PrimePhone = row.Field<string>("A_PrimePh_no"),
                     _SecondaryPhone = row.Field<string>("A_SecPh_no"),
                     _Hobbies = row.Field<string>("A_Hobbies"),
                     _About = row.Field<string>("A_About"),
                     _Paydate = row.Field<DateTime>("A_Paydate"),
-                    _DepositDate = row.Field<DateTime>("A_DepositDate"),
+                    _DepositDate = row.Field<DateTime>("A_DespositDate"),
                     _PaymentAmount = row.Field<int?>("A_PaymentAmount"),
                     _ID = row.Field<int?>("I_Id"),
                     _OtherUniversity = row.Field<string>("OtherUniversity"),
@@ -110,6 +149,8 @@ namespace IHCApp.Helper
                 }).ToList();
             return applicants;
         }
+
+
         public List<FamilyMember> ParseHostMember(DataTable dt)
         {
             List<FamilyMember> hostmember = dt.AsEnumerable().Select(row =>
