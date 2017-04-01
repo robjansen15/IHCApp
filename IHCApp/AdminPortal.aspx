@@ -144,12 +144,9 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
-                                <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class="">All Active Applicants</asp:LinkButton></li>                                
-                                <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class="">All Looking Applicants</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class="">All Hosts</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allActiveHosts" OnClick="allActiveHosts_Click" class="">All Active Hosts</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class="">All Looking Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="tableFormBtn_Click" class="">All Students</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="tableFormBtn_Click" class="">All Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allStudentsBySchool" OnClick="tableFormBtn_Click" class="">All Students by School</asp:LinkButton></li>
                             </ul>
                         </li>
                                     
@@ -260,7 +257,7 @@
                         <p style="text-align:center">Example Table</p>
                         <br />
 
-                        <%--<table class="table table-striped table-advance table-hover">
+                        <table class="table table-striped table-advance table-hover">
                                <tbody>
                                   <tr>
                                      <th><i class="icon_profile"></i> Full Name</th>
@@ -411,7 +408,7 @@
                                       </td>
                                   </tr>                              
                                </tbody>
-                            </table>--%>
+                            </table>
    
                         <!-- project team & activity end -->
                     </asp:Panel>    
@@ -577,51 +574,45 @@
 
         
        <script>
+           //knob
+           $(function () {
+               $(".knob").knob({
+                   'draw': function () {
+                       $(this.i).val(this.cv + '%')
+                   }
+               })
+           });
+           //carousel
+           $(document).ready(function () {
+               $("#owl-slider").owlCarousel({
+                   navigation: true,
+                   slideSpeed: 300,
+                   paginationSpeed: 400,
+                   singleItem: true
+               });
+           });
+           //custom select box
+           $(function () {
+               $('select.styled').customSelect();
+           });
 
-          //knob
-          $(function() {
-            $(".knob").knob({
-              'draw' : function () { 
-                $(this.i).val(this.cv + '%')
-              }
-            })
-          });
-
-          //carousel
-          $(document).ready(function() {
-              $("#owl-slider").owlCarousel({
-                  navigation : true,
-                  slideSpeed : 300,
-                  paginationSpeed : 400,
-                  singleItem : true
-
-              });
-          });
-
-          //custom select box
-
-          $(function(){
-              $('select.styled').customSelect();
-          });
-	  
-	      /* ---------- Map ---------- */
-	    $(function(){
-	      $('#map').vectorMap({
-	        map: 'world_mill_en',
-	        series: {
-	          regions: [{
-	            values: gdpData,
-	            scale: ['#000', '#000'],
-	            normalizeFunction: 'polynomial'
-	          }]
-	        },
-		    backgroundColor: '#eef3f7',
-	        onLabelShow: function(e, el, code){
-	          el.html(el.html()+' (GDP - '+gdpData[code]+')');
-	        }
-	      });
-	    });
-
+           /* ---------- Map ---------- */
+           $(function () {
+               $('#map').vectorMap({
+                   map: 'world_mill_en',
+                   series: {
+                       regions: [{
+                           values: gdpData,
+                           scale: ['#000', '#000'],
+                           normalizeFunction: 'polynomial'
+                       }]
+                   },
+                   backgroundColor: '#eef3f7',
+                   onLabelShow: function (e, el, code) {
+                       el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                   }
+               });
+           });
   </script>
 
     </body>
