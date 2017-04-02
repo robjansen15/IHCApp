@@ -32,19 +32,13 @@ namespace IHCAppTests
         [TestMethod]
         public void HostInsertTest()
         {
-
             try
             {
                 Host host = new Host(-1, 15, 2, "yes", "no", 1, 2, 3, "about", "email", "street address", "IN", "Greenwood", "USA", "46142", "phone", "secPhone", "hoobies", "islooking", "occupied", "notes", "toadmin");
-
-                string uid = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
-
+                int famUID = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
 
                 List<FamilyMember> familyMembers = new List<FamilyMember>();
-
-                familyMembers.Add(new FamilyMember());
-
-               
+                familyMembers.Add(new FamilyMember(famUID, "rob", "jansen", "occupation", DateTime.Now, "male", "english", "son"));              
             }
             catch (Exception e)
             {
