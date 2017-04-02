@@ -18,7 +18,7 @@ namespace IHCApp.Database.Public
         /// <summary>
         /// Insert host application into tables
         /// </summary>
-        public string InsertHost(Host host)
+        public int InsertHost(Host host)
         {
             _DatabaseConnection.Connect();
             int famID = -1;
@@ -30,26 +30,29 @@ namespace IHCApp.Database.Public
 
                 //Add as many parameters as you want
                 command.Parameters.Add(new SqlParameter("@Time_ToCenter", host._TimeToCenter));
-                command.Parameters.Add(new SqlParameter("@F_NoOfBathrooms", host._NumBathrooms));
-                command.Parameters.Add(new SqlParameter("@F_Dogs", host._DogsYN));
-                command.Parameters.Add(new SqlParameter("@F_Cats", host._CatsYN));
-                command.Parameters.Add(new SqlParameter("@F_NoOfDogs", host._NumDogs));
-                command.Parameters.Add(new SqlParameter("@F_NoOfCats", host._NumCats));
-                command.Parameters.Add(new SqlParameter("@F_NoOfRooms", host._NumRooms));
-                command.Parameters.Add(new SqlParameter("@F_About", host._About));
-                command.Parameters.Add(new SqlParameter("@F_Email", host._Email));
-                command.Parameters.Add(new SqlParameter("@F_Street", host._Street));
-                command.Parameters.Add(new SqlParameter("@F_State", host._State));
-                command.Parameters.Add(new SqlParameter("@F_City", host._City));
-                command.Parameters.Add(new SqlParameter("@F_Country", host._Country));
-                command.Parameters.Add(new SqlParameter("@F_Zip", host._Zip));
-                command.Parameters.Add(new SqlParameter("@F_PrimePh_no", host._PrimePhone));
-                command.Parameters.Add(new SqlParameter("@F_SecPh_no", host._SecPhone));
-                command.Parameters.Add(new SqlParameter("@F_Hobbies", host._Hobbies));
-                command.Parameters.Add(new SqlParameter("@F_Looking", host._Looking));
-                command.Parameters.Add(new SqlParameter("@F_Occupied", host._Occupied));
-                command.Parameters.Add(new SqlParameter("@F_Note", host._Note));
-                command.Parameters.Add(new SqlParameter("@F_ToAdmin", host._ToAdmin));
+                command.Parameters.Add(new SqlParameter("@NoOfBathrooms", host._NumBathrooms));
+                command.Parameters.Add(new SqlParameter("@NoOfDogs", host._NumDogs));
+                command.Parameters.Add(new SqlParameter("@NoOfCats", host._NumCats));
+                command.Parameters.Add(new SqlParameter("@NoOfRooms", host._NumRooms));
+                command.Parameters.Add(new SqlParameter("@About", host._About));
+                command.Parameters.Add(new SqlParameter("@Email", host._Email));
+                command.Parameters.Add(new SqlParameter("@Street", host._Street));
+                command.Parameters.Add(new SqlParameter("@HostState", host._State));
+                command.Parameters.Add(new SqlParameter("@City", host._City));
+                command.Parameters.Add(new SqlParameter("@Country", host._Country));
+                command.Parameters.Add(new SqlParameter("@Zip", host._Zip));
+                command.Parameters.Add(new SqlParameter("@PrimePh_no", host._PrimePhone));
+                command.Parameters.Add(new SqlParameter("@SecPh_no", host._SecPhone));
+                command.Parameters.Add(new SqlParameter("@Hobbies", host._Hobbies));
+                command.Parameters.Add(new SqlParameter("@Looking", host._Looking));
+                command.Parameters.Add(new SqlParameter("@Occupied", host._Occupied));
+                command.Parameters.Add(new SqlParameter("@Note", host._Note));
+                command.Parameters.Add(new SqlParameter("@ToAdmin", host._ToAdmin));
+                command.Parameters.Add(new SqlParameter("@TransportationInfo", host._TransportationInfo));
+                command.Parameters.Add(new SqlParameter("@AllowSmoking", host._AllowSmoking));
+                command.Parameters.Add(new SqlParameter("@AllowDrinking", host._AllowDrinking));
+                command.Parameters.Add(new SqlParameter("@DoesFamilySmoking", host._DoesFamilySmoke));
+                command.Parameters.Add(new SqlParameter("@DoesFamilyDrinking", host._DoesFamilyDrink));
                 using (SqlDataReader rdr = command.ExecuteReader())
                 {
                     ///gets the specific columns needed from the table
@@ -69,28 +72,29 @@ namespace IHCApp.Database.Public
                 _DatabaseConnection.Disconnect();
             }
 
-            return famID.ToString();
+            return famID;
         }
 
 
-        public void InsertFamilyMemeber(FamilyMember familyMember, int hostID)
+        public void InsertFamilyMember(FamilyMember familyMember)
         {
             _DatabaseConnection.Connect();
-            int _hostID = hostID;
+
             try
             {
-                SqlCommand command = new SqlCommand("SPInserthost", _DatabaseConnection.GetActiveConnection());
+                SqlCommand command = new SqlCommand("SPInsertFamily_members", _DatabaseConnection.GetActiveConnection());
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want
-                command.Parameters.Add(new SqlParameter("@host_Id", _hostID));
+                command.Parameters.Add(new SqlParameter("@Family_Id", familyMember._HostId));
                 command.Parameters.Add(new SqlParameter("@Member_FirstName", familyMember._FirstName));
                 command.Parameters.Add(new SqlParameter("@Member_LastName", familyMember._LastName));
                 command.Parameters.Add(new SqlParameter("@Member_Occupation", familyMember._Occupation));
-                command.Parameters.Add(new SqlParameter("@member_DOB", familyMember._Date));
+                command.Parameters.Add(new SqlParameter("@Member_Age", familyMember._Age));
                 command.Parameters.Add(new SqlParameter("@Member_Gender", familyMember._Gender));
                 command.Parameters.Add(new SqlParameter("@Member_Language", familyMember._Language));
                 command.Parameters.Add(new SqlParameter("@Member_RelationToHost", familyMember._RelationToHost));
+                command.Parameters.Add(new SqlParameter("@IsHost", familyMember._IsHost));
 
                 command.ExecuteNonQuery();
             }
