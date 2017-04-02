@@ -46,11 +46,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Insertion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retrieval.cs" />
+    <Compile Include="Updating.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

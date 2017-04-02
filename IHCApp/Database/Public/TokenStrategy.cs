@@ -17,7 +17,7 @@ namespace IHCApp.Database.Public
         }
 
 
-        public void UpdateToken(string email, string password, string token)
+        private void UpdateToken(string email, string password, string token)
         {
             _DatabaseConnection.Connect();
 
@@ -44,6 +44,7 @@ namespace IHCApp.Database.Public
 
             _DatabaseConnection.Disconnect();
         }
+
 
         /// <summary>
         /// Check Credentials
@@ -76,7 +77,7 @@ namespace IHCApp.Database.Public
         }
 
 
-        public string GenerateRandomToken()
+        private string GenerateRandomToken()
         {
             int length = 48;
             Random random = new Random();

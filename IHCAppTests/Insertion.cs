@@ -38,7 +38,7 @@ namespace IHCAppTests
                 int famUID = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
 
                 List<FamilyMember> familyMembers = new List<FamilyMember>();
-                familyMembers.Add(new FamilyMember(famUID, "rob", "jansen", "occupation", DateTime.Now, "male", "english", "son"));              
+                familyMembers.Add(new FamilyMember(10, "rob", "jansen", "occupation", DateTime.Now, "male", "english", "son"));              
             }
             catch (Exception e)
             {
