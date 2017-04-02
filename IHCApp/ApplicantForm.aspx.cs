@@ -38,16 +38,16 @@ namespace IHCApp
 
                 if (this.SelectedDate == DateTime.MinValue)
                 {
-                    this.PopulateYear();
-                    this.PopulateMonth();
-                    this.PopulateDay();
+                    this.PopulateDOBYear();
+                    this.PopulateDOBMonth();
+                    this.PopulateDOBDay();
                 }
             }
             else
             {
                 if (Request.Form[ddlDay.UniqueID] != null)
                 {
-                    this.PopulateDay();
+                    this.PopulateDOBDay();
                     ddlDay.ClearSelection();
                     ddlDay.Items.FindByValue(Request.Form[ddlDay.UniqueID]).Selected = true;
                 }
@@ -110,7 +110,7 @@ namespace IHCApp
                 applicant._FirstName = this.firstName.Text;
                 applicant._LastName = this.lastName.Text;
                 applicant._MoveInDate = DateTime.Now;
-                applicant._DurationOfStay = 4;
+                applicant._DurationOfStay = "4";
                 applicant._Language = this.firstLanguage.Text;
                 applicant._Gender = this.gender.Text;
                 applicant._Status = "status";
@@ -125,15 +125,14 @@ namespace IHCApp
                 applicant._Dog = "yes";
                 applicant._Cat = "no";
                 applicant._HealthIssues = this.allergies.Text;
-                applicant._DOB = DateTime.Now;
+                applicant._DOB = SelectedDate;
                 applicant._PrimaryPhone = this.phone1.Text;
                 applicant._SecondaryPhone = this.phone2.Text;
                 applicant._Hobbies = this.hobbies.Text;
                 applicant._About = this.about.Text;
                 applicant._Paydate = DateTime.Now;
                 applicant._DepositDate = DateTime.Now;
-                applicant._PaymentAmount = 300;
-                applicant._ID = 20;
+                applicant._PaymentAmount = "300";
                 applicant._OtherUniversity = "purdue";
                 applicant._Email = this.email.Text;
                 applicant._EmergencyContact = this.universityContactInfo.Text;
@@ -175,6 +174,9 @@ namespace IHCApp
             }
             if (value == 1)
             {
+                PopulateCountriesDropDown();
+
+
                 termsOfServicePanel.Visible = false;
                 personalInfoPanel.Visible = true;
                 contactInfoPanel.Visible = false;
@@ -257,7 +259,7 @@ namespace IHCApp
             }
             set
             {
-                this.PopulateDay();
+                this.PopulateDOBDay();
                 ddlDay.ClearSelection();
                 ddlDay.Items.FindByValue(value.ToString()).Selected = true;
             }
@@ -275,7 +277,7 @@ namespace IHCApp
             }
             set
             {
-                this.PopulateMonth();
+                this.PopulateDOBMonth();
                 ddlMonth.ClearSelection();
                 ddlMonth.Items.FindByValue(value.ToString()).Selected = true;
             }
@@ -293,7 +295,7 @@ namespace IHCApp
             }
             set
             {
-                this.PopulateYear();
+                this.PopulateDOBYear();
                 ddlYear.ClearSelection();
                 ddlYear.Items.FindByValue(value.ToString()).Selected = true;
             }
@@ -330,7 +332,7 @@ namespace IHCApp
         /// DOB day populate
         /// </summary>
         /// <param name="count"></param>
-        private void PopulateDay()
+        private void PopulateDOBDay()
         {
             ddlDay.Items.Clear();
             ListItem lt = new ListItem();
@@ -353,7 +355,7 @@ namespace IHCApp
         /// DOB month populate
         /// </summary>
         /// <param name="count"></param>
-        private void PopulateMonth()
+        private void PopulateDOBMonth()
         {
             ddlMonth.Items.Clear();
             ListItem lt = new ListItem();
@@ -373,8 +375,7 @@ namespace IHCApp
         /// <summary>
         /// DOB year populate
         /// </summary>
-        /// <param name="count"></param>
-        private void PopulateYear()
+        private void PopulateDOBYear()
         {
             ddlYear.Items.Clear();
             ListItem lt = new ListItem();
@@ -392,35 +393,45 @@ namespace IHCApp
 
         }
 
+        /// <summary>
+        /// Populate Countries
+        /// </summary>
+        private void PopulateCountriesDropDown()
+        {
+            List <string>  countries =new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetAllCountries();
+            this.Country.DataSource = countries;
+            this.Country.DataBind();
+            this.confirmCountry.DataSource = countries;
+            this.confirmCountry.DataBind();
+
+            this.Country.Width = Unit.Pixel(200);
+        }
+
 
 
         /// <summary>
         /// Populates the confirmation panel data.
         /// </summary>
-        /// <param name="count"></param>
         private void populateConfirmationPanel()
         {
 
             //personal panel
             confirmLastName.Text = lastName.Text;
             confirmFirstName.Text = firstName.Text;
-            confirmDDLYear.Text = ddlYear.SelectedValue;
-            confirmDDLMonth.Text = ddlMonth.SelectedValue;
-            confirmDDLDay.Text = confirmDDLDay.SelectedValue;
             confirmCountry.Text = Country.SelectedValue;
             confirmFirstLanguage.Text = firstLanguage.Text;
             confirmGender.SelectedValue = gender.SelectedValue;
             confirmMartialStatus.SelectedValue = martialstatus.SelectedValue;
+            confirmDOB.Text = SelectedDate.ToString();
 
             confirmLastName.Enabled = false;
             confirmFirstName.Enabled = false;
-            confirmDDLYear.Enabled = false;
-            confirmDDLMonth.Enabled = false;
-            confirmDDLDay.Enabled = false;
             confirmCountry.Enabled = false;
             confirmFirstLanguage.Enabled = false;
             confirmGender.Enabled = false;
             confirmMartialStatus.Enabled = false;
+            confirmDOB.Enabled = false;
+
 
             //contact panel
             confirmAddress.Text = address.Text;
@@ -450,14 +461,14 @@ namespace IHCApp
             confirmMajor.Text = major.Text;
             confirmUniversityContactInfo.Text = universityContactInfo.Text;
             confirmHomestayDuration.Text = homestayDuration.Text;
-            confirmFlightInfo.Text = flightInfo.Text;
+ 
 
             confirmUniversity.Enabled = false;
             confirmUniversityAddress.Enabled = false;
             confirmMajor.Enabled = false;
             confirmUniversityContactInfo.Enabled = false;
             confirmHomestayDuration.Enabled = false;
-            confirmFlightInfo.Enabled = false;
+       
 
 
         }

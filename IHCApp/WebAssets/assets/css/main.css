@@ -2710,7 +2710,8 @@
 }
 
 .accordion-content {
-    overflow : scroll;
+    height:50px;
+    overflow :scroll;
     text-align: left;
     background-color:#0066DC;
 

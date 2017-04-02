@@ -319,15 +319,6 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.TextBox homestayDuration;
         
         /// <summary>
-        /// flightInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox flightInfo;
-        
-        /// <summary>
         /// confirmationPanel control.
         /// </summary>
         /// <remarks>
@@ -355,31 +346,13 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.TextBox confirmFirstName;
         
         /// <summary>
-        /// confirmDDLYear control.
+        /// confirmDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList confirmDDLYear;
-        
-        /// <summary>
-        /// confirmDDLMonth control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList confirmDDLMonth;
-        
-        /// <summary>
-        /// confirmDDLDay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList confirmDDLDay;
+        protected global::System.Web.UI.WebControls.TextBox confirmDOB;
         
         /// <summary>
         /// confirmCountry control.
@@ -508,33 +481,6 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.TextBox confirmUniversityAddress;
         
         /// <summary>
-        /// DropDownList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
-        
-        /// <summary>
-        /// DropDownList2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
-        /// <summary>
-        /// DropDownList3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
-        
-        /// <summary>
         /// confirmMajor control.
         /// </summary>
         /// <remarks>
@@ -560,15 +506,6 @@ namespace IHCApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmHomestayDuration;
-        
-        /// <summary>
-        /// confirmFlightInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confirmFlightInfo;
         
         /// <summary>
         /// backButon control.

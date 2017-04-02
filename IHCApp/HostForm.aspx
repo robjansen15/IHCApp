@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="WebAssets/assets/js/ie/html5shiv.js"></script><![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="nice-assets\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
+    <link rel="stylesheet" type="text/css" href="WebAssets/nice-assets\assets\jquery-ui\jquery-ui-1.10.1.custom.css" />
     <link rel="stylesheet" type="text/css" href="WebAssets/assets/linkeffects/css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="WebAssets/assets/linkeffects/css/demo.css" />
 	<link rel="stylesheet" type="text/css" href="WebAssets/assets/linkeffects/css/component.css" />
@@ -21,8 +21,11 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
-    $( function() {
-    $( "#accordion" ).accordion();
+      $( function() {
+          $("#accordion").accordion({
+              autoHeight: false,
+              heightStyle: "content"
+      });
     } );
   </script>
 
@@ -265,7 +268,7 @@
                                 <div id="accordion">
 
                                      <h3>Family Information</h3>
-                                  <div class="accordion-content">
+                                  <div class="accordion-content" style="height:500px">
 
                                         <asp:Label AssociatedControlID="familyName" Text="Host Last Name: " runat="server" ></asp:Label>
                                         <br />
@@ -484,13 +487,13 @@
     </div>
     
     <!-- Scripts -->
-    <script src="WebWebAssets/assets/WebAssets/assets/js/jquery.min.js"></script>
-    <script src="WebWebAssets/assets/WebAssets/assets/js/jquery.dropotron.min.js"></script>
-    <script src="WebWebAssets/assets/WebAssets/assets/js/skel.min.js"></script>
-    <script src="WebWebAssets/assets/WebAssets/assets/js/util.js"></script>
+    <script src="WebWebAssets/assets/js/jquery.min.js"></script>
+    <script src="WebWebAssets/assets/js/jquery.dropotron.min.js"></script>
+    <script src="WebWebAssets/assets/js/skel.min.js"></script>
+    <script src="WebWebAssets/assets/js/util.js"></script>
     <!--[if lte IE 8]><script src="WebAssets/assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="WebWebAssets/assets/WebAssets/assets/js/main.js"></script>
-    <script src="WebWebAssets/assets/WebAssets/assets/js/modernizr.custom.js"></script>
+    <script src="WebWebAssets/assets/js/main.js"></script>
+    <script src="WebWebAssets/assets//js/modernizr.custom.js"></script>
 
       <!-- Nice-assets .js -->
     <script src="WebAssets/nice-assets/assets/js/jquery.js"></script>
@@ -520,27 +523,27 @@
     <!--custome script for all page-->
     <script src="WebAssets/nice-assets/assets/js/scripts.js"></script>
     <!-- custom script for this page-->
-    <script src="WebAssets/nice-assets/assets/js/sparkline-chart.js"></script>
-    <script src="WebAssets/nice-assets/assets/js/easy-pie-chart.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/jquery-jvectormap-world-mill-en.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/xcharts.min.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/jquery.autosize.min.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/jquery.placeholder.min.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/gdp-data.js"></script>	
-	<script src="WebAssets/nice-assets/assets/js/morris.min.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/sparklines.js"></script>	
-	<script src="WebAssets/nice-assets/assets/js/charts.js"></script>
-	<script src="WebAssets/nice-assets/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="WebAssets/nice-assets/js/sparkline-chart.js"></script>
+    <script src="WebAssets/nice-assets/js/easy-pie-chart.js"></script>
+	<script src="WebAssets/nice-assets/js/jquery-jvectormap-1.2.2.min.js"></script>
+	<script src="WebAssets/nice-assets/js/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="WebAssets/nice-assets/js/xcharts.min.js"></script>
+	<script src="WebAssets/nice-assets/js/jquery.autosize.min.js"></script>
+	<script src="WebAssets/nice-assets/js/jquery.placeholder.min.js"></script>
+	<script src="WebAssets/nice-assets/js/gdp-data.js"></script>	
+	<script src="WebAssets/nice-assets/js/morris.min.js"></script>
+	<script src="WebAssets/nice-assets/js/sparklines.js"></script>	
+	<script src="WebAssets/nice-assets/js/charts.js"></script>
+	<script src="WebAssets/nice-assets/js/jquery.slimscroll.min.js"></script>
     <%-- For the editor--%>
-    <script type="text/javascript" src="WebAssets/nice-assets/assets/WebAssets/assets/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="WebAssets/nice-assets/assets/ckeditor/ckeditor.js"></script>
     <!--custom tagsinput-->
-    <script src="WebAssets/nice-assets/assets/js/jquery.tagsinput.js"></script>
+    <script src="WebAssets/nice-assets/js/jquery.tagsinput.js"></script>
     <!--custom switch-->
-    <script src="WebAssets/nice-assets/assets/js/bootstrap-switch.js"></script>
+    <script src="WebAssets/nice-assets/js/bootstrap-switch.js"></script>
     <!-- bootstrap-wysiwyg -->
-    <script src="WebAssets/nice-assets/assets/js/jquery.hotkeys.js"></script>
-    <script src="WebAssets/nice-assets/assets/js/bootstrap-wysiwyg.js"></script>
-    <script src="WebAssets/nice-assets/assets/js/bootstrap-wysiwyg-custom.js"></script>
+    <script src="WebAssets/nice-assets/js/jquery.hotkeys.js"></script>
+    <script src="WebAssets/nice-assets/js/bootstrap-wysiwyg.js"></script>
+    <script src="WebAssets/nice-assets/js/bootstrap-wysiwyg-custom.js"></script>
 </body>
 </html>
