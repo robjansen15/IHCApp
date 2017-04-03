@@ -58,6 +58,24 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.LinkButton allStudents;
         
         /// <summary>
+        /// allActiveApplicants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton allActiveApplicants;
+        
+        /// <summary>
+        /// lookingApplicants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lookingApplicants;
+        
+        /// <summary>
         /// allHosts control.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,22 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.LinkButton allHosts;
         
         /// <summary>
-        /// allStudentsBySchool control.
+        /// allActiveHosts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton allStudentsBySchool;
+        protected global::System.Web.UI.WebControls.LinkButton allActiveHosts;
+        
+        /// <summary>
+        /// lookingHosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lookingHosts;
         
         /// <summary>
         /// exampleDashboard control.

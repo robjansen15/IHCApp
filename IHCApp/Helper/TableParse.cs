@@ -18,7 +18,6 @@ namespace IHCApp.Helper
 
         public List<List<string>> ParseForDisplay(List<T> obj)
         {
-    
             List<List<string>> myList = new List<List<string>>();
 
             foreach(var o in obj)
@@ -34,7 +33,6 @@ namespace IHCApp.Helper
                     list.Add(val);
                 }
 
-
                 foreach (var prop in intProps)
                 {
                     Nullable<Int32> val = (Nullable<Int32>)prop.GetValue(o);
@@ -47,30 +45,11 @@ namespace IHCApp.Helper
                     {
                         list.Add("");
                     }
-
                 }
 
                 myList.Add(list);
             }
             
-
-
-            //foreach (var o in obj)
-            //{
-            //    List<string> row = new List<string>();
-            //    //each COLUMN
-            //    foreach (PropertyInfo prop in o.GetType().GetProperties())
-            //    {
-            //        var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-            //        if (type == typeof(DateTime))
-            //        {
-            //            Console.WriteLine(prop.GetValue(car, null).ToString());
-            //        }
-            //    }
-
-            //    myList.Add(row);
-            //}
-
             return myList;
         }
 
