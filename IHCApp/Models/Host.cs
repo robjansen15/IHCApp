@@ -9,16 +9,14 @@ namespace IHCApp.Models
     {
         public Host() { }
 
-        public Host(int? familyid, int? timeToCenter, int? numBathrooms, string dogsYN, string catsYN, int? numDogs,
-            int? numCats, int? numRooms, string about, string email, string street, string state, string city,
+        public Host(string familyid, int? timeToCenter, string numBathrooms, string numDogs,
+            string numCats, string numRooms, string about, string email, string street, string state, string city,
             string country, string zip, string primePhone, string secPhone, string hobbies, string looking, string occupied,
-            string note, string toadmin)
+            string note, string toAdmin, string transportationInfo, string allowSmoking, string allowDrinking, string doesFamilySmoke, string doesFamilyDrink)
         {
             _FamilyID = familyid;
             _TimeToCenter = timeToCenter;
             _NumBathrooms = numBathrooms;
-            _DogsYN = dogsYN;
-            _CatsYN = catsYN;
             _NumDogs = numDogs;
             _NumCats = numCats;
             _NumRooms = numRooms;
@@ -35,17 +33,20 @@ namespace IHCApp.Models
             _Looking = looking;
             _Occupied = occupied;
             _Note = note;
-            _ToAdmin = toadmin;
+            _ToAdmin = toAdmin;
+            _TransportationInfo = transportationInfo;
+            _AllowSmoking = allowSmoking;
+            _AllowDrinking = allowDrinking;
+            _DoesFamilySmoke = doesFamilySmoke;
+            _DoesFamilyDrink = doesFamilyDrink;
 
         }
-        public int? _FamilyID { get; set; }
+        public string _FamilyID { get; set; }
         public int? _TimeToCenter { get; set; }
-        public int? _NumBathrooms { get; set; }
-        public string _DogsYN { get; set; }
-        public string _CatsYN { get; set; }
-        public int? _NumDogs { get; set; }
-        public int? _NumCats { get; set; }
-        public int? _NumRooms { get; set; }
+        public string _NumBathrooms { get; set; }
+        public string _NumDogs { get; set; }
+        public string _NumCats { get; set; }
+        public string _NumRooms { get; set; }
         public string _About { get; set; }
         public string _Email { get; set; }
         public string _Street { get; set; }
@@ -60,5 +61,10 @@ namespace IHCApp.Models
         public string _Occupied { get; set; }
         public string _Note { get; set; }
         public string _ToAdmin { get; set; }
+        public string _TransportationInfo { get; set; }
+        public string _AllowSmoking { get; set; }
+        public string _AllowDrinking { get; set; }
+        public string _DoesFamilySmoke { get; set; }
+        public string _DoesFamilyDrink { get; set; }
     }
 }

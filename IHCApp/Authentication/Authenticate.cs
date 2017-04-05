@@ -18,25 +18,7 @@ namespace IHCApp.Authentication
 
             try
             {
-                //isValid = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateToken(token);
-            }
-            catch
-            {
-
-            }       
-
-            return true;
-        }
-
-
-
-        public bool ValidateCredentials(string email, string password)
-        {
-            bool isValid = false;
-
-            try
-            {
-                isValid = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials(email, password);
+                isValid = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateToken(token);
             }
             catch
             {
@@ -44,6 +26,12 @@ namespace IHCApp.Authentication
             }
 
             return isValid;
+        }
+
+
+        public Token GetToken(string email, string password)
+        {
+            return new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials(email, password);
         }
 
     }

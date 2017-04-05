@@ -1,13 +1,14 @@
-﻿using IHCApp.Database;
-using IHCApp.Helper;
-using IHCApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using IHCApp.Authentication;
+using IHCApp.Models;
+using IHCApp.Database;
+using IHCApp.Helper;
+using System.Data;
 
 namespace IHCApp
 {
@@ -15,6 +16,28 @@ namespace IHCApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            bool redirect = true;
+
+            //hard coded
+            redirect = false;
+            Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
+      
+            if ((Token)Session["token"] == null)
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
+            else if (new Authenticate().ValidateToken((Token)Session["token"]))
+            {
+                redirect = false;
+            }
+
+
+            if (redirect)
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
+
+
             if (Page.IsPostBack != true)
             {
                 this.exampleUpdateStudents.Visible = false;
@@ -26,9 +49,8 @@ namespace IHCApp
         }
 
 
-
-
         /*THSE WILL BE UPDATED AND DYNAMIC, just for demo*/
+
 
 
 
@@ -65,7 +87,7 @@ namespace IHCApp
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = true;
             this.exampleSearch.Visible = false;
-            this.exampleDashboard.Visible = false;        
+            this.exampleDashboard.Visible = false;
         }
 
         protected void dashboardBtn_Click(object sender, EventArgs e)
@@ -77,11 +99,9 @@ namespace IHCApp
             this.exampleDashboard.Visible = true;
         }
 
-
-
         protected void handleQuickSearch(List<List<String>> rows)
         {
-           if(rows != null)
+            if (rows != null)
             {
                 this.exampleTable.ID = "quickSearch";
                 this.exampleTable.Controls.Add(new LiteralControl("<table class='table table -striped table - advance table - hover'>"));
@@ -126,21 +146,27 @@ namespace IHCApp
         /// <summary>
         /// QUICK SEARCH METHODS
         /// </summary>
-    
+
         /*HOSTS*/
         protected void allHosts_Click(object sender, EventArgs e)
         {
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();        
-            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
-            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+            //This is the parser that helps convert the DataTable -> List<Hosts> -> List<List<string>>
+            TableParse<Host> parser = new TableParse<Host>();
+
+            //this converts DataTable -> List<Host>
+            List<Host> hosts = parser.ParseHosts(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts());
+
+            //this converts List<Host> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(hosts);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
 
@@ -149,14 +175,20 @@ namespace IHCApp
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveHosts();
-            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
-            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+            //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
+            TableParse<Host> parser = new TableParse<Host>();
+
+            //this converts DataTable -> List<Host>
+            List<Host> hosts = parser.ParseHosts(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveHosts());
+
+            //this converts List<Host> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(hosts);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
         protected void lookingHosts_Click(object sender, EventArgs e)
@@ -164,14 +196,20 @@ namespace IHCApp
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingHosts();
-            List<Host> hosts = new TableParse<Host>().ParseHosts(dt);
-            List<List<string>> table = new TableParse<Host>().ParseForDisplay(hosts);
+            //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
+            TableParse<Host> parser = new TableParse<Host>();
+
+            //this converts DataTable -> List<Host>
+            List<Host> hosts = parser.ParseHosts(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetLookingHosts());
+
+            //this converts List<Host> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(hosts);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
 
@@ -181,14 +219,20 @@ namespace IHCApp
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
-            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
-            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+            //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
+            TableParse<Applicant> parser = new TableParse<Applicant>();
+
+            //this converts DataTable -> List<Applicant>
+            List<Applicant> applicants = parser.ParseApplicant(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants());
+
+            //this converts List<Applicant> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(applicants);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
         protected void allActiveApplicants_Click(object sender, EventArgs e)
@@ -196,14 +240,20 @@ namespace IHCApp
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
-            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
-            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+            //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
+            TableParse<Applicant> parser = new TableParse<Applicant>();
+
+            //this converts DataTable -> List<Applicant>
+            List<Applicant> applicants = parser.ParseApplicant(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants());
+
+            //this converts List<Applicant> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(applicants);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
         protected void lookingApplicants_Click(object sender, EventArgs e)
@@ -211,17 +261,72 @@ namespace IHCApp
             //go to this tab
             ClickQuickSearch();
 
-            Token t = new Token("token", "email");
+            //creates a token based off the credentials "Xiao" and "xiao123"
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
 
-            DataTable dt = new DatabaseConnection(t)._ProtectedStrategy._QuickSearchStrategy.GetLookingApplicants();
-            List<Applicant> applicant = new TableParse<Applicant>().ParseApplicant(dt);
-            List<List<string>> table = new TableParse<Applicant>().ParseForDisplay(applicant);
+            //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
+            TableParse<Applicant> parser = new TableParse<Applicant>();
+
+            //this converts DataTable -> List<Applicant>
+            List<Applicant> applicants = parser.ParseApplicant(new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetLookingApplicants());
+
+            //this converts List<Applicant> -> List<List<string>>
+            List<List<string>> displayTables = parser.ParseForDisplay(applicants);
 
             //this handles the HTML for you :)))
-            handleQuickSearch(table);
+            handleQuickSearch(displayTables);
         }
 
-       
-    }
+        protected void saveFormApplicant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text,"APPLICANT");
+            }
+            catch
+            {
 
+            }
+        }
+
+        protected void rollBackFormApplicant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("APPLICANT");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void saveFormHost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.hostEditor.Text, "HOST");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void rollbackFormHost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("HOST");
+            }
+            catch
+            {
+
+            }
+        }
+    }
 }

@@ -18,7 +18,6 @@ namespace IHCApp.Helper
 
         public List<List<string>> ParseForDisplay(List<T> obj)
         {
-    
             List<List<string>> myList = new List<List<string>>();
 
             foreach(var o in obj)
@@ -34,7 +33,6 @@ namespace IHCApp.Helper
                     list.Add(val);
                 }
 
-
                 foreach (var prop in intProps)
                 {
                     Nullable<Int32> val = (Nullable<Int32>)prop.GetValue(o);
@@ -47,30 +45,11 @@ namespace IHCApp.Helper
                     {
                         list.Add("");
                     }
-
                 }
 
                 myList.Add(list);
             }
             
-
-
-            //foreach (var o in obj)
-            //{
-            //    List<string> row = new List<string>();
-            //    //each COLUMN
-            //    foreach (PropertyInfo prop in o.GetType().GetProperties())
-            //    {
-            //        var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-            //        if (type == typeof(DateTime))
-            //        {
-            //            Console.WriteLine(prop.GetValue(car, null).ToString());
-            //        }
-            //    }
-
-            //    myList.Add(row);
-            //}
-
             return myList;
         }
 
@@ -80,28 +59,26 @@ namespace IHCApp.Helper
             List<Host> hosts = dt.AsEnumerable().Select(row =>
                 new Host
                 {
-                    _FamilyID = row.Field<int?>("Family_Id"),
+                    _FamilyID = row.Field<string>("Family_Id"),
                     _TimeToCenter = row.Field<int?>("Time_toCenter"),
-                    _NumBathrooms = row.Field<int?>("F_NoOfBathrooms"),
-                    _DogsYN = row.Field<string>("F_Dogs"),
-                    _CatsYN = row.Field<string>("F_Cats"),
-                    _NumDogs = row.Field<int?>("F_noOfDogs"),
-                    _NumCats = row.Field<int?>("F_noOfCats"),
-                    _NumRooms = row.Field<int?>("F_NoOfRooms"),
-                    _About = row.Field<string>("F_about"),
-                    _Email = row.Field<string>("F_Email"),
-                    _Street = row.Field<string>("F_Street"),
-                    _State = row.Field<string>("F_state"),
-                    _City = row.Field<string>("F_city"),
-                    _Country = row.Field<string>("F_Country"),
-                    _Zip = row.Field<string>("F_Zip"),
-                    _PrimePhone = row.Field<string>("F_PrimePh_no"),
-                    _SecPhone = row.Field<string>("F_SecPh_no"),
-                    _Hobbies = row.Field<string>("F_Hobbies"),
-                    _Looking = row.Field<string>("F_looking"),
-                    _Occupied = row.Field<string>("F_occupied"),
-                    _Note = row.Field<string>("F_note"),
-                    _ToAdmin = row.Field<string>("F_ToAdmin"),
+                    _NumBathrooms = row.Field<string>("NoOfBathrooms"),
+                    _NumDogs = row.Field<string>("NoOfDogs"),
+                    _NumCats = row.Field<string>("NoOfCats"),
+                    _NumRooms = row.Field<string>("NoOfRooms"),
+                    _About = row.Field<string>("About"),
+                    _Email = row.Field<string>("Email"),
+                    _Street = row.Field<string>("Street"),
+                    _State = row.Field<string>("HostState"),
+                    _City = row.Field<string>("City"),
+                    _Country = row.Field<string>("Country"),
+                    _Zip = row.Field<string>("Zip"),
+                    _PrimePhone = row.Field<string>("PrimePh_no"),
+                    _SecPhone = row.Field<string>("SecPh_no"),
+                    _Hobbies = row.Field<string>("Hobbies"),
+                    _Looking = row.Field<string>("Looking"),
+                    _Occupied = row.Field<string>("Occupied"),
+                    _Note = row.Field<string>("Note"),
+                    _ToAdmin = row.Field<string>("ToAdmin"),
 
                 }).ToList();
             return hosts;
@@ -117,7 +94,7 @@ namespace IHCApp.Helper
                     _FirstName = row.Field<string>("A_FirstName"),
                     _LastName = row.Field<string>("A_LastName"),
                     _MoveInDate = row.Field<DateTime>("A_ReqMovInDate"),
-                    _DurationOfStay = row.Field<int?>("A_DurationOfStay"),
+                    _DurationOfStay = row.Field<string>("A_DurationOfStay"),
                     _Language = row.Field<string>("A_Language"),
                     _Gender = row.Field<string>("A_Gender"),
                     _Status = row.Field<string>("A_Status"),
@@ -140,7 +117,7 @@ namespace IHCApp.Helper
                     _About = row.Field<string>("A_About"),
                     _Paydate = row.Field<DateTime>("A_Paydate"),
                     _DepositDate = row.Field<DateTime>("A_DespositDate"),
-                    _PaymentAmount = row.Field<int?>("A_PaymentAmount"),
+                    _PaymentAmount = row.Field<string>("A_PaymentAmount"),
                     _ID = row.Field<int?>("I_Id"),
                     _OtherUniversity = row.Field<string>("OtherUniversity"),
                     _Email = row.Field<string>("A_Email"),
@@ -156,14 +133,15 @@ namespace IHCApp.Helper
             List<FamilyMember> hostmember = dt.AsEnumerable().Select(row =>
                 new FamilyMember
                 {
-                    _FamilyID = row.Field<int>("Family_Id"),
+                    _HostId = row.Field<int>("Family_Id"),
                     _FirstName = row.Field<string>("Member_FirstName"),
                     _LastName = row.Field<string>("Member_LastName"),
                     _Occupation = row.Field<string>("Member_Occupation"),
-                    _Date = row.Field<DateTime>("Member_D.O.B"),
+                    _Age = row.Field<string>("Member_Age"),
                     _Gender = row.Field<string>("Member_Gender"),
                     _Language = row.Field<string>("Member_Language"),
-                    _RelationToHost = row.Field<string>("Member_RelationToHost")
+                    _RelationToHost = row.Field<string>("Member_RelationToHost"),
+                    _IsHost = row.Field<bool?>("IsHost")
 
                 }).ToList();
             return hostmember;

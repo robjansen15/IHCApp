@@ -71,7 +71,7 @@
                                 <li>
                                     <a href="#">
                                         <span class="label label-success"><i class="icon_like"></i></span> 
-                                        8 new student form sub...
+                                        8 new Applicant form sub...
                                         <span class="small italic pull-right"> Today</span>
                                     </a>
                                 </li>                            
@@ -133,8 +133,8 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Student Form</asp:LinkButton></li>                          
-                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Family Form</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Applicant Form</asp:LinkButton></li>                          
+                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Host Form</asp:LinkButton></li>
                             </ul>
                         </li>       
                         <li class="sub-menu">
@@ -144,7 +144,7 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
+                                <li><asp:LinkButton runat="server" id="allApplicants" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
                                 <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class="">All Active Applicants</asp:LinkButton></li>                                
                                 <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class="">All Looking Applicants</asp:LinkButton></li>
                                 <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class="">All Hosts</asp:LinkButton></li>
@@ -214,7 +214,7 @@
                                   </tr>
                                   <tr>
                                      <td>2004-07-06</td>
-                                     <td>New Family Form</td>
+                                     <td>New Host Form</td>
                                      <td>A new family "Jansen" has applied for Homestay</td>
                                      <td>
                                       <div class="btn-group">
@@ -255,184 +255,36 @@
                         
                     </asp:Panel>
 
-                    <%--TABLE--%>
+                   <%--TABLE--%>
                     <asp:Panel runat="server" id="exampleTable" Visible="false">
                         <p style="text-align:center">Example Table</p>
                         <br />
 
-                        <%--<table class="table table-striped table-advance table-hover">
-                               <tbody>
-                                  <tr>
-                                     <th><i class="icon_profile"></i> Full Name</th>
-                                     <th><i class="icon_calendar"></i> Date</th>
-                                     <th><i class="icon_mail_alt"></i> Email</th>
-                                     <th><i class="icon_pin_alt"></i> City</th>
-                                     <th><i class="icon_mobile"></i> Mobile</th>
-                                     <th><i class="icon_cogs"></i> Action</th>
-                                  </tr>
-                                  <tr>
-                                     <td>Angeline Mcclain</td>
-                                     <td>2004-07-06</td>
-                                     <td>dale@chief.info</td>
-                                     <td>Rosser</td>
-                                     <td>176-026-5992</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Sung Carlson</td>
-                                     <td>2011-01-10</td>
-                                     <td>ione.gisela@high.org</td>
-                                     <td>Robert Lee</td>
-                                     <td>724-639-4784</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Bryon Osborne</td>
-                                     <td>2006-10-29</td>
-                                     <td>sol.raleigh@language.edu</td>
-                                     <td>York</td>
-                                     <td>180-456-0056</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Dalia Marquez</td>
-                                     <td>2011-12-15</td>
-                                     <td>angeline.frieda@thick.com</td>
-                                     <td>Alton</td>
-                                     <td>690-601-1922</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Selina Fitzgerald</td>
-                                     <td>2003-01-06</td>
-                                     <td>moshe.mikel@parcelpart.info</td>
-                                     <td>Waelder</td>
-                                     <td>922-810-0915</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Abraham Avery</td>
-                                     <td>2006-07-14</td>
-                                     <td>harvey.jared@pullpump.org</td>
-                                     <td>Harker Heights</td>
-                                     <td>511-175-7115</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Caren Mcdowell</td>
-                                     <td>2002-03-29</td>
-                                     <td>valeria@hookhope.org</td>
-                                     <td>Blackwell</td>
-                                     <td>970-147-5550</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Owen Bingham</td>
-                                     <td>2013-04-06</td>
-                                     <td>thomas.christopher@firstfish.info</td>
-                                     <td>Rule</td>
-                                     <td>934-118-6046</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Ahmed Dean</td>
-                                     <td>2008-03-19</td>
-                                     <td>lakesha.geri.allene@recordred.com</td>
-                                     <td>Darrouzett</td>
-                                     <td>338-081-8817</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                     <td>Mario Norris</td>
-                                     <td>2010-02-08</td>
-                                     <td>mildred@hour.info</td>
-                                     <td>Amarillo</td>
-                                     <td>945-547-5302</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>                              
-                               </tbody>
-                            </table>--%>
-   
                         <!-- project team & activity end -->
                     </asp:Panel>    
+
 
                     <asp:Panel runat="server" id="exampleUpdateStudents" Visible="false">
                        <!-- CKEditor -->
                           <div class="col-lg-12">
                               <section class="panel">
                                   <header class="panel-heading">
-                                      Update Student Info
+                                      Update Applicant Info Page                    
                                   </header>
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="#" class="form-horizontal">
+                                          
                                               <div class="form-group">
-                                                  <label class="control-label col-sm-2">Update Student Info</label>
+                                                  <label class="control-label col-sm-2">Update Applicant Info Page </label>
+                                                   <asp:Button runat="server" ID="saveFormApplicant" OnClick="saveFormApplicant_Click" Text="SAVE"></asp:Button>
+                                                  <asp:Button runat="server" ID="rollBackFormApplicant" OnClick="rollBackFormApplicant_Click" Text="Rollback"></asp:Button>
                                                   <div class="col-sm-10">
-                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
-                                                  </div>
+                                                      <br />
+                                                   <%--  <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>--%>
+                                                      <asp:TextBox id="applicantEditor" TextMode="multiline" Columns="50" Rows="6" CssClass="form-control ckeditor" runat="server" />
+                                                 </div>
                                               </div>
-                                          </form>
+                                          
                                       </div>
                                   </div>
                               </section>
@@ -446,18 +298,21 @@
                           <div class="col-lg-12">
                               <section class="panel">
                                   <header class="panel-heading">
-                                      Update Family Info
+                                      Update Host Info Page
                                   </header>
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="#" class="form-horizontal">
+                                         
                                               <div class="form-group">
-                                                  <label class="control-label col-sm-2">Update Family Info</label>
+                                                  <label class="control-label col-sm-2">Update Host Info Page</label>
+                                                  <asp:Button runat="server" ID="saveFormHost" OnClick="saveFormHost_Click" Text="SAVE"></asp:Button>
+                                                  <asp:Button runat="server" ID="rollbackFormHost" OnClick="rollbackFormHost_Click" Text="Rollback"></asp:Button>
                                                   <div class="col-sm-10">
-                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
+                                                      <br />
+                                                      <asp:TextBox id="hostEditor" TextMode="multiline" Columns="50" Rows="6" CssClass="form-control ckeditor" runat="server" />
                                                   </div>
                                               </div>
-                                          </form>
+                                         
                                       </div>
                                   </div>
                               </section>
@@ -473,7 +328,7 @@
                             </header>
                             <div class="panel-body">                                   
                                 <div class="checkboxes">
-                                    <label class="label_check c_on" for="checkbox-01"><input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="" /> Search Students</label>
+                                    <label class="label_check c_on" for="checkbox-01"><input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="" /> Search Applicants</label>
                                     <label class="label_check c_off" for="checkbox-02"><input name="sample-checkbox-02" id="checkbox-02" value="1" type="checkbox" /> Search Families </label>
                                     <label class="label_check c_off" for="checkbox-03"><input name="sample-checkbox-02" id="checkbox-03" value="1" type="checkbox" /> Search Schools</label>
                                 </div>
@@ -577,51 +432,45 @@
 
         
        <script>
+           //knob
+           $(function () {
+               $(".knob").knob({
+                   'draw': function () {
+                       $(this.i).val(this.cv + '%')
+                   }
+               })
+           });
+           //carousel
+           $(document).ready(function () {
+               $("#owl-slider").owlCarousel({
+                   navigation: true,
+                   slideSpeed: 300,
+                   paginationSpeed: 400,
+                   singleItem: true
+               });
+           });
+           //custom select box
+           $(function () {
+               $('select.styled').customSelect();
+           });
 
-          //knob
-          $(function() {
-            $(".knob").knob({
-              'draw' : function () { 
-                $(this.i).val(this.cv + '%')
-              }
-            })
-          });
-
-          //carousel
-          $(document).ready(function() {
-              $("#owl-slider").owlCarousel({
-                  navigation : true,
-                  slideSpeed : 300,
-                  paginationSpeed : 400,
-                  singleItem : true
-
-              });
-          });
-
-          //custom select box
-
-          $(function(){
-              $('select.styled').customSelect();
-          });
-	  
-	      /* ---------- Map ---------- */
-	    $(function(){
-	      $('#map').vectorMap({
-	        map: 'world_mill_en',
-	        series: {
-	          regions: [{
-	            values: gdpData,
-	            scale: ['#000', '#000'],
-	            normalizeFunction: 'polynomial'
-	          }]
-	        },
-		    backgroundColor: '#eef3f7',
-	        onLabelShow: function(e, el, code){
-	          el.html(el.html()+' (GDP - '+gdpData[code]+')');
-	        }
-	      });
-	    });
-
+           /* ---------- Map ---------- */
+           $(function () {
+               $('#map').vectorMap({
+                   map: 'world_mill_en',
+                   series: {
+                       regions: [{
+                           values: gdpData,
+                           scale: ['#000', '#000'],
+                           normalizeFunction: 'polynomial'
+                       }]
+                   },
+                   backgroundColor: '#eef3f7',
+                   onLabelShow: function (e, el, code) {
+                       el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                   }
+               });
+           });
   </script>
 
     </body>

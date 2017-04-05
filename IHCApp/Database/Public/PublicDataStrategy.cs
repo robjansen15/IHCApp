@@ -41,7 +41,7 @@ namespace IHCApp.Database.Public
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want
-                command.Parameters.Add(new SqlParameter("@ID", "FAMILY"));
+                command.Parameters.Add(new SqlParameter("@ID", "HOST"));
 
                 using (SqlDataReader rdr = command.ExecuteReader())
                 {
@@ -122,6 +122,27 @@ namespace IHCApp.Database.Public
             }
 
             return countries;
+        }
+
+        /// <summary>
+        /// Get a list of relations to host
+        /// </summary>
+        public List<string> RelationToHostDatasource()
+        {
+            List<string> relationToHost = new List<string>();
+
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@Discriminator", "RelationToHost"));
+
+            DataTable dt = da.GetData(new StoredProcedureObj("SPGetDisplayData", parameters));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                relationToHost.Add(row["Text"].ToString());
+            }
+
+            return relationToHost;
         }
 
 
