@@ -107,7 +107,6 @@ namespace IHCApp.Database.Public
                 _DatabaseConnection.Disconnect();
             }
 
-            _DatabaseConnection.Disconnect();
         }
 
 
@@ -164,7 +163,6 @@ namespace IHCApp.Database.Public
                 _DatabaseConnection.Disconnect();
             }
 
-            _DatabaseConnection.Disconnect();
         }
 
         private DatabaseConnection _DatabaseConnection { get; set; }

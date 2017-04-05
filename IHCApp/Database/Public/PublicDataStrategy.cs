@@ -41,7 +41,7 @@ namespace IHCApp.Database.Public
                 command.CommandType = CommandType.StoredProcedure;
 
                 //Add as many parameters as you want
-                command.Parameters.Add(new SqlParameter("@ID", "FAMILY"));
+                command.Parameters.Add(new SqlParameter("@ID", "HOST"));
 
                 using (SqlDataReader rdr = command.ExecuteReader())
                 {

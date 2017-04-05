@@ -17,8 +17,11 @@ namespace IHCApp
         protected void Page_Load(object sender, EventArgs e)
         {
             bool redirect = true;
-            var x = (Token)Session["token"];
 
+            //hard coded
+            redirect = false;
+            Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
+      
             if ((Token)Session["token"] == null)
             {
                 Response.Redirect("AdminLogin.aspx");
@@ -274,5 +277,56 @@ namespace IHCApp
             handleQuickSearch(displayTables);
         }
 
+        protected void saveFormApplicant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text,"APPLICANT");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void rollBackFormApplicant_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("APPLICANT");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void saveFormHost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.hostEditor.Text, "HOST");
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void rollbackFormHost_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("HOST");
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

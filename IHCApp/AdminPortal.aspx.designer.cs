@@ -49,13 +49,13 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.LinkButton familyFormBtn;
         
         /// <summary>
-        /// allStudents control.
+        /// allApplicants control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton allStudents;
+        protected global::System.Web.UI.WebControls.LinkButton allApplicants;
         
         /// <summary>
         /// allActiveApplicants control.
@@ -130,6 +130,33 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.Panel exampleUpdateStudents;
         
         /// <summary>
+        /// saveFormApplicant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveFormApplicant;
+        
+        /// <summary>
+        /// rollBackFormApplicant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button rollBackFormApplicant;
+        
+        /// <summary>
+        /// applicantEditor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox applicantEditor;
+        
+        /// <summary>
         /// exampleUpdateFamily control.
         /// </summary>
         /// <remarks>
@@ -137,6 +164,33 @@ namespace IHCApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel exampleUpdateFamily;
+        
+        /// <summary>
+        /// saveFormHost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button saveFormHost;
+        
+        /// <summary>
+        /// rollbackFormHost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button rollbackFormHost;
+        
+        /// <summary>
+        /// hostEditor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox hostEditor;
         
         /// <summary>
         /// exampleSearch control.

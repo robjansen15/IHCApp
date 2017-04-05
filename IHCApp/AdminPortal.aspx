@@ -71,7 +71,7 @@
                                 <li>
                                     <a href="#">
                                         <span class="label label-success"><i class="icon_like"></i></span> 
-                                        8 new student form sub...
+                                        8 new Applicant form sub...
                                         <span class="small italic pull-right"> Today</span>
                                     </a>
                                 </li>                            
@@ -133,8 +133,8 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Student Form</asp:LinkButton></li>                          
-                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Family Form</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Applicant Form</asp:LinkButton></li>                          
+                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Host Form</asp:LinkButton></li>
                             </ul>
                         </li>       
                         <li class="sub-menu">
@@ -144,7 +144,7 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" id="allStudents" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
+                                <li><asp:LinkButton runat="server" id="allApplicants" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
                                 <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class="">All Active Applicants</asp:LinkButton></li>                                
                                 <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class="">All Looking Applicants</asp:LinkButton></li>
                                 <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class="">All Hosts</asp:LinkButton></li>
@@ -214,7 +214,7 @@
                                   </tr>
                                   <tr>
                                      <td>2004-07-06</td>
-                                     <td>New Family Form</td>
+                                     <td>New Host Form</td>
                                      <td>A new family "Jansen" has applied for Homestay</td>
                                      <td>
                                       <div class="btn-group">
@@ -269,18 +269,22 @@
                           <div class="col-lg-12">
                               <section class="panel">
                                   <header class="panel-heading">
-                                      Update Student Info
+                                      Update Applicant Info Page                    
                                   </header>
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="#" class="form-horizontal">
+                                          
                                               <div class="form-group">
-                                                  <label class="control-label col-sm-2">Update Student Info</label>
+                                                  <label class="control-label col-sm-2">Update Applicant Info Page </label>
+                                                   <asp:Button runat="server" ID="saveFormApplicant" OnClick="saveFormApplicant_Click" Text="SAVE"></asp:Button>
+                                                  <asp:Button runat="server" ID="rollBackFormApplicant" OnClick="rollBackFormApplicant_Click" Text="Rollback"></asp:Button>
                                                   <div class="col-sm-10">
-                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
-                                                  </div>
+                                                      <br />
+                                                   <%--  <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>--%>
+                                                      <asp:TextBox id="applicantEditor" TextMode="multiline" Columns="50" Rows="6" CssClass="form-control ckeditor" runat="server" />
+                                                 </div>
                                               </div>
-                                          </form>
+                                          
                                       </div>
                                   </div>
                               </section>
@@ -294,18 +298,21 @@
                           <div class="col-lg-12">
                               <section class="panel">
                                   <header class="panel-heading">
-                                      Update Family Info
+                                      Update Host Info Page
                                   </header>
                                   <div class="panel-body">
                                       <div class="form">
-                                          <form action="#" class="form-horizontal">
+                                         
                                               <div class="form-group">
-                                                  <label class="control-label col-sm-2">Update Family Info</label>
+                                                  <label class="control-label col-sm-2">Update Host Info Page</label>
+                                                  <asp:Button runat="server" ID="saveFormHost" OnClick="saveFormHost_Click" Text="SAVE"></asp:Button>
+                                                  <asp:Button runat="server" ID="rollbackFormHost" OnClick="rollbackFormHost_Click" Text="Rollback"></asp:Button>
                                                   <div class="col-sm-10">
-                                                      <textarea class="form-control ckeditor" name="editor1" rows="6"></textarea>
+                                                      <br />
+                                                      <asp:TextBox id="hostEditor" TextMode="multiline" Columns="50" Rows="6" CssClass="form-control ckeditor" runat="server" />
                                                   </div>
                                               </div>
-                                          </form>
+                                         
                                       </div>
                                   </div>
                               </section>
@@ -321,7 +328,7 @@
                             </header>
                             <div class="panel-body">                                   
                                 <div class="checkboxes">
-                                    <label class="label_check c_on" for="checkbox-01"><input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="" /> Search Students</label>
+                                    <label class="label_check c_on" for="checkbox-01"><input name="sample-checkbox-01" id="checkbox-01" value="1" type="checkbox" checked="" /> Search Applicants</label>
                                     <label class="label_check c_off" for="checkbox-02"><input name="sample-checkbox-02" id="checkbox-02" value="1" type="checkbox" /> Search Families </label>
                                     <label class="label_check c_off" for="checkbox-03"><input name="sample-checkbox-02" id="checkbox-03" value="1" type="checkbox" /> Search Schools</label>
                                 </div>
