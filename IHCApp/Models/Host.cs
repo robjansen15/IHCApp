@@ -9,7 +9,7 @@ namespace IHCApp.Models
     {
         public Host() { }
 
-        public Host(string familyid, int? timeToCenter, string numBathrooms, string numDogs,
+        public Host(int familyid, int? timeToCenter, string numBathrooms, string numDogs,
             string numCats, string numRooms, string about, string email, string street, string state, string city,
             string country, string zip, string primePhone, string secPhone, string hobbies, string looking, string occupied,
             string note, string toAdmin, string transportationInfo, string allowSmoking, string allowDrinking, string doesFamilySmoke, string doesFamilyDrink)
@@ -41,7 +41,7 @@ namespace IHCApp.Models
             _DoesFamilyDrink = doesFamilyDrink;
 
         }
-        public string _FamilyID { get; set; }
+        public int _FamilyID { get; set; }
         public int? _TimeToCenter { get; set; }
         public string _NumBathrooms { get; set; }
         public string _NumDogs { get; set; }

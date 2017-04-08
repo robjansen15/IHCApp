@@ -21,7 +21,7 @@ namespace IHCApp
             //hard coded
             redirect = false;
             Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
-      
+
             if ((Token)Session["token"] == null)
             {
                 Response.Redirect("AdminLogin.aspx");
@@ -38,13 +38,14 @@ namespace IHCApp
             }
 
 
-            if (Page.IsPostBack != true)
+            if (!Page.IsPostBack)
             {
                 this.exampleUpdateStudents.Visible = false;
                 this.exampleUpdateFamily.Visible = false;
                 this.exampleTable.Visible = false;
                 this.exampleSearch.Visible = false;
                 this.exampleDashboard.Visible = true;
+
             }
         }
 
@@ -61,6 +62,8 @@ namespace IHCApp
             this.exampleTable.Visible = false;
             this.exampleSearch.Visible = true;
             this.exampleDashboard.Visible = false;
+
+            applicantGrid.Visible = false;
         }
 
         protected void familyFormBtn_Click(object sender, EventArgs e)
@@ -70,6 +73,8 @@ namespace IHCApp
             this.exampleTable.Visible = false;
             this.exampleSearch.Visible = false;
             this.exampleDashboard.Visible = false;
+
+            applicantGrid.Visible = false;
         }
 
         protected void studentFormBtn_Click(object sender, EventArgs e)
@@ -79,6 +84,10 @@ namespace IHCApp
             this.exampleTable.Visible = false;
             this.exampleSearch.Visible = false;
             this.exampleDashboard.Visible = false;
+            this.applicantManagement.Visible = false;
+            this.hostManagement.Visible = false;
+
+            applicantGrid.Visible = false;
         }
 
         public void ClickQuickSearch()
@@ -88,6 +97,10 @@ namespace IHCApp
             this.exampleTable.Visible = true;
             this.exampleSearch.Visible = false;
             this.exampleDashboard.Visible = false;
+            this.applicantManagement.Visible = false;
+            this.hostManagement.Visible = false;
+
+            applicantGrid.Visible = false;
         }
 
         protected void dashboardBtn_Click(object sender, EventArgs e)
@@ -97,6 +110,36 @@ namespace IHCApp
             this.exampleTable.Visible = false;
             this.exampleSearch.Visible = false;
             this.exampleDashboard.Visible = true;
+            this.applicantManagement.Visible = false;
+            this.hostManagement.Visible = false;
+
+            applicantGrid.Visible = false;
+        }
+        protected void applicantManagementBtn_Click(object sender, EventArgs e)
+        {
+            this.exampleUpdateStudents.Visible = false;
+            this.exampleUpdateFamily.Visible = false;
+            this.exampleTable.Visible = false;
+            this.exampleSearch.Visible = false;
+            this.exampleDashboard.Visible = false;
+            this.applicantManagement.Visible = true;
+            this.hostManagement.Visible = false;
+
+            getApplicants();
+            PopulateCountriesDropDown();
+            applicantGrid.Visible = true;
+        }
+        protected void hostManagementBtn__Click(object sender, EventArgs e)
+        {
+            this.exampleUpdateStudents.Visible = false;
+            this.exampleUpdateFamily.Visible = false;
+            this.exampleTable.Visible = false;
+            this.exampleSearch.Visible = false;
+            this.exampleDashboard.Visible = false;
+            this.applicantManagement.Visible = false;
+            this.hostManagement.Visible = true;
+
+            applicantGrid.Visible = false;
         }
 
         protected void handleQuickSearch(List<List<String>> rows)
@@ -256,6 +299,38 @@ namespace IHCApp
             handleQuickSearch(displayTables);
         }
 
+
+        protected void getApplicants()
+        {
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            DataSet ds = new DataSet();
+            DataTable applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
+
+
+            ds.Tables.Add(applicants);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                applicantGrid.DataSource = ds;
+                applicantGrid.DataBind();
+
+
+
+
+                //hide unwanted grid columns
+
+                this.applicantGrid.Columns[0].Visible = false;
+
+
+                for (int index = 9; index < applicantGrid.Columns.Count -1; index++)
+                {
+                    this.applicantGrid.Columns[index].Visible = false;
+                }
+
+            }
+
+        }
+
         protected void lookingApplicants_Click(object sender, EventArgs e)
         {
             //go to this tab
@@ -282,7 +357,7 @@ namespace IHCApp
             try
             {
                 Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
-                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text,"APPLICANT");
+                new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text, "APPLICANT");
             }
             catch
             {
@@ -328,5 +403,88 @@ namespace IHCApp
 
             }
         }
+
+        /// <summary>
+        /// Populate Countries
+        /// </summary>
+        private void PopulateCountriesDropDown()
+        {
+            List<string> countries = new DatabaseConnection()._PublicStrategy._PublicDataStrategy.GetAllCountries();
+            this.Country.DataSource = countries;
+            this.Country.DataBind();
+
+            this.Country.Width = Unit.Pixel(200);
+        }
+
+
+        /// <summary>
+        /// Edit Grid Row
+        /// </summary>
+        protected void applicantGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "EditRow")
+            {
+                // Retrieve the row index stored in the 
+                // CommandArgument property.
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                // Retrieve the row that contains the button 
+                // from the Rows collection.
+                GridViewRow row = applicantGrid.Rows[index];
+                firstName.Text = row.Cells[1].Text;
+                lastName.Text = row.Cells[2].Text;
+                dateOfBirth.Text = row.Cells[3].Text;
+
+                //Country ddl
+                Country.ClearSelection();
+                string CountryText = row.Cells[4].Text;
+                ListItem gridSelectedCountry = Country.Items.FindByText(CountryText);
+
+                if (gridSelectedCountry != null)
+                {
+                    Country.SelectedValue = gridSelectedCountry.Text;
+                }
+
+                firstLanguage.Text = row.Cells[5].Text;
+
+
+                //gender radio
+                gender.ClearSelection();
+                string genderText = row.Cells[6].Text;
+                gender.Items.FindByText(genderText).Selected = true;
+
+                //martial status
+                martialstatus.ClearSelection();
+                string martialStatusText = row.Cells[7].Text;
+                if(martialStatusText == "Married" || martialStatusText == "Unmarried")
+                martialstatus.Items.FindByText(martialStatusText).Selected = true;
+
+                address.Text = row.Cells[8].Text;
+
+                phone1.Text = row.Cells[13].Text;
+                phone2.Text = row.Cells[14].Text;
+                allergies.Text = row.Cells[15].Text;
+                hobbies.Text = row.Cells[16].Text;
+                about.Text = row.Cells[17].Text;
+                university.Text = row.Cells[18].Text;
+                
+
+                
+
+
+                
+
+
+                mp1.Show();
+
+
+
+
+
+
+            }
+
+        }
+
     }
 }

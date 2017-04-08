@@ -140,6 +140,15 @@ namespace IHCApp
 
                 SaveFamilyMembers(familyID);
 
+
+                //Display success message.  
+
+                string message = "Your details have been saved successfully.";
+                string script = "window.onload = function(){ alert('";
+                script += message;
+                script += "')};";
+                ClientScript.RegisterStartupScript(this.GetType(), "SuccessMessage", script, true);
+
             }
             catch
             {
@@ -163,18 +172,22 @@ namespace IHCApp
                 TextBox firstName = (TextBox)FindControl("fname" + concatId);
                 TextBox lastName = (TextBox)FindControl("lname" + concatId);
                 TextBox age = (TextBox)FindControl("age" + concatId);
+                TextBox language = (TextBox)FindControl("language" + concatId);
+                DropDownList relationToHost = (DropDownList)FindControl("relationToHost" + concatId);
                 RadioButtonList gender = (RadioButtonList)FindControl("gender" + concatId);
                 CheckBox isHost = (CheckBox)FindControl("host" + concatId);
                 TextBox occupation = (TextBox)FindControl("occupation" + concatId);
+
 
                 familyMember._HostId = familyId;
                 familyMember._FirstName = firstName.Text;
                 familyMember._LastName = lastName.Text;
                 familyMember._Age = age.Text;
+                familyMember._Language = language.Text;
+                familyMember._RelationToHost = relationToHost.SelectedValue;
                 familyMember._Gender = gender.Text;
                 familyMember._Occupation = occupation.Text;
                 familyMember._IsHost = isHost.Checked;
-                familyMember._Language = "tits";
 
                 familyMembers.Add(familyMember);
 

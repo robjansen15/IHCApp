@@ -24,7 +24,7 @@
       $( function() {
           $("#accordion").accordion({
               autoHeight: false,
-              heightStyle: "content"
+              heightStyle: 'content'
       });
     } );
   </script>
@@ -268,7 +268,7 @@
                                 <div id="accordion">
 
                                      <h3>Family Information</h3>
-                                  <div class="accordion-content" style="height:500px">
+                                  <div class="accordion-content">
 
                                         <asp:Label AssociatedControlID="familyName" Text="Host Last Name: " runat="server" ></asp:Label>
                                         <br />
