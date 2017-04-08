@@ -34,7 +34,7 @@ namespace IHCAppTests
         {
             try
             {
-                Host host = new Host("-1", 15, "2", "1", "2", "3", "about", "email", "street address", "IN", "Greenwood", "USA", "46142", "phone", "secPhone", "hoobies", "islooking", "occupied", "notes", "toadmin", "hello", "yes", "yes","yes","yes");
+                Host host = new Host(-1, 15, "2", "1", "2", "3", "about", "email", "street address", "IN", "Greenwood", "USA", "46142", "phone", "secPhone", "hoobies", "islooking", "occupied", "notes", "toadmin", "hello", "yes", "yes","yes","yes");
                 int famUID = new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertHost(host);
 
 
