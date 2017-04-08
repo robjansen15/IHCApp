@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminPortal.aspx.cs" Inherits="IHCApp.AdminPortal" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 
 <!DOCTYPE html>
 
@@ -23,12 +25,47 @@
     <link rel="stylesheet" href="WebAssets/nice-assets/css/owl.carousel.css" type="text/css" />
     <link href="WebAssets/nice-assets/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
     <!-- Custom styles -->
-    <link rel="stylesheet" href="WebAssets/nice-assets/css/fullcalendar.css" />
+    <link href="WebAssets/nice-assets/css/fullcalendar.css" rel="stylesheet" />
     <link href="WebAssets/nice-assets/css/widgets.css" rel="stylesheet" />
-    <link href="WebAssets/nice-assets/css/style.css" rel="stylesheet" />
     <link href="WebAssets/nice-assets/css/style-responsive.css" rel="stylesheet" />
     <link href="WebAssets/nice-assets/css/xcharts.min.css" rel=" stylesheet" />	
     <link href="WebAssets/nice-assets/css/jquery-ui-1.10.4.min.css" rel="stylesheet" />
+    <link href="WebAssets/nice-assets/css/style.css" rel="stylesheet" />
+
+    <style type="text/css">
+
+        .modalBackground {
+    
+        background-color: Black !important;
+        filter: alpha(opacity=90) !important;
+        opacity: 0.7 !important;
+        }
+
+        .modalPopup {
+    
+            background-color: #FFFFFF !important;
+            border-width: 3px !important;
+            border-style: solid !important; 
+            border-color: black !important;
+            padding-top: 10px !important;
+            padding-left: 10px !important;
+            width: 79% !important;
+            height: 80% !important;
+            overflow:scroll;
+        }
+
+        #btnClose{
+        position: fixed;
+        top: 7%;
+        right: 9.5%;
+        margin-right: 10px;
+        margin-top: 10px;
+        width:50px;
+        height:50px;
+        }
+
+    </style>
+
 </head>
 <body>
   <!-- container section start -->
@@ -113,18 +150,29 @@
                     <!-- sidebar menu start-->
                     <ul class="sidebar-menu">                
                         <li class="active">
-                            <asp:LinkButton class="" runat="server" ID="dashboardBtn" OnClick="dashboardBtn_Click">
+                            <asp:LinkButton class="" runat="server" ID="dashboardBtn" OnClick="dashboardBtn_Click"  CausesValidation="false">
                                 <i class="icon_house_alt"></i>
                                 <span>Dashboard</span>
                             </asp:LinkButton>
                         </li>
                         
                         <li>
-                           <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn">                       
+                           <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn"  CausesValidation="false">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
                             </asp:LinkButton>
-                        </li>
+                        </li>   
+                        <li class="sub-menu">
+                            <a href="javascript:;" class="">
+                                <i class="icon_folder"></i>
+                                <span>Manage</span>
+                                <span class="menu-arrow arrow_carrot-right"></span>
+                            </a>
+                            <ul class="sub">
+                                 <li><asp:LinkButton class="" runat="server" ID="applicantManagementBtn" OnClick="applicantManagementBtn_Click"  CausesValidation="false">Manage Applicants</asp:LinkButton></li>          
+                                 <li><asp:LinkButton class="" runat="server" ID="hostManagementBtn" OnClick="hostManagementBtn__Click"  CausesValidation="false">Manage Hosts</asp:LinkButton></li> 
+                            </ul>
+                        </li>    
 
 				        <li class="sub-menu">
                             <a href="javascript:;" class="">
@@ -133,8 +181,8 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click">Applicant Form</asp:LinkButton></li>                          
-                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click">Host Form</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" class="" id="studentFormBtn" OnClick="studentFormBtn_Click"  CausesValidation="false">Applicant Form</asp:LinkButton></li>                          
+                                <li><asp:LinkButton runat="server" class="" id="familyFormBtn" OnClick="familyFormBtn_Click"  CausesValidation="false">Host Form</asp:LinkButton></li>
                             </ul>
                         </li>       
                         <li class="sub-menu">
@@ -144,12 +192,12 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                <li><asp:LinkButton runat="server" id="allApplicants" OnClick="allApplicants_Click" class="">All Applicants</asp:LinkButton></li>                               
-                                <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class="">All Active Applicants</asp:LinkButton></li>                                
-                                <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class="">All Looking Applicants</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class="">All Hosts</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="allActiveHosts" OnClick="allActiveHosts_Click" class="">All Active Hosts</asp:LinkButton></li>
-                                <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class="">All Looking Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allApplicants" OnClick="allApplicants_Click" class=""  CausesValidation="false">All Applicants</asp:LinkButton></li>                               
+                                <li><asp:LinkButton runat="server" id="allActiveApplicants" OnClick="allActiveApplicants_Click" class=""  CausesValidation="false">All Active Applicants</asp:LinkButton></li>                                
+                                <li><asp:LinkButton runat="server" id="lookingApplicants" OnClick="lookingApplicants_Click" class=""  CausesValidation="false">All Looking Applicants</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allHosts" OnClick="allHosts_Click" class=""  CausesValidation="false">All Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="allActiveHosts" OnClick="allActiveHosts_Click" class=""  CausesValidation="false">All Active Hosts</asp:LinkButton></li>
+                                <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class=""  CausesValidation="false">All Looking Hosts</asp:LinkButton></li>
                             </ul>
                         </li>
                                     
@@ -343,6 +391,273 @@
 
                                 <asp:Button ID="customSearchBtn" runat="server" Text="Search"></asp:Button>
                             </div>
+
+                        </section>
+                    </asp:Panel>
+
+                    <asp:Panel runat="server" ID="applicantManagement" Visible="false">
+
+                            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                            </asp:ScriptManager>
+                         <%--   <asp:Button ID="btnShow" runat="server" Text="Edit" CausesValidation="False" />--%>
+
+
+                            <asp:GridView runat="server" ID="applicantGrid" DataKeyNames="A_id" AutoGenerateColumns="false" ViewStateMode="Enabled" OnRowCommand="applicantGrid_RowCommand" Visible="false">
+	                            <Columns>
+
+                                <%--Visible Columns--%>
+                                <asp:BoundField DataField="A_Id"/>
+	                            <asp:BoundField DataField="A_FirstName" HeaderText="First Name" />
+	                            <asp:BoundField DataField="A_LastName" HeaderText="Last Name" />
+                                <asp:BoundField DataField="A_D.O.B" HeaderText="Date of Birth" />
+                                <asp:BoundField DataField="A_Country" HeaderText="Country" />
+                                <asp:BoundField DataField="A_Language" HeaderText="Language"/>
+	                            <asp:BoundField DataField="A_Gender" HeaderText="Gender" />
+                                <asp:BoundField DataField="A_Status" HeaderText="Martial Status" />
+                                <asp:BoundField DataField="A_Street" HeaderText="Address" />
+
+                             <%--   Hidden Columns--%>
+	                            <asp:BoundField DataField="A_Nationality" HeaderText="Nationality" />
+	                            <asp:BoundField DataField="A_Dog" HeaderText="Dogs" />
+	                            <asp:BoundField DataField="A_Cat" HeaderText="Cats" />
+	                            <asp:BoundField DataField="A_Street" HeaderText="Address" />
+	                            <asp:BoundField DataField="A_PrimePh_no" HeaderText="Primary Phone" />
+	                            <asp:BoundField DataField="A_SecPh_no" HeaderText="Secondary Phone" />
+                                <asp:BoundField DataField="A_HealthIssues" HeaderText="Health Issues" />
+	                            <asp:BoundField DataField="A_Hobbies" HeaderText="Hobbies" />
+                                <asp:BoundField DataField="A_About" HeaderText="About" />
+	                            <asp:BoundField DataField="OtherUniversity" HeaderText="Other Sponsor" />
+                                <asp:BoundField DataField="A_Email" HeaderText="Email" />
+	                            <asp:BoundField DataField="A_EmergencyContact" HeaderText="Emergency Contact" />
+	                            <asp:TemplateField>
+                                 <ItemTemplate>
+                                 <asp:Button ID="applicantRowEdit" runat="server" 
+                                  CommandName="EditRow" 
+                                  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
+                                  Text="Edit"
+                                  CausesValidation="false"
+                                   />
+                                </ItemTemplate> 
+                                </asp:TemplateField>
+	                            </Columns>
+                            </asp:GridView>
+ 
+                            <asp:Button ID="modelPopup" runat="server" style="display:none"  CausesValidation="false" />
+                            <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="modelPopup"
+                                CancelControlID="btnClose" BackgroundCssClass="modalBackground">
+                            </cc1:ModalPopupExtender>
+
+
+                            <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup" align="left">
+                                <h1><u>Edit Applicant</u></h1>
+                                <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
+                                <table style="width:100%; border-collapse:separate; border-spacing:3em;">
+
+                                <tr>
+                                <td>
+                                <h3><u>Personal Information</u></h3>
+                              
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="lastName" errormessage="You must provide your last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label AssociatedControlID="lastName" Text="Last Name: " runat="server"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="lastName"></asp:TextBox>
+
+                                <br />
+                                <br />
+
+                                <asp:RequiredFieldValidator runat="server" controltovalidate="firstName" errormessage="You must provide your first name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                <asp:Label AssociatedControlID="firstName" Text="First Name: " runat="server"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="firstName"></asp:TextBox>
+
+                                <br />
+                                <br />
+
+                                <asp:Label Text="Date of Birth: " runat="server"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="dateOfBirth"></asp:TextBox>
+
+                                <br />
+                                <br />
+
+                                <asp:Label AssociatedControlID="Country" Text="Nationality: " runat="server"></asp:Label>
+                                <br />
+                                <asp:DropDownList id="Country" runat="server">
+                                </asp:DropDownList>
+
+                                <br />
+                                <br />
+                           
+                                    
+                                <asp:Label AssociatedControlID="firstLanguage" Text="First Language: " runat="server"></asp:Label>
+                                <br />
+                                <asp:TextBox runat="server" id="firstLanguage"></asp:TextBox>
+
+                                <br />
+                                <br />
+
+                               
+                                <asp:Label AssociatedControlID="gender" Text="Gender: " runat="server"></asp:Label>
+                                <asp:RadioButtonList id="gender"   CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Male" Value="0" Selected="true"/>
+                                <asp:ListItem Text="Female" Value="1" />
+                                </asp:RadioButtonList>
+
+                                <br />
+                   
+
+                                <asp:Label AssociatedControlID="martialstatus" Text="Martial Status: " runat="server"></asp:Label>
+                                <asp:RadioButtonList id="martialstatus"  CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Married" Value="0" Selected="true"/>
+                                <asp:ListItem Text="Unmarried" Value="1" />
+                                </asp:RadioButtonList>
+
+                                <h3><u>Conditions and Preferences</u></h3>
+                                <asp:Label AssociatedControlID="transportation" Text="Do you have transportation?: " runat="server"></asp:Label>
+                                <asp:RadioButtonList id="transportation" CssClass="rdoBtnItemSpacing" runat="server">
+                                <asp:ListItem Text="Yes" Value="0" Selected="true"/>
+                                <asp:ListItem Text="No" Value="1" />
+                                </asp:RadioButtonList>
+
+                                <br />
+
+                                <asp:Label runat="server" Text="Allergies, Health Problems or Dietary Restrictions:" AssociatedControlID="allergies"></asp:Label>
+                                <br />
+                                <asp:TextBox id="allergies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                <br />
+                                <br />
+
+                                <asp:Label runat="server" Text="Do you have any particular preferences?" AssociatedControlID="hobbies"></asp:Label>
+                                <br />
+                                <asp:TextBox id="hobbies" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                <br />
+                                <br />
+
+                                <asp:Label runat="server" Text="Tell us about yourself: " AssociatedControlID="about"></asp:Label>
+                                <br />
+                                <asp:TextBox id="about" runat="server" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox> 
+
+                                </td>
+
+
+                                <td>
+                                </td>
+                                <td>
+
+                                <h3><u>Sponsor Information</u></h3>
+                                <asp:Label runat="server" Text="Sponsor Institution (name of school, company or organization): " AssociatedControlID="university"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="university"></asp:TextBox>
+                                    <br />
+                                    <br />
+                                     
+                                    <asp:Label runat="server" Text="Sponsor Institution Address: " AssociatedControlID="universityAddress"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="universityAddress"></asp:TextBox>
+                                    <br />
+                                    <br />
+                                    <asp:Label runat="server" Text="Program Start Date: "></asp:Label>
+                                    <br />
+                                    <br />
+                                    <br />
+                       
+                                    <asp:Label runat="server" Text="Major (Subject of Study) if applicable: " AssociatedControlID="major"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="major"></asp:TextBox>
+                                    <br />
+                                    <br />
+                                      
+                                    <asp:Label runat="server" Text="Sponsor Contact Information (Name / Phone Number): " AssociatedControlID="universityContactInfo"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="universityContactInfo"></asp:TextBox>
+                                    <br />
+                                    <br />
+                                        
+                                    <asp:Label runat="server" Text="Requested Length of Homestay: " AssociatedControlID="homestayDuration"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="homestayDuration"></asp:TextBox>
+
+                                    <br />
+                                     <br />
+                                     <br />
+
+
+                                    
+                                    <h3><u>Contact Information</u></h3>
+                                    <asp:Label runat="server" Text="Address: " AssociatedControlID="address"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="address" Enabled="True" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                    
+                                    <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="phone1" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+
+                                    <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
+                                    <br />
+                                    <asp:TextBox runat="server" id="phone2" Width="50%"></asp:TextBox>
+
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                               
+                              
+                              
+                                    <div style="text-align:center">
+                                    <asp:Button ID="modalSave" class="btn btn-default btn-lg" Text="Save Applicant" runat="server"></asp:Button>
+                                    </div>
+                               
+                       
+                           
+                                </td>
+                                <td>
+
+                                </td>
+
+
+                                </tr>
+
+                             
+
+                                </table>
+                                <br />
+                                <br />
+                                  <asp:ImageButton ID="btnClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False"  />
+                            </asp:Panel>
+
+                            
+                        <section class="panel">
+
+                        </section>
+                    </asp:Panel>
+
+                          <asp:Panel runat="server" ID="hostManagement" Visible="false">
+                 
+                        <section class="panel">
 
                         </section>
                     </asp:Panel>

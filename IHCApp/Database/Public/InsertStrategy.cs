@@ -141,7 +141,7 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@A_Dog", applicant._Dog));
                 command.Parameters.Add(new SqlParameter("@A_Cat", applicant._Cat));
                 command.Parameters.Add(new SqlParameter("@A_HealthIssues", applicant._HealthIssues));
-                command.Parameters.Add(new SqlParameter("@A_DOB", applicant._DOB));
+                command.Parameters.Add(new SqlParameter("@A_D.O.B", applicant._DOB));
                 command.Parameters.Add(new SqlParameter("@A_PrimePh_no", applicant._PrimaryPhone));
                 command.Parameters.Add(new SqlParameter("@A_SecPh_no", applicant._SecondaryPhone));
                 command.Parameters.Add(new SqlParameter("@A_Hobbies", applicant._Hobbies));
@@ -149,7 +149,7 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@A_PayDate", applicant._Paydate));
                 command.Parameters.Add(new SqlParameter("@A_DepositDate", applicant._DepositDate));
                 command.Parameters.Add(new SqlParameter("@A_PaymentAmount", applicant._PaymentAmount));
-                command.Parameters.Add(new SqlParameter("@A_OtherUniversity", applicant._OtherUniversity));
+                command.Parameters.Add(new SqlParameter("@OtherUniversity", applicant._OtherUniversity));
                 command.Parameters.Add(new SqlParameter("@A_Email", applicant._Email));
                 command.Parameters.Add(new SqlParameter("@A_EmergencyContact", applicant._EmergencyContact));
                 command.ExecuteNonQuery();

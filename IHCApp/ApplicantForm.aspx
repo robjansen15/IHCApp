@@ -24,7 +24,7 @@
       $(function () {
           $("#accordion").accordion({
               autoHeight: false,
-              heightStyle: "content"
+              heightStyle: 'panel'
           });
       });
   </script>
