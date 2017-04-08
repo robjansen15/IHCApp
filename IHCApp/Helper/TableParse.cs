@@ -59,7 +59,7 @@ namespace IHCApp.Helper
             List<Host> hosts = dt.AsEnumerable().Select(row =>
                 new Host
                 {
-                    _FamilyID = row.Field<string>("Family_Id"),
+                    _FamilyID = row.Field<int?>("Family_Id"),
                     _TimeToCenter = row.Field<int?>("Time_toCenter"),
                     _NumBathrooms = row.Field<string>("NoOfBathrooms"),
                     _NumDogs = row.Field<string>("NoOfDogs"),

@@ -111,36 +111,36 @@ namespace IHCApp
                 foreach (string column in header)
                 {
 
-
                 }
 
-                rows.RemoveAt(0);
 
-                int counter = 0;
 
-                foreach (List<String> row in rows)
-                {
+                    rows.RemoveAt(0);
 
-                    this.exampleTable.Controls.Add(new LiteralControl("<tr Id='rowNum'" + counter + "'>"));
+                    int counter = 0;
 
-                    foreach (string colInRow in row)
+                    foreach (List<String> row in rows)
                     {
-                        this.exampleTable.Controls.Add(new LiteralControl("<td>" + colInRow + "</td>"));
 
+                        this.exampleTable.Controls.Add(new LiteralControl("<tr Id='rowNum'" + counter + "'>"));
+
+                        foreach (string colInRow in row)
+                        {
+                            this.exampleTable.Controls.Add(new LiteralControl("<td>" + colInRow + "</td>"));
+
+                        }
+
+                        this.exampleTable.Controls.Add(new LiteralControl("</tr>"));
+                        counter++;
                     }
 
-                    this.exampleTable.Controls.Add(new LiteralControl("</tr>"));
-                    counter++;
+                    this.exampleTable.Controls.Add(new LiteralControl("</table>"));
                 }
-
-                this.exampleTable.Controls.Add(new LiteralControl("</table>"));
-            }
             else
             {
-                this.exampleTable.Controls.Add(new LiteralControl("<h1>Error populating table</h1>"));
+                    this.exampleTable.Controls.Add(new LiteralControl("<h1>Error populating table</h1>"));
+                }
             }
-        }
-
 
 
         /// <summary>
