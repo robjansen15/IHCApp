@@ -704,6 +704,7 @@
     <Compile Include="Authentication\Authenticate.cs" />
     <Compile Include="Database\Helper\DataAccess.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Database\Protected\UpdateFormStrategy.cs" />
     <Compile Include="Database\PublicStrategy.cs" />
     <Compile Include="Database\Protected\DynamicSearchStrategy.cs" />
     <Compile Include="Database\Protected\FormUpdateHTMLStrategy.cs" />
@@ -713,6 +714,7 @@
     <Compile Include="Database\Protected\QuickSearchStrategy.cs" />
     <Compile Include="Database\Public\TokenStrategy.cs" />
     <Compile Include="Helper\TableParse.cs" />
+    <Compile Include="Helper\Updating.cs" />
     <Compile Include="HostForm.aspx.cs">
       <DependentUpon>HostForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
