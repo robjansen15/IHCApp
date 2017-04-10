@@ -36,9 +36,10 @@
 
         .modalBackground {
     
-        background-color: Black !important;
-        filter: alpha(opacity=90) !important;
-        opacity: 0.7 !important;
+            background-color: Black !important;
+            filter: alpha(opacity=90) !important;
+            opacity: 0.7 !important;
+            z-index:9999;
         }
 
         .modalPopup {
@@ -52,19 +53,92 @@
             width: 79% !important;
             height: 80% !important;
             overflow:scroll;
+            z-index:9999;
+
         }
 
-        #btnClose{
-        position: fixed;
-        top: 7%;
-        right: 9.5%;
-        margin-right: 10px;
-        margin-top: 10px;
-        width:50px;
-        height:50px;
+        .modal-open {
+            overflow: hidden;
+        }
+
+
+        .modal-open {
+            overflow: scroll;
+        }
+
+        .modal-btn-close{
+            position: fixed;
+            top: 7%;
+            right: 9.5%;
+            margin-right: 10px;
+            margin-top: 10px;
+            width:50px;
+            height:50px;
+        }
+
+        .mydatagrid
+        {
+            width: 90%;
+        }
+
+        .gridheader
+        {
+
+            background-color: #646464;
+            font-family: Arial;
+            color: White;
+            border: none 0px transparent;
+            height: 25px;
+
+     
+        }
+ 
+        .rows
+        {
+            border: none 0px transparent;
+        }
+
+        .mydatagrid a /** FOR THE PAGING ICONS  **/
+        {
+            /*background-color: Transparent;
+            padding: 5px 5px 5px 5px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;*/
+        }
+ 
+        .mydatagrid a:hover /** FOR THE PAGING ICONS  HOVER STYLES**/
+        {
+            /*background-color: #000;
+            color: #fff;*/
+        }
+        .mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/
+        {
+            /*background-color: #c9c9c9;
+            color: #000;
+            padding: 5px 5px 5px 5px;*/
+        }
+        .pager
+        {
+     
+            /*font-family: Arial;
+            color: White;
+            height: 30px;
+            text-align: left;*/
+        }
+ 
+        .mydatagrid td
+        {
+            padding: 5px;
+        }
+        .mydatagrid th
+        {
+            padding: 5px;
         }
 
     </style>
+
+
 
 </head>
 <body>
@@ -100,7 +174,7 @@
                                 </li>                      
                                 <li>
                                     <a href="#">
-                                        <span class="label label-danger"><i class="icon_book_alt"></i></span> 
+                                        <span class="label label-dange"><i class="icon_book_alt"></i></span> 
                                         3 new arrivals this week... 
                                         <span class="small italic pull-right"> Sunday</span>
                                     </a>
@@ -250,54 +324,6 @@
 						    <div class="title">New form Submissions</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->
-
-                    <!--START TABLE OF EVENTS-->
-                        <table class="table table-striped table-advance table-hover">
-                               <tbody>
-                                  <tr>
-                                    <th><i class="icon_calendar"></i> Date</th>
-                                     <th><i class="icon_profile"></i> Event Type</th>
-                                     <th><i class="icon_mail_alt"></i> Description</th>   
-                                     <th><i class="icon_cogs"></i> Action</th>
-                                  </tr>
-                                  <tr>
-                                     <td>2004-07-06</td>
-                                     <td>New Host Form</td>
-                                     <td>A new family "Jansen" has applied for Homestay</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                                <tr>
-                                     <td>2004-07-06</td>
-                                     <td>New Student Form</td>
-                                     <td>A new student "Jim" has applied for Homestay</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>                                 
-                                  <tr>
-                                     <td>2004-07-06</td>
-                                     <td>Arrival</td>
-                                     <td>"John" will be arriving by plane today at 3:15 PM</td>
-                                     <td>
-                                      <div class="btn-group">
-                                          <a class="btn btn-primary" href="#"><i class="icon_plus_alt2"></i></a>
-                                          <a class="btn btn-success" href="#"><i class="icon_check_alt2"></i></a>
-                                          <a class="btn btn-danger" href="#"><i class="icon_close_alt2"></i></a>
-                                      </div>
-                                      </td>
-                                  </tr>
-                               </tbody>
-                            </table>
 				
 			</div>
                         
@@ -402,7 +428,8 @@
                          <%--   <asp:Button ID="btnShow" runat="server" Text="Edit" CausesValidation="False" />--%>
 
 
-                            <asp:GridView runat="server" ID="applicantGrid" DataKeyNames="A_id" AutoGenerateColumns="false" ViewStateMode="Enabled" OnRowCommand="applicantGrid_RowCommand" Visible="false">
+                            <asp:GridView runat="server" ID="applicantGrid" DataKeyNames="A_id" AutoGenerateColumns="false" ViewStateMode="Enabled" OnRowCommand="applicantGrid_RowCommand" Visible="false"
+                                CssClass="mydatagrid table table-striped table-advance table-hover" PagerStyle-CssClass="pager" HeaderStyle-CssClass="gridheader" RowStyle-CssClass="rows" AllowPaging="False">
 	                            <Columns>
 
                                 <%--Visible Columns--%>
@@ -429,14 +456,14 @@
 	                            <asp:BoundField DataField="OtherUniversity" HeaderText="Other Sponsor" />
                                 <asp:BoundField DataField="A_Email" HeaderText="Email" />
 	                            <asp:BoundField DataField="A_EmergencyContact" HeaderText="Emergency Contact" />
-	                            <asp:TemplateField>
-                                 <ItemTemplate>
-                                 <asp:Button ID="applicantRowEdit" runat="server" 
-                                  CommandName="EditRow" 
-                                  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"
-                                  Text="Edit"
-                                  CausesValidation="false"
-                                   />
+	                            <asp:TemplateField HeaderText="Actions">
+                                 <ItemTemplate >
+                                     <%-- Inline Edit Button--%>
+
+                            
+                                      <asp:Button ID="applicantRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
+                                        <a class="btn btn-danger" href="#">Archive</a>
+                   
                                 </ItemTemplate> 
                                 </asp:TemplateField>
 	                            </Columns>
@@ -452,9 +479,10 @@
                                 <h1><u>Edit Applicant</u></h1>
                                 <asp:ValidationSummary runat="server" headertext="Please correct the following errors before continuing:" ForeColor="#ff3300" DisplayMode="List"/>
                                 <table style="width:100%; border-collapse:separate; border-spacing:3em;">
-
+                                    <asp:TextBox runat="server" id ="applicantId" Visible="false"></asp:TextBox>
                                 <tr>
                                 <td>
+
                                 <h3><u>Personal Information</u></h3>
                               
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="lastName" errormessage="You must provide your last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
@@ -499,8 +527,8 @@
                                
                                 <asp:Label AssociatedControlID="gender" Text="Gender: " runat="server"></asp:Label>
                                 <asp:RadioButtonList id="gender"   CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Male" Value="0" Selected="true"/>
-                                <asp:ListItem Text="Female" Value="1" />
+                                <asp:ListItem Text="Male" Value="Male" Selected="true"/>
+                                <asp:ListItem Text="Female" Value="Female" />
                                 </asp:RadioButtonList>
 
                                 <br />
@@ -508,8 +536,8 @@
 
                                 <asp:Label AssociatedControlID="martialstatus" Text="Martial Status: " runat="server"></asp:Label>
                                 <asp:RadioButtonList id="martialstatus"  CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Married" Value="0" Selected="true"/>
-                                <asp:ListItem Text="Unmarried" Value="1" />
+                                <asp:ListItem Text="Married" Value="Married" Selected="true"/>
+                                <asp:ListItem Text="Unmarried" Value="Unmarried" />
                                 </asp:RadioButtonList>
 
                                 <h3><u>Conditions and Preferences</u></h3>
@@ -628,7 +656,7 @@
                               
                               
                                     <div style="text-align:center">
-                                    <asp:Button ID="modalSave" class="btn btn-default btn-lg" Text="Save Applicant" runat="server"></asp:Button>
+                                    <asp:Button ID="modalSave" class="btn btn-default btn-lg" Text="Save Applicant" runat="server" CommandArgument='<%#Eval("A_Id")%>' OnClick="applicantGrid_UpdateApplicantRow" OnClientClick="allowBodyScrolling()"></asp:Button>
                                     </div>
                                
                        
@@ -646,7 +674,7 @@
                                 </table>
                                 <br />
                                 <br />
-                                  <asp:ImageButton ID="btnClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False"  />
+                                  <asp:ImageButton ID="btnClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False" CssClass="modal-btn-close"  />
                             </asp:Panel>
 
                             
@@ -788,6 +816,18 @@
            });
   </script>
 
+<script type="text/javascript">
+
+    function preventBackgroundpPageScroll() {
+        document.body.style['overflow-y'] = 'hidden';
+    }
+
+
+    function allowBodyScrolling() {
+        document.body.style['overflow-y'] = 'auto';
+    }
+
+</script>
     </body>
     
 </html>

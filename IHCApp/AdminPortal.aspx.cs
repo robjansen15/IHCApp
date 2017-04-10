@@ -18,35 +18,46 @@ namespace IHCApp
         {
             bool redirect = true;
 
-            //hard coded
-            redirect = false;
-            Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
-
-            if ((Token)Session["token"] == null)
-            {
-                Response.Redirect("AdminLogin.aspx");
-            }
-            else if (new Authenticate().ValidateToken((Token)Session["token"]))
-            {
-                redirect = false;
-            }
 
 
-            if (redirect)
-            {
-                Response.Redirect("AdminLogin.aspx");
-            }
+   
+                Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
+
+                if ((Token)Session["token"] == null)
+                {
+                    Response.Redirect("AdminLogin.aspx");
+                }
+                else if (new Authenticate().ValidateToken((Token)Session["token"]))
+                {
+                    redirect = false;
+                }
 
 
-            if (!Page.IsPostBack)
-            {
-                this.exampleUpdateStudents.Visible = false;
-                this.exampleUpdateFamily.Visible = false;
-                this.exampleTable.Visible = false;
-                this.exampleSearch.Visible = false;
-                this.exampleDashboard.Visible = true;
+                if (redirect)
+                {
+                    Response.Redirect("AdminLogin.aspx");
+                }
 
-            }
+            
+                //Handle !ispostback
+
+                if (!Page.IsPostBack && Session["IsApplicantEdit"] != null)
+                {
+                    applicantManagementBtn_Click(sender, e);
+                    Session["IsApplicantEdit"] = null;
+                }
+
+                else if (!Page.IsPostBack && Session["IsHostEdit"] != null)
+                {
+                    hostManagementBtn__Click(sender, e);
+                    Session["IsHostEdit"] = null;
+                }
+
+                else if(!Page.IsPostBack)
+                    dashboardBtn_Click(sender, e);
+
+                
+            
         }
 
 
@@ -128,6 +139,7 @@ namespace IHCApp
             getApplicants();
             PopulateCountriesDropDown();
             applicantGrid.Visible = true;
+
         }
         protected void hostManagementBtn__Click(object sender, EventArgs e)
         {
@@ -155,8 +167,6 @@ namespace IHCApp
                 {
 
                 }
-
-
 
                     rows.RemoveAt(0);
 
@@ -304,7 +314,7 @@ namespace IHCApp
         {
             Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
             DataSet ds = new DataSet();
-            DataTable applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
+            DataTable applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
 
 
             ds.Tables.Add(applicants);
@@ -424,13 +434,14 @@ namespace IHCApp
         {
             if (e.CommandName == "EditRow")
             {
-                // Retrieve the row index stored in the 
-                // CommandArgument property.
+
+
                 int index = Convert.ToInt32(e.CommandArgument);
 
                 // Retrieve the row that contains the button 
                 // from the Rows collection.
                 GridViewRow row = applicantGrid.Rows[index];
+                applicantId.Text = row.Cells[0].Text;
                 firstName.Text = row.Cells[1].Text;
                 lastName.Text = row.Cells[2].Text;
                 dateOfBirth.Text = row.Cells[3].Text;
@@ -469,12 +480,6 @@ namespace IHCApp
                 university.Text = row.Cells[18].Text;
                 
 
-                
-
-
-                
-
-
                 mp1.Show();
 
 
@@ -485,6 +490,76 @@ namespace IHCApp
             }
 
         }
+
+
+        /// <summary>
+        /// Update Applicant Row
+        /// </summary>
+        protected void applicantGrid_UpdateApplicantRow(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Applicant applicant = new Applicant();
+
+                applicant._ApplicantID = Int32.Parse(applicantId.Text);
+
+                applicant._FirstName = this.firstName.Text;
+                applicant._LastName = this.lastName.Text;
+                applicant._MoveInDate = DateTime.Now;
+                applicant._DurationOfStay = "4";
+                applicant._Language = this.firstLanguage.Text;
+                applicant._Gender = gender.SelectedValue;
+                applicant._Status = martialstatus.SelectedValue;
+                applicant._Nationality = "nationality";
+                applicant._Street = this.address.Text;
+                applicant._State = "IN";
+                applicant._City = "Indianapolis";
+                applicant._Country = this.Country.Text;
+                applicant._FlightID = "F29";
+                applicant._FlightDate = DateTime.Now;
+                applicant._FlightName = "flight name";
+                applicant._Dog = "yes";
+                applicant._Cat = "no";
+                applicant._HealthIssues = this.allergies.Text;
+                applicant._DOB = DateTime.Parse(dateOfBirth.Text);
+                applicant._PrimaryPhone = this.phone1.Text;
+                applicant._SecondaryPhone = this.phone2.Text;
+                applicant._Hobbies = this.hobbies.Text;
+                applicant._About = this.about.Text;
+                applicant._Paydate = DateTime.Now;
+                applicant._DepositDate = DateTime.Now;
+                applicant._PaymentAmount = "300";
+                applicant._OtherUniversity = "purdue";
+                applicant._Email = 
+                applicant._EmergencyContact = this.universityContactInfo.Text;
+
+                new DatabaseConnection((Token)Session["token"])._ProtectedStrategy._UpdateFormStrategy.UpdateApplicant(applicant);
+
+            }
+            catch (Exception ex)
+            {
+                var x = ex.ToString();
+                //notify the user
+            }
+
+
+            mp1.Hide();
+            Session.Add("IsApplicantEdit", "true");
+            Response.Redirect("AdminPortal.aspx");
+
+
+
+        }
+
+        protected void applicantGrid_onPageIndexing(object sender, EventArgs e)
+        {
+
+          
+
+
+        }
+
 
     }
 }
