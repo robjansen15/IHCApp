@@ -155,7 +155,9 @@ namespace IHCApp
                 //notify the user
             }
 
-            Response.Redirect("Home.aspx");
+
+            Response.Write("<script language='javascript'>alert('Saved Sucessfully!');</script>");
+            Server.Transfer("home.aspx", true);
         }
 
 
@@ -633,6 +635,7 @@ namespace IHCApp
 
             //living details panel
             confirmAllowSmoking.SelectedValue = allowSmoking.SelectedValue;
+            confirmAllowDrinking.SelectedValue = allowDrinking.SelectedValue; 
             confirmFamilySmoke.SelectedValue = familySmoke.SelectedValue;
             confirmDogs.SelectedValue = dogs.SelectedValue;
             confirmCats.SelectedValue = cats.SelectedValue;

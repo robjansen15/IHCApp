@@ -75,6 +75,7 @@ namespace IHCApp
             this.exampleDashboard.Visible = false;
 
             applicantGrid.Visible = false;
+            hostGrid.Visible = false;
         }
 
         protected void familyFormBtn_Click(object sender, EventArgs e)
@@ -86,6 +87,7 @@ namespace IHCApp
             this.exampleDashboard.Visible = false;
 
             applicantGrid.Visible = false;
+            hostGrid.Visible = false;
         }
 
         protected void studentFormBtn_Click(object sender, EventArgs e)
@@ -99,6 +101,7 @@ namespace IHCApp
             this.hostManagement.Visible = false;
 
             applicantGrid.Visible = false;
+            hostGrid.Visible = false;
         }
 
         public void ClickQuickSearch()
@@ -112,6 +115,7 @@ namespace IHCApp
             this.hostManagement.Visible = false;
 
             applicantGrid.Visible = false;
+            hostGrid.Visible = false;
         }
 
         protected void dashboardBtn_Click(object sender, EventArgs e)
@@ -125,6 +129,7 @@ namespace IHCApp
             this.hostManagement.Visible = false;
 
             applicantGrid.Visible = false;
+            hostGrid.Visible = false;
         }
         protected void applicantManagementBtn_Click(object sender, EventArgs e)
         {
@@ -139,6 +144,7 @@ namespace IHCApp
             getApplicants();
             PopulateCountriesDropDown();
             applicantGrid.Visible = true;
+            hostGrid.Visible = false;   
 
         }
         protected void hostManagementBtn__Click(object sender, EventArgs e)
@@ -152,6 +158,9 @@ namespace IHCApp
             this.hostManagement.Visible = true;
 
             applicantGrid.Visible = false;
+
+            getHosts();
+            hostGrid.Visible = true;
         }
 
         protected void handleQuickSearch(List<List<String>> rows)
@@ -322,8 +331,13 @@ namespace IHCApp
             if (ds.Tables[0].Rows.Count > 0)
             {
                 applicantGrid.DataSource = ds;
-                applicantGrid.DataBind();
 
+                for (int x = 9; x < applicantGrid.Columns.Count - 1; x++)
+                {
+                    this.applicantGrid.Columns[x].Visible = true;
+                }
+
+                applicantGrid.DataBind();
 
 
 
@@ -335,6 +349,42 @@ namespace IHCApp
                 for (int index = 9; index < applicantGrid.Columns.Count -1; index++)
                 {
                     this.applicantGrid.Columns[index].Visible = false;
+                }
+
+            }
+
+        }
+
+        protected void getHosts()
+        {
+            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            DataSet ds = new DataSet();
+            DataTable hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
+
+
+            ds.Tables.Add(hosts);
+
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                hostGrid.DataSource = ds;
+
+                for (int x = 7; x < hostGrid.Columns.Count - 1; x++)
+                {
+                    this.hostGrid.Columns[x].Visible = true;
+                }
+
+                hostGrid.DataBind();
+
+
+
+                //hide unwanted grid columns
+
+                this.hostGrid.Columns[0].Visible = false;
+
+
+                for (int index = 7; index < hostGrid.Columns.Count - 1; index++)
+                {
+                    this.hostGrid.Columns[index].Visible = false;
                 }
 
             }
@@ -428,19 +478,25 @@ namespace IHCApp
 
 
         /// <summary>
-        /// Edit Grid Row
+        /// Applicant Edit Grid Row
         /// </summary>
         protected void applicantGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
             if (e.CommandName == "EditRow")
             {
 
+                for (int x = 1; x < applicantGrid.Columns.Count - 1; x++)
+                {
+                    this.applicantGrid.Columns[x].Visible = true;
+                }
+
 
                 int index = Convert.ToInt32(e.CommandArgument);
-
-                // Retrieve the row that contains the button 
-                // from the Rows collection.
                 GridViewRow row = applicantGrid.Rows[index];
+
+
+
                 applicantId.Text = row.Cells[0].Text;
                 firstName.Text = row.Cells[1].Text;
                 lastName.Text = row.Cells[2].Text;
@@ -468,19 +524,24 @@ namespace IHCApp
                 martialstatus.ClearSelection();
                 string martialStatusText = row.Cells[7].Text;
                 if(martialStatusText == "Married" || martialStatusText == "Unmarried")
-                martialstatus.Items.FindByText(martialStatusText).Selected = true;
+                    martialstatus.Items.FindByText(martialStatusText).Selected = true;
 
                 address.Text = row.Cells[8].Text;
-
                 phone1.Text = row.Cells[13].Text;
                 phone2.Text = row.Cells[14].Text;
                 allergies.Text = row.Cells[15].Text;
                 hobbies.Text = row.Cells[16].Text;
                 about.Text = row.Cells[17].Text;
                 university.Text = row.Cells[18].Text;
-                
 
-                mp1.Show();
+
+                applicantModalWindow.Show();
+
+
+                for (int x = 9; x < applicantGrid.Columns.Count - 1; x++)
+                {
+                    this.applicantGrid.Columns[x].Visible = false;
+                }
 
 
 
@@ -491,15 +552,117 @@ namespace IHCApp
 
         }
 
+        protected void hostGrid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "EditRow")
+            {
+
+                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                {
+                    this.hostGrid.Columns[x].Visible = true;
+                }
+
+
+
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = hostGrid.Rows[index];
+
+                familyId.Text = row.Cells[0].Text;
+
+                hostAddress.Text = row.Cells[1].Text;
+                hostPhone1.Text = row.Cells[2].Text;
+                hostPhone2.Text = row.Cells[7].Text;
+
+
+                familySmoke.ClearSelection();
+                string familySmokeText = row.Cells[5].Text;
+                familySmoke.Items.FindByText(familySmokeText).Selected = true;
+
+
+                familyDrinking.ClearSelection();
+                string familyDrinkingText = row.Cells[6].Text;
+                familyDrinking.Items.FindByText(familyDrinkingText).Selected = true;
+
+                allowSmoking.ClearSelection();
+                string allowSmokingText = row.Cells[12].Text;
+                allowSmoking.Items.FindByText(allowSmokingText).Selected = true;
+
+                allowDrinking.ClearSelection();
+                string allowDrinkingText = row.Cells[13].Text;
+                allowDrinking.Items.FindByText(allowDrinkingText).Selected = true;
+
+
+                dogs.ClearSelection();
+                string dogText = row.Cells[10].Text;
+                ListItem dogSelectedValue = dogs.Items.FindByText(dogText);
+
+                if (dogSelectedValue != null)
+                {
+                    dogs.SelectedValue = dogSelectedValue.Text;
+                }
+
+
+                cats.ClearSelection();
+                string catsText = row.Cells[11].Text;
+                ListItem catSelectedValue = cats.Items.FindByText(catsText);
+
+                if (catSelectedValue != null)
+                {
+                    cats.SelectedValue = catSelectedValue.Text;
+                }
+
+                internet.ClearSelection();
+                string internetText = row.Cells[4].Text;
+                ListItem interentSelectedValue = internet.Items.FindByText(internetText);
+
+                if (interentSelectedValue != null)
+                {
+                    internet.SelectedValue = interentSelectedValue.Text;
+                }
+
+                bathrooms.ClearSelection();
+                string bathroomText = row.Cells[9].Text;
+                ListItem bathroomSelectedText = bathrooms.Items.FindByText(bathroomText);
+
+                if (interentSelectedValue != null)
+                {
+                    bathrooms.SelectedValue = bathroomSelectedText.Text;
+                }
+
+
+
+                hostTransportation.Text = row.Cells[14].Text;
+                hostAbout.Text = row.Cells[15].Text;
+                hobbies.Text = row.Cells[16].Text;
+
+
+
+
+                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                {
+                    this.hostGrid.Columns[x].Visible = false;
+                }
+
+
+
+                hostModalWindow.Show();
+
+
+            }
+
+        }
+
 
         /// <summary>
         /// Update Applicant Row
         /// </summary>
-        protected void applicantGrid_UpdateApplicantRow(object sender, EventArgs e)
+        protected void applicantGrid_UpdateRow(object sender, EventArgs e)
         {
 
             try
             {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
                 Applicant applicant = new Applicant();
 
                 applicant._ApplicantID = Int32.Parse(applicantId.Text);
@@ -534,7 +697,7 @@ namespace IHCApp
                 applicant._Email = 
                 applicant._EmergencyContact = this.universityContactInfo.Text;
 
-                new DatabaseConnection((Token)Session["token"])._ProtectedStrategy._UpdateFormStrategy.UpdateApplicant(applicant);
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.UpdateApplicant(applicant);
 
             }
             catch (Exception ex)
@@ -544,13 +707,73 @@ namespace IHCApp
             }
 
 
-            mp1.Hide();
+            applicantModalWindow.Hide();
             Session.Add("IsApplicantEdit", "true");
             Response.Redirect("AdminPortal.aspx");
 
 
 
+
         }
+
+        /// <summary>
+        /// Update Applicant Row
+        /// </summary>
+        protected void hostGrid_UpdateRow(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Host host = new Host();
+
+                host._FamilyID = Int32.Parse(familyId.Text);
+
+                host._About = hostAbout.Text;
+                host._City = "Indianapolis";
+                host._Country = "United States";
+                host._Email = hostEmail.Text;
+                host._Hobbies = hostHobbies.Text;
+                host._Looking = "yes";
+                host._Note = "N/A";
+                host._NumBathrooms = "3";
+                host._NumCats = cats.Text;
+                host._NumDogs = dogs.Text;
+                host._NumRooms = "3";
+                host._Occupied = "no";
+                host._PrimePhone = hostPhone1.Text;
+                host._SecPhone = hostPhone2.Text;
+                host._State = "Indiana";
+                host._Street = hostAddress.Text;
+                host._Zip = "41235";
+                host._TimeToCenter = 10;
+                host._ToAdmin = "";
+                host._TransportationInfo = hostTransportation.Text;
+                host._AllowSmoking = allowSmoking.Text;
+                host._AllowDrinking = allowDrinking.Text;
+                host._DoesFamilySmoke = familySmoke.Text;
+                host._DoesFamilyDrink = familyDrinking.Text;
+
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.UpdateHost(host);
+
+
+            }
+            catch
+            {
+                //notify the user
+            }
+
+
+            hostModalWindow.Hide();
+
+            Session.Add("IsHostEdit", "true");
+            Response.Redirect("AdminPortal.aspx");
+
+
+
+
+        }
+
 
         protected void applicantGrid_onPageIndexing(object sender, EventArgs e)
         {
