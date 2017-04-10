@@ -24,7 +24,7 @@
       $(function () {
           $("#accordion").accordion({
               autoHeight: false,
-              heightStyle: "content"
+              heightStyle: 'panel'
           });
       });
   </script>
@@ -64,7 +64,7 @@
                     <div id="formDiv" style="text-align:center">
 
                             <%-- Terms of Service Panel --%>
-                            <asp:Panel runat="server" id="termsOfServicePanel">
+                            <asp:Panel runat="server" id="termsOfServicePanel" HorizontalAlign="Left">
                                 <div id="formHTML" runat="server">                            
                                    
                                 </div>
@@ -127,8 +127,8 @@
                                
                                 <asp:Label AssociatedControlID="gender" Text="Gender: " runat="server"></asp:Label>
                                 <asp:RadioButtonList id="gender"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Male" Value="0" Selected="true"/>
-                                <asp:ListItem Text="Female" Value="1" />
+                                <asp:ListItem Text="Male" Value="Male" Selected="true"/>
+                                <asp:ListItem Text="Female" Value="Female" />
                                 </asp:RadioButtonList>
 
                                 <br />
@@ -136,8 +136,8 @@
 
                                 <asp:Label AssociatedControlID="martialstatus" Text="Martial Status: " runat="server"></asp:Label>
                                 <asp:RadioButtonList id="martialstatus"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Married" Value="0" Selected="true"/>
-                                <asp:ListItem Text="Unmarried" Value="1" />
+                                <asp:ListItem Text="Married" Value="Married" Selected="true"/>
+                                <asp:ListItem Text="Unmarried" Value="Unmarried" />
                                 </asp:RadioButtonList>
                               
 
@@ -316,8 +316,8 @@
                                
                                     <asp:Label AssociatedControlID="gender" Text="Gender: " runat="server"></asp:Label>
                                     <asp:RadioButtonList id="confirmGender"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
-                                    <asp:ListItem Text="Male" Value="0" Selected="true"/>
-                                    <asp:ListItem Text="Female" Value="1" />
+                                    <asp:ListItem Text="Male" Value="Male" Selected="true"/>
+                                    <asp:ListItem Text="Female" Value="Female" />
                                     </asp:RadioButtonList>
 
                                     <br />
@@ -325,8 +325,8 @@
 
                                     <asp:Label AssociatedControlID="martialstatus" Text="Martial Status: " runat="server"></asp:Label>
                                     <asp:RadioButtonList id="confirmMartialStatus"  RepeatDirection="Horizontal" RepeatLayout ="Flow" CssClass="rdoBtnItemSpacing" runat="server">
-                                    <asp:ListItem Text="Married" Value="0" Selected="true"/>
-                                    <asp:ListItem Text="Unmarried" Value="1" />
+                                    <asp:ListItem Text="Married" Value="Married" Selected="true"/>
+                                    <asp:ListItem Text="Unmarried" Value="Unmarried" />
                                     </asp:RadioButtonList>
                                   </div>
 
