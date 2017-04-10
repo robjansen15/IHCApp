@@ -112,8 +112,8 @@ namespace IHCApp
                 applicant._MoveInDate = DateTime.Now;
                 applicant._DurationOfStay = "4";
                 applicant._Language = this.firstLanguage.Text;
-                applicant._Gender = this.gender.Text;
-                applicant._Status = "status";
+                applicant._Gender = gender.SelectedValue;
+                applicant._Status = martialstatus.SelectedValue;
                 applicant._Nationality = "nationality";
                 applicant._Street = this.address.Text;
                 applicant._State = "IN";
@@ -146,7 +146,8 @@ namespace IHCApp
                 //notify the user
             }
 
-            Response.Redirect("Home.aspx");
+            Response.Write("<script language='javascript'>alert('Saved Sucessfully!');</script>");
+            Server.Transfer("home.aspx", true);
         }
 
 

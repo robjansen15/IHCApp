@@ -39,6 +39,7 @@ namespace IHCApp.Models
             _AllowDrinking = allowDrinking;
             _DoesFamilySmoke = doesFamilySmoke;
             _DoesFamilyDrink = doesFamilyDrink;
+        }
 
 
         public int? _FamilyID { get; set; }
