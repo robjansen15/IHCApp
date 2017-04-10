@@ -143,9 +143,12 @@
 </head>
 <body>
   <!-- container section start -->
+
       
         <section id="container" class="">
             <form runat="server" id="mainForm">   
+
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
       
             <header class="header dark-bg">
                 <div class="toggle-nav">
@@ -423,10 +426,9 @@
 
                     <asp:Panel runat="server" ID="applicantManagement" Visible="false">
 
-                            <asp:ScriptManager ID="ScriptManager1" runat="server">
-                            </asp:ScriptManager>
-                         <%--   <asp:Button ID="btnShow" runat="server" Text="Edit" CausesValidation="False" />--%>
-
+                             <section>
+                                  <h1> Applicant Management </h1>
+                              </section>
 
                             <asp:GridView runat="server" ID="applicantGrid" DataKeyNames="A_id" AutoGenerateColumns="false" ViewStateMode="Enabled" OnRowCommand="applicantGrid_RowCommand" Visible="false"
                                 CssClass="mydatagrid table table-striped table-advance table-hover" PagerStyle-CssClass="pager" HeaderStyle-CssClass="gridheader" RowStyle-CssClass="rows" AllowPaging="False">
@@ -469,9 +471,9 @@
 	                            </Columns>
                             </asp:GridView>
  
-                            <asp:Button ID="modelPopup" runat="server" style="display:none"  CausesValidation="false" />
-                            <cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="modelPopup"
-                                CancelControlID="btnClose" BackgroundCssClass="modalBackground">
+                            <asp:Button ID="applicantModalPopup" runat="server" style="display:none"  CausesValidation="false" />
+                            <cc1:ModalPopupExtender ID="applicantModalWindow" runat="server" PopupControlID="Panel1" TargetControlID="applicantModalPopup"
+                                CancelControlID="applicantModalClose" BackgroundCssClass="modalBackground">
                             </cc1:ModalPopupExtender>
 
 
@@ -656,7 +658,7 @@
                               
                               
                                     <div style="text-align:center">
-                                    <asp:Button ID="modalSave" class="btn btn-default btn-lg" Text="Save Applicant" runat="server" CommandArgument='<%#Eval("A_Id")%>' OnClick="applicantGrid_UpdateApplicantRow" OnClientClick="allowBodyScrolling()"></asp:Button>
+                                    <asp:Button ID="modalSave" class="btn btn-default btn-lg" Text="Save Applicant" runat="server" CommandArgument='<%#Eval("A_Id")%>' OnClick="applicantGrid_UpdateRow" OnClientClick="allowBodyScrolling()"></asp:Button>
                                     </div>
                                
                        
@@ -674,7 +676,7 @@
                                 </table>
                                 <br />
                                 <br />
-                                  <asp:ImageButton ID="btnClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False" CssClass="modal-btn-close"  />
+                                  <asp:ImageButton ID="applicantModalClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False" CssClass="modal-btn-close"  />
                             </asp:Panel>
 
                             
@@ -684,10 +686,241 @@
                     </asp:Panel>
 
                           <asp:Panel runat="server" ID="hostManagement" Visible="false">
-                 
-                        <section class="panel">
 
-                        </section>
+                              <section>
+                                  <h1> Host Management </h1>
+                              </section>
+                           
+
+                              
+                               <asp:GridView runat="server" ID="hostGrid" DataKeyNames="Family_Id" AutoGenerateColumns="false" ViewStateMode="Enabled" OnRowCommand="hostGrid_RowCommand" Visible="false"
+                                CssClass="mydatagrid table table-striped table-advance table-hover" PagerStyle-CssClass="pager" HeaderStyle-CssClass="gridheader" RowStyle-CssClass="rows" AllowPaging="False">
+	                            <Columns>
+
+                                <%--Visible Columns--%>
+                                <asp:BoundField DataField="Family_Id"/>
+	                            <asp:BoundField DataField="Street" HeaderText="Address" />
+	                            <asp:BoundField DataField="PrimePh_no" HeaderText="Primary Phone Number" />
+                                <asp:BoundField DataField="Occupied" HeaderText="Occupied" />
+                                <asp:BoundField DataField="Looking" HeaderText="Looking" />
+                                <asp:BoundField DataField="DoesFamilySmoking" HeaderText="Does Family Smoke" />
+                                <asp:BoundField DataField="DoesFamilyDrinking" HeaderText="Does Family Drink"/>
+
+                             <%--   Hidden Columns--%>
+                                <asp:BoundField DataField="SecPh_no" HeaderText="Secondary Phone Number" />
+                                <asp:BoundField DataField="NoOfRooms" HeaderText="Number of Rooms" />
+	                            <asp:BoundField DataField="NoOfBathrooms" HeaderText="Number of Bathrooms" />
+	                            <asp:BoundField DataField="NoOfDogs" HeaderText="Number of Dogs" />
+	                            <asp:BoundField DataField="NoOfCats" HeaderText="Number of Cats" />
+	                            <asp:BoundField DataField="AllowSmoking" HeaderText="Allow Smoking" />
+	                            <asp:BoundField DataField="AllowDrinking" HeaderText="Allow Drinking" />
+                                <asp:BoundField DataField="TransportationInfo" HeaderText="Transporation Info" />
+	                            <asp:BoundField DataField="About" HeaderText="About" />
+                                <asp:BoundField DataField="Hobbies" HeaderText="Hobbies" />
+                                <asp:BoundField DataField="Note" HeaderText="Notes" />
+	                            <asp:BoundField DataField="ToAdmin" HeaderText="Feedback" />
+                                <asp:BoundField DataField="Email" HeaderText="Email" />
+	                            <asp:TemplateField HeaderText="Actions">
+                                 <ItemTemplate >
+                                     <%-- Inline Edit Button--%>
+                                      <asp:Button ID="hostRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
+                                      <a class="btn btn-danger" href="#">Archive</a>
+                   
+                                </ItemTemplate> 
+                                </asp:TemplateField>
+	                            </Columns>
+                            </asp:GridView>
+
+
+                            <asp:Button ID="hostModalPopup" runat="server" style="display:none"  CausesValidation="false" />
+                            <cc1:ModalPopupExtender ID="hostModalWindow" runat="server" PopupControlID="Panel2" TargetControlID="hostModalPopup"
+                                CancelControlID="hostModalClose" BackgroundCssClass="modalBackground">
+                            </cc1:ModalPopupExtender>
+
+                            <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup" align="left">
+                                   <h1><u>Edit Host</u></h1>
+                                  <table style="width:100%; border-collapse:separate; border-spacing:3em;">
+                                    <asp:TextBox runat="server" id ="familyId" Visible="false"></asp:TextBox>
+                                    <tr>
+                                       <td>
+
+                                        <h3><u>Last Name</u></h3>
+                                        <br />
+                                        <asp:Label AssociatedControlID="familyName" Text="Host Last Name: " runat="server" ></asp:Label>
+                                        <br />
+                                        <asp:TextBox runat="server" id="familyName"></asp:TextBox>
+
+
+                                        <h3><u>Living Details</u></h3>
+
+                                            <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowSmoking"></asp:Label>
+                                            <br />
+                                            <asp:RadioButtonList id="allowSmoking" CssClass="rdoBtnItemSpacing" runat="server">
+                                            <asp:ListItem Text="yes" Value="yes"/>
+                                            <asp:ListItem Text="no" Value="no" Selected="true" />
+                                            </asp:RadioButtonList>
+
+                                            <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowDrinking"></asp:Label>
+                                            <br />
+                                            <asp:RadioButtonList id="allowDrinking" CssClass="rdoBtnItemSpacing" runat="server">
+                                            <asp:ListItem Text="yes" Value="yes"/>
+                                            <asp:ListItem Text="no" Value="no" Selected="true" />
+                                            </asp:RadioButtonList>
+
+
+                         
+
+                                            <asp:Label runat="server" Text="Does anyone in your homestay smoke: " AssociatedControlID="familySmoke"></asp:Label>
+                                             <br />
+                                             <asp:RadioButtonList id="familySmoke" CssClass="rdoBtnItemSpacing" runat="server">
+                                            <asp:ListItem Text="yes" Value="yes"/>
+                                            <asp:ListItem Text="no" Value="no" Selected="true" />
+                                            </asp:RadioButtonList>
+
+
+
+                                            <asp:Label runat="server" Text="Does anyone in your homestay drink: " AssociatedControlID="familyDrinking"></asp:Label>
+                                            <br />
+                                            <asp:RadioButtonList id="familyDrinking" CssClass="rdoBtnItemSpacing" runat="server">
+                                            <asp:ListItem Text="yes" Value="yes"/>
+                                            <asp:ListItem Text="no" Value="no"  Selected="true" />
+                                            </asp:RadioButtonList>
+
+
+                                            <asp:Label AssociatedControlID="dogs" Text="Number of dogs: " runat="server"></asp:Label>
+                                              <br />
+                                            <asp:DropDownList runat="server" ID="dogs">
+                                                <asp:ListItem Value="0" Text="None" Selected="True" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text ="1" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                            </asp:DropDownList>
+
+        
+                                            <br />
+                                              <br />
+             
+                                            <asp:Label AssociatedControlID="cats" Text="Number of cats: " runat="server"></asp:Label>
+                                                <br />
+                                            <asp:DropDownList runat="server" ID="cats">
+                                                <asp:ListItem Value="0" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="1" Text ="1"  Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                            </asp:DropDownList>
+
+                                            <br />
+                                              <br />
+             
+                                            <asp:Label AssociatedControlID="internet" Text= "Internet access details:" runat="server"></asp:Label>
+                                              <br />
+                                            <asp:DropDownList runat="server" ID="internet">
+                                                <asp:ListItem Value="None" Text ="None" Selected="True" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="High Speed Wifi" Text ="High Speed Wifi" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="Normal Wifi" Text ="Normal Wifi" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="Wired" Text ="Wired" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="Other" Text ="Other" Enabled="True"></asp:ListItem>
+                                            </asp:DropDownList>
+
+                                            <br />
+                                              <br />
+
+                                            <asp:Label AssociatedControlID="bathrooms" Text="Number of guest bathrooms: " runat="server"></asp:Label>
+                                            <br />
+                                            <asp:DropDownList runat="server" ID="bathrooms">
+                                                <asp:ListItem Value="1" Text ="1" Selected="True" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="2" Text ="2" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="3" Text ="3" Enabled="True"></asp:ListItem>
+                                                <asp:ListItem Value="9" Text ="More than 3" Enabled="True"></asp:ListItem>
+                                            </asp:DropDownList>
+
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                             <br />
+                                            <br />
+
+                          
+
+                                        </td>
+                    
+                                        <td>
+                                            
+                                            <h3><u>Contact Information</u></h3>
+
+<%--                                            <asp:RequiredFieldValidator runat="server" controltovalidate="address" errormessage="Please provide an address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>--%>
+                                            <asp:Label runat="server" Text="Address: " AssociatedControlID="hostAddress"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostAddress" Enabled="True"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                    <%--        <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>--%>
+                                            <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="hostPhone1"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostPhone1"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="hostPhone2"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostPhone2"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+
+                                         <%--   <asp:RequiredFieldValidator runat="server" controltovalidate="hostEmail" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>--%>
+                                            <asp:Label runat="server" Text="Email: " AssociatedControlID="hostEmail"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostEmail" Width="70%"></asp:TextBox>
+                                            
+                                            
+                                            <h3><u>Additional Information</u></h3>
+
+                                        <%--    <asp:RequiredFieldValidator runat="server" controltovalidate="transportation" errormessage="Please describe the method of transportation intended for the guest." ForeColor="#ff3300">*</asp:RequiredFieldValidator>--%>
+                                            <asp:Label runat="server" Text="Transporation Methods" AssociatedControlID="hostTransportation"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostTransportation" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <asp:Label runat="server" Text="Hobbies" AssociatedControlID="hobbies"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostHobbies" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <asp:Label runat="server" Text="About" AssociatedControlID="about"></asp:Label>
+                                            <br />
+                                            <asp:TextBox runat="server" id="hostAbout" Height="100px" TextMode="MultiLine" Width="70%"></asp:TextBox>
+
+                                            <br />
+                                            <br />
+
+                                            <div style="text-align:center">
+                                            <asp:Button ID="SaveHost" class="btn btn-default btn-lg" Text="Save Host" runat="server" CommandArgument='<%#Eval("Family_Id")%>' OnClick="hostGrid_UpdateRow" OnClientClick="allowBodyScrolling()"></asp:Button>
+                                            </div>
+
+
+
+                                        </td>
+                                    </tr>
+
+                                  </table>
+
+
+                                     <asp:ImageButton ID="hostModalClose" runat="server" align="right" ImageUrl="WebAssets/nice-assets/img/close-button-3.png" CausesValidation="False" CssClass="modal-btn-close"  />
+                            </asp:Panel>
+                 
                     </asp:Panel>
 
                 </section>

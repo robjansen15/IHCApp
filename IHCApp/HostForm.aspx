@@ -66,7 +66,7 @@
 
 
                          <%-- Terms of Service Panel --%>
-                            <asp:Panel runat="server" id="termsOfServicePanel">
+                            <asp:Panel runat="server" id="termsOfServicePanel" HorizontalAlign="Left">
                                 <div id="formHTML" runat="server">
                                                                
                                 </div>
@@ -158,15 +158,15 @@
                                 <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowSmoking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="allowSmoking" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Yes" Value="0"/>
-                                <asp:ListItem Text="No" Value="1" Selected="true" />
+                                <asp:ListItem Text="yes" Value="yes"/>
+                                <asp:ListItem Text="no" Value="no" Selected="true" />
                                 </asp:RadioButtonList>
 
                                 <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowDrinking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="allowDrinking" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Yes" Value="0"/>
-                                <asp:ListItem Text="No" Value="1" Selected="true" />
+                                <asp:ListItem Text="yes" Value="yes"/>
+                                <asp:ListItem Text="no" Value="no" Selected="true" />
                                 </asp:RadioButtonList>
 
 
@@ -175,8 +175,8 @@
                                 <asp:Label runat="server" Text="Does anyone in your homestay smoke: " AssociatedControlID="familySmoke"></asp:Label>
                                  <br />
                                  <asp:RadioButtonList id="familySmoke" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Yes" Value="0"/>
-                                <asp:ListItem Text="No" Value="1" Selected="true" />
+                                <asp:ListItem Text="yes" Value="yes"/>
+                                <asp:ListItem Text="no" Value="no" Selected="true" />
                                 </asp:RadioButtonList>
 
 
@@ -184,8 +184,8 @@
                                 <asp:Label runat="server" Text="Does anyone in your homestay drink: " AssociatedControlID="familyDrinking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="familyDrinking" CssClass="rdoBtnItemSpacing" runat="server">
-                                <asp:ListItem Text="Yes" Value="0"/>
-                                <asp:ListItem Text="No" Value="1"  Selected="true" />
+                                <asp:ListItem Text="yes" Value="yes"/>
+                                <asp:ListItem Text="no" Value="no"  Selected="true" />
                                 </asp:RadioButtonList>
 
 
@@ -341,8 +341,16 @@
                                         <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowSmoking"></asp:Label>
                                         <br />
                                         <asp:RadioButtonList id="confirmAllowSmoking" CssClass="rdoBtnItemSpacing" runat="server">
-                                        <asp:ListItem Text="Yes" Value="0"/>
-                                        <asp:ListItem Text="No" Value="1" Selected="true" />
+                                        <asp:ListItem Text="yes" Value="yes"/>
+                                        <asp:ListItem Text="no" Value="no" Selected="true" />
+                                        </asp:RadioButtonList>
+
+
+                                        <asp:Label runat="server" Text="Allow Drinking: " AssociatedControlID="allowSmoking"></asp:Label>
+                                        <br />
+                                        <asp:RadioButtonList id="confirmAllowDrinking" CssClass="rdoBtnItemSpacing" runat="server">
+                                        <asp:ListItem Text="yes" Value="yes"/>
+                                        <asp:ListItem Text="no" Value="no" Selected="true" />
                                         </asp:RadioButtonList>
 
 
@@ -351,8 +359,8 @@
                                         <asp:Label runat="server" Text="Does anyone in your homestay smoke: " AssociatedControlID="familySmoke"></asp:Label>
                                          <br />
                                          <asp:RadioButtonList id="confirmFamilySmoke" CssClass="rdoBtnItemSpacing" runat="server">
-                                        <asp:ListItem Text="Yes" Value="0"/>
-                                        <asp:ListItem Text="No" Value="1" Selected="true" />
+                                        <asp:ListItem Text="yes" Value="yes"/>
+                                        <asp:ListItem Text="no" Value="no" Selected="true" />
                                         </asp:RadioButtonList>
 
 
@@ -360,8 +368,8 @@
                                         <asp:Label runat="server" Text="Does anyone in your homestay drink: " AssociatedControlID="familyDrinking"></asp:Label>
                                         <br />
                                         <asp:RadioButtonList id="RadioButtonList3" CssClass="rdoBtnItemSpacing" runat="server">
-                                        <asp:ListItem Text="Yes" Value="0"/>
-                                        <asp:ListItem Text="No" Value="1"  Selected="true" />
+                                        <asp:ListItem Text="yes" Value="yes"/>
+                                        <asp:ListItem Text="no" Value="no"  Selected="true" />
                                         </asp:RadioButtonList>
 
 

@@ -64,7 +64,7 @@
                     <div id="formDiv" style="text-align:center">
 
                             <%-- Terms of Service Panel --%>
-                            <asp:Panel runat="server" id="termsOfServicePanel">
+                            <asp:Panel runat="server" id="termsOfServicePanel" HorizontalAlign="Left">
                                 <div id="formHTML" runat="server">                            
                                    
                                 </div>
