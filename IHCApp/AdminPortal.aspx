@@ -246,8 +246,10 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                 <li><asp:LinkButton class="" runat="server" ID="applicantManagementBtn" OnClick="applicantManagementBtn_Click"  CausesValidation="false">Manage Applicants</asp:LinkButton></li>          
-                                 <li><asp:LinkButton class="" runat="server" ID="hostManagementBtn" OnClick="hostManagementBtn__Click"  CausesValidation="false">Manage Hosts</asp:LinkButton></li> 
+                                 <li><asp:LinkButton class="" runat="server" ID="applicantManagementBtn" OnCommand="applicantManagementBtn_Click"  CommandName="Active" CommandArgument="" CausesValidation="false">Applicants</asp:LinkButton></li>          
+                                 <li><asp:LinkButton class="" runat="server" ID="hostManagementBtn" OnCommand="hostManagementBtn__Click" CommandName="Active" CommandArgument=""  CausesValidation="false">Hosts</asp:LinkButton></li>
+                                 <li><asp:LinkButton class="" runat="server" ID="historicalApplicantManagementBtn" OnCommand="applicantManagementBtn_Click" CommandName="Historical" CommandArgument=""  CausesValidation="false">Historical Applicants</asp:LinkButton></li>
+                                 <li><asp:LinkButton class="" runat="server" ID="historicalHostManagementBtn" OnCommand="hostManagementBtn__Click" CommandName="Historical" CommandArgument="" CausesValidation="false">Historical Hosts</asp:LinkButton></li> 
                             </ul>
                         </li>    
 
@@ -458,13 +460,12 @@
 	                            <asp:BoundField DataField="OtherUniversity" HeaderText="Other Sponsor" />
                                 <asp:BoundField DataField="A_Email" HeaderText="Email" />
 	                            <asp:BoundField DataField="A_EmergencyContact" HeaderText="Emergency Contact" />
+                                <asp:BoundField DataField="IsActive" />
 	                            <asp:TemplateField HeaderText="Actions">
-                                 <ItemTemplate >
-                                     <%-- Inline Edit Button--%>
-
-                            
+                                 <ItemTemplate>
+                                      <%-- Inline Edit Button--%>
                                       <asp:Button ID="applicantRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
-                                        <a class="btn btn-danger" href="#">Archive</a>
+                                      <asp:Button ID="applicantRowArchive" runat="server" CommandName="ArchiveRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Archive" CausesValidation="false" class="btn btn-danger"></asp:Button>
                    
                                 </ItemTemplate> 
                                 </asp:TemplateField>
