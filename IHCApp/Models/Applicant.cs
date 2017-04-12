@@ -77,6 +77,7 @@ namespace IHCApp.Models
         public string _OtherUniversity { get; set; }
         public string _Email { get; set; }
         public string _EmergencyContact { get; set; }
+        public int _IsActive { get; set; }
 
     }
 }
