@@ -128,6 +128,7 @@ namespace IHCApp
                 host._AllowDrinking = allowDrinking.Text;
                 host._DoesFamilySmoke = "yes";
                 host._DoesFamilyDrink = "yes";
+                host._IsActive = 1;
 
 
 
