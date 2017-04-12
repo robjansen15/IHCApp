@@ -32,7 +32,7 @@
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <asp:TextBox runat="server" id="password" class="form-control" placeholder="Password"></asp:TextBox>
+                <asp:TextBox runat="server" id="password" class="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
             </div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me" />Remember me
