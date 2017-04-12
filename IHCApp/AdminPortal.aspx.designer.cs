@@ -58,6 +58,24 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.LinkButton hostManagementBtn;
         
         /// <summary>
+        /// historicalApplicantManagementBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton historicalApplicantManagementBtn;
+        
+        /// <summary>
+        /// historicalHostManagementBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton historicalHostManagementBtn;
+        
+        /// <summary>
         /// studentFormBtn control.
         /// </summary>
         /// <remarks>

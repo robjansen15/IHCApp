@@ -92,6 +92,7 @@ namespace IHCApp.Database.Protected
             }
 
         }
+
         /// <summary>
         /// Insert Applicant
         /// </summary>
@@ -145,6 +146,35 @@ namespace IHCApp.Database.Protected
             {
                 _DatabaseConnection.Disconnect();
             }
+
+
+        }
+
+        /// <summary>
+        /// Inactivate Applicant
+        /// </summary>
+        public void InActivateApplicant(Applicant applicant)
+        {
+            _DatabaseConnection.Connect();
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SPInactivateApplicant", _DatabaseConnection.GetActiveConnection());
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@A_Id", applicant._ApplicantID));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                _DatabaseConnection.Disconnect();
+            }
+
 
         }
         private DatabaseConnection _DatabaseConnection { get; set; }

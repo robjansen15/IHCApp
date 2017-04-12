@@ -41,16 +41,18 @@ namespace IHCApp
             
                 //Handle !ispostback
 
-                if (!Page.IsPostBack && Session["IsApplicantEdit"] != null)
+                if (!Page.IsPostBack && Session["IsApplicantPage"] != null)
                 {
-                    applicantManagementBtn_Click(sender, e);
-                    Session["IsApplicantEdit"] = null;
+                    CommandEventArgs events = new CommandEventArgs("Active", "");
+                    applicantManagementBtn_Click(sender, events);
+                    Session["IsApplicantPage"] = null;
                 }
 
-                else if (!Page.IsPostBack && Session["IsHostEdit"] != null)
+                else if (!Page.IsPostBack && Session["isHostPage"] != null)
                 {
-                    hostManagementBtn__Click(sender, e);
-                    Session["IsHostEdit"] = null;
+                    CommandEventArgs events = new CommandEventArgs("Active", "");
+                    hostManagementBtn__Click(sender, events);
+                    Session["isHostPage"] = null;
                 }
 
                 else if(!Page.IsPostBack)
@@ -131,8 +133,10 @@ namespace IHCApp
             applicantGrid.Visible = false;
             hostGrid.Visible = false;
         }
-        protected void applicantManagementBtn_Click(object sender, EventArgs e)
+        protected void applicantManagementBtn_Click(object sender, CommandEventArgs e)
         {
+            bool isHistorical = false;
+
             this.exampleUpdateStudents.Visible = false;
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = false;
@@ -141,14 +145,24 @@ namespace IHCApp
             this.applicantManagement.Visible = true;
             this.hostManagement.Visible = false;
 
-            getApplicants();
+
+      
+            if(e.CommandName == "Historical")
+                isHistorical = true;
+
+
+            getApplicants(isHistorical);
+
             PopulateCountriesDropDown();
+
+            hostGrid.Visible = false;
             applicantGrid.Visible = true;
-            hostGrid.Visible = false;   
 
         }
-        protected void hostManagementBtn__Click(object sender, EventArgs e)
+        protected void hostManagementBtn__Click(object sender, CommandEventArgs e)
         {
+            bool isHistorical = false;
+
             this.exampleUpdateStudents.Visible = false;
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = false;
@@ -157,9 +171,13 @@ namespace IHCApp
             this.applicantManagement.Visible = false;
             this.hostManagement.Visible = true;
 
-            applicantGrid.Visible = false;
+            if (e.CommandName == "Historical")
+                isHistorical = true;
 
-            getHosts();
+
+            getHosts(isHistorical);
+
+            applicantGrid.Visible = false;
             hostGrid.Visible = true;
         }
 
@@ -299,6 +317,8 @@ namespace IHCApp
 
         protected void allActiveApplicants_Click(object sender, EventArgs e)
         {
+
+
             //go to this tab
             ClickQuickSearch();
 
@@ -319,11 +339,26 @@ namespace IHCApp
         }
 
 
-        protected void getApplicants()
+        protected void getApplicants(bool isHistorical)
         {
+
+            DataTable applicants = new DataTable();
             Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
             DataSet ds = new DataSet();
-            DataTable applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
+
+
+
+
+
+            if (isHistorical)
+                applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetHistoricalApplicants();
+
+            
+
+
+            else
+                applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
+
 
 
             ds.Tables.Add(applicants);
@@ -336,6 +371,7 @@ namespace IHCApp
                 {
                     this.applicantGrid.Columns[x].Visible = true;
                 }
+
 
                 applicantGrid.DataBind();
 
@@ -351,15 +387,40 @@ namespace IHCApp
                     this.applicantGrid.Columns[index].Visible = false;
                 }
 
+                //if historical hide archive button
+                if (isHistorical)
+                {
+                    Button archiveButton = null;
+                    foreach (GridViewRow row in applicantGrid.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            archiveButton = row.FindControl("applicantRowArchive") as Button;
+                        }
+
+                        if (archiveButton != null)
+                        {
+                            archiveButton.Visible = false;
+                        }
+
+                    }
+                }
+
             }
 
         }
 
-        protected void getHosts()
+        protected void getHosts(bool isHistorical)
         {
+            DataTable hosts = new DataTable();
             Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
             DataSet ds = new DataSet();
-            DataTable hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
+
+            if(isHistorical)
+                hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetHistoricalHosts();
+            
+            else
+                hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveHosts();
 
 
             ds.Tables.Add(hosts);
@@ -368,7 +429,7 @@ namespace IHCApp
             {
                 hostGrid.DataSource = ds;
 
-                for (int x = 7; x < hostGrid.Columns.Count - 1; x++)
+                for (int x = 7; x < hostGrid.Columns.Count - 2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = true;
                 }
@@ -382,7 +443,7 @@ namespace IHCApp
                 this.hostGrid.Columns[0].Visible = false;
 
 
-                for (int index = 7; index < hostGrid.Columns.Count - 1; index++)
+                for (int index = 7; index < hostGrid.Columns.Count - 2; index++)
                 {
                     this.hostGrid.Columns[index].Visible = false;
                 }
@@ -478,10 +539,14 @@ namespace IHCApp
 
 
         /// <summary>
-        /// Applicant Edit Grid Row
+        /// Handle applicant grid row actions.
         /// </summary>
         protected void applicantGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = applicantGrid.Rows[index];
+
 
             if (e.CommandName == "EditRow")
             {
@@ -490,12 +555,6 @@ namespace IHCApp
                 {
                     this.applicantGrid.Columns[x].Visible = true;
                 }
-
-
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = applicantGrid.Rows[index];
-
-
 
                 applicantId.Text = row.Cells[0].Text;
                 firstName.Text = row.Cells[1].Text;
@@ -550,23 +609,36 @@ namespace IHCApp
 
             }
 
+            else if (e.CommandName == "ArchiveRow")
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Applicant applicant = new Applicant();
+
+                applicant._ApplicantID = Int32.Parse(row.Cells[0].Text);
+
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.InActivateApplicant(applicant);
+
+                Session.Add("IsApplicantPage", "true");
+                Response.Redirect("AdminPortal.aspx");
+            }
+
         }
 
         protected void hostGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = hostGrid.Rows[index];
+
+
             if (e.CommandName == "EditRow")
             {
 
-                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                for (int x = 7; x < applicantGrid.Columns.Count - 2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = true;
                 }
 
-
-
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = hostGrid.Rows[index];
 
                 familyId.Text = row.Cells[0].Text;
 
@@ -630,21 +702,14 @@ namespace IHCApp
                     bathrooms.SelectedValue = bathroomSelectedText.Text;
                 }
 
-
-
                 hostTransportation.Text = row.Cells[14].Text;
                 hostAbout.Text = row.Cells[15].Text;
                 hobbies.Text = row.Cells[16].Text;
 
-
-
-
-                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                for (int x = 7; x < applicantGrid.Columns.Count - 2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = false;
                 }
-
-
 
                 hostModalWindow.Show();
 
@@ -708,7 +773,7 @@ namespace IHCApp
 
 
             applicantModalWindow.Hide();
-            Session.Add("IsApplicantEdit", "true");
+            Session.Add("IsApplicantPage", "true");
             Response.Redirect("AdminPortal.aspx");
 
 
@@ -766,7 +831,7 @@ namespace IHCApp
 
             hostModalWindow.Hide();
 
-            Session.Add("IsHostEdit", "true");
+            Session.Add("isHostPage", "true");
             Response.Redirect("AdminPortal.aspx");
 
 
