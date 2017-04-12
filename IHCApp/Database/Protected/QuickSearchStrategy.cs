@@ -28,12 +28,21 @@ namespace IHCApp.Database.Protected
 
 
         /// <summary>
-        /// Get active applicant
+        /// Get active applicants
         /// </summary>
         public DataTable GetActiveApplicants()
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
             return da.GetData(new StoredProcedureObj("SPReadAllActiveApplicants", new List<SqlParameter>()));
+        }
+
+        /// <summary>
+        /// Get historical applicants
+        /// </summary>
+        public DataTable GetHistoricalApplicants()
+        {
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            return da.GetData(new StoredProcedureObj("SPReadHistoricalApplicants", new List<SqlParameter>()));
         }
 
 
@@ -64,6 +73,15 @@ namespace IHCApp.Database.Protected
         {
             DataAccess da = new DataAccess(_DatabaseConnection);
             return da.GetData(new StoredProcedureObj("SPReadAllActiveHosts", new List<SqlParameter>()));
+        }
+
+        /// <summary>
+        /// Get historical hosts
+        /// </summary>
+        public DataTable GetHistoricalHosts()
+        {
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            return da.GetData(new StoredProcedureObj("SPReadHistoricalHosts", new List<SqlParameter>()));
         }
 
 
