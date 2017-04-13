@@ -177,6 +177,35 @@ namespace IHCApp.Database.Protected
 
 
         }
+
+        /// <summary>
+        /// Inactivate Host
+        /// </summary>
+        public void InActivateHost(Host host)
+        {
+            _DatabaseConnection.Connect();
+            try
+            {
+
+                SqlCommand command = new SqlCommand("SPInactivateHost", _DatabaseConnection.GetActiveConnection());
+                command.CommandType = CommandType.StoredProcedure;
+
+                //Add as many parameters as you want
+                command.Parameters.Add(new SqlParameter("@Family_Id", host._FamilyID));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                _DatabaseConnection.Disconnect();
+            }
+
+
+        }
+
         private DatabaseConnection _DatabaseConnection { get; set; }
     }
 }
