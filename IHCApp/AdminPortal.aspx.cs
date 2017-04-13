@@ -17,11 +17,11 @@ namespace IHCApp
         protected void Page_Load(object sender, EventArgs e)
         {
             bool redirect = true;
+            hostModalWindow.Hide();
+            applicantModalWindow.Hide();
 
 
-
-   
-                Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
+            Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
 
                 if ((Token)Session["token"] == null)
                 {
@@ -35,7 +35,7 @@ namespace IHCApp
 
                 if (redirect)
                 {
-                    Response.Redirect("AdminLogin.aspx");
+                   Response.Redirect("AdminLogin.aspx");
                 }
 
             
@@ -48,11 +48,11 @@ namespace IHCApp
                     Session["IsApplicantPage"] = null;
                 }
 
-                else if (!Page.IsPostBack && Session["isHostPage"] != null)
+                else if (!Page.IsPostBack && Session["IsHostPage"] != null)
                 {
                     CommandEventArgs events = new CommandEventArgs("Active", "");
                     hostManagementBtn__Click(sender, events);
-                    Session["isHostPage"] = null;
+                    Session["IsHostPage"] = null;
                 }
 
                 else if(!Page.IsPostBack)
@@ -448,6 +448,25 @@ namespace IHCApp
                     this.hostGrid.Columns[index].Visible = false;
                 }
 
+                //if historical hide archive button
+                if (isHistorical)
+                {
+                    Button archiveButton = null;
+                    foreach (GridViewRow row in applicantGrid.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            archiveButton = row.FindControl("hostRowArchive") as Button;
+                        }
+
+                        if (archiveButton != null)
+                        {
+                            archiveButton.Visible = false;
+                        }
+
+                    }
+                }
+
             }
 
         }
@@ -716,6 +735,19 @@ namespace IHCApp
 
             }
 
+            else if (e.CommandName == "ArchiveRow")
+            {
+                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Host host = new Host();
+
+                host._FamilyID = Int32.Parse(row.Cells[0].Text);
+
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.InActivateHost(host);
+
+                Session.Add("IsHostPage", "true");
+                Response.Redirect("AdminPortal.aspx");
+            }
+
         }
 
 
@@ -831,7 +863,7 @@ namespace IHCApp
 
             hostModalWindow.Hide();
 
-            Session.Add("isHostPage", "true");
+            Session.Add("IsHostPage", "true");
             Response.Redirect("AdminPortal.aspx");
 
 
