@@ -19,7 +19,11 @@ namespace IHCApp
         protected void loginBtn_Click(object sender, EventArgs e)
         {
             //Creates a session variable 
-            Session["token"] = new Authenticate().GetToken(this.username.Text, this.password.Text);
+            //Session["token"] = new Authenticate().GetToken(this.username.Text, this.password.Text);
+
+            var token = new Authenticate().GetToken(this.username.Text, this.password.Text);
+
+            Session.Add("token", token);
 
             Response.Redirect("AdminPortal.aspx");
         }

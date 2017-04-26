@@ -20,40 +20,40 @@ namespace IHCApp
             hostModalWindow.Hide();
             applicantModalWindow.Hide();
 
+           
 
-            Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
+            if ((Token)Session["token"] == null)
+            {
+                redirect = true;
+                throw new Exception("Error, our token is null");
+            }
+            else if (new Authenticate().ValidateToken((Token)Session["token"]))
+            {
+                redirect = false;
+            }
 
-                if ((Token)Session["token"] == null)
-                {
-                    Response.Redirect("AdminLogin.aspx");
-                }
-                else if (new Authenticate().ValidateToken((Token)Session["token"]))
-                {
-                    redirect = false;
-                }
 
-
-                if (redirect)
-                {
-                   Response.Redirect("AdminLogin.aspx");
-                }
+            if (redirect)
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
 
             
-                //Handle !ispostback
+            //Handle !ispostback
 
-                if (!Page.IsPostBack && Session["IsApplicantPage"] != null)
-                {
-                    CommandEventArgs events = new CommandEventArgs("Active", "");
-                    applicantManagementBtn_Click(sender, events);
-                    Session["IsApplicantPage"] = null;
-                }
+            if (!Page.IsPostBack && Session["IsApplicantPage"] != null)
+            {
+                CommandEventArgs events = new CommandEventArgs("Active", "");
+                applicantManagementBtn_Click(sender, events);
+                Session["IsApplicantPage"] = null;
+            }
 
-                else if (!Page.IsPostBack && Session["IsHostPage"] != null)
-                {
-                    CommandEventArgs events = new CommandEventArgs("Active", "");
-                    hostManagementBtn__Click(sender, events);
-                    Session["IsHostPage"] = null;
-                }
+            else if (!Page.IsPostBack && Session["IsHostPage"] != null)
+            {
+                CommandEventArgs events = new CommandEventArgs("Active", "");
+                hostManagementBtn__Click(sender, events);
+                Session["IsHostPage"] = null;
+            }
 
                 else if(!Page.IsPostBack)
                     dashboardBtn_Click(sender, e);
@@ -234,7 +234,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the DataTable -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -256,7 +256,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -277,7 +277,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -300,7 +300,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -323,7 +323,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -343,7 +343,7 @@ namespace IHCApp
         {
 
             DataTable applicants = new DataTable();
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
             DataSet ds = new DataSet();
 
 
@@ -413,7 +413,7 @@ namespace IHCApp
         protected void getHosts(bool isHistorical)
         {
             DataTable hosts = new DataTable();
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
             DataSet ds = new DataSet();
 
             if(isHistorical)
@@ -477,7 +477,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -496,7 +496,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text, "APPLICANT");
             }
             catch
@@ -509,7 +509,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("APPLICANT");
             }
             catch
@@ -522,7 +522,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.hostEditor.Text, "HOST");
             }
             catch
@@ -535,7 +535,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("HOST");
             }
             catch
@@ -630,7 +630,7 @@ namespace IHCApp
 
             else if (e.CommandName == "ArchiveRow")
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Applicant applicant = new Applicant();
 
                 applicant._ApplicantID = Int32.Parse(row.Cells[0].Text);
@@ -737,7 +737,7 @@ namespace IHCApp
 
             else if (e.CommandName == "ArchiveRow")
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Host host = new Host();
 
                 host._FamilyID = Int32.Parse(row.Cells[0].Text);
@@ -759,7 +759,7 @@ namespace IHCApp
 
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Applicant applicant = new Applicant();
 
                 applicant._ApplicantID = Int32.Parse(applicantId.Text);
@@ -821,7 +821,7 @@ namespace IHCApp
 
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Host host = new Host();
 
                 host._FamilyID = Int32.Parse(familyId.Text);
