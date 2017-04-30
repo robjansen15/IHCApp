@@ -165,7 +165,7 @@
                                 <asp:ListItem Text="no" Value="no" Selected="true" />
                                 </asp:RadioButtonList>
 
-                                <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowDrinking"></asp:Label>
+                                <asp:Label runat="server" Text="Allow Drinking: " AssociatedControlID="allowDrinking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="allowDrinking" CssClass="rdoBtnItemSpacing" runat="server">
                                 <asp:ListItem Text="yes" Value="yes"/>

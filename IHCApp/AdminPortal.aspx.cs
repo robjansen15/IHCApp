@@ -653,7 +653,7 @@ namespace IHCApp
             if (e.CommandName == "EditRow")
             {
 
-                for (int x = 7; x < applicantGrid.Columns.Count - 2; x++)
+                for (int x = 1; x < applicantGrid.Columns.Count-2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = true;
                 }
@@ -725,14 +725,12 @@ namespace IHCApp
                 hostAbout.Text = row.Cells[15].Text;
                 hobbies.Text = row.Cells[16].Text;
 
-                for (int x = 7; x < applicantGrid.Columns.Count - 2; x++)
+                hostModalWindow.Show();
+
+                for (int x = 7; x < applicantGrid.Columns.Count-2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = false;
                 }
-
-                hostModalWindow.Show();
-
-
             }
 
             else if (e.CommandName == "ArchiveRow")
