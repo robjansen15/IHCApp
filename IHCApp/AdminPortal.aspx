@@ -722,9 +722,9 @@
 	                            <asp:BoundField DataField="ToAdmin" HeaderText="Feedback" />
                                 <asp:BoundField DataField="Email" HeaderText="Email" />
 	                            <asp:TemplateField HeaderText="Actions">
-                                 <ItemTemplate >
+                                 <ItemTemplate>
                                      <%-- Inline Edit Button--%>
-                                      <asp:Button ID="hostRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
+                                      <asp:Button ID="hostRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary"></asp:Button>
                                       <asp:Button ID="hostRowArchive" runat="server" CommandName="ArchiveRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Archive" CausesValidation="false" class="btn btn-danger"></asp:Button>
                    
                                 </ItemTemplate> 
