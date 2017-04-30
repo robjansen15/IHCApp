@@ -168,13 +168,21 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                                 <i class="icon-bell-l"></i>
-                                <span class="badge bg-important">2!</span>
+                                <span class="badge bg-important">0</span>
                             </a>
                             <ul class="dropdown-menu extended notification">
                                 <div class="notify-arrow notify-arrow-blue"></div>
                                 <li>
-                                    <p class="blue">You have 4 new notifications</p>
-                                </li>                      
+                                    <p class="blue">You have 0 new notifications</p>
+                                </li>  
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-success"><i class="icon_like"></i></span> 
+                                        Example notification 
+                                        <span class="small italic pull-right"> Today</span>
+                                    </a>
+                                </li> 
+                                <!--
                                 <li>
                                     <a href="#">
                                         <span class="label label-dange"><i class="icon_book_alt"></i></span> 
@@ -188,7 +196,8 @@
                                         8 new Applicant form sub...
                                         <span class="small italic pull-right"> Today</span>
                                     </a>
-                                </li>                            
+                                </li> 
+                                    -->
                             </ul>
                         </li>
                         <!-- alert notification end-->
@@ -232,13 +241,14 @@
                                 <span>Dashboard</span>
                             </asp:LinkButton>
                         </li>
-                        
+                        <!--
                         <li>
                            <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn"  CausesValidation="false">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
                             </asp:LinkButton>
                         </li>   
+                         -->
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_folder"></i>
@@ -296,6 +306,7 @@
                 
                 <asp:Panel runat="server" ID="exampleDashboard" Visible="false">
                                 
+                    <!--JIM IS WORKING ON THESE!!!!-->
                       
                    <div class="row">
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
