@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<title>CSS3 Basket | CSS3 Templates</title>
+		<title>International Homestay</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="WebAssets/assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -65,7 +65,7 @@
 							<section class="3u 12u(mobile)">
 								<img src="WebAssets/images/pic01.jpg" alt="" class="image full"/>
 								<div class="box">
-									<h3><a class="text-vertical-spacing cl-effect-13" href="#">Hosting Policies</a></h3>
+									<h3><a class="text-vertical-spacing cl-effect-13" href="HostForm.aspx">Hosting Policies</a></h3>
 								</div>
 							</section>
 							<section class="3u 12u(mobile)">
@@ -77,7 +77,7 @@
 							<section class="3u 12u(mobile)">
 								<img src="WebAssets/images/pic01.jpg" alt="" class="image full"/>
 								<div class="box">
-									<h3><a href="#" class="text-vertical-spacing">Applicant Policies</a></h3>
+									<h3><a href="ApplicantForm.aspx" class="text-vertical-spacing">Applicant Policies</a></h3>
 								</div>
 							</section>
 							<section class="3u 12u(mobile)">

@@ -128,6 +128,7 @@ namespace IHCApp
                 host._AllowDrinking = allowDrinking.Text;
                 host._DoesFamilySmoke = "yes";
                 host._DoesFamilyDrink = "yes";
+                host._IsActive = 1;
 
 
 
@@ -317,10 +318,18 @@ namespace IHCApp
                 fnameValidator.ControlToValidate = "fName" + id;
                 fnameValidator.ErrorMessage = "You must provide a first name for family member " + id + ".";
                 fnameValidator.ForeColor = Color.Red;
-
                 fnameValidator.Text = "*";
                 fNameLbl.Text = "First Name: <br/>";
                 fNameLbl.AssociatedControlID = "fName" + id;
+
+                RegularExpressionValidator fnameValidator2 = new RegularExpressionValidator();
+                fnameValidator2.ControlToValidate = "fName" + id;
+                fnameValidator2.ErrorMessage = "First Name must contain letters from A-Z";
+                fnameValidator2.ForeColor = Color.Red;
+                fnameValidator2.Text = "*";
+                fnameValidator2.Text = "First Name : <br/>";
+                fnameValidator2.ValidationExpression = "^[A-Za-z]+$";
+
 
                 //last name
                 TextBox lName = new TextBox();
@@ -336,6 +345,14 @@ namespace IHCApp
                 lnameValidator.Text = "*";
                 lNameLbl.Text = "Last Name: <br/>";
                 lNameLbl.AssociatedControlID = "lName" + id;
+
+                RegularExpressionValidator lnameValidator2 = new RegularExpressionValidator();
+                lnameValidator2.ControlToValidate = "lName" + id;
+                lnameValidator2.ErrorMessage = "First Name must contain letters from A-Z";
+                lnameValidator2.ForeColor = Color.Red;
+                lnameValidator2.Text = "*";
+                lnameValidator2.Text = "Last Name : <br/>";
+                lnameValidator2.ValidationExpression = "^[A-Za-z]+$";
 
                 //DOB
                 TextBox age = new TextBox();
@@ -357,6 +374,14 @@ namespace IHCApp
 
                 languageLbl.Text = "Other Language: <br/>";
                 languageLbl.AssociatedControlID = "language" + id;
+
+                RegularExpressionValidator otherLanguage = new RegularExpressionValidator();
+                otherLanguage.ControlToValidate = "language" + id;
+                otherLanguage.ErrorMessage = "Language must contain letters from A-Z";
+                otherLanguage.ForeColor = Color.Red;
+                otherLanguage.Text = "*";
+                otherLanguage.Text = "Language : <br/>";
+                otherLanguage.ValidationExpression = "^[A-Za-z]+$";
 
                 //RelationToHost
                 DropDownList relationToHost = new DropDownList();

@@ -17,47 +17,57 @@ namespace IHCApp
         protected void Page_Load(object sender, EventArgs e)
         {
             bool redirect = true;
+            hostModalWindow.Hide();
+            applicantModalWindow.Hide();
+
+           
+
+            if ((Token)Session["token"] == null)
+            {
+                redirect = true;
+                throw new Exception("Error, our token is null");
+            }
+            else if (new Authenticate().ValidateToken((Token)Session["token"]))
+            {
+                redirect = false;
+            }
+
+
+            if (redirect)
+            {
+                Response.Redirect("AdminLogin.aspx");
+            }
+
+
+            //Handle !ispostback
+
+            if (!Page.IsPostBack && Session["IsApplicantPage"] != null)
+            {
+                CommandEventArgs events = new CommandEventArgs("Active", "");
+                applicantManagementBtn_Click(sender, events);
+                Session["IsApplicantPage"] = null;
+            }
+
+            else if (!Page.IsPostBack && Session["IsHostPage"] != null)
+            {
+                CommandEventArgs events = new CommandEventArgs("Active", "");
+                hostManagementBtn__Click(sender, events);
+                Session["IsHostPage"] = null;
+            }
+            else if (!Page.IsPostBack)
+            {
+                dashboardBtn_Click(sender, e);
+            }
+
+            //populate dashboard
+
+            Token token = (Token)Session["token"];
+            this.activeHosts.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveHosts();
+            this.activeApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveApplicants();
+            this.totalApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.TotalApplicants();
 
 
 
-   
-                Session.Add("token", new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123"));
-
-                if ((Token)Session["token"] == null)
-                {
-                    Response.Redirect("AdminLogin.aspx");
-                }
-                else if (new Authenticate().ValidateToken((Token)Session["token"]))
-                {
-                    redirect = false;
-                }
-
-
-                if (redirect)
-                {
-                    Response.Redirect("AdminLogin.aspx");
-                }
-
-            
-                //Handle !ispostback
-
-                if (!Page.IsPostBack && Session["IsApplicantEdit"] != null)
-                {
-                    applicantManagementBtn_Click(sender, e);
-                    Session["IsApplicantEdit"] = null;
-                }
-
-                else if (!Page.IsPostBack && Session["IsHostEdit"] != null)
-                {
-                    hostManagementBtn__Click(sender, e);
-                    Session["IsHostEdit"] = null;
-                }
-
-                else if(!Page.IsPostBack)
-                    dashboardBtn_Click(sender, e);
-
-                
-            
         }
 
 
@@ -130,9 +140,17 @@ namespace IHCApp
 
             applicantGrid.Visible = false;
             hostGrid.Visible = false;
+
+            //update the data 
+            Token token = (Token)Session["token"];
+            this.activeHosts.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveHosts();
+            this.activeApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveApplicants();
+            this.totalApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.TotalApplicants();
         }
-        protected void applicantManagementBtn_Click(object sender, EventArgs e)
+        protected void applicantManagementBtn_Click(object sender, CommandEventArgs e)
         {
+            bool isHistorical = false;
+
             this.exampleUpdateStudents.Visible = false;
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = false;
@@ -141,14 +159,24 @@ namespace IHCApp
             this.applicantManagement.Visible = true;
             this.hostManagement.Visible = false;
 
-            getApplicants();
+
+      
+            if(e.CommandName == "Historical")
+                isHistorical = true;
+
+
+            getApplicants(isHistorical);
+
             PopulateCountriesDropDown();
+
+            hostGrid.Visible = false;
             applicantGrid.Visible = true;
-            hostGrid.Visible = false;   
 
         }
-        protected void hostManagementBtn__Click(object sender, EventArgs e)
+        protected void hostManagementBtn__Click(object sender, CommandEventArgs e)
         {
+            bool isHistorical = false;
+
             this.exampleUpdateStudents.Visible = false;
             this.exampleUpdateFamily.Visible = false;
             this.exampleTable.Visible = false;
@@ -157,9 +185,13 @@ namespace IHCApp
             this.applicantManagement.Visible = false;
             this.hostManagement.Visible = true;
 
-            applicantGrid.Visible = false;
+            if (e.CommandName == "Historical")
+                isHistorical = true;
 
-            getHosts();
+
+            getHosts(isHistorical);
+
+            applicantGrid.Visible = false;
             hostGrid.Visible = true;
         }
 
@@ -216,7 +248,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the DataTable -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -238,7 +270,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -259,7 +291,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Hosts> -> List<List<string>>
             TableParse<Host> parser = new TableParse<Host>();
@@ -282,7 +314,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -299,11 +331,13 @@ namespace IHCApp
 
         protected void allActiveApplicants_Click(object sender, EventArgs e)
         {
+
+
             //go to this tab
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -319,11 +353,26 @@ namespace IHCApp
         }
 
 
-        protected void getApplicants()
+        protected void getApplicants(bool isHistorical)
         {
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+
+            DataTable applicants = new DataTable();
+            Token token = (Token)Session["token"];
             DataSet ds = new DataSet();
-            DataTable applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllApplicants();
+
+
+
+
+
+            if (isHistorical)
+                applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetHistoricalApplicants();
+
+            
+
+
+            else
+                applicants = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveApplicants();
+
 
 
             ds.Tables.Add(applicants);
@@ -336,6 +385,7 @@ namespace IHCApp
                 {
                     this.applicantGrid.Columns[x].Visible = true;
                 }
+
 
                 applicantGrid.DataBind();
 
@@ -351,15 +401,40 @@ namespace IHCApp
                     this.applicantGrid.Columns[index].Visible = false;
                 }
 
+                //if historical hide archive button
+                if (isHistorical)
+                {
+                    Button archiveButton = null;
+                    foreach (GridViewRow row in applicantGrid.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            archiveButton = row.FindControl("applicantRowArchive") as Button;
+                        }
+
+                        if (archiveButton != null)
+                        {
+                            archiveButton.Visible = false;
+                        }
+
+                    }
+                }
+
             }
 
         }
 
-        protected void getHosts()
+        protected void getHosts(bool isHistorical)
         {
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            DataTable hosts = new DataTable();
+            Token token = (Token)Session["token"];
             DataSet ds = new DataSet();
-            DataTable hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetAllHosts();
+
+            if(isHistorical)
+                hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetHistoricalHosts();
+            
+            else
+                hosts = new DatabaseConnection(token)._ProtectedStrategy._QuickSearchStrategy.GetActiveHosts();
 
 
             ds.Tables.Add(hosts);
@@ -368,7 +443,7 @@ namespace IHCApp
             {
                 hostGrid.DataSource = ds;
 
-                for (int x = 7; x < hostGrid.Columns.Count - 1; x++)
+                for (int x = 7; x < hostGrid.Columns.Count - 2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = true;
                 }
@@ -382,9 +457,28 @@ namespace IHCApp
                 this.hostGrid.Columns[0].Visible = false;
 
 
-                for (int index = 7; index < hostGrid.Columns.Count - 1; index++)
+                for (int index = 7; index < hostGrid.Columns.Count - 2; index++)
                 {
                     this.hostGrid.Columns[index].Visible = false;
+                }
+
+                //if historical hide archive button
+                if (isHistorical)
+                {
+                    Button archiveButton = null;
+                    foreach (GridViewRow row in applicantGrid.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            archiveButton = row.FindControl("hostRowArchive") as Button;
+                        }
+
+                        if (archiveButton != null)
+                        {
+                            archiveButton.Visible = false;
+                        }
+
+                    }
                 }
 
             }
@@ -397,7 +491,7 @@ namespace IHCApp
             ClickQuickSearch();
 
             //creates a token based off the credentials "Xiao" and "xiao123"
-            Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+            Token token = (Token)Session["token"];
 
             //This is the parser that helps convert the Datatables -> List<Applicant> -> List<List<string>>
             TableParse<Applicant> parser = new TableParse<Applicant>();
@@ -416,7 +510,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.applicantEditor.Text, "APPLICANT");
             }
             catch
@@ -429,7 +523,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("APPLICANT");
             }
             catch
@@ -442,7 +536,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.UpdateFormInfo(this.hostEditor.Text, "HOST");
             }
             catch
@@ -455,7 +549,7 @@ namespace IHCApp
         {
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 new DatabaseConnection(token)._ProtectedStrategy._FormUpdateHTMLStrategy.RollBackFormInfo("HOST");
             }
             catch
@@ -478,10 +572,14 @@ namespace IHCApp
 
 
         /// <summary>
-        /// Applicant Edit Grid Row
+        /// Handle applicant grid row actions.
         /// </summary>
         protected void applicantGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = applicantGrid.Rows[index];
+
 
             if (e.CommandName == "EditRow")
             {
@@ -490,12 +588,6 @@ namespace IHCApp
                 {
                     this.applicantGrid.Columns[x].Visible = true;
                 }
-
-
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = applicantGrid.Rows[index];
-
-
 
                 applicantId.Text = row.Cells[0].Text;
                 firstName.Text = row.Cells[1].Text;
@@ -550,23 +642,36 @@ namespace IHCApp
 
             }
 
+            else if (e.CommandName == "ArchiveRow")
+            {
+                Token token = (Token)Session["token"];
+                Applicant applicant = new Applicant();
+
+                applicant._ApplicantID = Int32.Parse(row.Cells[0].Text);
+
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.InActivateApplicant(applicant);
+
+                Session.Add("IsApplicantPage", "true");
+                Response.Redirect("AdminPortal.aspx");
+            }
+
         }
 
         protected void hostGrid_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+            int index = Convert.ToInt32(e.CommandArgument);
+            GridViewRow row = hostGrid.Rows[index];
+
+
             if (e.CommandName == "EditRow")
             {
 
-                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                for (int x = 1; x < applicantGrid.Columns.Count-2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = true;
                 }
 
-
-
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = hostGrid.Rows[index];
 
                 familyId.Text = row.Cells[0].Text;
 
@@ -630,25 +735,29 @@ namespace IHCApp
                     bathrooms.SelectedValue = bathroomSelectedText.Text;
                 }
 
-
-
                 hostTransportation.Text = row.Cells[14].Text;
                 hostAbout.Text = row.Cells[15].Text;
                 hobbies.Text = row.Cells[16].Text;
 
+                hostModalWindow.Show();
 
-
-
-                for (int x = 7; x < applicantGrid.Columns.Count - 1; x++)
+                for (int x = 7; x < applicantGrid.Columns.Count-2; x++)
                 {
                     this.hostGrid.Columns[x].Visible = false;
                 }
+            }
 
+            else if (e.CommandName == "ArchiveRow")
+            {
+                Token token = (Token)Session["token"];
+                Host host = new Host();
 
+                host._FamilyID = Int32.Parse(row.Cells[0].Text);
 
-                hostModalWindow.Show();
+                new DatabaseConnection(token)._ProtectedStrategy._UpdateFormStrategy.InActivateHost(host);
 
-
+                Session.Add("IsHostPage", "true");
+                Response.Redirect("AdminPortal.aspx");
             }
 
         }
@@ -662,7 +771,7 @@ namespace IHCApp
 
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Applicant applicant = new Applicant();
 
                 applicant._ApplicantID = Int32.Parse(applicantId.Text);
@@ -708,7 +817,7 @@ namespace IHCApp
 
 
             applicantModalWindow.Hide();
-            Session.Add("IsApplicantEdit", "true");
+            Session.Add("IsApplicantPage", "true");
             Response.Redirect("AdminPortal.aspx");
 
 
@@ -724,7 +833,7 @@ namespace IHCApp
 
             try
             {
-                Token token = new DatabaseConnection()._PublicStrategy._TokenStrategy.ValidateCredentials("Xiao", "xiao123");
+                Token token = (Token)Session["token"];
                 Host host = new Host();
 
                 host._FamilyID = Int32.Parse(familyId.Text);
@@ -766,7 +875,7 @@ namespace IHCApp
 
             hostModalWindow.Hide();
 
-            Session.Add("IsHostEdit", "true");
+            Session.Add("IsHostPage", "true");
             Response.Redirect("AdminPortal.aspx");
 
 

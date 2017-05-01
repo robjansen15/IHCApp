@@ -168,13 +168,21 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                                 <i class="icon-bell-l"></i>
-                                <span class="badge bg-important">2!</span>
+                                <span class="badge bg-important">0</span>
                             </a>
                             <ul class="dropdown-menu extended notification">
                                 <div class="notify-arrow notify-arrow-blue"></div>
                                 <li>
-                                    <p class="blue">You have 4 new notifications</p>
-                                </li>                      
+                                    <p class="blue">You have 0 new notifications</p>
+                                </li>  
+                                <li>
+                                    <a href="#">
+                                        <span class="label label-success"><i class="icon_like"></i></span> 
+                                        Example notification 
+                                        <span class="small italic pull-right"> Today</span>
+                                    </a>
+                                </li> 
+                                <!--
                                 <li>
                                     <a href="#">
                                         <span class="label label-dange"><i class="icon_book_alt"></i></span> 
@@ -188,7 +196,8 @@
                                         8 new Applicant form sub...
                                         <span class="small italic pull-right"> Today</span>
                                     </a>
-                                </li>                            
+                                </li> 
+                                    -->
                             </ul>
                         </li>
                         <!-- alert notification end-->
@@ -232,13 +241,14 @@
                                 <span>Dashboard</span>
                             </asp:LinkButton>
                         </li>
-                        
+                        <!--
                         <li>
                            <asp:LinkButton runat="server" class="" OnClick="Click_SearchBtn"  CausesValidation="false">                       
                                 <i class="icon_genius"></i>
                                 <span>Search</span>                      
                             </asp:LinkButton>
                         </li>   
+                         -->
                         <li class="sub-menu">
                             <a href="javascript:;" class="">
                                 <i class="icon_folder"></i>
@@ -246,8 +256,10 @@
                                 <span class="menu-arrow arrow_carrot-right"></span>
                             </a>
                             <ul class="sub">
-                                 <li><asp:LinkButton class="" runat="server" ID="applicantManagementBtn" OnClick="applicantManagementBtn_Click"  CausesValidation="false">Manage Applicants</asp:LinkButton></li>          
-                                 <li><asp:LinkButton class="" runat="server" ID="hostManagementBtn" OnClick="hostManagementBtn__Click"  CausesValidation="false">Manage Hosts</asp:LinkButton></li> 
+                                 <li><asp:LinkButton class="" runat="server" ID="applicantManagementBtn" OnCommand="applicantManagementBtn_Click"  CommandName="Active" CommandArgument="" CausesValidation="false">Applicants</asp:LinkButton></li>          
+                                 <li><asp:LinkButton class="" runat="server" ID="hostManagementBtn" OnCommand="hostManagementBtn__Click" CommandName="Active" CommandArgument=""  CausesValidation="false">Hosts</asp:LinkButton></li>
+                                 <li><asp:LinkButton class="" runat="server" ID="historicalApplicantManagementBtn" OnCommand="applicantManagementBtn_Click" CommandName="Historical" CommandArgument=""  CausesValidation="false">Historical Applicants</asp:LinkButton></li>
+                                 <li><asp:LinkButton class="" runat="server" ID="historicalHostManagementBtn" OnCommand="hostManagementBtn__Click" CommandName="Historical" CommandArgument="" CausesValidation="false">Historical Hosts</asp:LinkButton></li> 
                             </ul>
                         </li>    
 
@@ -277,6 +289,13 @@
                                 <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class=""  CausesValidation="false">All Looking Hosts</asp:LinkButton></li>
                             </ul>
                         </li>
+
+                        <li>
+                           <a onClick="window.print()">                     
+                                <i class="icon_genius"></i>
+                                <span>Export to PDF</span>    
+                            </a>
+                        </li> 
                                     
                     </ul>
                     <!-- sidebar menu end-->
@@ -294,39 +313,32 @@
                 
                 <asp:Panel runat="server" ID="exampleDashboard" Visible="false">
                                 
-                      
+                  
                    <div class="row">
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box blue-bg">
 						    <i class="fa fa-cloud-download"></i>
-						    <div class="count">12</div>
-						    <div class="title">Active Students</div>						
+						    <div class="count" id="activeApplicants" runat="server">0</div>
+						    <div class="title">Active Applicants</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->
 				
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box brown-bg">
 						    <i class="fa fa-shopping-cart"></i>
-						    <div class="count">14</div>
-						    <div class="title">Families Looking</div>						
+						    <div class="count" id="activeHosts" runat="server">0</div>
+						    <div class="title">Active Hosts</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->	
 				
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box dark-bg">
 						    <i class="fa fa-thumbs-o-up"></i>
-						    <div class="count">9</div>
-						    <div class="title">Pending Payment</div>						
+						    <div class="count"  id="totalApplicants" runat="server">0</div>
+						    <div class="title">Total Applicants</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->
 				
-				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					    <div class="info-box green-bg">
-						    <i class="fa fa-cubes"></i>
-						    <div class="count">5</div>
-						    <div class="title">New form Submissions</div>						
-					    </div><!--/.info-box-->			
-				    </div><!--/.col-->
 				
 			</div>
                         
@@ -458,13 +470,12 @@
 	                            <asp:BoundField DataField="OtherUniversity" HeaderText="Other Sponsor" />
                                 <asp:BoundField DataField="A_Email" HeaderText="Email" />
 	                            <asp:BoundField DataField="A_EmergencyContact" HeaderText="Emergency Contact" />
+                                <asp:BoundField DataField="IsActive" />
 	                            <asp:TemplateField HeaderText="Actions">
-                                 <ItemTemplate >
-                                     <%-- Inline Edit Button--%>
-
-                            
+                                 <ItemTemplate>
+                                      <%-- Inline Edit Button--%>
                                       <asp:Button ID="applicantRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
-                                        <a class="btn btn-danger" href="#">Archive</a>
+                                      <asp:Button ID="applicantRowArchive" runat="server" CommandName="ArchiveRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Archive" CausesValidation="false" class="btn btn-danger"></asp:Button>
                    
                                 </ItemTemplate> 
                                 </asp:TemplateField>
@@ -721,10 +732,10 @@
 	                            <asp:BoundField DataField="ToAdmin" HeaderText="Feedback" />
                                 <asp:BoundField DataField="Email" HeaderText="Email" />
 	                            <asp:TemplateField HeaderText="Actions">
-                                 <ItemTemplate >
+                                 <ItemTemplate>
                                      <%-- Inline Edit Button--%>
-                                      <asp:Button ID="hostRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary" OnClientClick="preventBackgroundpPageScroll()"></asp:Button>
-                                      <a class="btn btn-danger" href="#">Archive</a>
+                                      <asp:Button ID="hostRowEdit" runat="server" CommandName="EditRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Edit" CausesValidation="false" class="btn btn-primary"></asp:Button>
+                                      <asp:Button ID="hostRowArchive" runat="server" CommandName="ArchiveRow" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Text="Archive" CausesValidation="false" class="btn btn-danger"></asp:Button>
                    
                                 </ItemTemplate> 
                                 </asp:TemplateField>

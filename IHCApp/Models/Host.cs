@@ -67,5 +67,6 @@ namespace IHCApp.Models
         public string _AllowDrinking { get; set; }
         public string _DoesFamilySmoke { get; set; }
         public string _DoesFamilyDrink { get; set; }
+        public int _IsActive { get; set; }
     }
 }

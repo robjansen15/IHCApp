@@ -81,6 +81,7 @@
                             <asp:Panel runat="server" id="familyPanel">
 
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="familyName" errormessage="You must provide your families last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                 <asp:RegularExpressionValidator runat="server" ControlToValidate="familyName" ErrorMessage="Last Name must only contain letters from A-Z" ForeColor="#ff3300" ValidationExpression="^[A-Za-z]+$" >*</asp:RegularExpressionValidator>
                                <%-- <asp:RegularExpressionValidator runat="server" display="Dynamic"  ControlToValidate="familyName"  ErrorMessage="Family last name can only contain letters." ValidationExpression="123456789.*[@#$%^&*/].*" ForeColor="#ff3300" >*</asp:RegularExpressionValidator>--%>
 
                                    
@@ -129,13 +130,14 @@
                                 <br />
 
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                  <asp:RegularExpressionValidator runat="server" ControlToValidate="phone1" ErrorMessage="Phone numbers must only contain numbers from 1-0" ForeColor="#ff3300" ValidationExpression="^[0-9]{1,10}$" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="phone1" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
-
+                                  <asp:RegularExpressionValidator runat="server" ControlToValidate="phone2" ErrorMessage="Phone numbers must only contain numbers from 1-0" ForeColor="#ff3300" ValidationExpression="^[0-9]{1,10}$" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="phone2" Width="50%"></asp:TextBox>
@@ -145,6 +147,7 @@
 
 
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                  <asp:RegularExpressionValidator runat="server" ControlToValidate="email" ErrorMessage="You must enter a valid Email" ForeColor="#ff3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="email" Width="50%"></asp:TextBox>
@@ -162,7 +165,7 @@
                                 <asp:ListItem Text="no" Value="no" Selected="true" />
                                 </asp:RadioButtonList>
 
-                                <asp:Label runat="server" Text="Allow Smoking: " AssociatedControlID="allowDrinking"></asp:Label>
+                                <asp:Label runat="server" Text="Allow Drinking: " AssociatedControlID="allowDrinking"></asp:Label>
                                 <br />
                                 <asp:RadioButtonList id="allowDrinking" CssClass="rdoBtnItemSpacing" runat="server">
                                 <asp:ListItem Text="yes" Value="yes"/>

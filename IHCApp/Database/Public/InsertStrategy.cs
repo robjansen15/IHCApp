@@ -53,6 +53,7 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@AllowDrinking", host._AllowDrinking));
                 command.Parameters.Add(new SqlParameter("@DoesFamilySmoking", host._DoesFamilySmoke));
                 command.Parameters.Add(new SqlParameter("@DoesFamilyDrinking", host._DoesFamilyDrink));
+                command.Parameters.Add(new SqlParameter("@IsActive", host._IsActive));
                 using (SqlDataReader rdr = command.ExecuteReader())
                 {
                     ///gets the specific columns needed from the table
@@ -151,7 +152,8 @@ namespace IHCApp.Database.Public
                 command.Parameters.Add(new SqlParameter("@A_PaymentAmount", applicant._PaymentAmount));
                 command.Parameters.Add(new SqlParameter("@A_OtherUniversity", applicant._OtherUniversity));
                 command.Parameters.Add(new SqlParameter("@A_Email", applicant._Email));
-                command.Parameters.Add(new SqlParameter("@A_EmergencyContact", applicant._EmergencyContact));
+                command.Parameters.Add(new SqlParameter("@A_EmergencyContact", applicant._EmergencyContact)); 
+                command.Parameters.Add(new SqlParameter("@IsActive", applicant._IsActive));
                 command.ExecuteNonQuery();
             }
             catch (Exception e)

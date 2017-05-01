@@ -32,14 +32,13 @@
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <asp:TextBox runat="server" id="password" class="form-control" placeholder="Password"></asp:TextBox>
+                <asp:TextBox runat="server" id="password" class="form-control" TextMode="Password" placeholder="Password"></asp:TextBox>
             </div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me" />Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
-            <Asp:LinkButton runat="server" ID="loginBtn" OnClick="loginBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Login"></Asp:LinkButton>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+            <Asp:LinkButton runat="server" ID="loginBtn" OnClick="loginBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Login"></Asp:LinkButton>          
+            <Asp:LinkButton runat="server" ID="forgotBtn" OnClick="forgotBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Forgot Password"></Asp:LinkButton>
         </div>
       </form>
     <div class="text-right">

@@ -136,6 +136,7 @@ namespace IHCApp
                 applicant._OtherUniversity = "purdue";
                 applicant._Email = this.email.Text;
                 applicant._EmergencyContact = this.universityContactInfo.Text;
+                applicant._IsActive = 1;
 
 
                 new DatabaseConnection()._PublicStrategy._InsertStrategy.InsertApplicant(applicant);

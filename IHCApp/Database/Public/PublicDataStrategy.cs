@@ -16,16 +16,34 @@ namespace IHCApp.Database.Public
             _DatabaseConnection = databaseConnection;
         }
 
+        public List<string> ResetPasswsord(string username)
+        {
+            List<string> pieces = new List<string>();
+
+            DataAccess da = new DataAccess(_DatabaseConnection);
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@USERNAME", username));
+
+            DataTable dt = da.GetData(new StoredProcedureObj("ForgotPassword", parameters));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                pieces.Add(row["Admin_Password"].ToString());
+                pieces.Add(row["Admin_Email"].ToString());
+            }
+
+            return pieces;
+        }
 
         /// <summary>
         /// Get the pre-form HOST information
         /// </summary>
-       
+
 
         /// <summary>
         /// Get the pre-form APPLICANT information
         /// </summary>
-        
+
 
         /// <summary>
         /// Get the Host information page

@@ -4,12 +4,11 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace IHCAppTests
 {
     [TestClass]
-    public class Updating
+    public class ExportToPDF
     {
         [TestMethod]
         public void TestMethod1()
         {
-
         }
     }
 }

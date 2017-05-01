@@ -82,14 +82,17 @@
                 
                                 <%--name--%>
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="lastName" errormessage="You must provide your last name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                 <asp:RegularExpressionValidator runat="server" ControlToValidate="lastName" ErrorMessage="Last Name must only contain letters from A-Z" ForeColor="#ff3300" ValidationExpression="^[A-Za-z]+$" >*</asp:RegularExpressionValidator>
                                 <asp:Label AssociatedControlID="lastName" Text="Last Name: " runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="lastName"></asp:TextBox>
+                                
 
                                 <br />
                                 <br />
 
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="firstName" errormessage="You must provide your first name." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                 <asp:RegularExpressionValidator runat="server" ControlToValidate="firstName" ErrorMessage="First Name must only contain letters from A-Z" ForeColor="#ff3300" ValidationExpression="^[A-Za-z]+$" >*</asp:RegularExpressionValidator>
                                 <asp:Label AssociatedControlID="firstName" Text="First Name: " runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="firstName"></asp:TextBox>
@@ -117,6 +120,8 @@
                                 <br />
                            
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="firstLanguage" errormessage="You must provide your first language." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                 <asp:RegularExpressionValidator runat="server" ControlToValidate="firstLanguage" ErrorMessage="Language must only contain letters from A-Z" ForeColor="#ff3300" ValidationExpression="^[A-Za-z]+$" >*</asp:RegularExpressionValidator>
+
                                 <asp:Label AssociatedControlID="firstLanguage" Text="First Language: " runat="server"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="firstLanguage"></asp:TextBox>
@@ -155,15 +160,16 @@
 
                                 <br />
                                 <br />
-
+                                
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="phone1" errormessage="Please provide a primary phone number" ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                  <asp:RegularExpressionValidator runat="server" ControlToValidate="phone1" ErrorMessage="Phone numbers must only contain numbers from 1-0" ForeColor="#ff3300" ValidationExpression="^[0-9]{1,10}$" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Primary Phone: " AssociatedControlID="phone1"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="phone1" Width="50%"></asp:TextBox>
 
                                 <br />
                                 <br />
-
+                                    <asp:RegularExpressionValidator runat="server" ControlToValidate="phone2" ErrorMessage="You must only contain letters from 1-0 " ForeColor="#ff3300" ValidationExpression="^[0-9]{1,10}$" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Secondary Phone: " AssociatedControlID="phone2"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="phone2" Width="50%"></asp:TextBox>
@@ -173,6 +179,7 @@
 
 
                                 <asp:RequiredFieldValidator runat="server" controltovalidate="email" errormessage="Please enter an email address." ForeColor="#ff3300">*</asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator runat="server" ControlToValidate="email" ErrorMessage="You must enter a valid Email" ForeColor="#ff3300" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" >*</asp:RegularExpressionValidator>
                                 <asp:Label runat="server" Text="Email: " AssociatedControlID="email"></asp:Label>
                                 <br />
                                 <asp:TextBox runat="server" id="email" Width="50%"></asp:TextBox>
