@@ -289,6 +289,13 @@
                                 <li><asp:LinkButton runat="server" id="lookingHosts" OnClick="lookingHosts_Click" class=""  CausesValidation="false">All Looking Hosts</asp:LinkButton></li>
                             </ul>
                         </li>
+
+                        <li>
+                           <a onClick="window.print()">                     
+                                <i class="icon_genius"></i>
+                                <span>Export to PDF</span>    
+                            </a>
+                        </li> 
                                     
                     </ul>
                     <!-- sidebar menu end-->
