@@ -36,10 +36,9 @@
             </div>
             <label class="checkbox">
                 <input type="checkbox" value="remember-me" />Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
             </label>
-            <Asp:LinkButton runat="server" ID="loginBtn" OnClick="loginBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Login"></Asp:LinkButton>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+            <Asp:LinkButton runat="server" ID="loginBtn" OnClick="loginBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Login"></Asp:LinkButton>          
+            <Asp:LinkButton runat="server" ID="forgotBtn" OnClick="forgotBtn_Click" class="btn btn-primary btn-lg btn-block" Text="Forgot Password"></Asp:LinkButton>
         </div>
       </form>
     <div class="text-right">
