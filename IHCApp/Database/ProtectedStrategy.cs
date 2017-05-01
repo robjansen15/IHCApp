@@ -15,7 +15,7 @@ namespace IHCApp.Database
         {
             if(new Authenticate().ValidateToken(token))
             {
-                _DynamicSearchStrategy = new DynamicSearchStrategy(databaseConnection);
+                _DashboardStrategy = new DashboardStrategy(databaseConnection);
                 _FormUpdateHTMLStrategy = new FormUpdateHTMLStrategy(databaseConnection);
                 _QuickSearchStrategy = new QuickSearchStrategy(databaseConnection);
                 _UpdateFormStrategy = new UpdateFormStrategy(databaseConnection);
@@ -27,7 +27,7 @@ namespace IHCApp.Database
         }
 
 
-        public DynamicSearchStrategy _DynamicSearchStrategy { get; set; }
+        public DashboardStrategy _DashboardStrategy { get; set; }
         public FormUpdateHTMLStrategy _FormUpdateHTMLStrategy { get; set; }
         public QuickSearchStrategy _QuickSearchStrategy { get; set; }
         public UpdateFormStrategy _UpdateFormStrategy { get; set; }

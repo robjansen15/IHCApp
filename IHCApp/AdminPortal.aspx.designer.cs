@@ -157,6 +157,33 @@ namespace IHCApp {
         protected global::System.Web.UI.WebControls.Panel exampleDashboard;
         
         /// <summary>
+        /// activeApplicants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl activeApplicants;
+        
+        /// <summary>
+        /// activeHosts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl activeHosts;
+        
+        /// <summary>
+        /// totalApplicants control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalApplicants;
+        
+        /// <summary>
         /// exampleTable control.
         /// </summary>
         /// <remarks>

@@ -38,7 +38,7 @@ namespace IHCApp
                 Response.Redirect("AdminLogin.aspx");
             }
 
-            
+
             //Handle !ispostback
 
             if (!Page.IsPostBack && Session["IsApplicantPage"] != null)
@@ -54,12 +54,20 @@ namespace IHCApp
                 hostManagementBtn__Click(sender, events);
                 Session["IsHostPage"] = null;
             }
+            else if (!Page.IsPostBack)
+            {
+                dashboardBtn_Click(sender, e);
+            }
 
-                else if(!Page.IsPostBack)
-                    dashboardBtn_Click(sender, e);
+            //populate dashboard
 
-                
-            
+            Token token = (Token)Session["token"];
+            this.activeHosts.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveHosts();
+            this.activeApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveApplicants();
+            this.totalApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.TotalApplicants();
+
+
+
         }
 
 
@@ -132,6 +140,12 @@ namespace IHCApp
 
             applicantGrid.Visible = false;
             hostGrid.Visible = false;
+
+            //update the data 
+            Token token = (Token)Session["token"];
+            this.activeHosts.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveHosts();
+            this.activeApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.ActiveApplicants();
+            this.totalApplicants.InnerText = new Database.DatabaseConnection(token)._ProtectedStrategy._DashboardStrategy.TotalApplicants();
         }
         protected void applicantManagementBtn_Click(object sender, CommandEventArgs e)
         {

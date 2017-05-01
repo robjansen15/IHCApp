@@ -313,40 +313,32 @@
                 
                 <asp:Panel runat="server" ID="exampleDashboard" Visible="false">
                                 
-                    <!--JIM IS WORKING ON THESE!!!!-->
-                      
+                  
                    <div class="row">
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box blue-bg">
 						    <i class="fa fa-cloud-download"></i>
-						    <div class="count">12</div>
-						    <div class="title">Active Students</div>						
+						    <div class="count" id="activeApplicants" runat="server">0</div>
+						    <div class="title">Active Applicants</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->
 				
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box brown-bg">
 						    <i class="fa fa-shopping-cart"></i>
-						    <div class="count">14</div>
-						    <div class="title">Families Looking</div>						
+						    <div class="count" id="activeHosts" runat="server">0</div>
+						    <div class="title">Active Hosts</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->	
 				
 				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					    <div class="info-box dark-bg">
 						    <i class="fa fa-thumbs-o-up"></i>
-						    <div class="count">9</div>
-						    <div class="title">Pending Payment</div>						
+						    <div class="count"  id="totalApplicants" runat="server">0</div>
+						    <div class="title">Total Applicants</div>						
 					    </div><!--/.info-box-->			
 				    </div><!--/.col-->
 				
-				    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					    <div class="info-box green-bg">
-						    <i class="fa fa-cubes"></i>
-						    <div class="count">5</div>
-						    <div class="title">New form Submissions</div>						
-					    </div><!--/.info-box-->			
-				    </div><!--/.col-->
 				
 			</div>
                         

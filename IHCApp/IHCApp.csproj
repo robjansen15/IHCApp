@@ -712,7 +712,7 @@
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\Protected\UpdateFormStrategy.cs" />
     <Compile Include="Database\PublicStrategy.cs" />
-    <Compile Include="Database\Protected\DynamicSearchStrategy.cs" />
+    <Compile Include="Database\Protected\DashboardStrategy.cs" />
     <Compile Include="Database\Protected\FormUpdateHTMLStrategy.cs" />
     <Compile Include="Database\ProtectedStrategy.cs" />
     <Compile Include="Database\Public\InsertStrategy.cs" />
